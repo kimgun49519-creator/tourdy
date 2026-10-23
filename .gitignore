@@ -1,1 +1,4 @@
 .preview/
+ios/Tourdy/Web/
+ios/**/xcuserdata/
+ios/build/

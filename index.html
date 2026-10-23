@@ -2171,7 +2171,7 @@ const kmBetween=(a,b)=>{const A=NAT[a],B=NAT[b],r=Math.PI/180,dl=(B[3]-A[3])*r,d
 const flightMin=(a,b)=>Math.max(30,Math.round(kmBetween(a,b)/800*60)); // 평균 800km/h, 최소 30분
 const MILE_MS=6*6e4; // 공부 6분 = 1 마일리지
 const TRAVEL_TEST=false; // 테스트용 버튼 표시. 출시 전 false로
-function tr(){return S.travel||(S.travel={on:false,at:'KR',to:null,used:0,km:0,stamps:[],news:[]})}
+function tr(){const T=S.travel||(S.travel={on:true,at:'KR',to:null,used:0,km:0,stamps:[],news:[]});if(!T.ver){T.on=true;T.ver=2}return T} // 여행 탭은 기본으로 켜짐
 function totalMiles(){const pd=perDay(true);let m=0;for(const k in pd)m+=Math.min(pd[k].study,8*36e5)/MILE_MS;return m}
 const studyFor=miles=>fmtH(Math.max(0,miles)*MILE_MS);
 function checkArrival(){return checkEarth()||checkSpace()||checkKorea()}
@@ -2589,7 +2589,7 @@ function setTab(t){tab=t;document.querySelectorAll('[data-tab]').forEach(b=>b.se
   if(t==='home')setHome(homeTab);if(t==='todo')renderTasks();if(t==='stats')renderStats();if(t==='set')renderSet();if(t==='travel')renderTravel()}
 document.querySelector('.tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b)setTab(b.dataset.tab)});
 
-function renderAll(){if(typeof renderWelcome==='function')renderWelcome();DS=Number.isInteger(S.dayStart)?S.dayStart:0;applyTheme();$('tlAxis').innerHTML=[0,6,12,18,24].map((h,i)=>`<span>${(h+DS)%24||(i===4?24:0)}${i===4?'시':''}</span>`).join('');renderDday();fillSelects();renderSubs();renderTasks();renderRecords();tick();if(homeTab==='preset')renderPresets();if(tab==='stats')renderStats();if(tab==='set')renderSet()}
+function renderAll(){if(typeof renderWelcome==='function')renderWelcome();if(typeof syncTravelTab==='function')syncTravelTab();DS=Number.isInteger(S.dayStart)?S.dayStart:0;applyTheme();$('tlAxis').innerHTML=[0,6,12,18,24].map((h,i)=>`<span>${(h+DS)%24||(i===4?24:0)}${i===4?'시':''}</span>`).join('');renderDday();fillSelects();renderSubs();renderTasks();renderRecords();tick();if(homeTab==='preset')renderPresets();if(tab==='stats')renderStats();if(tab==='set')renderSet()}
 syncTravelTab();
 if(S.plan||(S.running&&S.running.plan))homeMode='plan';setMode(homeMode);
 resetRecForm();renderAll();renderExtras();renderWelcome();maybeReport();

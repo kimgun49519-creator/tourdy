@@ -1055,18 +1055,28 @@ button.ks-stamp:focus-visible{outline-offset:2px}
 .bx-sum{display:flex;flex-direction:column;gap:8px;min-width:0}
 .bx-sh{background:#15171c;color:#fff;font-size:9px;font-weight:800;letter-spacing:.08em;padding:4px 6px;border-radius:4px;display:flex;justify-content:space-between;align-items:center}
 .bx-sh svg{width:11px;height:11px}
-.bx-sr{display:flex;justify-content:space-between;align-items:center}.bx-sr b{font-size:17px;font-weight:900}.bx-sr svg{width:14px;height:14px}
+.bx-sr{display:flex;justify-content:space-between;align-items:center;gap:8px}.bx-sr b{font-size:17px;font-weight:900}.bx-sr svg{width:14px;height:14px}
 .bx-kv{display:grid;grid-template-columns:1fr 1fr;gap:4px}.bx-kv small,.bx-big small{display:block;font-size:9px;font-weight:700;color:#6b7280}.bx-kv b{font-size:12px;font-weight:800}
 .bx-big b{display:block;font-size:20px;font-weight:900;color:#1d6fd8;line-height:1.15;word-break:keep-all;overflow-wrap:anywhere}
 @media (max-width:480px){
   .bx{grid-template-columns:1fr}.bx-main{border-radius:14px 14px 0 0}
   .bx-stub{border-radius:0 0 14px 14px;border-left:0;border-top:2px dashed #c3c9d2;grid-template-columns:1fr;padding:12px 16px 14px}
   .bx-code{height:30px;background:repeating-linear-gradient(90deg,#15171c 0 2px,transparent 2px 3px,#15171c 3px 4px,transparent 4px 7px,#15171c 7px 10px,transparent 10px 11px,#15171c 11px 12px,transparent 12px 15px)}
-  .bx-sum{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:6px 14px}.bx-sh{grid-column:1/-1}
+  .bx-sum{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px 16px}.bx-sr{justify-content:flex-start;gap:10px}.bx-sr svg{width:16px;height:16px}.bx-sh{grid-column:1/-1}
   .bx-hd{padding:9px 14px}.bx-bp{font-size:10px;letter-spacing:.06em}.bx-body{padding:14px}
   .bx-route b{font-size:30px}.bx-mid{height:48px}.bx-pl svg{width:26px;height:26px}
   .bx-info{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 6px;padding:9px 10px}.bx-info b{font-size:12px}
 }
+/* 여권: 대륙별 */
+.stamps.grouped{display:flex;flex-direction:column;gap:8px;padding:0}
+.stamps.wgrid{padding:6px 14px 18px}
+.wslot{aspect-ratio:1.25;border:1.5px dashed var(--line);border-radius:var(--sh);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--faint);padding:8px}
+.wslot i{font-style:normal;font-size:12px;font-weight:600;opacity:.75}
+.ccard.wslot2{background:none;border:1.5px dashed var(--line);color:var(--faint)}.ccard.wslot2 small{color:var(--faint)}
+button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:left;color:inherit}
+.tpass[data-wlog]{cursor:pointer}
+.bx.torn{grid-template-columns:1fr}.bx.torn .bx-stub{display:none}
+@media (max-width:480px){.bx.torn .bx-main{border-radius:14px 14px 0 0}}
 /* 표 배경: 랜드마크 선화 또는 국경 실루엣 */
 .tx-bg{position:absolute;right:12px;top:14px;bottom:12px;width:46%;display:flex;justify-content:flex-end;align-items:flex-end;pointer-events:none;z-index:0}
 .bx .tx-bg{top:54px;color:#15171c;opacity:.12}.tk .tx-bg{color:var(--tc);opacity:.17}
@@ -2393,10 +2403,10 @@ const flightNo=(a,b)=>'SA '+String([...(a+b)].reduce((h,ch)=>(h*31+ch.charCodeAt
 const PLANE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V8.5l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z" transform="rotate(90 12 12)"/></svg>';
 const LAND='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21h20"/><path d="M3.8 13.5 5 9l2.2.6 1.1 3.3 4.9 1.3L11 5.3l2.6.7 4.6 9.3 3 .8c.9.3 1.5 1.2 1.2 2.1-.2.6-.9 1-1.6.8L4.6 14.6z"/></svg>';
 const INK=['#c23b3b','#9a6400','#2f55c4','#b0561a','#14806f','#7a3fb0','#0d7fa8'],SHAPE=['10px','50%','4px','40% / 50%','18px','50% / 40%','2px'];
-function bpTicket(f,t,p,left,cost,done){const A=NAT[f],B=NAT[t],km=kmBetween(f,t),hs=[...(f+t)].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%99991,11),days=Math.ceil(Math.max(0,left)/80),dt=new Date();
+function bpTicket(f,t,p,left,cost,done,o={}){const A=NAT[f],B=NAT[t],km=kmBetween(f,t),hs=[...(f+t)].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%99991,11),days=Math.ceil(Math.max(0,left)/80),dt=o.d?pk(o.d):new Date();
   const seat=(hs%38+3)+'ABCDEF'[hs%6],gate=String.fromCharCode(65+hs%6)+(hs%40+1),cls=km>=5000?'비즈니스':'이코노미',fl=flightNo(f,t),date=`${dt.getFullYear()}.${pad(dt.getMonth()+1)}.${pad(dt.getDate())}`;
   const info=[['편명',fl],['좌석',seat],['게이트',gate],['클래스',cls],['거리',Math.round(km).toLocaleString()+'km'],['비행 시간',fmtH(cost*6e4)],['진행',Math.floor(p*100)+'%'],['도착까지',done?'착륙':left>0?(days<=1?'오늘~내일':days+'일'):'곧 착륙']];
-  return `<div class="bx tx">
+  return `<div class="bx tx${o.torn?' torn':''}">
     <div class="bx-main tx-main">
       <div class="bx-hd"><span class="bx-date">${date}</span><span class="bx-bp">BOARDING PASS · 탑승권${PLANE}</span></div><div class="tx-bg" aria-hidden="true">${worldArt(t)}</div>
       <div class="bx-body">
@@ -2447,6 +2457,17 @@ function renderPassport(){
   $('tvBadges').innerHTML=badges(T).map(([l,o])=>`<span class="tv-badge${o?' on':''}">${o?'★':'☆'} ${l}</span>`).join('');
   const box=$('tvStamps');box.className='stamps sty-'+sty;
   if(!T.stamps.length){box.innerHTML='<p class="empty">아직 다녀온 나라가 없어요. 출발 안내판에서 첫 목적지를 골라 보세요.</p>';return}
+  if(sty!=='pass'){box.className='stamps grouped';const dm=Object.fromEntries(T.stamps.map(s=>[s.c,s.d]));
+    if(wOpenCont==null){const last=T.stamps[T.stamps.length-1];wOpenCont=last&&NAT[last.c]?NAT[last.c][5]:0}
+    box.innerHTML=CONT.map((cn,i)=>{const all=NATIONS.filter(n=>n[5]===i&&n[0]!=='KR'),got=all.filter(n=>dm[n[0]]),done=got.length===all.length,open=wOpenCont===i;
+      const items=open?all.map(n=>{const d=dm[n[0]];
+        if(!d)return sty==='stamp'?`<span class="wslot" style="--sh:${SHAPE[i]}"><i>${n[1]}</i></span>`:`<span class="ccard wslot2"><b>${n[1]}</b><small>${n[2]}</small></span>`;
+        return sty==='stamp'?`<button class="stamp" data-wtix="${n[0]}" aria-label="${n[1]} 탑승권 보기" style="--r:${(h(n[0])%15)-7}deg;--k:${INK[i]};--sh:${SHAPE[i]}"><span class="sa">ARRIVED</span><span class="sc">${ap(n[0])}</span><span class="sn">${flag(n[0])} ${n[1]}</span><span class="sd">${dd(d)}</span></button>`
+          :`<button class="ccard" data-wtix="${n[0]}" aria-label="${n[1]} 탑승권 보기"><span class="cf">${flag(n[0])}</span><b>${n[1]}</b><small>${n[2]} · ${ap(n[0])}</small><span class="cd2">${dd(d)}</span></button>`}).join(''):'';
+      return `<div class="ks-reg${open?' open':''}${done?' done':''}" style="--k:${INK[i]}">
+        <button class="ks-h" data-wcont="${i}" aria-expanded="${open}"><span class="ks-badge">${done?'완주':cn.slice(0,2)}</span><span class="ks-n"><b>${cn}</b><small>${got.length} / ${all.length}개국</small></span>
+          <span class="ks-bar"><i style="width:${got.length/Math.max(1,all.length)*100}%"></i></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 4 4 4-4"/></svg></button>
+        ${open?`<div class="stamps sty-${sty} wgrid">${items}</div>`:''}</div>`}).join('');return}
   if(sty==='stamp'){box.innerHTML=T.stamps.slice().reverse().map(s=>{const n=NAT[s.c];if(!n)return '';
     return `<div class="stamp" style="--r:${(h(s.c)%15)-7}deg;--k:${INK[n[5]]};--sh:${SHAPE[n[5]]}"><span class="sa">ARRIVED</span><span class="sc">${ap(s.c)}</span><span class="sn">${flag(s.c)} ${n[1]}</span><span class="sd">${dd(s.d)}</span></div>`}).join('');return}
   if(sty==='card'){const left=NATIONS.length-1-T.stamps.length;
@@ -2454,9 +2475,17 @@ function renderPassport(){
       return `<div class="ccard"><span class="cf">${flag(s.c)}</span><b>${n[1]}</b><small>${n[2]} · ${ap(s.c)}</small><span class="cd2">${dd(s.d)} · ${CONT[n[5]]}</span></div>`}).join('')
       +(left>0?`<div class="ccard lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b>${left}개국</b><small>아직 못 간 나라</small></div>`:'');return}
   const L=flightLog(T).slice().reverse(),up=T.to?`<div class="tpass up"><div class="tp-m"><span class="tp-k">다음 비행 · 예정</span><div class="tp-r">${ap(T.at)} ${PLANE} ${ap(T.to)}</div><small>${NAT[T.at][2]} → ${NAT[T.to][2]}</small></div><div class="tp-s"><small>마일리지</small><b>${flightMin(T.at,T.to)}</b></div></div>`:'';
-  box.innerHTML=up+L.map(e=>{const A=NAT[e.f],B=NAT[e.t];if(!A||!B)return '';
-    return `<div class="tpass"><div class="tp-m"><span class="tp-k">BOARDING PASS · ${flightNo(e.f,e.t)}</span><div class="tp-r">${ap(e.f)} ${PLANE} ${ap(e.t)}</div><small>${flag(e.f)} ${A[2]} → ${flag(e.t)} ${B[2]} · ${dd(e.d)}</small></div><div class="tp-s"><small>마일리지</small><b>${e.m}</b></div></div>`}).join('');
+  const LL=flightLog(T);box.innerHTML=up+L.map(e=>{const A=NAT[e.f],B=NAT[e.t];if(!A||!B)return '';
+    return `<div class="tpass" role="button" tabindex="0" data-wlog="${LL.indexOf(e)}"><div class="tp-m"><span class="tp-k">BOARDING PASS · ${flightNo(e.f,e.t)}</span><div class="tp-r">${ap(e.f)} ${PLANE} ${ap(e.t)}</div><small>${flag(e.f)} ${A[2]} → ${flag(e.t)} ${B[2]} · ${dd(e.d)}</small></div><div class="tp-s"><small>마일리지</small><b>${e.m}</b></div></div>`}).join('');
 }
+let wOpenCont=null;
+function showWTicket(e){if(!e||!NAT[e.f]||!NAT[e.t])return;arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
+  $('arrTk').innerHTML=bpTicket(e.f,e.t,1,0,e.m||flightMin(e.f,e.t),true,{torn:1,d:e.d});const tk=$('arrTk').firstElementChild;tk.classList.add('edge');if(innerWidth<=480)tk.classList.add('vert');
+  $('arrMsg').innerHTML=`<span class="arr-flag">${flag(e.t)}</span><b>${NAT[e.t][2]}</b><span>${NAT[e.f][2]}에서 출발${e.d?' · '+ymd(pk(e.d))+' 도착':''}</span>`;$('arrOk').textContent='닫기'}
+$('tvStamps').addEventListener('click',e=>{const c=e.target.closest('[data-wcont]');if(c){const i=+c.dataset.wcont;wOpenCont=wOpenCont===i?-1:i;renderPassport();return}
+  const T=tr(),w=e.target.closest('[data-wtix]');if(w){showWTicket(flightLog(T).find(x=>x.t===w.dataset.wtix));return}
+  const l=e.target.closest('[data-wlog]');if(l)showWTicket(flightLog(T)[+l.dataset.wlog])});
+$('tvStamps').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-wlog]')){e.preventDefault();e.target.click()}});
 function renderTravel(){checkArrival();renderTravelTop();if(!$('tvPicker').hidden)renderTravelPicker();renderPassport();renderWorld()}
 /* ---------- 국내 여행: 전국 161개 시·군을 기차·버스로. 평균 시속 60km(마일리지 = 이동 분), 한 구간 최소 30 ---------- */
 const KR=[

@@ -196,7 +196,9 @@ struct NativeRoot: View {
             NavigationStack { SettingsScreen() }.tabItem { Label("설정",systemImage:"gearshape.fill") }
         }
         .tabViewStyle(.tabBarOnly)
-        .onChange(of:phase) { _, value in if value == .active { store.settleJourney() } }
+        .onChange(of: phase) { _, value in
+            if value == ScenePhase.active { store.settleJourney() }
+        }
         .alert("확인해 주세요",isPresented:Binding(get:{store.error != nil},set:{if !$0 {store.error=nil}})) { Button("확인") {store.error=nil} } message:{Text(store.error ?? "")}
         .sheet(item:$store.arrival) { stamp in NavigationStack { TicketScreen(stamp:stamp) } }
     }
@@ -276,7 +278,18 @@ struct TravelScreen: View {
             else {
                 if world != "space" {Toggle("최고급 좌석",isOn:$premium)}
                 Section("출발 안내") {
-                    ForEach(destinations) { p in NavigationLink { DestinationScreen(place:p,premium:premium) } label:{VStack(alignment:.leading) {Text(p.name);Text("\(p.region) · \(Int(store.cost(p,premium:premium))) 마일").font(.caption).foregroundStyle(.secondary)}}
+                    ForEach(destinations) { place in
+                        NavigationLink {
+                            DestinationScreen(place: place, premium: premium)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(place.name)
+                                Text("\(place.region) · \(Int(store.cost(place, premium: premium))) 마일")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
                 }
             }
         }.searchable(text:$search,prompt:"목적지 검색").navigationTitle("여행")

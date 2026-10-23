@@ -89,17 +89,17 @@ struct TourdyScreen: View {
                         ForEach(model.tabs) { item in
                             Button { model.selectTab(item) } label: {
                                 Text(item.title)
-                                    .font(.system(size: 14, weight: item.on ? .semibold : .regular))
+                                    .font(.system(size: 15, weight: item.on ? .semibold : .medium))
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.75)
-                                    .frame(width: max(1, item.width - 6), height: max(44, item.height))
+                                    .frame(width: max(1, item.width - 4), height: max(48, item.height))
                             }
                             .buttonStyle(.plain)
                             .foregroundStyle(item.on ? Color.white : Color.primary)
                             .glassEffect(.regular.tint(item.on ? Color.accentColor : Color.clear).interactive(), in: .capsule)
                             .contentShape(Capsule())
                             .accessibilityAddTraits(item.on ? [.isSelected] : [])
-                            .offset(x: item.x + 3, y: item.y)
+                            .offset(x: item.x + 2, y: item.y)
                         }
                 ForEach(model.switches) { item in
                     Toggle(item.title, isOn: Binding(get: { item.on }, set: { model.change(item, to: $0) }))

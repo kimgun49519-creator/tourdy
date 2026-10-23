@@ -2,7 +2,7 @@
 (() => {
   let nextID = 0, scheduled = false, previous = '', previousTabs = '';
   const style = document.createElement('style');
-  style.textContent = '[role="switch"] .sw-k{visibility:hidden}.tabs{background:transparent!important;border-color:transparent!important;min-height:48px}.tabs [data-tab]{opacity:0;pointer-events:none;min-height:44px}';
+  style.textContent = '[role="switch"] .sw-k{visibility:hidden}.tabs{background:transparent!important;border-color:transparent!important;min-height:52px}.tabs [data-tab]{opacity:0;pointer-events:none;min-height:48px}';
   document.head.appendChild(style);
   function publish() {
     scheduled = false;

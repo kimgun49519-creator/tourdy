@@ -25,14 +25,10 @@ function fixture() {
   vm.createContext(sandbox);vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/first-trip.js'),'utf8'),sandbox);
   return {sandbox,data,$,setFailure:value=>{fail=value},claim:(world,id,origin)=>sandbox.claimFirstTrip(world,id,origin)};
 }
-test('free world trip atomically persists destination, highest tier and used ticket without spending miles', () => {
-  const f=fixture();f.sandbox.S.travel.kr.done.push({c:'busan',d:'2026-10-24'});assert.equal(f.claim('w','FR'),true);
-  const saved=JSON.parse(f.data.get('state'));
-  assert.equal(saved.firstTrip.status,'used');assert.equal(saved.travel.at,'FR');
-  assert.equal(saved.travel.used,17);assert.equal(saved.travel.stamps[0].tier,2);
-  assert.equal(saved.travel.log[0].m,0);assert.equal(saved.travel.firstWorldTrip,undefined);
-  assert.equal(saved.travel.to,null);assert.equal(saved.travel.kr.to,null);assert.equal(saved.travel.sp2.to,null);assert.equal(saved.travel.routes.act,null);
-  assert.equal(f.claim('w','KR'),false);
+test('the first reward stays domestic even after world travel is unlocked', () => {
+  const f=fixture();f.sandbox.S.travel.kr.done.push({c:'busan',d:'2026-10-24'});
+  assert.equal(f.claim('w','FR'),false);
+  assert.equal(f.sandbox.S.firstTrip.status,'ready');assert.equal(f.sandbox.S.travel.used,17);
 });
 test('domestic gift retains the gold stamp and path with zero mileage spend', () => {
   const f=fixture();assert.equal(f.claim('kr','busan'),true);

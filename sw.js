@@ -1,5 +1,5 @@
 // Cache each release as a complete shell so HTML and extracted scripts agree.
-const VERSION = 'tourdy-v7';
+const VERSION = 'tourdy-v8';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './css/app.css',
   './js/storage.js', './js/rewards.js', './js/core.js', './js/timer.js',

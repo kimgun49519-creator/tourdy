@@ -337,12 +337,11 @@
     <p id="storageMessage"></p><div class="row"><button class="secondary" id="storageRetry">다시 저장</button><button class="secondary" id="storageDownload">현재 기록 내려받기</button><button class="secondary" id="storageOriginal">원본 기록 내려받기</button><button class="secondary" id="storageReload">새로고침</button><button class="secondary" id="storageDismiss">확인</button></div>
   </aside>
   <aside class="first-trip-notice panel" id="firstTripNotice" hidden aria-live="polite">
-    <span class="plabel">누적 공부 30분 선물</span><h2>어디든 떠나는 무료 티켓 1장</h2><p>국내·세계의 원하는 곳으로 최고급 티켓을 타고 즉시 도착해요. 마일리지는 그대로예요.</p><button class="primary" id="firstTripOpen">무료 티켓으로 떠나기</button><small>지금 쓰지 않아도 보관돼요.</small>
+    <span class="plabel">누적 공부 30분 선물</span><h2>어디든 떠나는 무료 티켓 1장</h2><p>원하는 국내 도시로 최고급 티켓을 타고 즉시 도착해요. 마일리지는 그대로예요.</p><button class="primary" id="firstTripOpen">무료 티켓으로 떠나기</button><small>지금 쓰지 않아도 보관돼요.</small>
   </aside>
   <dialog id="firstTripDialog" class="first-trip-dialog" aria-labelledby="firstTripTitle">
     <h2 id="firstTripTitle">첫 여행은 어디로 떠날까요?</h2><p>목적지 한 곳을 고르면 최고 등급으로 즉시 도착해요.</p>
-    <form id="firstTripForm"><label>여행 지역<select class="field" id="firstTripWorld"><option value="kr">국내</option><option value="w" id="firstTripWorldOption">세계</option></select></label>
-    <p class="note" id="firstTripWorldNote">세계 여행은 국내 여행을 모두 마치면 열려요.</p>
+    <form id="firstTripForm">
     <label>출발지<select class="field" id="firstTripOrigin"></select></label><p class="note" id="firstTripOriginNote"></p>
     <label>목적지 검색<input class="field" id="firstTripSearch" type="search" placeholder="도시 또는 나라 이름"></label>
     <label>목적지<select class="field" id="firstTripDestination" size="7" required></select></label>

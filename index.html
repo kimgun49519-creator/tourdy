@@ -995,7 +995,7 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
 .mapsvg .mv-bg{fill:var(--surface);stroke:#1d6fd8;stroke-width:1.4;vector-effect:non-scaling-stroke}
 .mapsvg g>svg{color:#1d6fd8}
 .mapsvg .pill rect{fill:var(--surface);stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
-.mapsvg .pill.pdest rect{stroke:#ff6b00;stroke-width:1.5}
+.mapsvg .pill rect{stroke:var(--mc,#1d6fd8);stroke-width:2}.mapsvg .pill.pdest rect{stroke:var(--mc,#ff6b00);stroke-width:2.2}.mapsvg g[style] .dest{stroke:var(--mc)}
 .mapsvg .pill text{fill:var(--ink);font-weight:800;text-anchor:middle;font-family:inherit}
 .mapsvg .pill svg{color:var(--mc,#1d6fd8)}
 .mapsvg .here-ol{fill:none;stroke:var(--ink)}
@@ -1395,6 +1395,26 @@ button.hsw{background:none;padding:0;cursor:pointer;font:inherit}
 .kmap .land .kb-p{fill:none!important;stroke:var(--mline);stroke-width:1.8;vector-effect:non-scaling-stroke;pointer-events:none}
 .plabel.ml-sec{margin-top:22px;font-size:17px;font-weight:800;color:var(--ink)}
 #mileBody .tv-rules{font-size:15px}
+.win{position:relative;height:74px;border-radius:18px;overflow:hidden;background:linear-gradient(#8fc7f0,#d8eefb);box-shadow:inset 0 0 0 6px #2b3442,inset 0 0 0 8px #475263}
+.win i{position:absolute;left:0;right:0;bottom:0;height:70px;background-repeat:repeat-x;background-position:0 100%;animation:winscroll linear infinite}
+.win b{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.18) 40%,transparent 50%);pointer-events:none;box-shadow:inset 0 0 0 6px #2b3442}
+@keyframes winscroll{to{background-position:-1200px 100%}}
+.win-train .w1,.win-bus .w1{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='70'><path d='M0 70V44l40-22 30 16 46-30 44 34 30-14 50 28 40-24 40 18 36-20 44 28V70z' fill='%23000'/></svg>");opacity:.25;animation-duration:60s}
+.win-train .w2,.win-bus .w2{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='70'><path d='M0 70V52q40-18 80-4t70-6 80 8 70-2V70z' fill='%23000'/><g fill='%23000'><path d='M40 52l6-16 6 16z'/><path d='M58 50l5-13 5 13z'/><path d='M190 54l6-16 6 16z'/><path d='M230 53l5-12 5 12z'/></g></svg>");opacity:.45;animation-duration:22s}
+.win-train .w3{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='70'><path d='M20 70V18M8 22h24' stroke='%23000' stroke-width='3'/><path d='M0 26q120 14 240 0' stroke='%23000' stroke-width='1' fill='none'/></svg>");opacity:.7;animation-duration:6s}
+.win-bus .w3{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='70'><path d='M0 70V46h20V34h18v20h14V26h22v16h16V38h20v32h20V30h16v10h18V22h20v30h16V36h24v14h18V28h22v20h20V40h18v30z' fill='%23000'/></svg>");opacity:.55;animation-duration:14s}
+.win-ship{background:linear-gradient(#9fd3f2,#e3f4ff 55%,#3a8fc4 56%,#2d7bb0)}
+.win-ship .w1{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='70'><path d='M300 48q30-26 70-6t50 6z' fill='%23000'/></svg>");opacity:.3;animation-duration:70s}.win-ship .w2{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='70'><path d='M0 50q25-8 50 0t50 0 50 0 50 0V70H0z' fill='%23000'/></svg>");opacity:.25;animation-duration:12s}.win-ship .w3{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='70'><path d='M0 58q20-6 40 0t40 0 40 0 40 0V70H0z' fill='%23000'/></svg>");opacity:.35;animation-duration:7s}
+.win-air{background:linear-gradient(#4f9fe0,#bfe2fb)}.win-air .w1{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='70'><g fill='%23fff'><ellipse cx='120' cy='52' rx='60' ry='14'/><ellipse cx='150' cy='44' rx='30' ry='14'/><ellipse cx='340' cy='50' rx='44' ry='10'/></g></svg>");opacity:.55;animation-duration:30s}.win-air .w2{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='70'><g fill='%23fff'><ellipse cx='60' cy='40' rx='40' ry='12'/><ellipse cx='80' cy='32' rx='22' ry='12'/><ellipse cx='230' cy='22' rx='30' ry='8'/></g></svg>");opacity:.85;animation-duration:12s}.win-air .w3{display:none}
+.win.tod-dusk{background:linear-gradient(#f2a25e,#fbd9a6)}.win-ship.tod-dusk{background:linear-gradient(#f2a25e,#fbd9a6 55%,#c46a3a 56%,#8a4a2a)}
+.win.tod-night{background:linear-gradient(#0b1430,#26365e)}.win-ship.tod-night{background:linear-gradient(#0b1430,#26365e 55%,#0a1a33 56%,#081226)}
+.win.tod-night i{filter:invert(0)}.win.tod-night .w1,.win.tod-night .w2{opacity:.6}
+.win.tod-night::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.2px 1.2px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 60% 20%,#fff,transparent),radial-gradient(1.4px 1.4px at 85% 40%,#fff,transparent),radial-gradient(1px 1px at 40% 50%,#fff,transparent)}
+@media (prefers-reduced-motion:reduce){.win i{animation:none}}
+/* 종착역 */
+.term{width:100%;max-width:440px;margin:auto;border-radius:20px;padding:22px;background:linear-gradient(135deg,#1e2a78,#4c3fb0);color:#fff;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.term-h{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.2em;color:#ffd27a}.term-h svg{width:18px;height:18px}
+.term b{font-size:24px;font-weight:900}.term small{opacity:.8}
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
 .ks-head b{display:block;font-size:17px;font-weight:800}
@@ -1671,6 +1691,7 @@ button.hsw{background:none;padding:0;cursor:pointer;font:inherit}
         <button class="switch" data-topt="goal" role="switch"><span class="sw-t">목표 도착일<small>도착 날짜를 정하면 하루에 필요한 공부량을 알려 줘요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-topt="ddline" role="switch"><span class="sw-t">D-day 노선<small>D-day까지를 한 줄 노선도로 보여 줘요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-topt="season" role="switch"><span class="sw-t">계절 연출<small>봄엔 꽃잎, 가을엔 낙엽, 겨울엔 눈이 날려요</small></span><span class="sw-k"><i></i></span></button>
+        <button class="switch" data-topt="window" role="switch"><span class="sw-t">창밖 풍경<small>이동 중인 표 위로 바깥 풍경이 지나가요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-topt="neon" role="switch"><span class="sw-t">밤에는 형광 표<small>다크 모드에서 표가 형광 잉크처럼 빛나요</small></span><span class="sw-k"><i></i></span></button>
       </div>
       <div class="plabel">지도 테마</div>
@@ -1813,7 +1834,7 @@ function norm(s){
   s.repeats=s.repeats||[];s.dday=s.dday||null;return s;
 }
 function load(){try{let r=localStorage.getItem(KEY);if(r)return norm(JSON.parse(r));r=localStorage.getItem(OLD);if(r)return norm(JSON.parse(r))}catch(e){}return seed()}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}if(typeof bonusCheck==='function'){clearTimeout(save.bt);save.bt=setTimeout(bonusCheck,400)}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}if(typeof bonusCheck==='function'){clearTimeout(save.bt);save.bt=setTimeout(()=>{travelWatch();bonusCheck();if(!S.running)showArrival()},400)}}
 let S=load();save();
 
 let view=today0(),tab='home',range=7;
@@ -2741,6 +2762,7 @@ const CRUISEOK=new Set('IS IE MT CY JP TW PH ID LK MV TL MG MU SC KM CV ST CU JM
 function wMode(a,b){const A=NAT[a],B=NAT[b];if(!A||!B)return 'air';const km=kmBetween(a,b);
   if((CRUISEOK.has(a)||CRUISEOK.has(b))&&km<=2500)return 'cruise';
   if(A[5]===B[5]&&(A[5]===0||A[5]===2)&&km<=1300&&!ISL.has(a)&&!ISL.has(b)&&a!=='KR'&&b!=='KR')return 'ntrain';return 'air'}
+const WCOL={air:'#1d6fd8',ntrain:'#3b4fd8',cruise:'#0b9aa5'};
 const wIcon=m=>m==='ntrain'?TRAIN:m==='cruise'?SHIP:PLANE;
 const WTZ={"KR":"Asia/Seoul","JP":"Asia/Tokyo","CN":"Asia/Shanghai","TW":"Asia/Taipei","MN":"Asia/Ulaanbaatar","VN":"Asia/Ho_Chi_Minh","TH":"Asia/Bangkok","PH":"Asia/Manila","MY":"Asia/Kuala_Lumpur","SG":"Asia/Singapore","ID":"Asia/Jakarta","KH":"Asia/Phnom_Penh","LA":"Asia/Vientiane","IN":"Asia/Kolkata","NP":"Asia/Kathmandu","LK":"Asia/Colombo","UZ":"Asia/Tashkent","KZ":"Asia/Qostanay","AE":"Asia/Dubai","QA":"Asia/Qatar","SA":"Asia/Riyadh","JO":"Asia/Amman","TR":"Europe/Istanbul","GB":"Europe/London","FR":"Europe/Paris","DE":"Europe/Berlin","IT":"Europe/Rome","ES":"Europe/Madrid","PT":"Europe/Lisbon","NL":"Europe/Amsterdam","BE":"Europe/Brussels","CH":"Europe/Zurich","AT":"Europe/Vienna","CZ":"Europe/Prague","PL":"Europe/Warsaw","HU":"Europe/Budapest","HR":"Europe/Zagreb","GR":"Europe/Athens","IE":"Europe/Dublin","DK":"Europe/Copenhagen","NO":"Europe/Oslo","SE":"Europe/Stockholm","FI":"Europe/Helsinki","IS":"Atlantic/Reykjavik","RU":"Europe/Moscow","EG":"Africa/Cairo","MA":"Africa/Casablanca","KE":"Africa/Nairobi","TZ":"Africa/Dar_es_Salaam","ET":"Africa/Addis_Ababa","NG":"Africa/Lagos","GH":"Africa/Accra","SN":"Africa/Dakar","ZA":"Africa/Johannesburg","MG":"Indian/Antananarivo","US":"America/New_York","CA":"America/Toronto","MX":"America/Mexico_City","CU":"America/Havana","BR":"America/Sao_Paulo","AR":"America/Argentina/Buenos_Aires","CL":"America/Santiago","PE":"America/Lima","CO":"America/Bogota","AU":"Australia/Sydney","NZ":"Pacific/Auckland","FJ":"Pacific/Fiji","MM":"Asia/Yangon","BD":"Asia/Dhaka","BT":"Asia/Thimphu","MV":"Indian/Maldives","PK":"Asia/Karachi","AF":"Asia/Kabul","TJ":"Asia/Dushanbe","KG":"Asia/Bishkek","TM":"Asia/Ashgabat","BN":"Asia/Brunei","TL":"Asia/Dili","GE":"Asia/Tbilisi","AM":"Asia/Yerevan","AZ":"Asia/Baku","IL":"Asia/Jerusalem","PS":"Asia/Hebron","IQ":"Asia/Baghdad","IR":"Asia/Tehran","KW":"Asia/Kuwait","BH":"Asia/Bahrain","OM":"Asia/Muscat","YE":"Asia/Aden","SY":"Asia/Damascus","LB":"Asia/Beirut","LU":"Europe/Luxembourg","MC":"Europe/Monaco","LI":"Europe/Vaduz","AD":"Europe/Andorra","SM":"Europe/San_Marino","VA":"Europe/Vatican","MT":"Europe/Malta","CY":"Asia/Nicosia","SI":"Europe/Ljubljana","SK":"Europe/Bratislava","RO":"Europe/Bucharest","BG":"Europe/Sofia","RS":"Europe/Belgrade","BA":"Europe/Sarajevo","ME":"Europe/Podgorica","MK":"Europe/Skopje","AL":"Europe/Tirane","MD":"Europe/Chisinau","UA":"Europe/Kyiv","BY":"Europe/Minsk","LT":"Europe/Vilnius","LV":"Europe/Riga","EE":"Europe/Tallinn","DZ":"Africa/Algiers","TN":"Africa/Tunis","LY":"Africa/Tripoli","SD":"Africa/Khartoum","SS":"Africa/Juba","ER":"Africa/Asmara","DJ":"Africa/Djibouti","SO":"Africa/Mogadishu","UG":"Africa/Kampala","RW":"Africa/Kigali","BI":"Africa/Bujumbura","CD":"Africa/Kinshasa","CG":"Africa/Brazzaville","GA":"Africa/Libreville","GQ":"Africa/Malabo","CM":"Africa/Douala","CF":"Africa/Bangui","TD":"Africa/Ndjamena","NE":"Africa/Niamey","ML":"Africa/Bamako","BF":"Africa/Ouagadougou","MR":"Africa/Nouakchott","GM":"Africa/Banjul","GW":"Africa/Bissau","GN":"Africa/Conakry","SL":"Africa/Freetown","LR":"Africa/Monrovia","CI":"Africa/Abidjan","TG":"Africa/Lome","BJ":"Africa/Porto-Novo","CV":"Atlantic/Cape_Verde","ST":"Africa/Sao_Tome","AO":"Africa/Luanda","ZM":"Africa/Lusaka","ZW":"Africa/Harare","MW":"Africa/Blantyre","MZ":"Africa/Maputo","BW":"Africa/Gaborone","NA":"Africa/Windhoek","SZ":"Africa/Mbabane","LS":"Africa/Maseru","MU":"Indian/Mauritius","SC":"Indian/Mahe","KM":"Indian/Comoro","GT":"America/Guatemala","BZ":"America/Belize","HN":"America/Tegucigalpa","SV":"America/El_Salvador","NI":"America/Managua","CR":"America/Costa_Rica","PA":"America/Panama","JM":"America/Jamaica","HT":"America/Port-au-Prince","DO":"America/Santo_Domingo","BS":"America/Nassau","BB":"America/Barbados","TT":"America/Port_of_Spain","DM":"America/Dominica","LC":"America/St_Lucia","VC":"America/St_Vincent","GD":"America/Grenada","AG":"America/Antigua","KN":"America/St_Kitts","VE":"America/Caracas","EC":"America/Guayaquil","BO":"America/La_Paz","PY":"America/Asuncion","UY":"America/Montevideo","GY":"America/Guyana","SR":"America/Paramaribo","PG":"Pacific/Port_Moresby","SB":"Pacific/Guadalcanal","VU":"Pacific/Efate","WS":"Pacific/Apia","TO":"Pacific/Tongatapu","KI":"Pacific/Tarawa","TV":"Pacific/Funafuti","NR":"Pacific/Nauru","MH":"Pacific/Majuro","FM":"Pacific/Pohnpei","PW":"Pacific/Palau"};
 function localInfo(c,d){const n=NAT[c];if(!n)return '';const dt=d||new Date();let tm='';
@@ -2784,7 +2806,7 @@ function renderTravelTop(){
     $('tvFlight').hidden=false}else $('tvFlight').hidden=true;
   $('tvPicker').hidden=!!T.to&&!tvPick;$('fidsFrom').textContent=`출발 ${ap(T.at)} · 가까운 순`;
   if(T.world==='earth'&&worldOpen(T)){renderWorldMap();renderRoutes('w')}
-  if(typeof seasonFx==='function')seasonFx();
+  if(typeof seasonFx==='function'){seasonFx();windowFx()}
 }
 function renderTravelPicker(){
   const T=tr(),avail=totalMiles()-T.used,q=tvQuery.trim();
@@ -2913,7 +2935,7 @@ const KCLS={train:['일반실','특실'],bus:['일반','우등'],ship:['일반�
 const WCLS={air:['이코노미','비즈니스','퍼스트'],ntrain:['2층 침대칸','1인 침대칸','스위트 침대칸'],cruise:['내측 객실','발코니 객실','스위트']},WMUL=[1,1.3,1.6];
 const krTC=K=>Math.round(krCost(K.at,K.to)*KMUL[K.cls||0]);
 const wTC=T=>Math.round(flightMin(T.at,T.to)*WMUL[T.cls||0]);
-const TOPT=()=>{const T=tr();return T.opt=Object.assign({via:false,goal:false,ddline:false,neon:true,map:'base',season:true},T.opt||{})};
+const TOPT=()=>{const T=tr();return T.opt=Object.assign({via:false,goal:false,ddline:false,neon:true,map:'base',season:true,window:true},T.opt||{})};
 function krTicket(f,t,o={}){
   const A=KRM[f],B=KRM[t],m=krMode(f,t),tg=krTag(f,t),cls=krClass(f,t),seatc=KCLS[m][o.cls||0],c=Math.round(krCost(f,t)*KMUL[o.cls||0]),hs=[...(f+t)].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%99991,7),dt=o.d?pk(o.d):new Date(),km=Math.round(krKm(f,t)),p=o.p??1;
   const lbl=m==='bus'?'승차권 · 버스':m==='ship'?'승선권 · 여객선':'승차권 · 열차';
@@ -3108,7 +3130,7 @@ function renderWorld(){
   if(!wo)$('worldLock').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
     <b>세계 여행은 아직 잠겨 있어요</b><span>국내 161개 시·군을 모두 방문하면 해외로 떠날 수 있어요</span><span class="vn">${kr(T).done.length} / ${KR.length-1}</span>
     ${TRAVEL_TEST?'<button class="vt" id="wTestOpen">테스트: 잠금 해제</button>':''}`;
-  if(w==='space')renderSpace();if(w==='korea')renderKorea();if(w==='ach')renderAch();renderDline();applyNeon();seasonFx();
+  if(w==='space')renderSpace();if(w==='korea')renderKorea();if(w==='ach')renderAch();renderDline();applyNeon();seasonFx();windowFx();setTimeout(ddArrive,800);
 }
 $('worldLock').addEventListener('click',e=>{if(e.target.closest('#wTestOpen')){tr().worldTest=true;save();renderTravel()}});
 $('spVeil').addEventListener('click',e=>{if(e.target.closest('#spTestOpen')){tr().spTest=true;save();renderTravel()}});
@@ -3199,7 +3221,7 @@ function renderKrMap(){
     h+=`<g style="--mc:${KRCOL[krTag(K.at,K.to)]}"><path class="route" d="M${A.map(f2).join(' ')}L${B.map(f2).join(' ')}"/><path class="route-on" d="M${A.map(f2).join(' ')}L${P.map(f2).join(' ')}"/>
       <circle cx="${f2(B[0])}" cy="${f2(B[1])}" r="${R(7)}" class="dest"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(4)}" class="cur"/>${mapIcon(krIcon(m),P[0],P[1],20*u)}${pill(B[0],B[1],to[1],krIcon(m),u,'pdest',1.4)}</g>`;
     $('krMapNote').textContent=`${at[1]} → ${to[1]} · ${Math.floor(p*100)}%`}
-  else{h+=`<circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(12)}" class="pulse"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(5)}" class="cur"/>${pill(A[0],A[1],at[1],null,u)}`;
+  else{h+=`<circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(12)}" class="pulse"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(5)}" class="cur"/>${(()=>{const pv=K.path.length?(K.path.length>1?K.path[K.path.length-2]:K.home):null,tg=pv&&KRM[pv]&&pv!==K.at?krTag(pv,K.at):'train',mm=pv&&KRM[pv]&&pv!==K.at?krMode(pv,K.at):'train';return `<g style="--mc:${KRCOL[tg]}">${pill(A[0],A[1],at[1],krIcon(mm),u,'',1.4)}</g>`})()}`;
     $('krMapNote').textContent=`방문 ${K.done.length}곳 · 현재 ${at[1]}`}
   el.querySelector('.dyn').innerHTML=h;
   $('krMapTg').textContent=tgLabel('kr',moving);
@@ -3227,9 +3249,9 @@ function renderWorldMap(){
   if(trip){const {to,a,b,full}=trip,cost=wTC(T),p=T.hold?0:Math.min(1,Math.max(0,(totalMiles()-T.used)/cost)),done=p>0?arcSegs(a,b,p):[];
     const P=wxy(...gcAt(a,b,p)),Q=wxy(...gcAt(a,b,Math.min(1,p+.01))),P0=wxy(...gcAt(a,b,Math.max(0,p-.01))),ang=Math.atan2(Q[1]-P0[1],Q[0]-P0[0])*180/Math.PI,B=wxy(...b);
     h+=`<path class="route" d="${segD(full)}"/><path class="route-on" d="${segD(done)}"/>
-      <circle cx="${f2(B[0])}" cy="${f2(B[1])}" r="${R(5)}" class="dest"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(4)}" class="cur"/>${(()=>{const wm=wMode(T.at,T.to);return mapIcon(wIcon(wm),P[0],P[1],22*u,wm==='air'?ang:0)+pill(B[0],B[1],ap(T.to),wIcon(wm),u,'pdest')})()}`;
+      <circle cx="${f2(B[0])}" cy="${f2(B[1])}" r="${R(5)}" class="dest"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(4)}" class="cur"/>${(()=>{const wm=wMode(T.at,T.to);return `<g style="--mc:${WCOL[wm]}">`+mapIcon(wIcon(wm),P[0],P[1],22*u,wm==='air'?ang:0)+pill(B[0],B[1],ap(T.to),wIcon(wm),u,'pdest')+'</g>'})()}`;
     $('tvMapNote').textContent=`${ap(T.at)} → ${ap(T.to)} · ${Math.floor(p*100)}%`}
-  else{h+=`<circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(12)}" class="pulse"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(5)}" class="cur"/>${pill(A[0],A[1],ap(T.at),PLANE,u)}`;
+  else{h+=`<circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(12)}" class="pulse"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(5)}" class="cur"/>${(()=>{const L=flightLog(T),e=L[L.length-1],wm=e&&NAT[e.f]?wMode(e.f,e.t):'air';return `<g style="--mc:${WCOL[wm]}">${pill(A[0],A[1],ap(T.at),wIcon(wm),u)}</g>`})()}`;
     $('tvMapNote').textContent=`입국 ${T.stamps.length}개국 · 현재 ${at[2]}`}
   el.querySelector('.dyn').innerHTML=h;
   $('tvMapTg').textContent=segN>1&&!MV.w?'전체 지도':tgLabel('w',moving);
@@ -3241,7 +3263,7 @@ document.body.appendChild($('arrive'));document.body.appendChild($('ckin'));docu
 const ARQ=[];let arrOpen=false,arrTimers=[];
 function arrQ(x){x.d=dk(today0());ARQ.push(x);window.ARR_T=Date.now();setTimeout(showArrival,60)}
 const ymd=d=>`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;
-function showArrival(){if(arrOpen||!ARQ.length)return;const x=ARQ.shift();if(x.w==='kr'?!(KRM[x.f]&&KRM[x.t]):!(NAT[x.f]&&NAT[x.t]))return showArrival();
+function showArrival(){if(arrOpen||!ARQ.length||S.running)return;const x=ARQ.shift();if(x.w==='kr'?!(KRM[x.f]&&KRM[x.t]):!(NAT[x.f]&&NAT[x.t]))return showArrival();
   arrOpen=true;const el=$('arrive');el.classList.remove('show-msg');el.hidden=false;let snd;
   if(x.w==='kr'){const B=KRM[x.t],gi=krGroup(B)-1,dt=pk(x.d);snd=krMode(x.f,x.t);$('arrTk').innerHTML=krTicket(x.f,x.t,{done:1,d:x.d,gold:x.gold,cls:x.cls});
     $('arrMsg').innerHTML=`<span class="ks-stamp arr-stamp${x.cls?' gold':''}" style="--k:${KINK[gi]};--c:color-mix(in srgb,${KINK[gi]} 78%,var(--ink));--r:-8deg"><small>${B[2]}</small><b>${B[1].replace(/\(.+\)/,'')}</b><small>${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</small></span><b>${B[1]} 도착!</b><span>지역 도장을 받았어요</span>`}
@@ -3380,6 +3402,7 @@ const HIDDEN=[ // [id, 이름, 설명, 아이콘, 색1, 색2]
   ['sleeper','침대열차의 낭만','야간열차로 첫 국경 넘기','train','#c8c4ff','#2c2687'],
   ['captain','선장님','크루즈로 첫 항해','anchor','#9ff2ff','#0b5f6b'],
   ['gold3','황금 여권','특별 루트 3개 완주','crown','#ffe08a','#8a5a00'],
+  ['terminus','종착역','D-day 노선을 켜고 D-day 당일을 맞이','train','#ffd27a','#9a3b12'],
 ];
 function crossesDateline(a,b){let prev=null;for(let i=0;i<=40;i++){const p=gcAt(a,b,i/40);if(prev!=null&&Math.abs(p[1]-prev)>180)return true;prev=p[1]}return false}
 function evalHidden(ev){const T=tr(),K=kr(T),H=T.hid=T.hid||{},now=new Date(),h=now.getHours(),md=(now.getMonth()+1)*100+now.getDate(),day=dk(today0()),out=[];
@@ -3507,6 +3530,11 @@ function annoText(x){const hs=hsh(x.f+x.t);if(x.w==='kr'){const B=KRM[x.t][1],m=
   return m==='ntrain'?`${B[2]}역에 도착했습니다. 침대칸 승객께서는 두고 내리는 짐이 없는지 확인해 주세요.`:m==='cruise'?`${B[2]}항에 입항했습니다. 즐거운 기항지 여행 되십시오.`
     :`승객 여러분, 우리 비행기는 ${B[2]} ${ap(x.t)} 공항에 도착했습니다.${/\d/.test(tm)?` 현지 시각은 ${tm}입니다.`:''} 좌석벨트 표시등이 꺼질 때까지 자리에 앉아 계십시오.`}
 function speak(t){try{if(!TSND().voice||!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=1;speechSynthesis.speak(u)}catch(e){}}
+/* ---------- 창밖 풍경 (이동 중, 끌 수 있음) ---------- */
+function windowFx(){const T=tr(),K=kr(T),on=TOPT().window!==false,h=new Date().getHours(),tod=h>=19||h<5?'night':h<8||h>=17?'dusk':'day';
+  [['krTrip','kr'],['tvFlight','w']].forEach(([id,w])=>{const el=$(id);if(!el)return;let W=el.querySelector(':scope>.win');const o=w==='kr'?K:T,moving=!!(o.to&&!o.hold);
+    if(!on||!moving||el.hidden){if(W)W.remove();return}const m=w==='kr'?krMode(o.at,o.to):wMode(o.at,o.to),cls=`win win-${m==='ntrain'?'train':m==='cruise'?'ship':m} tod-${tod}`;
+    if(W&&W.className===cls)return;if(W)W.remove();W=document.createElement('div');W.className=cls;W.setAttribute('aria-hidden','true');W.innerHTML='<i class="w1"></i><i class="w2"></i><i class="w3"></i><b></b>';el.insertBefore(W,el.firstChild)})}
 /* ---------- 계절 연출 (끌 수 있음) ---------- */
 function seasonNow(){const m=new Date().getMonth()+1;return m>=3&&m<=5?'spring':m>=9&&m<=11?'autumn':m===12||m<=2?'winter':'summer'}
 function seasonFx(){const on=TOPT().season!==false,ss=seasonNow();['krMap','tvMap','krTrip','tvFlight'].forEach(id=>{const el=$(id);if(!el)return;let L=el.querySelector(':scope>.ssn');
@@ -3519,11 +3547,16 @@ function replay(key){if(RP)return;const T=tr(),K=kr(T),el=$(key==='kr'?'krMap':'
   if(key==='kr'){const seq=[K.home,...K.path].filter(id=>KRM[id]);if(seq.length<2)return toast('아직 다시 볼 여행이 없어요');segs=[seq.map(id=>kxy(KRM[id][3],KRM[id][4]))];legs=seq}
   else{const L=flightLog(T).filter(e=>NAT[e.f]&&NAT[e.t]);if(!L.length)return toast('아직 다시 볼 여행이 없어요');L.forEach(e=>{arcSegs([NAT[e.f][3],NAT[e.f][4]],[NAT[e.t][3],NAT[e.t][4]],1,30).forEach(s=>segs.push(s))});legs=[L[0].f,...L.map(e=>e.t)]}
   const pts=segs.flat(),full=key==='kr'?KFULL:WFULL,vb=segs.length>1&&key==='w'?full.slice():fitBox(pts,full,key==='kr'?60:200,1.2);svg.setAttribute('viewBox',vb.map(f2).join(' '));
-  const u=pxPer(svg,vb),tot=pts.length,dur=Math.min(9000,2500+tot*25),t0=performance.now(),dyn=el.querySelector('.dyn'),btn=el.querySelector('.map-rp');if(btn)btn.textContent='■ 멈추기';
-  const draw=now=>{if(!RP)return;const p=Math.min(1,(now-t0)/dur),n=Math.max(1,Math.floor(p*(tot-1)));let k=0,d='';
-    segs.forEach(s=>{const take=Math.max(0,Math.min(s.length,n+1-k));if(take>1)d+='M'+s.slice(0,take).map(q=>f2(q[0])+' '+f2(q[1])).join('L');k+=s.length});
-    const cur=pts[Math.min(n,tot-1)],ic=key==='kr'?TRAIN:PLANE;
-    dyn.innerHTML=`<path class="trail" d="${segD(segs)}" style="stroke-opacity:.12"/><path class="route-on rp" d="${d}"/>${mapIcon(ic,cur[0],cur[1],20*u)}<text x="${f2(vb[0]+10*u)}" y="${f2(vb[1]+22*u)}" font-size="${f2(13*u)}" class="rp-t">${Math.round(p*100)}%</text>`;
+  const u=pxPer(svg,vb),dyn=el.querySelector('.dyn'),btn=el.querySelector('.map-rp');if(btn)btn.textContent='■ 멈추기';
+  // 선분별 길이를 미리 재 두고, 시간에 따라 이동 거리로 보간
+  const S2=segs.map(sg=>{const cum=[0];for(let i=1;i<sg.length;i++)cum.push(cum[i-1]+Math.hypot(sg[i][0]-sg[i-1][0],sg[i][1]-sg[i-1][1]));return {sg,cum,len:cum[cum.length-1]}});
+  const total=S2.reduce((a,x)=>a+x.len,0)||1,dur=Math.min(12000,3500+total/vb[2]*2500),t0=performance.now(),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,ic=key==='kr'?TRAIN:PLANE,base=`<path class="trail" d="${segD(segs)}" style="stroke-opacity:.12"/>`;
+  const draw=now=>{if(!RP)return;const p=Math.min(1,(now-t0)/dur);let rem=ease(p)*total,d='',cur=pts[0],prev=pts[0];
+    for(const x of S2){if(rem<=0)break;const sg=x.sg;if(rem>=x.len){d+='M'+sg.map(q=>f2(q[0])+' '+f2(q[1])).join('L');cur=sg[sg.length-1];prev=sg[sg.length-2]||cur;rem-=x.len;continue}
+      let i=1;while(i<sg.length&&x.cum[i]<rem)i++;const a=sg[i-1],b=sg[i],t=(rem-x.cum[i-1])/((x.cum[i]-x.cum[i-1])||1),q=[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+      d+='M'+sg.slice(0,i).map(z=>f2(z[0])+' '+f2(z[1])).join('L')+'L'+f2(q[0])+' '+f2(q[1]);cur=q;prev=a;rem=0}
+    const ang=key==='w'?Math.atan2(cur[1]-prev[1],cur[0]-prev[0])*180/Math.PI:0;
+    dyn.innerHTML=`${base}<path class="route-on rp" d="${d}"/>${mapIcon(ic,cur[0],cur[1],20*u,ang)}<text x="${f2(vb[0]+10*u)}" y="${f2(vb[1]+22*u)}" font-size="${f2(13*u)}" class="rp-t">${Math.round(p*100)}%</text>`;
     if(p<1)RP.raf=requestAnimationFrame(draw);else setTimeout(()=>stopReplay(),900)};
   RP={key,raf:requestAnimationFrame(draw)}}
 function stopReplay(){if(!RP)return;cancelAnimationFrame(RP.raf);const k=RP.key;RP=null;const el=$(k==='kr'?'krMap':'tvMap'),b=el&&el.querySelector('.map-rp');if(b)b.textContent='▶ 다시 보기';if(k==='kr')renderKrMap();else renderWorldMap()}
@@ -3564,11 +3597,25 @@ function showCard(key){const c=cardInfo(key);if(!c)return;arrTimers.forEach(clea
   $('arrTk').innerHTML='';$('arrMsg').innerHTML=postcard(key,c.art,c.city,c.d?ymd(pk(c.d)):'');$('arrOk').textContent='닫기'}
 (function(){const T=tr();if(!T.certSeen)T.certSeen=completions().filter(c=>c.ok).map(c=>c.id)})();
 
+/* ---------- 공부가 끝나면 이번 공부로 얼마나 이동했는지 알림 ---------- */
+var TW={on:false,m:0};
+function travelWatch(){if(!S.travel||!tr().on)return;const run=!!S.running;
+  if(run&&!TW.on){TW={on:true,m:totalMiles()};return}
+  if(!run&&TW.on){TW.on=false;const g=totalMiles()-TW.m;if(g<1)return;const T=tr(),K=kr(T),av=totalMiles()-T.used;let msg=`이번 공부로 ${Math.floor(g)} 마일리지를 모았어요`;
+    if(K.to&&KRM[K.to]&&!K.hold){const c=krTC(K),km=krKm(K.at,K.to);msg=`이번 공부로 ${KRM[K.to][1]} 방향 ${Math.min(Math.round(km),Math.round(g/c*km))}km 이동했어요`+(av<c?` · 도착까지 공부 ${studyFor(c-av)}`:'')}
+    else if(T.to&&NAT[T.to]&&!T.hold){const c=wTC(T),km=kmBetween(T.at,T.to);msg=`이번 공부로 ${ap(T.to)} ${NAT[T.to][2]} 방향 ${Math.min(Math.round(km),Math.round(g/c*km)).toLocaleString()}km 이동했어요`+(av<c?` · 도착까지 공부 ${studyFor(c-av)}`:'')}
+    setTimeout(()=>toast(msg),ARQ.length?4500:600)}}
+/* ---------- D-day 종착역 이벤트 ---------- */
+function ddArrive(){const d=S.dday;if(!d||!d.date||!TOPT().ddline||d.arrived===d.date||S.running)return;if(dk(today0())<d.date)return;
+  d.arrived=d.date;const T=tr();(T.hid=T.hid||{}).terminus=T.hid.terminus||dk(today0());save();const pd=perDay(true),st=pk(d.start||Object.keys(pd).sort()[0]||dk(today0()));
+  let tot=0;Object.entries(pd).forEach(([k,v])=>{if(pk(k)>=st)tot+=v.study});arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
+  $('arrTk').innerHTML=`<div class="term"><div class="term-h">${TRAIN}<span>종착역</span></div><b>${esc(d.name||'D-day')}</b><small>${ymd(st)} 출발 · ${ymd(pk(d.date))} 도착</small></div>`;
+  $('arrMsg').innerHTML=`<div class="bd-big">${hstamp('terminus',T.hid.terminus)}</div><b>종착역에 도착했어요!</b><span>출발부터 오늘까지 공부한 시간 <b>${fmtH(tot)}</b></span><span>여기까지 온 것만으로 충분히 잘했어요. 오늘 하루 응원할게요.</span>`;$('arrOk').textContent='고마워';ding()}
 /* ---------- 히든 배지 설명 ---------- */
 const HDESC={owl:'모두가 잠든 밤, 책상 불빛 아래서 도착한 여행자에게.',dawn:'첫차 시간에 맞춰 하루를 연 부지런한 여행자에게.',xmas:'크리스마스에도 여정을 멈추지 않은 여행자에게.',ny:'새해 첫날을 여행으로 시작한 여행자에게.',
   triple:'하루에 세 도시를 찍은 강행군 여행자에게.',equator:'북반구와 남반구의 경계를 넘은 여행자에게.',dateline:'하루를 건너뛰거나 다시 사는, 날짜변경선을 넘은 여행자에게.',home:'긴 여행 끝에 처음 출발한 곳으로 돌아온 여행자에게.',
   island:'동해 끝 울릉도까지 배를 타고 건너간 여행자에게.',far:'한 번에 지구 반대편까지 날아간 여행자에게.',north:'오로라가 보이는 북쪽 끝 도시에 닿은 여행자에게.',cont2:'하루 사이에 두 대륙을 밟은 여행자에게.',
-  sleeper:'침대칸에서 잠들고 다른 나라에서 깨어난 여행자에게.',captain:'크루즈로 바다를 건넌 여행자에게.',gold3:'특별 루트를 세 개나 완주한 여행자에게.'};
+  sleeper:'침대칸에서 잠들고 다른 나라에서 깨어난 여행자에게.',captain:'크루즈로 바다를 건넌 여행자에게.',gold3:'특별 루트를 세 개나 완주한 여행자에게.',terminus:'긴 공부 여정의 종착역까지 달려온 여행자에게.'};
 function showBadge(id){const x=HIDX[id];if(!x)return;const T=tr(),d=(T.hid||{})[id];arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
   $('arrTk').innerHTML=`<div class="bd-big">${hstamp(id,d)}</div>`;
   $('arrMsg').innerHTML=d?`<b>${x[1]}</b><span class="bd-desc">${HDESC[id]||''}</span><div class="bd-cond"><small>획득 조건</small><b>${x[2]}</b></div><span>${ymd(pk(d))} 획득</span>`

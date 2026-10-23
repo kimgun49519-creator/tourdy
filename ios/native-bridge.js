@@ -1,8 +1,8 @@
 // Native switches share the original app handlers and its single saved state.
 (() => {
-  let nextID = 0, scheduled = false, previous = '';
+  let nextID = 0, scheduled = false, previous = '', previousTabs = '';
   const style = document.createElement('style');
-  style.textContent = '[role="switch"] .sw-k{visibility:hidden}';
+  style.textContent = '[role="switch"] .sw-k{visibility:hidden}.tabs{background:transparent!important;border-color:transparent!important;min-height:48px}.tabs [data-tab]{opacity:0;pointer-events:none;min-height:44px}';
   document.head.appendChild(style);
   function publish() {
     scheduled = false;
@@ -23,6 +23,15 @@
     });
     const json = JSON.stringify(rows);
     if (json !== previous) { previous = json; window.webkit.messageHandlers.tourdySwitches.postMessage(rows); }
+    const tabs = [...document.querySelectorAll('.tabs [data-tab]')].flatMap(el => {
+      const rect = el.getBoundingClientRect();
+      if (!el.getClientRects().length || rect.bottom < 0 || rect.top > innerHeight) return [];
+      el.setAttribute('aria-hidden', 'true');
+      el.tabIndex = -1;
+      return [{id:el.dataset.tab, title:el.textContent.trim(), on:el.getAttribute('aria-selected') === 'true', x:rect.x, y:rect.y, width:rect.width, height:rect.height}];
+    });
+    const tabJSON = JSON.stringify(tabs);
+    if (tabJSON !== previousTabs) { previousTabs = tabJSON; window.webkit.messageHandlers.tourdyTabs.postMessage(tabs); }
   }
   function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(publish); } }
   window.tourdyNativeToggle = (id, value) => {
@@ -31,7 +40,12 @@
     if ((el.getAttribute('aria-checked') === 'true') !== value) el.click();
     schedule();
   };
-  new MutationObserver(schedule).observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['aria-checked','hidden','class','style']});
+  window.tourdyNativeSelectTab = id => {
+    const el = [...document.querySelectorAll('.tabs [data-tab]')].find(el => el.dataset.tab === id);
+    if (el && !el.hidden) el.click();
+    schedule();
+  };
+  new MutationObserver(schedule).observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['aria-checked','aria-selected','hidden','class','style']});
   addEventListener('scroll', schedule, true);
   addEventListener('resize', schedule);
   addEventListener('pageshow', schedule);

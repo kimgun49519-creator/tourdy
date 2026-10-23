@@ -917,6 +917,48 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
 .wlock .vn{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--accent);font-size:16px}
 .wlock .vt{margin-top:8px;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;background:var(--hover);border:1.5px dashed var(--line)}
 
+/* 출발지 변경 */
+.kr-home{align-self:flex-start;font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--hover);color:var(--ink)}
+.kr-home.on{background:#1d6fd8;color:#fff}
+.kr-row .md{font-style:normal;font-size:10px;font-weight:800;padding:1px 6px;border-radius:4px;margin-right:6px;background:#1d6fd8;color:#fff;vertical-align:1px}
+.kr-row .md-bus{background:#1f9d55}.kr-row .md-ship{background:#0b8aa8}
+.kr-row b .md{background:#ffc83d;color:#111}
+/* 승차권 */
+.tk{--tc:#1d6fd8;--tp:#f4f8ff;display:grid;grid-template-columns:minmax(0,1fr) 112px;color:#16202e;border-radius:14px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.12));
+  -webkit-mask:radial-gradient(circle 9px at calc(100% - 112px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at calc(100% - 112px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 9px at calc(100% - 112px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at calc(100% - 112px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.tk-bus{--tc:#1f9d55;--tp:#f3fbf6}.tk-ship{--tc:#0b8aa8;--tp:#f1fafc}
+.tk-main{background:var(--tp) repeating-linear-gradient(135deg,transparent 0 10px,color-mix(in srgb,var(--tc) 5%,transparent) 10px 11px);border-radius:14px 0 0 14px;border-top:10px solid var(--tc);padding:12px 16px 14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.tk-hd{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800;color:var(--tc);font-family:"IBM Plex Mono",monospace}
+.tk-hd span:first-child{display:flex;align-items:center;gap:6px;font-family:inherit}.tk-hd svg{width:16px;height:16px}
+.tk-route{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center}
+.tk-route small{display:block;font-size:10px;font-weight:800;color:var(--tc)}
+.tk-route b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.tk-route em{font-style:normal;font-size:11px;color:#5b6675;font-weight:600}
+.tk-route .r{text-align:right}
+.tk-mid{display:flex;flex-direction:column;gap:6px;align-items:center;font-size:10px;font-weight:700;color:#5b6675;font-family:"IBM Plex Mono",monospace}
+.tk-path{position:relative;width:100%;height:3px;background:repeating-linear-gradient(90deg,#c5ccd6 0 6px,transparent 6px 10px)}
+.tk-path i{position:absolute;inset:0 auto 0 0;background:var(--tc)}
+.tk-vh{position:absolute;top:50%;transform:translate(-50%,-50%);color:var(--tc);background:var(--tp);border-radius:50%;padding:2px;display:grid}
+.tk-vh svg{width:20px;height:20px}
+.tk-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1.5px dashed #c5ccd6;padding-top:10px;gap:6px}
+.tk-info small{display:block;font-size:10px;font-weight:700;color:#5b6675}
+.tk-info b{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.tk-stub{background:var(--tc);color:#fff;border-radius:0 14px 14px 0;border-left:2px dashed rgba(255,255,255,.55);padding:14px 12px;display:flex;flex-direction:column;justify-content:center;gap:3px;text-align:center}
+.tk-stub small{font-size:10px;font-weight:700;opacity:.8}
+.tk-stub b{font-size:15px;font-weight:800;line-height:1.25}
+.tk-stub span{font-size:11px;font-family:"IBM Plex Mono",monospace;opacity:.9}
+.tk-bars{display:flex;justify-content:center;gap:2px;height:26px;margin-top:6px;background:#fff;border-radius:4px;padding:3px 4px;overflow:hidden}
+.tk-bars i{background:#16202e;flex:none}
+@media (max-width:480px){
+  .tk{grid-template-columns:1fr;-webkit-mask:radial-gradient(circle 9px at 0 calc(100% - 78px),#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% calc(100% - 78px),#0000 98%,#000) right/51% 100% no-repeat;
+    mask:radial-gradient(circle 9px at 0 calc(100% - 78px),#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% calc(100% - 78px),#0000 98%,#000) right/51% 100% no-repeat}
+  .tk-main{border-radius:14px 14px 0 0}
+  .tk-stub{height:78px;box-sizing:border-box;border-radius:0 0 14px 14px;border-left:0;border-top:2px dashed rgba(255,255,255,.55);display:grid;grid-template-columns:auto 1fr auto;align-items:center;text-align:left;gap:2px 12px;padding:10px 16px}
+  .tk-stub small{grid-column:1}.tk-stub b{grid-column:1}.tk-stub span{grid-column:2;grid-row:1/3;text-align:center}.tk-bars{grid-column:3;grid-row:1/3;margin:0;width:80px}
+  .tk-route b{font-size:22px}.tk-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
 .ks-head b{display:block;font-size:17px;font-weight:800}
@@ -1106,7 +1148,7 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
     <div class="sp-wrap space-only"><section class="space" id="tvSpace" aria-label="잠긴 콘텐츠"></section><div class="sp-veil" id="spVeil" hidden></div></div>
     <section class="panel korea-only" id="krNow"></section>
     <section class="bp-wrap korea-only" id="krTrip" hidden></section>
-    <section class="kr-board korea-only" aria-label="국내 출발 안내"><div class="kr-bh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-4 0-7 .5-7 4v9.5A2.5 2.5 0 0 0 7.5 18L6 19.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 18a2.5 2.5 0 0 0 2.5-2.5V6c0-3.5-3-4-7-4zM7.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H7V6h4v4zm5.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm.5-6h-4V6h4v4z"/></svg>출발 안내<small>가까운 순</small></div>
+    <section class="kr-board korea-only" aria-label="국내 출발 안내"><div class="kr-bh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-4 0-7 .5-7 4v9.5A2.5 2.5 0 0 0 7.5 18L6 19.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 18a2.5 2.5 0 0 0 2.5-2.5V6c0-3.5-3-4-7-4zM7.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H7V6h4v4zm5.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm.5-6h-4V6h4v4z"/></svg><span id="krBoardT">출발 안내</span><small id="krBoardS">가까운 순</small></div>
       <input class="fids-q" id="krSearch" type="search" placeholder="시·군이나 도 이름으로 찾기" autocomplete="off">
       <div class="kr-groups" id="krGroups"></div><ul class="kr-list" id="krList"></ul></section>
     <section class="panel korea-only"><div class="panel-head"><h2>지역 도장</h2></div><div class="ks-head" id="krStampHead"></div><div class="ks-regs" id="krStamps"></div></section>
@@ -2311,40 +2353,67 @@ const krGroup=x=>KRG.findIndex((g,i)=>i&&g[1].includes(x[2]));
 const krKm=(a,b)=>{const A=KRM[a],B=KRM[b],r=Math.PI/180,dl=(B[3]-A[3])*r,dg=(B[4]-A[4])*r;const h=Math.sin(dl/2)**2+Math.cos(A[3]*r)*Math.cos(B[3]*r)*Math.sin(dg/2)**2;return 2*6371*Math.asin(Math.sqrt(h))};
 const krCost=(a,b)=>Math.max(30,Math.round(krKm(a,b)));
 const TRAIN='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-4 0-7 .5-7 4v9.5A2.5 2.5 0 0 0 7.5 18L6 19.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 18a2.5 2.5 0 0 0 2.5-2.5V6c0-3.5-3-4-7-4zM7.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H7V6h4v4zm5.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm.5-6h-4V6h4v4z"/></svg>';
-function kr(T){return T.kr||(T.kr={at:'seoul',to:null,done:[],km:0})}
+function kr(T){const K=T.kr||(T.kr={at:'seoul',home:'seoul',to:null,done:[],km:0});if(!K.home||!KRM[K.home])K.home='seoul';return K}
+const krCanHome=K=>!K.to&&!K.done.length; // 첫 출발 전에만 출발지를 바꿀 수 있음
+/* 교통수단: 제주 바다 건너면 배, 50km 미만은 시외버스, 그 외 기차(거리별 등급) */
+const krIsJeju=id=>KRM[id][2]==='제주';
+function krMode(a,b){const km=krKm(a,b);if(krIsJeju(a)!==krIsJeju(b))return 'ship';if(km<50)return 'bus';return 'train'}
+function krClass(a,b){const m=krMode(a,b),km=krKm(a,b);return m==='ship'?'여객선':m==='bus'?(km<25?'시내버스':'시외버스'):km>=180?'KTX':km>=90?'ITX-새마을':'무궁화호'}
+const BUS='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 16c0 .9.4 1.7 1 2.2V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.8c.6-.5 1-1.3 1-2.2V6c0-3.5-3.6-4-8-4S4 2.5 4 6v10zm3.5 1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM18 11H6V6h12v5z"/></svg>';
+const SHIP='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 21c-1.4 0-2.8-.5-4-1.3a7 7 0 0 1-8 0C6.8 20.5 5.4 21 4 21H2v2h2c1.4 0 2.7-.3 4-1a8.6 8.6 0 0 0 8 0c1.3.7 2.6 1 4 1h2v-2h-2zM3.9 19H4c1.6 0 3-.9 4-2 1 1.1 2.4 2 4 2s3-.9 4-2c1 1.1 2.4 2 4 2h.1l1.9-6.7c.1-.3 0-.6-.1-.8l-.9-.3V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.6l-.9.3c-.3.1-.4.4-.3.7L3.9 19zM6 6h12v4l-6-2-6 2V6z"/></svg>';
+const krIcon=m=>m==='bus'?BUS:m==='ship'?SHIP:TRAIN;
+let krPickHome=false;
 const krDone=(K,id)=>K.done.some(d=>d.c===id);
 const worldOpen=T=>kr(T).done.length>=KR.length-1||(TRAVEL_TEST&&!!T.worldTest);
 let krG=0,krQ='',krArm=false;
 function checkKorea(){
   const T=tr(),K=kr(T);if(!T.on||!K.to||!KRM[K.to])return false;const c=krCost(K.at,K.to);
   if(totalMiles()-T.used<c)return false;
-  T.used+=c;K.km+=krKm(K.at,K.to);if(!krDone(K,K.to))K.done.push({c:K.to,d:dk(today0())});(T.krNews=T.krNews||[]).push(K.to);K.at=K.to;K.to=null;save();return true;
+  T.used+=c;K.km+=krKm(K.at,K.to);if(K.to!==K.home&&!krDone(K,K.to))K.done.push({c:K.to,d:dk(today0())});(T.krNews=T.krNews||[]).push(K.to);K.at=K.to;K.to=null;save();return true;
 }
 function renderKorea(){
   const T=tr(),K=kr(T),avail=totalMiles()-T.used,at=KRM[K.at];let h='';
   if(T.krNews&&T.krNews.length){h+=`<div class="kr-news">${TRAIN} ${T.krNews.map(c=>KRM[c][1]).join(', ')} 도착! 지역 도장을 받았어요.</div>`;T.krNews=[];save()}
-  h+=`<div class="kr-sign"><span class="kr-line"></span><div class="kr-st"><small>${at[2]}</small><b>${at[1]}</b></div><span class="kr-now">현재 위치</span></div>`;
+  h+=`<div class="kr-sign"><span class="kr-line"></span><div class="kr-st"><small>${at[2]}</small><b>${at[1]}</b></div><span class="kr-now">${K.at===K.home&&!K.done.length?'출발지':'현재 위치'}</span></div>`;
+  if(krCanHome(K))h+=`<button class="kr-home${krPickHome?' on':''}" id="krHome">${krPickHome?'출발지 고르는 중 · 닫기':'출발지 바꾸기'}</button>`;
   if(TRAVEL_TEST)h+=`<div class="tv-test"><span>테스트</span>${K.to?'<button id="krSkip">바로 도착</button>':''}<button data-kadd="100">+100</button><button data-kadd="1000">+1000</button><button id="krReset">국내 초기화</button></div>`;
   h+=`<div class="tv-stats"><div><b>${Math.floor(avail)}</b><span>보유 마일리지</span></div><div><b>${K.done.length}<small>/${KR.length-1}</small></b><span>방문한 시·군</span></div><div><b>${Math.round(K.km).toLocaleString()}</b><span>누적 이동 km</span></div></div>`;
   $('krNow').innerHTML=h;
   if(K.to&&KRM[K.to]){const to=KRM[K.to],c=krCost(K.at,K.to),p=Math.min(1,Math.max(0,avail/c)),left=c-avail;
-    $('krTrip').innerHTML=`<div class="kr-ticket"><div class="kt-top"><span>${TRAIN} 승차권 · 이동 중</span><span>${Math.round(krKm(K.at,K.to))}km</span></div>
-      <div class="kt-route"><div><b>${at[1]}</b><small>${at[2]}</small></div><div class="kt-path"><i style="width:${p*100}%"></i><span class="kt-train" style="left:${p*100}%">${TRAIN}</span></div><div class="r"><b>${to[1]}</b><small>${to[2]}</small></div></div>
-      <div class="kt-left"><b>${Math.floor(Math.min(avail,c))} / ${c}</b> 마일리지 · 남은 공부 <b>${studyFor(left)}</b></div></div>
+    const m=krMode(K.at,K.to),cls=krClass(K.at,K.to),hs=[...(K.at+K.to)].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%99991,7),now=new Date(),km=Math.round(krKm(K.at,K.to));
+    const lbl=m==='bus'?'승차권 · 버스':m==='ship'?'승선권 · 여객선':'승차권 · 열차';
+    const info=m==='bus'?[['등급',cls],['승차홈',(hs%12+1)+'번'],['좌석',(hs%28+1)+'번'],['운임',c+' 마일']]
+      :m==='ship'?[['선박',cls],['객실','일반실'],['좌석',(hs%300+1)+'번'],['운임',c+' 마일']]
+      :[['열차',cls+' '+String(hs%900+100)],['호차',(hs%8+1)+'호차'],['좌석',(hs%15+1)+'ABCD'[hs%4]],['운임',c+' 마일']];
+    const bars=[...Array(28)].map((_,k)=>`<i style="width:${1+((hs>>k%13)+k*7)%3}px"></i>`).join('');
+    $('krTrip').innerHTML=`<div class="tk tk-${m}">
+      <div class="tk-main">
+        <div class="tk-hd"><span>${krIcon(m)}${lbl}</span><span>${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())}</span></div>
+        <div class="tk-route"><div><small>출발</small><b>${at[1]}</b><em>${at[2]}</em></div>
+          <div class="tk-mid"><span>${km}km</span><div class="tk-path"><i style="width:${p*100}%"></i><span class="tk-vh" style="left:calc(${p} * (100% - 24px) + 12px)">${krIcon(m)}</span></div><span>${Math.round(p*100)}% 이동</span></div>
+          <div class="r"><small>도착</small><b>${to[1]}</b><em>${to[2]}</em></div></div>
+        <div class="tk-info">${info.map(([k,v])=>`<div><small>${k}</small><b>${v}</b></div>`).join('')}</div>
+      </div>
+      <div class="tk-stub"><small>남은 공부</small><b>${studyFor(left)}</b><span>${Math.floor(Math.min(avail,c))} / ${c}</span><div class="tk-bars">${bars}</div></div>
+    </div>
       <div class="bp-acts"><button class="secondary${krArm?' del arm':''}" id="krCancel">${krArm?'정말 취소':'이동 취소'}</button></div>`;$('krTrip').hidden=false}
   else $('krTrip').hidden=true;
   // 출발 안내
   $('krGroups').innerHTML=KRG.map((g,i)=>`<button data-krg="${i}" aria-pressed="${i===krG}">${g[0]}</button>`).join('');
+  $('krBoardT').textContent=krPickHome?'출발지 고르기':'출발 안내';$('krBoardS').textContent=krPickHome?'여기서 여행을 시작해요':'가까운 순';
+  if(krPickHome){const q=krQ.trim(),rows=KR.filter(x=>x[0]!==K.at&&(!krG||krGroup(x)===krG)&&(!q||x[1].includes(q)||x[2].includes(q)));
+    $('krList').innerHTML=rows.map(x=>`<li><button class="kr-row" data-krhome="${x[0]}"><span class="kn"><b>${x[1]}</b><small>${x[2]}</small></span><span class="kc"></span><span class="st ok">여기서 출발</span></button></li>`).join('')||'<li class="empty">검색 결과가 없어요</li>'}
+  else{
   const q=krQ.trim(),rows=KR.filter(x=>x[0]!==K.at&&(K.to===x[0]||!krDone(K,x[0]))&&(!krG||krGroup(x)===krG)&&(!q||x[1].includes(q)||x[2].includes(q)))
     .map(x=>[x,krCost(K.at,x[0])]).sort((a,b)=>a[1]-b[1]);
   $('krList').innerHTML=rows.map(([x,c])=>{const cur=K.to===x[0],ok=avail>=c;
-    return `<li><button class="kr-row${cur?' cur':''}" data-kr="${x[0]}"><span class="kn"><b>${x[1]}</b><small>${x[2]} · ${Math.round(krKm(K.at,x[0]))}km</small></span><span class="kc">${c}</span>
-      <span class="st ${cur?'on':ok?'ok':'wait'}">${cur?'이동 중':ok?'바로 출발':studyFor(c-avail)}</span></button></li>`}).join('')||'<li class="empty">남은 목적지가 없어요</li>';
+    return `<li><button class="kr-row${cur?' cur':''}" data-kr="${x[0]}"><span class="kn"><b>${x[1]}${x[0]===K.home?' <em class="md">출발지</em>':''}</b><small><em class="md md-${krMode(K.at,x[0])}">${krClass(K.at,x[0])}</em>${x[2]} · ${Math.round(krKm(K.at,x[0]))}km</small></span><span class="kc">${c}</span>
+      <span class="st ${cur?'on':ok?'ok':'wait'}">${cur?'이동 중':ok?'바로 출발':studyFor(c-avail)}</span></button></li>`}).join('')||'<li class="empty">남은 목적지가 없어요</li>'}
   // 지역 도장: 도별 스탬프북 (다녀온 곳은 도장, 아직 안 간 곳은 빈 자리)
   const total=KR.length-1,gotAll=K.done.length,dmap=Object.fromEntries(K.done.map(d=>[d.c,d.d])),hh=t=>[...t].reduce((a,c)=>a+c.charCodeAt(0)*13,0);
   if(krOpenReg==null){const last=K.done[K.done.length-1];krOpenReg=last?krGroup(KRM[last.c]):1}
-  $('krStampHead').innerHTML=`<div class="ks-ring" style="--p:${gotAll/total*100}"><b>${Math.floor(gotAll/total*100)}%</b></div><div><b>전국 스탬프 투어</b><span>${gotAll} / ${total}곳 · 완주한 지역 ${KRG.slice(1).filter((g,gi)=>{const all=KR.filter(x=>krGroup(x)===gi+1&&x[0]!=='seoul');return all.length&&all.every(x=>dmap[x[0]])}).length} / ${KRG.length-1}</span></div>`;
-  $('krStamps').innerHTML=KRG.slice(1).map((g,gi)=>{const i=gi+1,all=KR.filter(x=>krGroup(x)===i&&x[0]!=='seoul'),got=all.filter(x=>dmap[x[0]]),done=got.length===all.length,open=krOpenReg===i;
+  $('krStampHead').innerHTML=`<div class="ks-ring" style="--p:${gotAll/total*100}"><b>${Math.floor(gotAll/total*100)}%</b></div><div><b>전국 스탬프 투어</b><span>${gotAll} / ${total}곳 · 완주한 지역 ${KRG.slice(1).filter((g,gi)=>{const all=KR.filter(x=>krGroup(x)===gi+1&&x[0]!==K.home);return all.length&&all.every(x=>dmap[x[0]])}).length} / ${KRG.length-1}</span></div>`;
+  $('krStamps').innerHTML=KRG.slice(1).map((g,gi)=>{const i=gi+1,all=KR.filter(x=>krGroup(x)===i&&x[0]!==K.home),got=all.filter(x=>dmap[x[0]]),done=got.length===all.length,open=krOpenReg===i;
     return `<div class="ks-reg${open?' open':''}${done?' done':''}" style="--k:${KINK[gi]}">
       <button class="ks-h" data-kreg="${i}" aria-expanded="${open}"><span class="ks-badge">${done?'완주':g[0].slice(0,2)}</span><span class="ks-n"><b>${g[0]}</b><small>${got.length} / ${all.length}곳</small></span>
         <span class="ks-bar"><i style="width:${got.length/all.length*100}%"></i></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 4 4 4-4"/></svg></button>
@@ -2362,11 +2431,13 @@ function hWheel(el){el.addEventListener('wheel',e=>{if(el.scrollWidth<=el.client
 $('krNow').addEventListener('click',e=>{const T=tr(),K=kr(T);if(!TRAVEL_TEST)return;
   const a=e.target.closest('[data-kadd]');if(a){T.used-=+a.dataset.kadd;save();if(checkKorea())ding();renderKorea();return}
   if(e.target.closest('#krSkip')&&K.to){T.used-=Math.max(0,krCost(K.at,K.to)-(totalMiles()-T.used));save();if(checkKorea())ding();renderKorea();return}
-  if(e.target.closest('#krReset')){T.kr={at:'seoul',to:null,done:[],km:0};save();renderTravel()}});
+  if(e.target.closest('#krReset')){T.kr={at:K.home,home:K.home,to:null,done:[],km:0};save();renderTravel()}});
 $('krTrip').addEventListener('click',e=>{if(!e.target.closest('#krCancel'))return;const K=kr(tr());if(krArm){K.to=null;krArm=false;save()}else krArm=true;renderKorea()});
 $('krGroups').addEventListener('click',e=>{const b=e.target.closest('[data-krg]');if(b){krG=+b.dataset.krg;renderKorea()}});
 $('krSearch').addEventListener('input',e=>{krQ=e.target.value;renderKorea()});
-$('krList').addEventListener('click',e=>{const b=e.target.closest('[data-kr]');if(!b)return;const T=tr(),K=kr(T);
+$('krNow').addEventListener('click',e=>{if(!e.target.closest('#krHome'))return;krPickHome=!krPickHome;krQ='';$('krSearch').value='';renderKorea();if(krPickHome)document.querySelector('.kr-board').scrollIntoView({behavior:'smooth',block:'start'})});
+$('krList').addEventListener('click',e=>{const h=e.target.closest('[data-krhome]');if(h){const K=kr(tr());if(!krCanHome(K))return;K.home=K.at=h.dataset.krhome;krPickHome=false;krQ='';$('krSearch').value='';krOpenReg=null;save();renderKorea();window.scrollTo({top:0,behavior:'smooth'});return}
+  const b=e.target.closest('[data-kr]');if(!b)return;const T=tr(),K=kr(T);
   K.to=b.dataset.kr;T.to=null;sp(T).to=null;krArm=false;save();if(checkKorea())ding();renderKorea();window.scrollTo({top:0,behavior:'smooth'})});
 
 /* ---------- 우주 탐사: 세계 194개국 입국 후 열림. 4개 구역, 구역 안에서는 자유롭게 고르고 구역을 다 돌면 다음 구역이 열림 ---------- */

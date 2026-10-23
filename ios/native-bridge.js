@@ -2,7 +2,7 @@
 (() => {
   let nextID = 0, scheduled = false, previous = '', previousTabs = '';
   const style = document.createElement('style');
-  style.textContent = '[role="switch"] .sw-k{visibility:hidden}.tabs{background:transparent!important;border-color:transparent!important;min-height:52px}.tabs [data-tab]{opacity:0;pointer-events:none;min-height:48px}';
+  style.textContent = '[role="switch"] .sw-k{visibility:hidden}.tabs{display:none!important}';
   document.head.appendChild(style);
   function publish() {
     scheduled = false;
@@ -24,11 +24,10 @@
     const json = JSON.stringify(rows);
     if (json !== previous) { previous = json; window.webkit.messageHandlers.tourdySwitches.postMessage(rows); }
     const tabs = [...document.querySelectorAll('.tabs [data-tab]')].flatMap(el => {
-      const rect = el.getBoundingClientRect();
-      if (!el.getClientRects().length || rect.bottom < 0 || rect.top > innerHeight) return [];
+      if (el.hidden) return [];
       el.setAttribute('aria-hidden', 'true');
       el.tabIndex = -1;
-      return [{id:el.dataset.tab, title:el.textContent.trim(), on:el.getAttribute('aria-selected') === 'true', x:rect.x, y:rect.y, width:rect.width, height:rect.height}];
+      return [{id:el.dataset.tab, title:el.textContent.trim(), on:el.getAttribute('aria-selected') === 'true', x:0, y:0, width:0, height:0}];
     });
     const tabJSON = JSON.stringify(tabs);
     if (tabJSON !== previousTabs) { previousTabs = tabJSON; window.webkit.messageHandlers.tourdyTabs.postMessage(tabs); }

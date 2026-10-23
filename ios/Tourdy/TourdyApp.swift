@@ -86,21 +86,6 @@ struct TourdyScreen: View {
         GeometryReader { geometry in
             ZStack(alignment: .topLeading) {
                 AppWebView(model: model)
-                        ForEach(model.tabs) { item in
-                            Button { model.selectTab(item) } label: {
-                                Text(item.title)
-                                    .font(.system(size: 15, weight: item.on ? .semibold : .medium))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.75)
-                                    .frame(width: max(1, item.width - 4), height: max(48, item.height))
-                            }
-                            .buttonStyle(.plain)
-                            .foregroundStyle(item.on ? Color.white : Color.primary)
-                            .glassEffect(.regular.tint(item.on ? Color.accentColor : Color.clear).interactive(), in: .capsule)
-                            .contentShape(Capsule())
-                            .accessibilityAddTraits(item.on ? [.isSelected] : [])
-                            .offset(x: item.x + 2, y: item.y)
-                        }
                 ForEach(model.switches) { item in
                     Toggle(item.title, isOn: Binding(get: { item.on }, set: { model.change(item, to: $0) }))
                         .toggleStyle(.switch)
@@ -113,8 +98,48 @@ struct TourdyScreen: View {
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
             .clipped()
         }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            if !model.tabs.isEmpty {
+                HStack(spacing: 2) {
+                    ForEach(model.tabs) { item in
+                        Button { model.selectTab(item) } label: {
+                            VStack(spacing: 4) {
+                                Image(systemName: tabIcon(item.id))
+                                    .font(.system(size: 23, weight: .semibold))
+                                Text(item.title)
+                                    .font(.system(size: 11, weight: .semibold))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 58)
+                            .background(item.on ? Color.primary.opacity(0.12) : Color.clear, in: Capsule())
+                            .contentShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(item.on ? Color.accentColor : Color.primary)
+                        .accessibilityAddTraits(item.on ? [.isSelected] : [])
+                    }
+                }
+                .padding(6)
+                .glassEffect(.regular, in: .capsule)
+                .padding(.horizontal, 12)
+                .padding(.bottom, 8)
+            }
+        }
         .alert("확인해 주세요", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) {
             Button("확인") { model.error = nil }
         } message: { Text(model.error ?? "") }
+    }
+
+    private func tabIcon(_ id: String) -> String {
+        switch id {
+        case "home": return "timer"
+        case "todo": return "checklist"
+        case "stats": return "chart.bar.xaxis"
+        case "travel": return "airplane"
+        case "set": return "gearshape.fill"
+        default: return "circle"
+        }
     }
 }

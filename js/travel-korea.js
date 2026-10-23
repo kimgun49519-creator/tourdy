@@ -89,7 +89,7 @@ function krTicket(f,t,o={}){
     </div>${stub}
   </div>`}
 const krDone=(K,id)=>K.done.some(d=>d.c===id);
-const worldOpen=T=>!!T.firstWorldTrip||kr(T).done.length>=KR.length-1||(TRAVEL_TEST&&!!T.worldTest);
+const worldOpen=T=>kr(T).done.length>=KR.length-1||(TRAVEL_TEST&&!!T.worldTest);
 let krG=0,krQ='',krArm=false;
 function checkKorea(){
   const T=tr(),K=kr(T);if(!T.on||!K.to||!KRM[K.to]||K.hold)return false;const c=krTC(K);

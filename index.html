@@ -341,7 +341,9 @@
   </aside>
   <dialog id="firstTripDialog" class="first-trip-dialog" aria-labelledby="firstTripTitle">
     <h2 id="firstTripTitle">첫 여행은 어디로 떠날까요?</h2><p>목적지 한 곳을 고르면 최고 등급으로 즉시 도착해요.</p>
-    <form id="firstTripForm"><label>여행 지역<select class="field" id="firstTripWorld"><option value="kr">국내</option><option value="w">세계</option></select></label>
+    <form id="firstTripForm"><label>여행 지역<select class="field" id="firstTripWorld"><option value="kr">국내</option><option value="w" id="firstTripWorldOption">세계</option></select></label>
+    <p class="note" id="firstTripWorldNote">세계 여행은 국내 여행을 모두 마치면 열려요.</p>
+    <label>출발지<select class="field" id="firstTripOrigin"></select></label><p class="note" id="firstTripOriginNote"></p>
     <label>목적지 검색<input class="field" id="firstTripSearch" type="search" placeholder="도시 또는 나라 이름"></label>
     <label>목적지<select class="field" id="firstTripDestination" size="7" required></select></label>
     <p id="firstTripPreview" role="status"></p><p id="firstTripError" role="alert" hidden></p>

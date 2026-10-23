@@ -23,7 +23,7 @@ test('offline shell returns cached HTML and scripts without a network call', asy
 });
 test('activation removes only TOURDY releases and preserves unrelated caches', async () => {
   const handlers={},deleted=[];
-  const context={self:{addEventListener:(n,f)=>handlers[n]=f,clients:{claim:async()=>{}}},caches:{keys:async()=>['toury-v4','tourdy-v3','tourdy-v6','planner-fonts','another-app'],delete:async key=>{deleted.push(key)}},URL};
+  const context={self:{addEventListener:(n,f)=>handlers[n]=f,clients:{claim:async()=>{}}},caches:{keys:async()=>['toury-v4','tourdy-v3','tourdy-v7','planner-fonts','another-app'],delete:async key=>{deleted.push(key)}},URL};
   vm.runInNewContext(sw,context);let result;handlers.activate({waitUntil:r=>result=r});await result;
   assert.deepEqual(deleted,['toury-v4','tourdy-v3']);
 });

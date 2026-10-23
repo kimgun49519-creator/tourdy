@@ -1,0 +1,4162 @@
+[
+  {
+    "id": "seoul",
+    "name": "서울",
+    "region": "특별시",
+    "world": "kr",
+    "latitude": 37.566,
+    "longitude": 126.978,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "busan",
+    "name": "부산",
+    "region": "광역시",
+    "world": "kr",
+    "latitude": 35.18,
+    "longitude": 129.075,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "daegu",
+    "name": "대구",
+    "region": "광역시",
+    "world": "kr",
+    "latitude": 35.871,
+    "longitude": 128.601,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "incheon",
+    "name": "인천",
+    "region": "광역시",
+    "world": "kr",
+    "latitude": 37.456,
+    "longitude": 126.705,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gwangju",
+    "name": "광주",
+    "region": "광역시",
+    "world": "kr",
+    "latitude": 35.16,
+    "longitude": 126.851,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "daejeon",
+    "name": "대전",
+    "region": "광역시",
+    "world": "kr",
+    "latitude": 36.35,
+    "longitude": 127.385,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ulsan",
+    "name": "울산",
+    "region": "광역시",
+    "world": "kr",
+    "latitude": 35.539,
+    "longitude": 129.311,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sejong",
+    "name": "세종",
+    "region": "특별자치시",
+    "world": "kr",
+    "latitude": 36.48,
+    "longitude": 127.289,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "suwon",
+    "name": "수원",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.263,
+    "longitude": 127.029,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "seongnam",
+    "name": "성남",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.42,
+    "longitude": 127.127,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "uijeongbu",
+    "name": "의정부",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.738,
+    "longitude": 127.034,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "anyang",
+    "name": "안양",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.394,
+    "longitude": 126.957,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "bucheon",
+    "name": "부천",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.503,
+    "longitude": 126.766,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gwangmyeong",
+    "name": "광명",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.479,
+    "longitude": 126.865,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "pyeongtaek",
+    "name": "평택",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 36.992,
+    "longitude": 127.113,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "dongducheon",
+    "name": "동두천",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.904,
+    "longitude": 127.061,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ansan",
+    "name": "안산",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.322,
+    "longitude": 126.831,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "goyang",
+    "name": "고양",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.658,
+    "longitude": 126.832,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gwacheon",
+    "name": "과천",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.429,
+    "longitude": 126.988,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "guri",
+    "name": "구리",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.594,
+    "longitude": 127.13,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "namyangju",
+    "name": "남양주",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.636,
+    "longitude": 127.216,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "osan",
+    "name": "오산",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.15,
+    "longitude": 127.077,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "siheung",
+    "name": "시흥",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.38,
+    "longitude": 126.803,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gunpo",
+    "name": "군포",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.362,
+    "longitude": 126.935,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "uiwang",
+    "name": "의왕",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.345,
+    "longitude": 126.968,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hanam",
+    "name": "하남",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.539,
+    "longitude": 127.215,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yongin",
+    "name": "용인",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.241,
+    "longitude": 127.178,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "paju",
+    "name": "파주",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.76,
+    "longitude": 126.78,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "icheon",
+    "name": "이천",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.272,
+    "longitude": 127.435,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "anseong",
+    "name": "안성",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.008,
+    "longitude": 127.28,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gimpo",
+    "name": "김포",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.615,
+    "longitude": 126.716,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hwaseong",
+    "name": "화성",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.2,
+    "longitude": 126.832,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gwangjugg",
+    "name": "광주(경기)",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.429,
+    "longitude": 127.255,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yangju",
+    "name": "양주",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.785,
+    "longitude": 127.046,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "pocheon",
+    "name": "포천",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.895,
+    "longitude": 127.2,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeoju",
+    "name": "여주",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.298,
+    "longitude": 127.637,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gapyeong",
+    "name": "가평",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.831,
+    "longitude": 127.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yangpyeong",
+    "name": "양평",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 37.492,
+    "longitude": 127.488,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeoncheon",
+    "name": "연천",
+    "region": "경기",
+    "world": "kr",
+    "latitude": 38.096,
+    "longitude": 127.075,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ganghwa",
+    "name": "강화",
+    "region": "인천",
+    "world": "kr",
+    "latitude": 37.747,
+    "longitude": 126.488,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "chuncheon",
+    "name": "춘천",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.881,
+    "longitude": 127.73,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "wonju",
+    "name": "원주",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.342,
+    "longitude": 127.92,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gangneung",
+    "name": "강릉",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.752,
+    "longitude": 128.876,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "donghae",
+    "name": "동해",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.525,
+    "longitude": 129.114,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "taebaek",
+    "name": "태백",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.164,
+    "longitude": 128.986,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sokcho",
+    "name": "속초",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.207,
+    "longitude": 128.592,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "samcheok",
+    "name": "삼척",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.45,
+    "longitude": 129.165,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hongcheon",
+    "name": "홍천",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.697,
+    "longitude": 127.889,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hoengseong",
+    "name": "횡성",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.492,
+    "longitude": 127.985,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongwol",
+    "name": "영월",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.184,
+    "longitude": 128.462,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "pyeongchang",
+    "name": "평창",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.371,
+    "longitude": 128.39,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jeongseon",
+    "name": "정선",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 37.381,
+    "longitude": 128.661,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "cheorwon",
+    "name": "철원",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.147,
+    "longitude": 127.313,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hwacheon",
+    "name": "화천",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.106,
+    "longitude": 127.708,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yanggu",
+    "name": "양구",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.11,
+    "longitude": 127.99,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "inje",
+    "name": "인제",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.069,
+    "longitude": 128.17,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "goseonggw",
+    "name": "고성(강원)",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.381,
+    "longitude": 128.468,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yangyang",
+    "name": "양양",
+    "region": "강원",
+    "world": "kr",
+    "latitude": 38.075,
+    "longitude": 128.619,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "cheongju",
+    "name": "청주",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.642,
+    "longitude": 127.489,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "chungju",
+    "name": "충주",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.991,
+    "longitude": 127.926,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jecheon",
+    "name": "제천",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 37.133,
+    "longitude": 128.191,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "boeun",
+    "name": "보은",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.489,
+    "longitude": 127.729,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "okcheon",
+    "name": "옥천",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.306,
+    "longitude": 127.571,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongdong",
+    "name": "영동",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.175,
+    "longitude": 127.783,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "danyang",
+    "name": "단양",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.985,
+    "longitude": 128.366,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "goesan",
+    "name": "괴산",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.815,
+    "longitude": 127.787,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "eumseong",
+    "name": "음성",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.94,
+    "longitude": 127.69,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jincheon",
+    "name": "진천",
+    "region": "충북",
+    "world": "kr",
+    "latitude": 36.855,
+    "longitude": 127.436,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "cheonan",
+    "name": "천안",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.815,
+    "longitude": 127.114,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gongju",
+    "name": "공주",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.447,
+    "longitude": 127.119,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "boryeong",
+    "name": "보령",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.333,
+    "longitude": 126.613,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "asan",
+    "name": "아산",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.79,
+    "longitude": 127.002,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "seosan",
+    "name": "서산",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.785,
+    "longitude": 126.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "nonsan",
+    "name": "논산",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.187,
+    "longitude": 127.099,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gyeryong",
+    "name": "계룡",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.274,
+    "longitude": 127.249,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "dangjin",
+    "name": "당진",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.89,
+    "longitude": 126.628,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "buyeo",
+    "name": "부여",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.276,
+    "longitude": 126.91,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "seocheon",
+    "name": "서천",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.08,
+    "longitude": 126.692,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hongseong",
+    "name": "홍성",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.601,
+    "longitude": 126.661,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yesan",
+    "name": "예산",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.683,
+    "longitude": 126.845,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "taean",
+    "name": "태안",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.746,
+    "longitude": 126.298,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "geumsan",
+    "name": "금산",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.109,
+    "longitude": 127.488,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "cheongyang",
+    "name": "청양",
+    "region": "충남",
+    "world": "kr",
+    "latitude": 36.459,
+    "longitude": 126.802,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jeonju",
+    "name": "전주",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.824,
+    "longitude": 127.148,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gunsan",
+    "name": "군산",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.968,
+    "longitude": 126.737,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "iksan",
+    "name": "익산",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.948,
+    "longitude": 126.958,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jeongeup",
+    "name": "정읍",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.57,
+    "longitude": 126.856,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "namwon",
+    "name": "남원",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.416,
+    "longitude": 127.39,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gimje",
+    "name": "김제",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.804,
+    "longitude": 126.881,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "wanju",
+    "name": "완주",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.905,
+    "longitude": 127.162,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jinan",
+    "name": "진안",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.792,
+    "longitude": 127.425,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "muju",
+    "name": "무주",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 36.007,
+    "longitude": 127.661,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jangsu",
+    "name": "장수",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.647,
+    "longitude": 127.521,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "imsil",
+    "name": "임실",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.618,
+    "longitude": 127.289,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sunchang",
+    "name": "순창",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.374,
+    "longitude": 127.137,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gochang",
+    "name": "고창",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.436,
+    "longitude": 126.702,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "buan",
+    "name": "부안",
+    "region": "전북",
+    "world": "kr",
+    "latitude": 35.732,
+    "longitude": 126.733,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "mokpo",
+    "name": "목포",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.812,
+    "longitude": 126.392,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeosu",
+    "name": "여수",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.76,
+    "longitude": 127.662,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "suncheon",
+    "name": "순천",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.951,
+    "longitude": 127.487,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "naju",
+    "name": "나주",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.016,
+    "longitude": 126.711,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gwangyang",
+    "name": "광양",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.94,
+    "longitude": 127.696,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "damyang",
+    "name": "담양",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.321,
+    "longitude": 126.988,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gokseong",
+    "name": "곡성",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.282,
+    "longitude": 127.292,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gurye",
+    "name": "구례",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.202,
+    "longitude": 127.463,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "goheung",
+    "name": "고흥",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.611,
+    "longitude": 127.285,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "boseong",
+    "name": "보성",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.771,
+    "longitude": 127.08,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hwasun",
+    "name": "화순",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.064,
+    "longitude": 126.987,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jangheung",
+    "name": "장흥",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.682,
+    "longitude": 126.907,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gangjin",
+    "name": "강진",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.642,
+    "longitude": 126.767,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "haenam",
+    "name": "해남",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.573,
+    "longitude": 126.599,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongam",
+    "name": "영암",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.8,
+    "longitude": 126.697,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "muan",
+    "name": "무안",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.99,
+    "longitude": 126.482,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hampyeong",
+    "name": "함평",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.066,
+    "longitude": 126.517,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeonggwang",
+    "name": "영광",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.277,
+    "longitude": 126.512,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jangseong",
+    "name": "장성",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 35.302,
+    "longitude": 126.785,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "wando",
+    "name": "완도",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.311,
+    "longitude": 126.755,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jindo",
+    "name": "진도",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.487,
+    "longitude": 126.263,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sinan",
+    "name": "신안",
+    "region": "전남",
+    "world": "kr",
+    "latitude": 34.833,
+    "longitude": 126.351,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "pohang",
+    "name": "포항",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.019,
+    "longitude": 129.343,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gyeongju",
+    "name": "경주",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.856,
+    "longitude": 129.225,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gimcheon",
+    "name": "김천",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.14,
+    "longitude": 128.114,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "andong",
+    "name": "안동",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.568,
+    "longitude": 128.73,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gumi",
+    "name": "구미",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.12,
+    "longitude": 128.344,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongju",
+    "name": "영주",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.806,
+    "longitude": 128.624,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongcheon",
+    "name": "영천",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.973,
+    "longitude": 128.939,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sangju",
+    "name": "상주",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.411,
+    "longitude": 128.159,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "mungyeong",
+    "name": "문경",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.587,
+    "longitude": 128.187,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gyeongsan",
+    "name": "경산",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.825,
+    "longitude": 128.741,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "uiseong",
+    "name": "의성",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.353,
+    "longitude": 128.697,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "cheongsong",
+    "name": "청송",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.436,
+    "longitude": 129.057,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongyang",
+    "name": "영양",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.667,
+    "longitude": 129.112,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yeongdeok",
+    "name": "영덕",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.415,
+    "longitude": 129.366,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "cheongdo",
+    "name": "청도",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.647,
+    "longitude": 128.734,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "goryeong",
+    "name": "고령",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.726,
+    "longitude": 128.263,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "seongju",
+    "name": "성주",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.919,
+    "longitude": 128.283,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "chilgok",
+    "name": "칠곡",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 35.995,
+    "longitude": 128.402,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yecheon",
+    "name": "예천",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.658,
+    "longitude": 128.453,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "bonghwa",
+    "name": "봉화",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.893,
+    "longitude": 128.732,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "uljin",
+    "name": "울진",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 36.993,
+    "longitude": 129.4,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ulleung",
+    "name": "울릉",
+    "region": "경북",
+    "world": "kr",
+    "latitude": 37.484,
+    "longitude": 130.906,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "changwon",
+    "name": "창원",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.228,
+    "longitude": 128.682,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jinju",
+    "name": "진주",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.18,
+    "longitude": 128.108,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "tongyeong",
+    "name": "통영",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 34.854,
+    "longitude": 128.433,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sacheon",
+    "name": "사천",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.004,
+    "longitude": 128.064,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "gimhae",
+    "name": "김해",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.229,
+    "longitude": 128.889,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "miryang",
+    "name": "밀양",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.504,
+    "longitude": 128.746,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "geoje",
+    "name": "거제",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 34.881,
+    "longitude": 128.621,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "yangsan",
+    "name": "양산",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.335,
+    "longitude": 129.037,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "uiryeong",
+    "name": "의령",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.322,
+    "longitude": 128.262,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "haman",
+    "name": "함안",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.272,
+    "longitude": 128.406,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "changnyeong",
+    "name": "창녕",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.544,
+    "longitude": 128.492,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "goseonggn",
+    "name": "고성(경남)",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 34.973,
+    "longitude": 128.322,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "namhae",
+    "name": "남해",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 34.838,
+    "longitude": 127.893,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hadong",
+    "name": "하동",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.067,
+    "longitude": 127.751,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "sancheong",
+    "name": "산청",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.416,
+    "longitude": 127.873,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hamyang",
+    "name": "함양",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.52,
+    "longitude": 127.725,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "geochang",
+    "name": "거창",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.687,
+    "longitude": 127.91,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "hapcheon",
+    "name": "합천",
+    "region": "경남",
+    "world": "kr",
+    "latitude": 35.567,
+    "longitude": 128.166,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "jeju",
+    "name": "제주",
+    "region": "제주",
+    "world": "kr",
+    "latitude": 33.499,
+    "longitude": 126.531,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "seogwipo",
+    "name": "서귀포",
+    "region": "제주",
+    "world": "kr",
+    "latitude": 33.254,
+    "longitude": 126.56,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KR",
+    "name": "대한민국",
+    "region": "서울",
+    "world": "world",
+    "latitude": 37.57,
+    "longitude": 126.98,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "JP",
+    "name": "일본",
+    "region": "도쿄",
+    "world": "world",
+    "latitude": 35.68,
+    "longitude": 139.69,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CN",
+    "name": "중국",
+    "region": "베이징",
+    "world": "world",
+    "latitude": 39.9,
+    "longitude": 116.4,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TW",
+    "name": "대만",
+    "region": "타이베이",
+    "world": "world",
+    "latitude": 25.03,
+    "longitude": 121.56,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MN",
+    "name": "몽골",
+    "region": "울란바토르",
+    "world": "world",
+    "latitude": 47.89,
+    "longitude": 106.91,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "VN",
+    "name": "베트남",
+    "region": "하노이",
+    "world": "world",
+    "latitude": 21.03,
+    "longitude": 105.85,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TH",
+    "name": "태국",
+    "region": "방콕",
+    "world": "world",
+    "latitude": 13.76,
+    "longitude": 100.5,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PH",
+    "name": "필리핀",
+    "region": "마닐라",
+    "world": "world",
+    "latitude": 14.6,
+    "longitude": 120.98,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MY",
+    "name": "말레이시아",
+    "region": "쿠알라룸푸르",
+    "world": "world",
+    "latitude": 3.14,
+    "longitude": 101.69,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SG",
+    "name": "싱가포르",
+    "region": "싱가포르",
+    "world": "world",
+    "latitude": 1.35,
+    "longitude": 103.82,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ID",
+    "name": "인도네시아",
+    "region": "자카르타",
+    "world": "world",
+    "latitude": -6.21,
+    "longitude": 106.85,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KH",
+    "name": "캄보디아",
+    "region": "프놈펜",
+    "world": "world",
+    "latitude": 11.56,
+    "longitude": 104.92,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LA",
+    "name": "라오스",
+    "region": "비엔티안",
+    "world": "world",
+    "latitude": 17.97,
+    "longitude": 102.63,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IN",
+    "name": "인도",
+    "region": "뉴델리",
+    "world": "world",
+    "latitude": 28.61,
+    "longitude": 77.21,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NP",
+    "name": "네팔",
+    "region": "카트만두",
+    "world": "world",
+    "latitude": 27.72,
+    "longitude": 85.32,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LK",
+    "name": "스리랑카",
+    "region": "콜롬보",
+    "world": "world",
+    "latitude": 6.93,
+    "longitude": 79.86,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "UZ",
+    "name": "우즈베키스탄",
+    "region": "타슈켄트",
+    "world": "world",
+    "latitude": 41.3,
+    "longitude": 69.24,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KZ",
+    "name": "카자흐스탄",
+    "region": "아스타나",
+    "world": "world",
+    "latitude": 51.17,
+    "longitude": 71.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AE",
+    "name": "아랍에미리트",
+    "region": "아부다비",
+    "world": "world",
+    "latitude": 24.45,
+    "longitude": 54.38,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "QA",
+    "name": "카타르",
+    "region": "도하",
+    "world": "world",
+    "latitude": 25.29,
+    "longitude": 51.53,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SA",
+    "name": "사우디아라비아",
+    "region": "리야드",
+    "world": "world",
+    "latitude": 24.71,
+    "longitude": 46.68,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "JO",
+    "name": "요르단",
+    "region": "암만",
+    "world": "world",
+    "latitude": 31.95,
+    "longitude": 35.93,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TR",
+    "name": "튀르키예",
+    "region": "앙카라",
+    "world": "world",
+    "latitude": 39.93,
+    "longitude": 32.86,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GB",
+    "name": "영국",
+    "region": "런던",
+    "world": "world",
+    "latitude": 51.51,
+    "longitude": -0.13,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "FR",
+    "name": "프랑스",
+    "region": "파리",
+    "world": "world",
+    "latitude": 48.86,
+    "longitude": 2.35,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "DE",
+    "name": "독일",
+    "region": "베를린",
+    "world": "world",
+    "latitude": 52.52,
+    "longitude": 13.4,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IT",
+    "name": "이탈리아",
+    "region": "로마",
+    "world": "world",
+    "latitude": 41.9,
+    "longitude": 12.5,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ES",
+    "name": "스페인",
+    "region": "마드리드",
+    "world": "world",
+    "latitude": 40.42,
+    "longitude": -3.7,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PT",
+    "name": "포르투갈",
+    "region": "리스본",
+    "world": "world",
+    "latitude": 38.72,
+    "longitude": -9.14,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NL",
+    "name": "네덜란드",
+    "region": "암스테르담",
+    "world": "world",
+    "latitude": 52.37,
+    "longitude": 4.9,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BE",
+    "name": "벨기에",
+    "region": "브뤼셀",
+    "world": "world",
+    "latitude": 50.85,
+    "longitude": 4.35,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CH",
+    "name": "스위스",
+    "region": "베른",
+    "world": "world",
+    "latitude": 46.95,
+    "longitude": 7.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AT",
+    "name": "오스트리아",
+    "region": "빈",
+    "world": "world",
+    "latitude": 48.21,
+    "longitude": 16.37,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CZ",
+    "name": "체코",
+    "region": "프라하",
+    "world": "world",
+    "latitude": 50.08,
+    "longitude": 14.44,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PL",
+    "name": "폴란드",
+    "region": "바르샤바",
+    "world": "world",
+    "latitude": 52.23,
+    "longitude": 21.01,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "HU",
+    "name": "헝가리",
+    "region": "부다페스트",
+    "world": "world",
+    "latitude": 47.5,
+    "longitude": 19.04,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "HR",
+    "name": "크로아티아",
+    "region": "자그레브",
+    "world": "world",
+    "latitude": 45.81,
+    "longitude": 15.98,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GR",
+    "name": "그리스",
+    "region": "아테네",
+    "world": "world",
+    "latitude": 37.98,
+    "longitude": 23.73,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IE",
+    "name": "아일랜드",
+    "region": "더블린",
+    "world": "world",
+    "latitude": 53.35,
+    "longitude": -6.26,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "DK",
+    "name": "덴마크",
+    "region": "코펜하겐",
+    "world": "world",
+    "latitude": 55.68,
+    "longitude": 12.57,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NO",
+    "name": "노르웨이",
+    "region": "오슬로",
+    "world": "world",
+    "latitude": 59.91,
+    "longitude": 10.75,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SE",
+    "name": "스웨덴",
+    "region": "스톡홀름",
+    "world": "world",
+    "latitude": 59.33,
+    "longitude": 18.07,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "FI",
+    "name": "핀란드",
+    "region": "헬싱키",
+    "world": "world",
+    "latitude": 60.17,
+    "longitude": 24.94,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IS",
+    "name": "아이슬란드",
+    "region": "레이캬비크",
+    "world": "world",
+    "latitude": 64.15,
+    "longitude": -21.94,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "RU",
+    "name": "러시아",
+    "region": "모스크바",
+    "world": "world",
+    "latitude": 55.76,
+    "longitude": 37.62,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "EG",
+    "name": "이집트",
+    "region": "카이로",
+    "world": "world",
+    "latitude": 30.04,
+    "longitude": 31.24,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MA",
+    "name": "모로코",
+    "region": "라바트",
+    "world": "world",
+    "latitude": 34.02,
+    "longitude": -6.84,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KE",
+    "name": "케냐",
+    "region": "나이로비",
+    "world": "world",
+    "latitude": -1.29,
+    "longitude": 36.82,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TZ",
+    "name": "탄자니아",
+    "region": "도도마",
+    "world": "world",
+    "latitude": -6.16,
+    "longitude": 35.75,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ET",
+    "name": "에티오피아",
+    "region": "아디스아바바",
+    "world": "world",
+    "latitude": 9.03,
+    "longitude": 38.74,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NG",
+    "name": "나이지리아",
+    "region": "아부자",
+    "world": "world",
+    "latitude": 9.08,
+    "longitude": 7.4,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GH",
+    "name": "가나",
+    "region": "아크라",
+    "world": "world",
+    "latitude": 5.6,
+    "longitude": -0.19,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SN",
+    "name": "세네갈",
+    "region": "다카르",
+    "world": "world",
+    "latitude": 14.72,
+    "longitude": -17.47,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ZA",
+    "name": "남아프리카공화국",
+    "region": "프리토리아",
+    "world": "world",
+    "latitude": -25.75,
+    "longitude": 28.19,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MG",
+    "name": "마다가스카르",
+    "region": "안타나나리보",
+    "world": "world",
+    "latitude": -18.88,
+    "longitude": 47.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "US",
+    "name": "미국",
+    "region": "워싱턴 D.C.",
+    "world": "world",
+    "latitude": 38.91,
+    "longitude": -77.04,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CA",
+    "name": "캐나다",
+    "region": "오타와",
+    "world": "world",
+    "latitude": 45.42,
+    "longitude": -75.7,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MX",
+    "name": "멕시코",
+    "region": "멕시코시티",
+    "world": "world",
+    "latitude": 19.43,
+    "longitude": -99.13,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CU",
+    "name": "쿠바",
+    "region": "아바나",
+    "world": "world",
+    "latitude": 23.11,
+    "longitude": -82.37,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BR",
+    "name": "브라질",
+    "region": "브라질리아",
+    "world": "world",
+    "latitude": -15.79,
+    "longitude": -47.88,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AR",
+    "name": "아르헨티나",
+    "region": "부에노스아이레스",
+    "world": "world",
+    "latitude": -34.6,
+    "longitude": -58.38,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CL",
+    "name": "칠레",
+    "region": "산티아고",
+    "world": "world",
+    "latitude": -33.45,
+    "longitude": -70.67,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PE",
+    "name": "페루",
+    "region": "리마",
+    "world": "world",
+    "latitude": -12.05,
+    "longitude": -77.04,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CO",
+    "name": "콜롬비아",
+    "region": "보고타",
+    "world": "world",
+    "latitude": 4.71,
+    "longitude": -74.07,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AU",
+    "name": "호주",
+    "region": "캔버라",
+    "world": "world",
+    "latitude": -35.28,
+    "longitude": 149.13,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NZ",
+    "name": "뉴질랜드",
+    "region": "웰링턴",
+    "world": "world",
+    "latitude": -41.29,
+    "longitude": 174.78,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "FJ",
+    "name": "피지",
+    "region": "수바",
+    "world": "world",
+    "latitude": -18.14,
+    "longitude": 178.44,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MM",
+    "name": "미얀마",
+    "region": "네피도",
+    "world": "world",
+    "latitude": 19.76,
+    "longitude": 96.08,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BD",
+    "name": "방글라데시",
+    "region": "다카",
+    "world": "world",
+    "latitude": 23.81,
+    "longitude": 90.41,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BT",
+    "name": "부탄",
+    "region": "팀부",
+    "world": "world",
+    "latitude": 27.47,
+    "longitude": 89.64,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MV",
+    "name": "몰디브",
+    "region": "말레",
+    "world": "world",
+    "latitude": 4.18,
+    "longitude": 73.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PK",
+    "name": "파키스탄",
+    "region": "이슬라마바드",
+    "world": "world",
+    "latitude": 33.68,
+    "longitude": 73.05,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AF",
+    "name": "아프가니스탄",
+    "region": "카불",
+    "world": "world",
+    "latitude": 34.56,
+    "longitude": 69.21,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TJ",
+    "name": "타지키스탄",
+    "region": "두샨베",
+    "world": "world",
+    "latitude": 38.56,
+    "longitude": 68.79,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KG",
+    "name": "키르기스스탄",
+    "region": "비슈케크",
+    "world": "world",
+    "latitude": 42.87,
+    "longitude": 74.59,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TM",
+    "name": "투르크메니스탄",
+    "region": "아시가바트",
+    "world": "world",
+    "latitude": 37.96,
+    "longitude": 58.33,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BN",
+    "name": "브루나이",
+    "region": "반다르스리브가완",
+    "world": "world",
+    "latitude": 4.9,
+    "longitude": 114.94,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TL",
+    "name": "동티모르",
+    "region": "딜리",
+    "world": "world",
+    "latitude": -8.56,
+    "longitude": 125.57,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GE",
+    "name": "조지아",
+    "region": "트빌리시",
+    "world": "world",
+    "latitude": 41.72,
+    "longitude": 44.79,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AM",
+    "name": "아르메니아",
+    "region": "예레반",
+    "world": "world",
+    "latitude": 40.18,
+    "longitude": 44.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AZ",
+    "name": "아제르바이잔",
+    "region": "바쿠",
+    "world": "world",
+    "latitude": 40.41,
+    "longitude": 49.87,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IL",
+    "name": "이스라엘",
+    "region": "텔아비브",
+    "world": "world",
+    "latitude": 32.09,
+    "longitude": 34.78,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PS",
+    "name": "팔레스타인",
+    "region": "라말라",
+    "world": "world",
+    "latitude": 31.9,
+    "longitude": 35.2,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IQ",
+    "name": "이라크",
+    "region": "바그다드",
+    "world": "world",
+    "latitude": 33.31,
+    "longitude": 44.36,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "IR",
+    "name": "이란",
+    "region": "테헤란",
+    "world": "world",
+    "latitude": 35.69,
+    "longitude": 51.39,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KW",
+    "name": "쿠웨이트",
+    "region": "쿠웨이트시티",
+    "world": "world",
+    "latitude": 29.37,
+    "longitude": 47.98,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BH",
+    "name": "바레인",
+    "region": "마나마",
+    "world": "world",
+    "latitude": 26.23,
+    "longitude": 50.59,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "OM",
+    "name": "오만",
+    "region": "무스카트",
+    "world": "world",
+    "latitude": 23.59,
+    "longitude": 58.41,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "YE",
+    "name": "예멘",
+    "region": "사나",
+    "world": "world",
+    "latitude": 15.37,
+    "longitude": 44.19,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SY",
+    "name": "시리아",
+    "region": "다마스쿠스",
+    "world": "world",
+    "latitude": 33.51,
+    "longitude": 36.28,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LB",
+    "name": "레바논",
+    "region": "베이루트",
+    "world": "world",
+    "latitude": 33.89,
+    "longitude": 35.5,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LU",
+    "name": "룩셈부르크",
+    "region": "룩셈부르크",
+    "world": "world",
+    "latitude": 49.61,
+    "longitude": 6.13,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MC",
+    "name": "모나코",
+    "region": "모나코",
+    "world": "world",
+    "latitude": 43.74,
+    "longitude": 7.42,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LI",
+    "name": "리히텐슈타인",
+    "region": "파두츠",
+    "world": "world",
+    "latitude": 47.14,
+    "longitude": 9.52,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AD",
+    "name": "안도라",
+    "region": "안도라라베야",
+    "world": "world",
+    "latitude": 42.51,
+    "longitude": 1.52,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SM",
+    "name": "산마리노",
+    "region": "산마리노",
+    "world": "world",
+    "latitude": 43.94,
+    "longitude": 12.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "VA",
+    "name": "바티칸",
+    "region": "바티칸",
+    "world": "world",
+    "latitude": 41.9,
+    "longitude": 12.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MT",
+    "name": "몰타",
+    "region": "발레타",
+    "world": "world",
+    "latitude": 35.9,
+    "longitude": 14.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CY",
+    "name": "키프로스",
+    "region": "니코시아",
+    "world": "world",
+    "latitude": 35.19,
+    "longitude": 33.38,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SI",
+    "name": "슬로베니아",
+    "region": "류블랴나",
+    "world": "world",
+    "latitude": 46.06,
+    "longitude": 14.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SK",
+    "name": "슬로바키아",
+    "region": "브라티슬라바",
+    "world": "world",
+    "latitude": 48.15,
+    "longitude": 17.11,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "RO",
+    "name": "루마니아",
+    "region": "부쿠레슈티",
+    "world": "world",
+    "latitude": 44.43,
+    "longitude": 26.1,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BG",
+    "name": "불가리아",
+    "region": "소피아",
+    "world": "world",
+    "latitude": 42.7,
+    "longitude": 23.32,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "RS",
+    "name": "세르비아",
+    "region": "베오그라드",
+    "world": "world",
+    "latitude": 44.79,
+    "longitude": 20.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BA",
+    "name": "보스니아 헤르체고비나",
+    "region": "사라예보",
+    "world": "world",
+    "latitude": 43.86,
+    "longitude": 18.41,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ME",
+    "name": "몬테네그로",
+    "region": "포드고리차",
+    "world": "world",
+    "latitude": 42.44,
+    "longitude": 19.26,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MK",
+    "name": "북마케도니아",
+    "region": "스코페",
+    "world": "world",
+    "latitude": 41.99,
+    "longitude": 21.43,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AL",
+    "name": "알바니아",
+    "region": "티라나",
+    "world": "world",
+    "latitude": 41.33,
+    "longitude": 19.82,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MD",
+    "name": "몰도바",
+    "region": "키시너우",
+    "world": "world",
+    "latitude": 47.01,
+    "longitude": 28.86,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "UA",
+    "name": "우크라이나",
+    "region": "키이우",
+    "world": "world",
+    "latitude": 50.45,
+    "longitude": 30.52,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BY",
+    "name": "벨라루스",
+    "region": "민스크",
+    "world": "world",
+    "latitude": 53.9,
+    "longitude": 27.56,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LT",
+    "name": "리투아니아",
+    "region": "빌뉴스",
+    "world": "world",
+    "latitude": 54.69,
+    "longitude": 25.28,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LV",
+    "name": "라트비아",
+    "region": "리가",
+    "world": "world",
+    "latitude": 56.95,
+    "longitude": 24.11,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "EE",
+    "name": "에스토니아",
+    "region": "탈린",
+    "world": "world",
+    "latitude": 59.44,
+    "longitude": 24.75,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "DZ",
+    "name": "알제리",
+    "region": "알제",
+    "world": "world",
+    "latitude": 36.75,
+    "longitude": 3.06,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TN",
+    "name": "튀니지",
+    "region": "튀니스",
+    "world": "world",
+    "latitude": 36.81,
+    "longitude": 10.18,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LY",
+    "name": "리비아",
+    "region": "트리폴리",
+    "world": "world",
+    "latitude": 32.89,
+    "longitude": 13.19,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SD",
+    "name": "수단",
+    "region": "하르툼",
+    "world": "world",
+    "latitude": 15.5,
+    "longitude": 32.56,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SS",
+    "name": "남수단",
+    "region": "주바",
+    "world": "world",
+    "latitude": 4.85,
+    "longitude": 31.58,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ER",
+    "name": "에리트레아",
+    "region": "아스마라",
+    "world": "world",
+    "latitude": 15.32,
+    "longitude": 38.93,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "DJ",
+    "name": "지부티",
+    "region": "지부티",
+    "world": "world",
+    "latitude": 11.59,
+    "longitude": 43.15,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SO",
+    "name": "소말리아",
+    "region": "모가디슈",
+    "world": "world",
+    "latitude": 2.05,
+    "longitude": 45.32,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "UG",
+    "name": "우간다",
+    "region": "캄팔라",
+    "world": "world",
+    "latitude": 0.35,
+    "longitude": 32.58,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "RW",
+    "name": "르완다",
+    "region": "키갈리",
+    "world": "world",
+    "latitude": -1.94,
+    "longitude": 30.06,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BI",
+    "name": "부룬디",
+    "region": "기테가",
+    "world": "world",
+    "latitude": -3.43,
+    "longitude": 29.93,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CD",
+    "name": "콩고민주공화국",
+    "region": "킨샤사",
+    "world": "world",
+    "latitude": -4.44,
+    "longitude": 15.27,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CG",
+    "name": "콩고",
+    "region": "브라자빌",
+    "world": "world",
+    "latitude": -4.27,
+    "longitude": 15.28,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GA",
+    "name": "가봉",
+    "region": "리브르빌",
+    "world": "world",
+    "latitude": 0.42,
+    "longitude": 9.47,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GQ",
+    "name": "적도기니",
+    "region": "말라보",
+    "world": "world",
+    "latitude": 3.75,
+    "longitude": 8.78,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CM",
+    "name": "카메룬",
+    "region": "야운데",
+    "world": "world",
+    "latitude": 3.85,
+    "longitude": 11.5,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CF",
+    "name": "중앙아프리카공화국",
+    "region": "방기",
+    "world": "world",
+    "latitude": 4.39,
+    "longitude": 18.56,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TD",
+    "name": "차드",
+    "region": "은자메나",
+    "world": "world",
+    "latitude": 12.13,
+    "longitude": 15.06,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NE",
+    "name": "니제르",
+    "region": "니아메",
+    "world": "world",
+    "latitude": 13.51,
+    "longitude": 2.11,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ML",
+    "name": "말리",
+    "region": "바마코",
+    "world": "world",
+    "latitude": 12.64,
+    "longitude": -8,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BF",
+    "name": "부르키나파소",
+    "region": "와가두구",
+    "world": "world",
+    "latitude": 12.37,
+    "longitude": -1.52,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MR",
+    "name": "모리타니",
+    "region": "누악쇼트",
+    "world": "world",
+    "latitude": 18.08,
+    "longitude": -15.98,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GM",
+    "name": "감비아",
+    "region": "반줄",
+    "world": "world",
+    "latitude": 13.45,
+    "longitude": -16.58,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GW",
+    "name": "기니비사우",
+    "region": "비사우",
+    "world": "world",
+    "latitude": 11.86,
+    "longitude": -15.6,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GN",
+    "name": "기니",
+    "region": "코나크리",
+    "world": "world",
+    "latitude": 9.64,
+    "longitude": -13.58,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SL",
+    "name": "시에라리온",
+    "region": "프리타운",
+    "world": "world",
+    "latitude": 8.48,
+    "longitude": -13.23,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LR",
+    "name": "라이베리아",
+    "region": "몬로비아",
+    "world": "world",
+    "latitude": 6.3,
+    "longitude": -10.8,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CI",
+    "name": "코트디부아르",
+    "region": "야무수크로",
+    "world": "world",
+    "latitude": 6.83,
+    "longitude": -5.29,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TG",
+    "name": "토고",
+    "region": "로메",
+    "world": "world",
+    "latitude": 6.13,
+    "longitude": 1.22,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BJ",
+    "name": "베냉",
+    "region": "포르토노보",
+    "world": "world",
+    "latitude": 6.5,
+    "longitude": 2.6,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CV",
+    "name": "카보베르데",
+    "region": "프라이아",
+    "world": "world",
+    "latitude": 14.93,
+    "longitude": -23.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ST",
+    "name": "상투메 프린시페",
+    "region": "상투메",
+    "world": "world",
+    "latitude": 0.34,
+    "longitude": 6.73,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AO",
+    "name": "앙골라",
+    "region": "루안다",
+    "world": "world",
+    "latitude": -8.84,
+    "longitude": 13.23,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ZM",
+    "name": "잠비아",
+    "region": "루사카",
+    "world": "world",
+    "latitude": -15.39,
+    "longitude": 28.32,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "ZW",
+    "name": "짐바브웨",
+    "region": "하라레",
+    "world": "world",
+    "latitude": -17.83,
+    "longitude": 31.05,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MW",
+    "name": "말라위",
+    "region": "릴롱궤",
+    "world": "world",
+    "latitude": -13.96,
+    "longitude": 33.79,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MZ",
+    "name": "모잠비크",
+    "region": "마푸투",
+    "world": "world",
+    "latitude": -25.97,
+    "longitude": 32.57,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BW",
+    "name": "보츠와나",
+    "region": "가보로네",
+    "world": "world",
+    "latitude": -24.63,
+    "longitude": 25.92,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NA",
+    "name": "나미비아",
+    "region": "빈트후크",
+    "world": "world",
+    "latitude": -22.56,
+    "longitude": 17.08,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SZ",
+    "name": "에스와티니",
+    "region": "음바바네",
+    "world": "world",
+    "latitude": -26.31,
+    "longitude": 31.14,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LS",
+    "name": "레소토",
+    "region": "마세루",
+    "world": "world",
+    "latitude": -29.31,
+    "longitude": 27.48,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MU",
+    "name": "모리셔스",
+    "region": "포트루이스",
+    "world": "world",
+    "latitude": -20.16,
+    "longitude": 57.5,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SC",
+    "name": "세이셸",
+    "region": "빅토리아",
+    "world": "world",
+    "latitude": -4.62,
+    "longitude": 55.45,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KM",
+    "name": "코모로",
+    "region": "모로니",
+    "world": "world",
+    "latitude": -11.7,
+    "longitude": 43.26,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GT",
+    "name": "과테말라",
+    "region": "과테말라시티",
+    "world": "world",
+    "latitude": 14.63,
+    "longitude": -90.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BZ",
+    "name": "벨리즈",
+    "region": "벨모판",
+    "world": "world",
+    "latitude": 17.25,
+    "longitude": -88.77,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "HN",
+    "name": "온두라스",
+    "region": "테구시갈파",
+    "world": "world",
+    "latitude": 14.07,
+    "longitude": -87.19,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SV",
+    "name": "엘살바도르",
+    "region": "산살바도르",
+    "world": "world",
+    "latitude": 13.69,
+    "longitude": -89.22,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NI",
+    "name": "니카라과",
+    "region": "마나과",
+    "world": "world",
+    "latitude": 12.11,
+    "longitude": -86.24,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "CR",
+    "name": "코스타리카",
+    "region": "산호세",
+    "world": "world",
+    "latitude": 9.93,
+    "longitude": -84.09,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PA",
+    "name": "파나마",
+    "region": "파나마시티",
+    "world": "world",
+    "latitude": 8.98,
+    "longitude": -79.52,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "JM",
+    "name": "자메이카",
+    "region": "킹스턴",
+    "world": "world",
+    "latitude": 17.97,
+    "longitude": -76.79,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "HT",
+    "name": "아이티",
+    "region": "포르토프랭스",
+    "world": "world",
+    "latitude": 18.59,
+    "longitude": -72.31,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "DO",
+    "name": "도미니카공화국",
+    "region": "산토도밍고",
+    "world": "world",
+    "latitude": 18.49,
+    "longitude": -69.93,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BS",
+    "name": "바하마",
+    "region": "나소",
+    "world": "world",
+    "latitude": 25.05,
+    "longitude": -77.36,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BB",
+    "name": "바베이도스",
+    "region": "브리지타운",
+    "world": "world",
+    "latitude": 13.1,
+    "longitude": -59.61,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TT",
+    "name": "트리니다드 토바고",
+    "region": "포트오브스페인",
+    "world": "world",
+    "latitude": 10.66,
+    "longitude": -61.51,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "DM",
+    "name": "도미니카",
+    "region": "로조",
+    "world": "world",
+    "latitude": 15.3,
+    "longitude": -61.39,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "LC",
+    "name": "세인트루시아",
+    "region": "캐스트리스",
+    "world": "world",
+    "latitude": 14.01,
+    "longitude": -60.99,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "VC",
+    "name": "세인트빈센트 그레나딘",
+    "region": "킹스타운",
+    "world": "world",
+    "latitude": 13.16,
+    "longitude": -61.23,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GD",
+    "name": "그레나다",
+    "region": "세인트조지스",
+    "world": "world",
+    "latitude": 12.06,
+    "longitude": -61.75,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "AG",
+    "name": "앤티가 바부다",
+    "region": "세인트존스",
+    "world": "world",
+    "latitude": 17.12,
+    "longitude": -61.85,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KN",
+    "name": "세인트키츠 네비스",
+    "region": "바스테르",
+    "world": "world",
+    "latitude": 17.3,
+    "longitude": -62.72,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "VE",
+    "name": "베네수엘라",
+    "region": "카라카스",
+    "world": "world",
+    "latitude": 10.48,
+    "longitude": -66.9,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "EC",
+    "name": "에콰도르",
+    "region": "키토",
+    "world": "world",
+    "latitude": -0.18,
+    "longitude": -78.47,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "BO",
+    "name": "볼리비아",
+    "region": "라파스",
+    "world": "world",
+    "latitude": -16.5,
+    "longitude": -68.15,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PY",
+    "name": "파라과이",
+    "region": "아순시온",
+    "world": "world",
+    "latitude": -25.26,
+    "longitude": -57.58,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "UY",
+    "name": "우루과이",
+    "region": "몬테비데오",
+    "world": "world",
+    "latitude": -34.9,
+    "longitude": -56.16,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "GY",
+    "name": "가이아나",
+    "region": "조지타운",
+    "world": "world",
+    "latitude": 6.8,
+    "longitude": -58.16,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SR",
+    "name": "수리남",
+    "region": "파라마리보",
+    "world": "world",
+    "latitude": 5.85,
+    "longitude": -55.2,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PG",
+    "name": "파푸아뉴기니",
+    "region": "포트모르즈비",
+    "world": "world",
+    "latitude": -9.44,
+    "longitude": 147.18,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "SB",
+    "name": "솔로몬 제도",
+    "region": "호니아라",
+    "world": "world",
+    "latitude": -9.43,
+    "longitude": 159.95,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "VU",
+    "name": "바누아투",
+    "region": "포트빌라",
+    "world": "world",
+    "latitude": -17.73,
+    "longitude": 168.32,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "WS",
+    "name": "사모아",
+    "region": "아피아",
+    "world": "world",
+    "latitude": -13.83,
+    "longitude": -171.76,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TO",
+    "name": "통가",
+    "region": "누쿠알로파",
+    "world": "world",
+    "latitude": -21.14,
+    "longitude": -175.2,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "KI",
+    "name": "키리바시",
+    "region": "타라와",
+    "world": "world",
+    "latitude": 1.33,
+    "longitude": 172.98,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "TV",
+    "name": "투발루",
+    "region": "푸나푸티",
+    "world": "world",
+    "latitude": -8.52,
+    "longitude": 179.2,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "NR",
+    "name": "나우루",
+    "region": "야렌",
+    "world": "world",
+    "latitude": -0.55,
+    "longitude": 166.92,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "MH",
+    "name": "마셜 제도",
+    "region": "마주로",
+    "world": "world",
+    "latitude": 7.09,
+    "longitude": 171.38,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "FM",
+    "name": "미크로네시아",
+    "region": "팔리키르",
+    "world": "world",
+    "latitude": 6.92,
+    "longitude": 158.16,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "PW",
+    "name": "팔라우",
+    "region": "응게룰무드",
+    "world": "world",
+    "latitude": 7.5,
+    "longitude": 134.62,
+    "cost": 0,
+    "zone": 0
+  },
+  {
+    "id": "iss",
+    "name": "국제우주정거장",
+    "region": "지구 상공 400km",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 50,
+    "zone": 0
+  },
+  {
+    "id": "moon",
+    "name": "달",
+    "region": "지구에서 38만km",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 60,
+    "zone": 0
+  },
+  {
+    "id": "venus",
+    "name": "금성",
+    "region": "두꺼운 구름에 덮인 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 80,
+    "zone": 0
+  },
+  {
+    "id": "mercury",
+    "name": "수성",
+    "region": "태양에 가장 가까운 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 100,
+    "zone": 0
+  },
+  {
+    "id": "sun",
+    "name": "태양",
+    "region": "코로나 근접 비행",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 120,
+    "zone": 0
+  },
+  {
+    "id": "mars",
+    "name": "화성",
+    "region": "붉은 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 100,
+    "zone": 0
+  },
+  {
+    "id": "phobos",
+    "name": "포보스",
+    "region": "화성의 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 80,
+    "zone": 0
+  },
+  {
+    "id": "jupiter",
+    "name": "목성",
+    "region": "태양계에서 가장 큰 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 120,
+    "zone": 0
+  },
+  {
+    "id": "io",
+    "name": "이오",
+    "region": "화산이 가장 활발한 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 100,
+    "zone": 0
+  },
+  {
+    "id": "europa",
+    "name": "유로파",
+    "region": "얼음 아래 바다가 있는 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 100,
+    "zone": 0
+  },
+  {
+    "id": "ganymede",
+    "name": "가니메데",
+    "region": "태양계에서 가장 큰 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 100,
+    "zone": 0
+  },
+  {
+    "id": "callisto",
+    "name": "칼리스토",
+    "region": "충돌구로 뒤덮인 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 100,
+    "zone": 0
+  },
+  {
+    "id": "saturn",
+    "name": "토성",
+    "region": "고리를 가진 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 130,
+    "zone": 0
+  },
+  {
+    "id": "titan",
+    "name": "타이탄",
+    "region": "짙은 대기를 가진 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 110,
+    "zone": 0
+  },
+  {
+    "id": "enceladus",
+    "name": "엔셀라두스",
+    "region": "얼음을 내뿜는 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 110,
+    "zone": 0
+  },
+  {
+    "id": "uranus",
+    "name": "천왕성",
+    "region": "옆으로 누워 도는 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 0
+  },
+  {
+    "id": "miranda",
+    "name": "미란다",
+    "region": "천왕성의 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 120,
+    "zone": 0
+  },
+  {
+    "id": "neptune",
+    "name": "해왕성",
+    "region": "가장 바깥의 행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 0
+  },
+  {
+    "id": "triton",
+    "name": "트리톤",
+    "region": "해왕성의 위성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 130,
+    "zone": 0
+  },
+  {
+    "id": "pluto",
+    "name": "명왕성",
+    "region": "하트 무늬의 왜행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 150,
+    "zone": 0
+  },
+  {
+    "id": "charon",
+    "name": "카론",
+    "region": "명왕성의 짝",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 0
+  },
+  {
+    "id": "eris",
+    "name": "에리스",
+    "region": "명왕성보다 무거운 왜행성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 160,
+    "zone": 0
+  },
+  {
+    "id": "halley",
+    "name": "핼리 혜성",
+    "region": "76년마다 돌아오는 혜성",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 120,
+    "zone": 0
+  },
+  {
+    "id": "oort",
+    "name": "오르트 구름",
+    "region": "혜성의 고향",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 0
+  },
+  {
+    "id": "beyond",
+    "name": "성간 공간",
+    "region": "보이저 1호가 간 곳",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 0
+  },
+  {
+    "id": "proxima",
+    "name": "프록시마 센타우리",
+    "region": "가장 가까운 별 · 4.2광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 130,
+    "zone": 1
+  },
+  {
+    "id": "alphacen",
+    "name": "알파 센타우리 A",
+    "region": "태양과 닮은 별 · 4.4광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 130,
+    "zone": 1
+  },
+  {
+    "id": "barnard",
+    "name": "바너드별",
+    "region": "붉은 왜성 · 6광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 1
+  },
+  {
+    "id": "sirius",
+    "name": "시리우스",
+    "region": "밤하늘에서 가장 밝은 별 · 8.6광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 1
+  },
+  {
+    "id": "procyon",
+    "name": "프로키온",
+    "region": "작은개자리 · 11광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 1
+  },
+  {
+    "id": "altair",
+    "name": "알타이르",
+    "region": "견우성 · 17광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 1
+  },
+  {
+    "id": "vega",
+    "name": "베가",
+    "region": "직녀성 · 25광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 140,
+    "zone": 1
+  },
+  {
+    "id": "fomalhaut",
+    "name": "포말하우트",
+    "region": "남쪽물고기자리 · 25광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 150,
+    "zone": 1
+  },
+  {
+    "id": "arcturus",
+    "name": "아크투루스",
+    "region": "주황색 거성 · 37광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 150,
+    "zone": 1
+  },
+  {
+    "id": "capella",
+    "name": "카펠라",
+    "region": "마차부자리 · 43광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 160,
+    "zone": 1
+  },
+  {
+    "id": "aldebaran",
+    "name": "알데바란",
+    "region": "황소의 눈 · 65광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 160,
+    "zone": 1
+  },
+  {
+    "id": "polaris",
+    "name": "북극성",
+    "region": "북쪽 하늘의 기준 · 433광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 170,
+    "zone": 1
+  },
+  {
+    "id": "antares",
+    "name": "안타레스",
+    "region": "전갈의 심장 · 550광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 1
+  },
+  {
+    "id": "betelgeuse",
+    "name": "베텔게우스",
+    "region": "적색 초거성 · 550광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 1
+  },
+  {
+    "id": "rigel",
+    "name": "리겔",
+    "region": "청색 초거성 · 860광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 1
+  },
+  {
+    "id": "pleiades",
+    "name": "플레이아데스 성단",
+    "region": "좀생이별 · 440광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 160,
+    "zone": 2
+  },
+  {
+    "id": "hyades",
+    "name": "히아데스 성단",
+    "region": "가장 가까운 산개성단 · 150광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 150,
+    "zone": 2
+  },
+  {
+    "id": "ring",
+    "name": "고리 성운",
+    "region": "죽어 가는 별의 고리 · 2,300광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 170,
+    "zone": 2
+  },
+  {
+    "id": "orion",
+    "name": "오리온 성운",
+    "region": "별이 태어나는 곳 · 1,300광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 2
+  },
+  {
+    "id": "horsehead",
+    "name": "말머리 성운",
+    "region": "말 머리 모양 암흑 성운",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 2
+  },
+  {
+    "id": "crab",
+    "name": "게 성운",
+    "region": "초신성의 잔해 · 6,500광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 2
+  },
+  {
+    "id": "eagle",
+    "name": "창조의 기둥",
+    "region": "독수리 성운 · 7,000광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 190,
+    "zone": 2
+  },
+  {
+    "id": "lagoon",
+    "name": "석호 성운",
+    "region": "궁수자리 · 4,100광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 2
+  },
+  {
+    "id": "cateye",
+    "name": "고양이 눈 성운",
+    "region": "복잡한 행성상 성운 · 3,300광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 180,
+    "zone": 2
+  },
+  {
+    "id": "omegacen",
+    "name": "오메가 센타우리",
+    "region": "가장 큰 구상성단 · 1만 7천 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 200,
+    "zone": 2
+  },
+  {
+    "id": "sgra",
+    "name": "우리은하 중심",
+    "region": "거대 블랙홀 · 2만 6천 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 200,
+    "zone": 3
+  },
+  {
+    "id": "lmc",
+    "name": "대마젤란 은하",
+    "region": "우리은하의 동반 은하 · 16만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 210,
+    "zone": 3
+  },
+  {
+    "id": "smc",
+    "name": "소마젤란 은하",
+    "region": "동반 은하 · 20만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 210,
+    "zone": 3
+  },
+  {
+    "id": "andromeda",
+    "name": "안드로메다 은하",
+    "region": "이웃 은하 · 250만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 240,
+    "zone": 3
+  },
+  {
+    "id": "triangulum",
+    "name": "삼각형자리 은하",
+    "region": "이웃 은하 · 270만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 220,
+    "zone": 3
+  },
+  {
+    "id": "sombrero",
+    "name": "솜브레로 은하",
+    "region": "모자 모양 은하 · 3천만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 240,
+    "zone": 3
+  },
+  {
+    "id": "whirlpool",
+    "name": "소용돌이 은하",
+    "region": "나선팔이 선명한 은하 · 3천만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 240,
+    "zone": 3
+  },
+  {
+    "id": "pinwheel",
+    "name": "바람개비 은하",
+    "region": "큰곰자리 · 2천만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 240,
+    "zone": 3
+  },
+  {
+    "id": "m87",
+    "name": "M87 블랙홀",
+    "region": "처음 사진에 찍힌 블랙홀 · 5,500만 광년",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 260,
+    "zone": 3
+  },
+  {
+    "id": "deepfield",
+    "name": "허블 울트라 딥 필드",
+    "region": "관측 가능한 우주의 끝",
+    "world": "space",
+    "latitude": 0,
+    "longitude": 0,
+    "cost": 320,
+    "zone": 3
+  }
+]

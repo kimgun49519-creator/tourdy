@@ -1,14 +1,21 @@
 const fs=require('node:fs');
 const path=require('node:path');
-const root=path.join(__dirname,'..'),ios=path.join(root,'ios'),web=path.join(ios,'Tourdy','Web');
-fs.mkdirSync(web,{recursive:true});
-let html=fs.readFileSync(path.join(root,'index.html'),'utf8');
-// All app resources ship in the installation. No service worker or remote font dependency.
-html=html.replace(/<link[^>]+(?:fonts\.googleapis\.com|fonts\.gstatic\.com)[^>]*>/g,'').replace('<script src="js/pwa.js"></script>','');
-fs.writeFileSync(path.join(web,'index.html'),html);
-for(const dir of ['js','css'])fs.cpSync(path.join(root,dir),path.join(web,dir),{recursive:true});
-for(const file of ['manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','favicon-64.png'])fs.copyFileSync(path.join(root,file),path.join(web,file));
-fs.copyFileSync(path.join(ios,'native-bridge.js'),path.join(web,'native-bridge.js'));
+const vm=require('node:vm');
+const root=path.join(__dirname,'..'),ios=path.join(root,'ios'),resources=path.join(ios,'Tourdy','Resources');
+fs.mkdirSync(resources,{recursive:true});
+function array(file,name){
+  const source=fs.readFileSync(path.join(root,'js',file),'utf8');
+  const start=source.indexOf('const '+name+'=['),end=source.indexOf('];',start)+2;
+  if(start<0||end<2)throw Error('Missing destination data: '+name);
+  const context={};vm.createContext(context);vm.runInContext(source.slice(start,end)+';this.rows='+name,context);
+  return context.rows;
+}
+const places=[
+  ...array('travel-korea.js','KR').map(x=>({id:x[0],name:x[1],region:x[2],world:'kr',latitude:x[3],longitude:x[4],cost:0,zone:0})),
+  ...array('travel-world.js','NATIONS').map(x=>({id:x[0],name:x[1],region:x[2],world:'world',latitude:x[3],longitude:x[4],cost:0,zone:0})),
+  ...array('travel-space.js','SPACE').map(x=>({id:x[0],name:x[1],region:x[6],world:'space',latitude:0,longitude:0,cost:x[4],zone:x[3]}))
+];
+fs.writeFileSync(path.join(resources,'places.json'),JSON.stringify(places,null,2));
 const project=path.join(ios,'Tourdy.xcodeproj');fs.mkdirSync(project,{recursive:true});
 // Stable IDs keep generated project diffs reviewable; resources use a folder reference.
 const id=n=>String(n).padStart(24,'0');
@@ -19,8 +26,8 @@ ${id(1)} = {isa = PBXProject; attributes = {LastUpgradeCheck = 2600;}; buildConf
 ${id(2)} = {isa = PBXGroup; children = (${id(5)},${id(6)},${id(3)}); sourceTree = "<group>";};
 ${id(3)} = {isa = PBXGroup; children = (${id(7)}); name = Products; sourceTree = "<group>";};
 ${id(4)} = {isa = PBXNativeTarget; buildConfigurationList = ${id(11)}; buildPhases = (${id(8)},${id(9)}); buildRules = (); dependencies = (); name = Tourdy; productName = Tourdy; productReference = ${id(7)}; productType = "com.apple.product-type.application";};
-${id(5)} = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/TourdyApp.swift; sourceTree = "<group>";};
-${id(6)} = {isa = PBXFileReference; lastKnownFileType = folder; path = Tourdy/Web; sourceTree = "<group>";};
+${id(5)} = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/NativeApp.swift; sourceTree = "<group>";};
+${id(6)} = {isa = PBXFileReference; lastKnownFileType = folder; path = Tourdy/Resources; sourceTree = "<group>";};
 ${id(7)} = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Tourdy.app; sourceTree = BUILT_PRODUCTS_DIR;};
 ${id(8)} = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (${id(12)}); runOnlyForDeploymentPostprocessing = 0;};
 ${id(9)} = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (${id(13)}); runOnlyForDeploymentPostprocessing = 0;};

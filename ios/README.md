@@ -1,25 +1,27 @@
-# TOURDY iOS prototype
+# TOURDY native iOS — first migration build
 
-This is a separate iPhone/iPad application shell, not a complete SwiftUI rewrite.
-The existing timer, travel, stamps and reward rules run from bundled files in a persistent WKWebView. Every visible app switch is overlaid with a system SwiftUI Toggle, sharing the original handlers and saved state. iOS 26+ and the current Apple SDK provide the system switch appearance; this project does not draw a CSS imitation of Liquid Glass.
+The compiled target is `Tourdy/NativeApp.swift`: SwiftUI screens, a system TabView and native Toggles. No web view, HTML, JavaScript runtime, remote fonts or website server is part of this target. Resources/places.json contains existing public domestic, world and space destinations.
 
-## Open on a Mac
+## Run on a Mac
 
-1. From the repository root run `node scripts/build-ios.cjs` after changing web sources.
-2. Open `ios/Tourdy.xcodeproj` in Xcode 26 or later.
-3. Select the Tourdy target, choose your signing team and replace `com.example.tourdy` with your bundle identifier.
-4. Choose an iOS 26+ simulator or connected iPhone/iPad and Run.
+Open Tourdy.xcodeproj using Xcode 26+ and an iOS 26+ simulator or device. Choose your signing team. Keep the SAME bundle identifier as your previous install to retain its app container. Do not uninstall the old app. Source resource preparation, when working from Git, is `node scripts/build-ios.cjs` from the repository root; the downloadable ZIP already includes resources.
 
-No package installation, website server or network access is needed for app content. Generated Web resources are ignored in Git and must be prepared before opening/building. The application uses WKWebsiteDataStore.default local storage; Safari/PWA records are separate and are not imported automatically.
+## Implemented in native Swift
 
-## Status and limitations
+- Create subjects, start/finish study, retain running timestamps across app reopening.
+- Tasks with system switches, cumulative/per-subject statistics and session history.
+- Completed study earns miles (6 minutes per mile, daily eight-hour cap, daily/streak bonuses).
+- Domestic/world/space destinations, completion gates and space zone gates, paid journey reservation, balance deduction and arrival stamps.
+- Cumulative 30-minute first reward only after session completion; domestic premium gift with origin selection, permanent dated ticket and three next destinations.
+- Atomic Codable JSON writes in Application Support. Failed writes do not publish candidate state or consume rewards. Corrupt records block writes instead of resetting them.
+- Native backup export through ShareLink; dark mode setting.
 
-- Source and resource checks were performed on Windows. **No Xcode build, simulator launch, device validation or App Store submission has been performed.**
-- The native switches overlay web controls. Scrolling, Dynamic Type, VoiceOver, rotation, sheets and touch targeting require device QA. This is an initial integration, not a fully native settings screen.
-- Browser push is disabled; native local notifications, background completion alerts, PiP integration, file import/export, app icons and distribution configuration need further iOS work. Bundling alone does not make those features work.
-- OS suspension stops screen updates. Elapsed time is derived from timestamps on resume; no continuous background execution is promised.
-- Local storage durability on actual devices, updates and force termination must be validated before release. No cross-device synchronization is implemented.
+## Migration limits — not full feature parity
 
-## Required device checks
+This is a new native implementation, not the complete web app feature set. Reservations/Pomodoro/rest timers, memo prompts, notifications/sounds/haptics, special/secret routes, world cabin classes beyond the prototype premium choice, maps, advanced planner/statistics, backup restore, and automatic migration/synchronization are not yet ported. Miles in this first native build are credited after completed sessions. Settings do not expose switches for unimplemented effects.
 
-Install, enable airplane mode before the first launch, then create a subject, start/end study, redeem the cumulative 30-minute ticket after session end, complete a paid domestic journey, collect a stamp, terminate and reopen. Verify balances, routes and stamps are retained without duplicates. Repeat world/space journeys with valid unlock progress; check failed saves without record loss. Test every switch, rotation, Reduce Transparency, light/dark mode and VoiceOver on iPhone and iPad. Validate export/import and notifications separately once implemented.
+Web-wrapper localStorage is left untouched in the old WebKit data store. Native data uses a separate TourdyNative/state-v1.json. Old web records do NOT appear automatically; do not interpret the empty native screen as deletion. Export the old version before replacing it if you need a user-accessible backup. Native backup JSON is a different format.
+
+## Validation
+
+On Windows, destination generation and target/resource checks pass. **Swift compilation and native behavior have not been verified in Xcode.** Before release, compile on Mac; test rapid tab switching, rotation, VoiceOver, keyboard, dark mode, interrupted writes, running timer force-close/relaunch, midnight sessions, exactly 30 minutes at session end, one-time gift, paid arrival without duplicate charge, world/space locks and stamp persistence. Install and launch with airplane mode already enabled to verify first-launch offline behavior. No native platform runtime result is claimed by the Node tests.

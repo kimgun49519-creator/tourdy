@@ -10,6 +10,9 @@ test('native iOS target includes SwiftUI and offline destination data without we
   const source=fs.readFileSync(path.join(root,'ios/Tourdy/NativeApp.swift'),'utf8');
   assert.match(project,/Tourdy\/NativeApp.swift/);
   assert.doesNotMatch(project,/Tourdy\/Web|TourdyApp.swift/);
+  assert.doesNotMatch(project,/lastKnownFileType = folder/);
+  assert.match(project,/lastKnownFileType = text.json; path = Tourdy\/Resources\/places.json/);
+  assert.doesNotMatch(source,/subdirectory: "Resources"/);
   assert.doesNotMatch(source,/WebKit|WKWebView|evaluateJavaScript|URLSession/);
   const data=JSON.parse(fs.readFileSync(path.join(root,'ios/Tourdy/Resources/places.json'),'utf8'));
   assert.ok(data.filter(p=>p.world==='kr').length>=160);

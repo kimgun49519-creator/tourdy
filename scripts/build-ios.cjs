@@ -27,7 +27,7 @@ ${id(2)} = {isa = PBXGroup; children = (${id(5)},${id(6)},${id(3)}); sourceTree 
 ${id(3)} = {isa = PBXGroup; children = (${id(7)}); name = Products; sourceTree = "<group>";};
 ${id(4)} = {isa = PBXNativeTarget; buildConfigurationList = ${id(11)}; buildPhases = (${id(8)},${id(9)}); buildRules = (); dependencies = (); name = Tourdy; productName = Tourdy; productReference = ${id(7)}; productType = "com.apple.product-type.application";};
 ${id(5)} = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/NativeApp.swift; sourceTree = "<group>";};
-${id(6)} = {isa = PBXFileReference; lastKnownFileType = folder; path = Tourdy/Resources; sourceTree = "<group>";};
+${id(6)} = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tourdy/Resources/places.json; sourceTree = "<group>";};
 ${id(7)} = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Tourdy.app; sourceTree = BUILT_PRODUCTS_DIR;};
 ${id(8)} = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (${id(12)}); runOnlyForDeploymentPostprocessing = 0;};
 ${id(9)} = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (${id(13)}); runOnlyForDeploymentPostprocessing = 0;};

@@ -48,7 +48,7 @@ final class NativeStore: ObservableObject {
     init() {
         let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("TourdyNative", isDirectory: true)
         file = directory.appendingPathComponent("state-v1.json")
-        if let url = Bundle.main.url(forResource: "places", withExtension: "json", subdirectory: "Resources"), let data = try? Data(contentsOf: url), let decoded = try? JSONDecoder().decode([Place].self, from: data) {
+        if let url = Bundle.main.url(forResource: "places", withExtension: "json"), let data = try? Data(contentsOf: url), let decoded = try? JSONDecoder().decode([Place].self, from: data) {
             places = decoded
         } else { places = [] }
         do {

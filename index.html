@@ -1438,6 +1438,8 @@ button.pbw>b{font-size:12px;font-weight:800;line-height:1.25}
 .pb{transition:transform .2s}
 .bd-big .pb{width:120px}.bd-big .pb-n{font-size:46px}
 .bn-pass{display:flex;flex-direction:column;gap:8px}.bn-pass .pbw{flex-direction:row;text-align:left;gap:12px;background:var(--hover);border-radius:14px;padding:10px}.bn-pass .pbw span{display:flex;flex-direction:column;gap:2px}.bn-pass .pbw small{font-size:12px;color:var(--muted);font-weight:500}
+[data-page="theme"] #modeSeg{grid-template-columns:repeat(2,1fr);display:grid}
+[data-page="pip"] .pipbtn{align-self:flex-start;padding:12px 18px;font-size:15px}
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
 .ks-head b{display:block;font-size:17px;font-weight:800}
@@ -1501,8 +1503,7 @@ button.pbw>b{font-size:12px;font-weight:800;line-height:1.25}
     <div id="hRun" class="col">
       <section class="panel" aria-label="공부 시작">
         <div class="panel-head"><h2>공부 시작</h2>
-          <div class="headr"><button class="pipbtn" id="pipBtn" aria-label="작은 창(PIP)으로 띄우기" title="작은 창(PIP)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="4" width="15" height="12" rx="2"/><rect x="10" y="9.5" width="5.5" height="4.5" rx="1" fill="currentColor" stroke="none"/></svg>PIP</button>
-          <div class="seg" id="modeSeg"><button data-m="timer" aria-pressed="true">타이머형</button><button data-m="plan" aria-pressed="false">예약형</button></div></div></div>
+</div>
         <p class="err" id="pipErr" hidden></p>
         <video id="pipVideo" muted playsinline aria-hidden="true" style="position:fixed;left:-9999px;top:0;width:2px;height:2px"></video>
         <div id="mTimer" class="col">
@@ -1731,10 +1732,19 @@ button.pbw>b{font-size:12px;font-weight:800;line-height:1.25}
       </ul>
       <p class="note">꺼도 여행 기록과 스탬프는 그대로 남아요.</p>
     </section>
+    <section class="panel" data-page="pip" hidden>
+      <div class="panel-head"><h2>PIP 모드</h2></div>
+      <p class="note">공부 타이머를 작은 창으로 띄워서 다른 앱이나 창을 보면서도 시간을 확인할 수 있어요. 한 번 더 누르면 닫혀요.</p>
+      <button class="pipbtn secondary" id="pipBtn" aria-label="작은 창(PIP)으로 띄우기" title="작은 창(PIP)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="4" width="15" height="12" rx="2"/><rect x="10" y="9.5" width="5.5" height="4.5" rx="1" fill="currentColor" stroke="none"/></svg>PIP</button>
+      <p class="note">브라우저나 기기에 따라 PIP를 지원하지 않을 수 있어요.</p>
+    </section>
     <section class="panel" data-page="theme" hidden>
       <div class="panel-head"><h2>테마</h2></div>
       <div class="plabel">화면 모드</div>
       <div class="seg" id="themeMode"><button data-mode="system" aria-pressed="true">시스템</button><button data-mode="light" aria-pressed="false">라이트</button><button data-mode="dark" aria-pressed="false">다크</button></div>
+      <div class="plabel">공부 시작 방식</div>
+      <div class="seg" id="modeSeg"><button data-m="timer" aria-pressed="true">타이머형</button><button data-m="plan" aria-pressed="false">예약형</button></div>
+      <p class="note">타이머형은 과목을 눌러 바로 재고, 예약형은 시작 시각과 공부 시간을 5분 단위로 정해요.</p>
       <div class="plabel">포인트 색</div>
       <div class="accgrid" id="accentList"></div>
       <p class="note">포인트 색은 공부 잔디, 목표 달성률, 중요 표시 같은 강조 부분에 쓰여요. 과목 색은 프리셋 목록에서 따로 정해요.</p>
@@ -2536,6 +2546,7 @@ const SET_ITEMS=[
   ['sound','소리',()=>{const v=TSND();return v.arrive||v.rip?'켜짐':'꺼짐'}],
   ['travel','여행',()=>tr().on?'켜짐':'꺼짐'],
   ['mile','마일리지',()=>`보유 ${Math.floor(totalMiles()-tr().used).toLocaleString()}`],
+  ['pip','PIP 모드',()=>document.pictureInPictureElement?'켜짐':'꺼짐'],
   ['theme','테마',()=>`${({system:'시스템',light:'라이트',dark:'다크'})[th().mode]} · ${ACC[th().accent]?.[0]||'파랑'}`],
   ['daystart','하루의 시작',()=>DS?`${ampm(new Date(2000,0,1,DS).getTime())}`:'자정'],
   ['week','한 주의 시작',()=>DOW[wkStart()]+'요일'],
@@ -2547,7 +2558,7 @@ const SET_ITEMS=[
 const CHEV_R='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 3 5 5-5 5"/></svg>';
 function renderSet(){
   const ex=hasEx();
-  const IT=Object.fromEntries(SET_ITEMS.map(x=>[x[0],x])),GR=[['타이머 설정',['goal','notify','extra','sound','theme','daystart','week','dday','rep']],['여행 설정',['travel','mile']],['기타',['backup','ex']]];
+  const IT=Object.fromEntries(SET_ITEMS.map(x=>[x[0],x])),GR=[['타이머 설정',['goal','notify','extra','theme','pip','daystart','week','dday','rep']],['여행 설정',['travel','sound','mile']],['기타',['backup','ex']]];
   $('setItems').innerHTML=GR.map(([g,ks])=>{const rows=ks.filter(k=>IT[k]&&(k!=='ex'||ex)).map(k=>{const [,t,v]=IT[k];return `<li><button data-go="${k}"><span class="sl-t">${t}</span><span class="sl-v">${esc(v())}</span>${CHEV_R}</button></li>`}).join('');
     return rows?`<li class="sl-g">${g}</li>${rows}`:''}).join('');
   $('setList').hidden=!!setPage;$('setBack').hidden=!setPage;

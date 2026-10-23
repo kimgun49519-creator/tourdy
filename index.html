@@ -926,9 +926,9 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
 /* 승차권 */
 .tk{--tc:#1d6fd8;--tp:#f4f8ff;--th:var(--tc);--ts:#fff;display:grid;grid-template-columns:minmax(0,1fr) 112px;color:#16202e;border-radius:14px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.12))}
 .tk-bus{--tc:#1f9d55;--tp:#f3fbf6}.tk-t-mg{--tc:#d6332c;--tp:#fff5f4}.tk-ship{--tc:#f2b705;--tp:#fffbea;--th:#8a6400;--ts:#3a2c00}
-.tk-main{-webkit-mask:radial-gradient(circle 9px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+.tk-main,.bx-main{-webkit-mask:radial-gradient(circle 9px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
   mask:radial-gradient(circle 9px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
-.tk-stub{-webkit-mask:radial-gradient(circle 9px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+.tk-stub,.bx-stub{-webkit-mask:radial-gradient(circle 9px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
   mask:radial-gradient(circle 9px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
 .tk.torn{grid-template-columns:1fr}
 .tk.torn .tk-main{-webkit-mask:linear-gradient(#000 0 0) left/calc(100% - 7px) 100% no-repeat,conic-gradient(from 225deg at right,#000 90deg,#0000 0) right/7px 12px repeat-y;
@@ -957,13 +957,13 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
 .tk-bars i{background:#16202e;flex:none}
 @media (max-width:480px){
   .tk{grid-template-columns:1fr}
-  .tk-main{-webkit-mask:radial-gradient(circle 9px at 0 100%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 100%,#0000 98%,#000) right/51% 100% no-repeat;
+  .tk-main,.bx-main{-webkit-mask:radial-gradient(circle 9px at 0 100%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 100%,#0000 98%,#000) right/51% 100% no-repeat;
     mask:radial-gradient(circle 9px at 0 100%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 100%,#0000 98%,#000) right/51% 100% no-repeat}
-  .tk-stub{-webkit-mask:radial-gradient(circle 9px at 0 0,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 0,#0000 98%,#000) right/51% 100% no-repeat;
+  .tk-stub,.bx-stub{-webkit-mask:radial-gradient(circle 9px at 0 0,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 0,#0000 98%,#000) right/51% 100% no-repeat;
     mask:radial-gradient(circle 9px at 0 0,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 0,#0000 98%,#000) right/51% 100% no-repeat}
   .tk.torn .tk-main{border-radius:14px 14px 0 0;-webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat,conic-gradient(from 315deg at bottom,#000 90deg,#0000 0) bottom/12px 7px repeat-x;
     mask:linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat,conic-gradient(from 315deg at bottom,#000 90deg,#0000 0) bottom/12px 7px repeat-x}
-  .tear .tk-stub,.tear .bp-stub{animation-name:tearDown!important}
+
   .tk-main{border-radius:14px 14px 0 0}
   .tk-stub{height:78px;box-sizing:border-box;border-radius:0 0 14px 14px;border-left:0;border-top:2px dashed rgba(255,255,255,.55);display:grid;grid-template-columns:auto 1fr auto;align-items:center;text-align:left;gap:2px 12px;padding:10px 16px}
   .tk-stub small{grid-column:1}.tk-stub b{grid-column:1}.tk-stub span{grid-column:2;grid-row:1/3;text-align:center}.tk-bars{grid-column:3;grid-row:1/3;margin:0;width:80px}
@@ -1006,7 +1006,7 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
 .arr{position:fixed;inset:0;z-index:90;background:rgba(10,14,22,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;
   padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:toastIn .2s ease-out}
 .arr-c{width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;gap:18px}
-.arr-tk{width:100%}.arr .bp{overflow:visible}
+.arr-tk{width:100%}
 .arr-msg{display:flex;flex-direction:column;align-items:center;gap:6px;color:#fff;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s}
 .arr.show-msg .arr-msg{opacity:1;transform:none}
 .arr-msg>b{font-size:26px;font-weight:800;letter-spacing:-.02em}.arr-msg>span:not(.ks-stamp){font-size:14px;color:rgba(255,255,255,.82)}
@@ -1015,12 +1015,74 @@ details.rec summary,.donehead{font-size:16px;font-weight:700}
 @keyframes thud{0%{transform:scale(2.3) rotate(var(--r));opacity:0}55%{opacity:1}100%{transform:scale(1) rotate(var(--r));opacity:1}}
 .arr-flag{font-size:58px;line-height:1}
 #arrOk{min-width:140px;opacity:0;transition:opacity .3s}.arr.show-msg #arrOk{opacity:1}
-.tear .tk-stub,.tear .bp-stub{animation:tearOff 1s cubic-bezier(.55,0,.75,.45) forwards;transform-origin:0 0;pointer-events:none}
-@keyframes tearOff{0%{transform:none}14%{transform:rotate(-3deg)}28%{transform:translate(4px,2px) rotate(5deg)}100%{transform:translate(70px,240px) rotate(30deg);opacity:0}}
-@keyframes tearDown{0%{transform:none}14%{transform:rotate(-2deg)}28%{transform:translate(2px,4px) rotate(3deg)}100%{transform:translate(30px,220px) rotate(14deg);opacity:0}}
-@media (prefers-reduced-motion:reduce){.tear .tk-stub,.tear .bp-stub{animation:none;opacity:0}.arr.show-msg .arr-stamp{animation:none}}
+@media (prefers-reduced-motion:reduce){.tx.ripping .tx-stub,.tx.gone .tx-stub{animation:none!important;opacity:0}.tx{transition:none!important}.arr.show-msg .arr-stamp{animation:none}}
 button.ks-stamp{font:inherit;padding:0;cursor:pointer}
 button.ks-stamp:focus-visible{outline-offset:2px}
+
+/* 탑승권 (세계) */
+.bx{display:grid;grid-template-columns:minmax(0,1fr) 150px;color:#15171c;filter:drop-shadow(0 2px 8px rgba(0,0,0,.14))}
+.bx-main{background:#fff;border-radius:14px 0 0 14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.bx-hd{background:#15171c;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 18px}
+.bx-air{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:900;font-style:italic;letter-spacing:.02em}
+.bx-air svg{width:18px;height:18px}
+.bx-bp{font-size:11px;font-weight:800;letter-spacing:.1em;white-space:nowrap}
+.bx-body{padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.bx-route{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.bx-route small{display:block;font-size:10px;font-weight:800;letter-spacing:.08em;color:#6b7280}
+.bx-route b{display:block;font-size:40px;font-weight:900;letter-spacing:-.02em;line-height:1.05}
+.bx-route em{display:block;font-style:normal;font-size:13px;font-weight:800;margin-top:4px}
+.bx-route>div>span{display:block;font-size:11px;color:#6b7280;font-weight:600;margin-top:2px;white-space:nowrap}
+.bx-route .r{text-align:right}
+.bx-mid{position:relative;height:64px}
+.bx-mid::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,#c3c9d2 1.1px,transparent 1.6px) 0 0/7px 7px;
+  -webkit-mask:radial-gradient(ellipse 50% 50% at 50% 50%,#000 35%,transparent 100%);mask:radial-gradient(ellipse 50% 50% at 50% 50%,#000 35%,transparent 100%)}
+.bx-line{position:absolute;left:6px;right:6px;top:50%;height:2px;margin-top:-1px;background:repeating-linear-gradient(90deg,#15171c 0 5px,transparent 5px 9px)}
+.bx-line i{position:absolute;inset:0 auto 0 0;background:#1d6fd8}
+.bx-line::before,.bx-line::after{content:"";position:absolute;top:50%;width:8px;height:8px;border:2px solid #15171c;background:#fff;border-radius:50%;transform:translate(-50%,-50%)}
+.bx-line::before{left:0}.bx-line::after{left:100%}
+.bx-pl{position:absolute;top:50%;transform:translate(-50%,-50%);color:#15171c;display:grid;filter:drop-shadow(0 1px 0 #fff)}
+.bx-pl svg{width:34px;height:34px}
+.bx-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 8px;background:#eef0f3;border-radius:10px;padding:10px 12px}
+.bx-info small{display:block;font-size:10px;font-weight:700;color:#6b7280}
+.bx-info b{display:block;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+.bx-stub{background:#fff;border-radius:0 14px 14px 0;border-left:2px dashed #c3c9d2;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;padding:12px 12px 12px 10px}
+.bx-code{background:repeating-linear-gradient(180deg,#15171c 0 2px,transparent 2px 3px,#15171c 3px 4px,transparent 4px 7px,#15171c 7px 10px,transparent 10px 11px,#15171c 11px 12px,transparent 12px 15px)}
+.bx-sum{display:flex;flex-direction:column;gap:8px;min-width:0}
+.bx-sh{background:#15171c;color:#fff;font-size:9px;font-weight:800;letter-spacing:.08em;padding:4px 6px;border-radius:4px;display:flex;justify-content:space-between;align-items:center}
+.bx-sh svg{width:11px;height:11px}
+.bx-sr{display:flex;justify-content:space-between;align-items:center}.bx-sr b{font-size:17px;font-weight:900}.bx-sr svg{width:14px;height:14px}
+.bx-kv{display:grid;grid-template-columns:1fr 1fr;gap:4px}.bx-kv small,.bx-big small{display:block;font-size:9px;font-weight:700;color:#6b7280}.bx-kv b{font-size:12px;font-weight:800}
+.bx-big b{display:block;font-size:20px;font-weight:900;color:#1d6fd8;line-height:1.15;word-break:keep-all;overflow-wrap:anywhere}
+@media (max-width:480px){
+  .bx{grid-template-columns:1fr}.bx-main{border-radius:14px 14px 0 0}
+  .bx-stub{border-radius:0 0 14px 14px;border-left:0;border-top:2px dashed #c3c9d2;grid-template-columns:1fr;padding:12px 16px 14px}
+  .bx-code{height:30px;background:repeating-linear-gradient(90deg,#15171c 0 2px,transparent 2px 3px,#15171c 3px 4px,transparent 4px 7px,#15171c 7px 10px,transparent 10px 11px,#15171c 11px 12px,transparent 12px 15px)}
+  .bx-sum{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:6px 14px}.bx-sh{display:none}
+  .bx-hd{padding:9px 14px}.bx-bp{font-size:10px;letter-spacing:.06em}.bx-body{padding:14px}
+  .bx-route b{font-size:30px}.bx-mid{height:48px}.bx-pl svg{width:26px;height:26px}
+  .bx-info{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 6px;padding:9px 10px}.bx-info b{font-size:12px}
+}
+/* 표 뜯기: 위에서부터 찢어지고 → 떨어지고 → 남은 표는 가운데로 */
+.tx{transition:transform .6s cubic-bezier(.3,.8,.3,1)}
+.tx .tx-main{position:relative}
+.tx .tx-main::after{content:"";position:absolute;right:0;top:0;bottom:0;width:3px;background:repeating-linear-gradient(180deg,#fff 0 2px,rgba(255,255,255,.4) 2px 4px,#fff 4px 5px,transparent 5px 7px);transform:scaleY(0);transform-origin:top;pointer-events:none}
+.tx.vert .tx-main::after{top:auto;left:0;width:auto;height:3px;background:repeating-linear-gradient(90deg,#fff 0 2px,rgba(255,255,255,.4) 2px 4px,#fff 4px 5px,transparent 5px 7px);transform:scaleX(0);transform-origin:left}
+.tx.ripping .tx-main::after{animation:ripLine 1.2s steps(14,end) forwards}
+.tx.ripping .tx-stub{transform-origin:0 100%;animation:ripH 1.2s ease-in forwards;pointer-events:none}
+.tx.vert.ripping .tx-stub{transform-origin:100% 0;animation-name:ripV}
+.tx.gone .tx-stub{animation:fallH .8s cubic-bezier(.45,0,.9,.5) forwards}
+.tx.vert.gone .tx-stub{animation-name:fallV}
+.tx.gone .tx-main::after{opacity:0;transition:opacity .2s}
+.tx.edge .tx-main{-webkit-mask:linear-gradient(#000 0 0) left/calc(100% - 7px) 100% no-repeat,conic-gradient(from 225deg at right,#000 90deg,#0000 0) right/7px 12px repeat-y;
+  mask:linear-gradient(#000 0 0) left/calc(100% - 7px) 100% no-repeat,conic-gradient(from 225deg at right,#000 90deg,#0000 0) right/7px 12px repeat-y}
+.tx.vert.edge .tx-main{-webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat,conic-gradient(from 315deg at bottom,#000 90deg,#0000 0) bottom/12px 7px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat,conic-gradient(from 315deg at bottom,#000 90deg,#0000 0) bottom/12px 7px repeat-x}
+@keyframes ripLine{to{transform:none}}
+/* 종이가 버티다 찢기듯: 조금씩 멈칫하며 벌어짐 */
+@keyframes ripH{0%{transform:none}12%{transform:rotate(-.6deg)}25%{transform:rotate(1.5deg)}34%{transform:rotate(1.7deg)}50%{transform:rotate(3.8deg)}58%{transform:rotate(4deg)}78%{transform:rotate(6.5deg)}86%{transform:rotate(6.7deg)}100%{transform:translate(4px,0) rotate(9deg)}}
+@keyframes ripV{0%{transform:none}12%{transform:rotate(.4deg)}25%{transform:rotate(-1deg)}34%{transform:rotate(-1.1deg)}50%{transform:rotate(-2.4deg)}58%{transform:rotate(-2.5deg)}78%{transform:rotate(-4deg)}86%{transform:rotate(-4.1deg)}100%{transform:translate(0,4px) rotate(-5.5deg)}}
+@keyframes fallH{0%{transform:translate(4px,0) rotate(9deg)}100%{transform:translate(70px,280px) rotate(38deg);opacity:0}}
+@keyframes fallV{0%{transform:translate(0,4px) rotate(-5.5deg)}100%{transform:translate(-30px,240px) rotate(-22deg);opacity:0}}
 
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
@@ -2314,19 +2376,26 @@ const flightNo=(a,b)=>'SA '+String([...(a+b)].reduce((h,ch)=>(h*31+ch.charCodeAt
 const PLANE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V8.5l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z" transform="rotate(90 12 12)"/></svg>';
 const LAND='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21h20"/><path d="M3.8 13.5 5 9l2.2.6 1.1 3.3 4.9 1.3L11 5.3l2.6.7 4.6 9.3 3 .8c.9.3 1.5 1.2 1.2 2.1-.2.6-.9 1-1.6.8L4.6 14.6z"/></svg>';
 const INK=['#c23b3b','#9a6400','#2f55c4','#b0561a','#14806f','#7a3fb0','#0d7fa8'],SHAPE=['10px','50%','4px','40% / 50%','18px','50% / 40%','2px'];
-function bpTicket(f,t,p,left,cost,done){const A=NAT[f],B=NAT[t],days=Math.ceil(Math.max(0,left)/80);
-  return `<div class="bp">
-      <div class="bp-main">
-        <div class="bp-top"><span class="bp-air">${PLANE} STUDY AIR · 탑승권</span><span class="bp-fl">${flightNo(f,t)}</span></div>
-        <div class="bp-route"><div><b>${ap(f)}</b><small>${flag(f)} ${A[2]}</small></div>
-          <div class="bp-path"><i style="width:${p*100}%"></i><span class="bp-plane" style="left:${p*100}%">${PLANE}</span></div>
-          <div class="r"><b>${ap(t)}</b><small>${B[2]} ${flag(t)}</small></div></div>
-        <div class="bp-fields"><div><small>거리</small><b>${Math.round(kmBetween(f,t)).toLocaleString()}km</b></div><div><small>비행 시간</small><b>${fmtH(cost*6e4)}</b></div>
-          <div><small>진행</small><b>${Math.floor(p*100)}%</b></div><div><small>도착까지</small><b>${done?'착륙':left>0?(days<=1?'오늘~내일':days+'일'):'곧 착륙'}</b></div></div>
+function bpTicket(f,t,p,left,cost,done){const A=NAT[f],B=NAT[t],km=kmBetween(f,t),hs=[...(f+t)].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%99991,11),days=Math.ceil(Math.max(0,left)/80),dt=new Date();
+  const seat=(hs%38+3)+'ABCDEF'[hs%6],gate=String.fromCharCode(65+hs%6)+(hs%40+1),cls=km>=5000?'비즈니스':'이코노미',fl=flightNo(f,t),date=`${dt.getFullYear()}.${pad(dt.getMonth()+1)}.${pad(dt.getDate())}`;
+  const info=[['편명',fl],['좌석',seat],['게이트',gate],['클래스',cls],['거리',Math.round(km).toLocaleString()+'km'],['비행 시간',fmtH(cost*6e4)],['진행',Math.floor(p*100)+'%'],['도착까지',done?'착륙':left>0?(days<=1?'오늘~내일':days+'일'):'곧 착륙']];
+  return `<div class="bx tx">
+    <div class="bx-main tx-main">
+      <div class="bx-hd"><span class="bx-air">${PLANE}STUDY AIR</span><span class="bx-bp">BOARDING PASS · 탑승권</span></div>
+      <div class="bx-body">
+        <div class="bx-route"><div><small>FROM</small><b>${ap(f)}</b><em>${A[2]}</em><span>${flag(f)} ${A[1]} · ${date}</span></div>
+          <div class="bx-mid"><div class="bx-line"><i style="width:${p*100}%"></i></div><span class="bx-pl" style="left:calc(${p} * (100% - 40px) + 20px)">${PLANE}</span></div>
+          <div class="r"><small>TO</small><b>${ap(t)}</b><em>${B[2]}</em><span>${B[1]} ${flag(t)}</span></div></div>
+        <div class="bx-info">${info.map(([k,v])=>`<div><small>${k}</small><b>${v}</b></div>`).join('')}</div>
       </div>
-      ${done?`<div class="bp-stub"><small>착륙 완료</small><b>${ap(t)}</b><small>${B[2]} 도착</small><div class="barcode" aria-hidden="true"></div></div>`
-        :`<div class="bp-stub"><small>남은 마일리지</small><b>${Math.max(0,Math.ceil(left))}</b><small>공부 ${studyFor(left)}</small><div class="barcode" aria-hidden="true"></div></div>`}
-    </div>`}
+    </div>
+    <div class="bx-stub tx-stub"><div class="bx-code" aria-hidden="true"></div>
+      <div class="bx-sum"><div class="bx-sh"><span>BOARDING PASS</span>${PLANE}</div>
+        <div class="bx-sr"><b>${ap(f)}</b>${PLANE}<b>${ap(t)}</b></div>
+        <div class="bx-kv"><div><small>편명</small><b>${fl}</b></div><div><small>좌석</small><b>${seat}</b></div></div>
+        ${done?`<div class="bx-big"><small>착륙 완료</small><b>${B[2]}</b></div>`:`<div class="bx-big"><small>남은 마일리지</small><b>${Math.max(0,Math.ceil(left))}</b><small>공부 ${studyFor(left)}</small></div>`}
+      </div></div>
+  </div>`}
 function renderTravelTop(){
   const T=tr(),total=totalMiles(),avail=total-T.used,at=NAT[T.at];
   let news='';if(T.news&&T.news.length){news=`<div class="tv-news">${LAND.replace('<svg','<svg width="20" height="20"')} ${T.news.map(c=>`${ap(c)} ${flag(c)} ${NAT[c][2]}`).join(', ')} 착륙! 여권에 입국 도장이 찍혔어요.</div>`;T.news=[];save()}
@@ -2445,9 +2514,9 @@ function krTicket(f,t,o={}){
     :m==='ship'?[['선박',cls],['객실','일반실'],['좌석',(hs%300+1)+'번'],['운임',c+' 마일']]
     :[['열차',cls+' '+String(hs%900+100)],['호차',(hs%8+1)+'호차'],['좌석',(hs%15+1)+'ABCD'[hs%4]],['운임',c+' 마일']];
   const bars=[...Array(28)].map((_,k)=>`<i style="width:${1+((hs>>k%13)+k*7)%3}px"></i>`).join('');
-  const stub=o.torn?'':`<div class="tk-stub">${o.done?`<small>도착 완료</small><b>${B[1]}</b><span>${c} 마일 사용</span>`:`<small>남은 공부</small><b>${studyFor(o.left)}</b><span>${Math.floor(Math.min(o.avail,c))} / ${c}</span>`}<div class="tk-bars">${bars}</div></div>`;
-  return `<div class="tk tk-${m} tk-t-${tg}${o.torn?' torn':''}">
-    <div class="tk-main">
+  const stub=o.torn?'':`<div class="tk-stub tx-stub">${o.done?`<small>도착 완료</small><b>${B[1]}</b><span>${c} 마일 사용</span>`:`<small>남은 공부</small><b>${studyFor(o.left)}</b><span>${Math.floor(Math.min(o.avail,c))} / ${c}</span>`}<div class="tk-bars">${bars}</div></div>`;
+  return `<div class="tk tx tk-${m} tk-t-${tg}${o.torn?' torn':''}">
+    <div class="tk-main tx-main">
       <div class="tk-hd"><span>${krIcon(m)}${lbl}</span><span>${dt.getFullYear()}.${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</span></div>
       <div class="tk-route"><div><small>출발</small><b>${A[1]}</b><em>${A[2]}</em></div>
         <div class="tk-mid"><span>${km}km</span><div class="tk-path"><i style="width:${p*100}%"></i><span class="tk-vh" style="left:calc(${p} * (100% - 24px) + 12px)">${krIcon(m)}</span></div><span>${o.torn||o.done?'도착':Math.round(p*100)+'% 이동'}</span></div>
@@ -2731,7 +2800,10 @@ function showArrival(){if(arrOpen||!ARQ.length)return;const x=ARQ.shift();if(x.w
   else{const B=NAT[x.t];snd='plane';$('arrTk').innerHTML=bpTicket(x.f,x.t,1,0,flightMin(x.f,x.t),true);
     $('arrMsg').innerHTML=`<span class="arr-flag">${flag(x.t)}</span><b>${B[2]} 도착!</b><span>${B[1]} 입국 도장이 찍혔어요</span>`}
   $('arrOk').textContent='확인';arrSound(snd);
-  arrTimers=[setTimeout(()=>$('arrTk').firstElementChild?.classList.add('tear'),700),setTimeout(()=>el.classList.add('show-msg'),1600)];
+  const tk=$('arrTk').firstElementChild,st=tk.querySelector('.tx-stub'),mn=tk.querySelector('.tx-main'),vert=st.offsetTop>mn.offsetTop+5;if(vert)tk.classList.add('vert');
+  arrTimers=[setTimeout(()=>{tk.classList.add('ripping');ripSound()},800),
+    setTimeout(()=>{tk.classList.add('gone','edge');tk.style.transform=vert?`translateY(${st.offsetHeight/2}px)`:`translateX(${st.offsetWidth/2}px)`},2000),
+    setTimeout(()=>el.classList.add('show-msg'),2500)];
 }
 function showTicket(id){const K=kr(tr()),i=K.path.indexOf(id),f=i>0?K.path[i-1]:K.home,d=(K.done.find(x=>x.c===id)||{}).d;if(!KRM[f]||f===id)return;
   arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
@@ -2742,6 +2814,10 @@ $('arrOk').addEventListener('click',closeArrival);
 $('arrive').addEventListener('click',e=>{if(e.target===$('arrive'))closeArrival()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&arrOpen)closeArrival()});
 $('krStamps').addEventListener('click',e=>{const b=e.target.closest('[data-tix]');if(b)showTicket(b.dataset.tix)});
+// 종이 찢는 소리: 짧은 잡음을 불규칙하게 이어 붙임
+function ripSound(){const a=audio();if(!a)return;try{const nb=a.createBuffer(1,a.sampleRate*.05,a.sampleRate),ch=nb.getChannelData(0);for(let i=0;i<ch.length;i++)ch[i]=Math.random()*2-1;
+  let t=a.currentTime+.02;const end=t+1.1;while(t<end){const s=a.createBufferSource(),fl=a.createBiquadFilter(),g=a.createGain(),d=.008+Math.random()*.025,v=.05+Math.random()*.14*(1-(end-t)/1.4);
+    s.buffer=nb;fl.type='bandpass';fl.frequency.value=1800+Math.random()*3500;fl.Q.value=.8;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);s.connect(fl).connect(g).connect(a.destination);s.start(t);s.stop(t+d+.01);t+=d*(.4+Math.random()*1.2)}}catch(e){}}
 // 효과음은 파일 없이 웹 오디오로 합성
 function arrSound(k){const a=audio();if(!a)return;try{
   const t0=a.currentTime+.05,out=a.createGain();out.gain.value=.6;out.connect(a.destination);

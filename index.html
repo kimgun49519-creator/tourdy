@@ -395,7 +395,8 @@ details.rec summary em{font-style:normal;color:var(--faint);font-family:var(--mo
 .banner button{font-family:var(--sans)}
 
 /* settings */
-.setlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.setlist{list-style:none;margin:0;padding:0}
+.setlist .sl-g{font-size:13px;font-weight:800;color:var(--accent);padding:22px 4px 8px;border-bottom:1px solid var(--line)}.setlist .sl-g:first-child{padding-top:4px}
 .setlist button{width:100%;display:flex;align-items:center;gap:12px;padding:15px 4px;border-bottom:1px solid var(--line);text-align:left}
 .setlist button:hover{background:var(--hover)}
 .setlist .sl-t{flex:1;font-family:var(--serif);font-size:17px;font-weight:600}
@@ -1683,7 +1684,7 @@ button.pbw>b{font-size:12px;font-weight:800;line-height:1.25}
       <p class="note">아이폰·아이패드는 무음 모드면 소리가 나지 않아요. 앱 화면이 꺼져 있으면 기기에 따라 알림이 늦게 오거나 오지 않을 수 있어요.</p>
     </section>
     <section class="panel" data-page="mile" hidden>
-      <div class="panel-head"><h2>마일리지에 대하여</h2></div>
+      <div class="panel-head"><h2>마일리지</h2></div>
       <div id="mileBody"></div>
     </section>
     <section class="panel" data-page="sound" hidden>
@@ -1750,7 +1751,7 @@ button.pbw>b{font-size:12px;font-weight:800;line-height:1.25}
     <section class="panel" data-page="dday" hidden>
       <div class="panel-head"><h2>D-day</h2></div>
       <form class="row" id="ddForm">
-        <input class="field grow" id="ddName" type="text" placeholder="예: 연세대 편입 시험" autocomplete="off">
+        <input class="field grow" id="ddName" type="text" placeholder="예: CPA, CFA, 수능" autocomplete="off">
         <input class="field" id="ddDate" type="date" required>
         <button class="primary" type="submit">저장</button>
         <button class="secondary" type="button" id="ddDel">지우기</button>
@@ -2534,7 +2535,7 @@ const SET_ITEMS=[
   ['extra','추가 기능',()=>{const n=Object.values(EX()).filter(Boolean).length;return n?`${n}개 켜짐`:'꺼짐'}],
   ['sound','소리',()=>{const v=TSND();return v.arrive||v.rip?'켜짐':'꺼짐'}],
   ['travel','여행',()=>tr().on?'켜짐':'꺼짐'],
-  ['mile','마일리지에 대하여',()=>`보유 ${Math.floor(totalMiles()-tr().used).toLocaleString()}`],
+  ['mile','마일리지',()=>`보유 ${Math.floor(totalMiles()-tr().used).toLocaleString()}`],
   ['theme','테마',()=>`${({system:'시스템',light:'라이트',dark:'다크'})[th().mode]} · ${ACC[th().accent]?.[0]||'파랑'}`],
   ['daystart','하루의 시작',()=>DS?`${ampm(new Date(2000,0,1,DS).getTime())}`:'자정'],
   ['week','한 주의 시작',()=>DOW[wkStart()]+'요일'],
@@ -2546,7 +2547,9 @@ const SET_ITEMS=[
 const CHEV_R='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 3 5 5-5 5"/></svg>';
 function renderSet(){
   const ex=hasEx();
-  $('setItems').innerHTML=SET_ITEMS.filter(([k])=>k!=='ex'||ex).map(([k,t,v])=>`<li><button data-go="${k}"><span class="sl-t">${t}</span><span class="sl-v">${esc(v())}</span>${CHEV_R}</button></li>`).join('');
+  const IT=Object.fromEntries(SET_ITEMS.map(x=>[x[0],x])),GR=[['타이머 설정',['goal','notify','extra','sound','theme','daystart','week','dday','rep']],['여행 설정',['travel','mile']],['기타',['backup','ex']]];
+  $('setItems').innerHTML=GR.map(([g,ks])=>{const rows=ks.filter(k=>IT[k]&&(k!=='ex'||ex)).map(k=>{const [,t,v]=IT[k];return `<li><button data-go="${k}"><span class="sl-t">${t}</span><span class="sl-v">${esc(v())}</span>${CHEV_R}</button></li>`}).join('');
+    return rows?`<li class="sl-g">${g}</li>${rows}`:''}).join('');
   $('setList').hidden=!!setPage;$('setBack').hidden=!setPage;
   document.querySelectorAll('#vSet [data-page]').forEach(el=>el.hidden=el.dataset.page!==setPage);
   if(setPage==='goal')renderGoal();

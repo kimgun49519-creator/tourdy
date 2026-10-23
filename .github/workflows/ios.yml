@@ -1,0 +1,38 @@
+name: Native iOS
+on:
+  push:
+    branches: [codex/storage-and-first-trip]
+    paths: ['ios/**', 'scripts/build-ios.cjs', '.github/workflows/ios.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-ios-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  simulator:
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare bundled native resources
+        run: node scripts/build-ios.cjs
+      - name: Build app and native tests without signing
+        run: |
+          xcodebuild -project ios/Tourdy.xcodeproj -scheme Tourdy -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build-for-testing > ios-build.log 2>&1 || { tail -n 160 ios-build.log; exit 1; }
+      - name: Select iPhone simulator
+        run: |
+          xcrun simctl list devices available --json > /tmp/tourdy-devices.json
+          python3 - <<'PY'
+          import json, os
+          devices = json.load(open('/tmp/tourdy-devices.json'))['devices']
+          phones = [d for runtime, rows in devices.items() if 'iOS-' in runtime for d in rows if d['name'].startswith('iPhone')]
+          if not phones: raise RuntimeError('No iPhone simulator is installed')
+          with open(os.environ['GITHUB_ENV'], 'a') as f: f.write('TOURDY_SIMULATOR=' + phones[0]['udid'] + '\n')
+          PY
+      - name: Run native persistence and reward tests
+        run: |
+          xcodebuild -project ios/Tourdy.xcodeproj -scheme Tourdy -destination "platform=iOS Simulator,id=$TOURDY_SIMULATOR" CODE_SIGNING_ALLOWED=NO test-without-building > ios-test.log 2>&1 || { tail -n 160 ios-test.log; exit 1; }

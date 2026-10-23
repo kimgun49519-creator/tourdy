@@ -10,15 +10,19 @@ struct Place: Codable, Identifiable, Hashable {
     let longitude: Double
     let cost: Double
     let zone: Int
+    var gate: [String]?
+    var secret: Bool?
 }
-struct Subject: Codable, Identifiable { var id = UUID(); var name: String }
-struct StudySession: Codable, Identifiable { var id = UUID(); var subject: UUID; var start: Date; var end: Date }
-struct RunningStudy: Codable { var subject: UUID; var start: Date }
-struct Todo: Codable, Identifiable { var id = UUID(); var title: String; var done = false }
+struct Subject: Codable, Identifiable { var id = UUID(); var name: String; var color: String?; var icon: String?; var goal: Double? }
+struct StudySession: Codable, Identifiable { var id = UUID(); var subject: UUID; var start: Date; var end: Date; var kind: String?; var manual: Bool?; var memo: String? }
+struct RunningStudy: Codable { var subject: UUID; var start: Date; var kind: String?; var end: Date? }
+struct Todo: Codable, Identifiable { var id = UUID(); var title: String; var done = false; var day: Date?; var subject: UUID?; var estimate: Double? }
 struct Stamp: Codable, Identifiable {
     var id = UUID(); var place: String; var from: String; var date: Date; var premium: Bool; var free: Bool
+    var cabin: Int?
+    var route: String?
 }
-struct Journey: Codable { var from: String; var to: String; var cost: Double; var premium: Bool }
+struct Journey: Codable { var from: String; var to: String; var cost: Double; var premium: Bool; var cabin: Int?; var goal: Date? }
 struct NativeState: Codable {
     var version = 1
     var subjects: [Subject] = []
@@ -34,6 +38,7 @@ struct NativeState: Codable {
     var sound = true
     var askMemo = false
     var darkMode = false
+    var experience: ExperienceState?
 }
 
 @MainActor
@@ -41,14 +46,19 @@ final class NativeStore: ObservableObject {
     @Published private(set) var state = NativeState()
     @Published var error: String?
     @Published var arrival: Stamp?
+    @Published var memoSession: UUID?
+    @Published var clockDate = Date()
     let places: [Place]
     private let file: URL
+    private let writer: (Data,URL) throws -> Void
     private var blocked = false
 
-    init() {
-        let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("TourdyNative", isDirectory: true)
+    init(directory providedDirectory: URL? = nil, catalog: [Place]? = nil, write: ((Data,URL) throws -> Void)? = nil) {
+        let directory = providedDirectory ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("TourdyNative", isDirectory: true)
         file = directory.appendingPathComponent("state-v1.json")
-        if let url = Bundle.main.url(forResource: "places", withExtension: "json"), let data = try? Data(contentsOf: url), let decoded = try? JSONDecoder().decode([Place].self, from: data) {
+        writer = write ?? {data,url in try data.write(to:url,options:.atomic)}
+        if let catalog {places=catalog}
+        else if let url = Bundle.main.url(forResource: "places", withExtension: "json"), let data = try? Data(contentsOf: url), let decoded = try? JSONDecoder().decode([Place].self, from: data) {
             places = decoded
         } else { places = [] }
         do {
@@ -62,16 +72,19 @@ final class NativeStore: ObservableObject {
     }
 
     func place(_ id: String) -> Place? { places.first { $0.id == id } }
-    var completedSeconds: Double { state.sessions.reduce(0) { $0 + max(0, $1.end.timeIntervalSince($1.start)) } }
+    var completedSeconds: Double { state.sessions.filter { ($0.kind ?? "study") == "study" }.reduce(0) { $0 + max(0, $1.end.timeIntervalSince($1.start)) } }
     func dailySeconds(_ sessions: [StudySession]) -> [Date: Double] {
         var days: [Date: Double] = [:]
         let calendar = Calendar.current
-        for session in sessions {
+        for session in sessions where (session.kind ?? "study") == "study" {
             var cursor = session.start
             while cursor < session.end {
-                let day = calendar.startOfDay(for: cursor)
-                guard let next = calendar.date(byAdding: .day, value: 1, to: day), next > cursor else { break }
-                let end = min(next, session.end)
+                let shifted = cursor.addingTimeInterval(-Double(prefs.dayStart)*3600)
+                let day = calendar.startOfDay(for: shifted)
+                guard let next = calendar.date(byAdding: .day, value: 1, to: day) else { break }
+                let boundary = calendar.date(byAdding:.hour,value:prefs.dayStart,to:next) ?? next
+                guard boundary > cursor else {break}
+                let end = min(boundary, session.end)
                 days[day, default: 0] += end.timeIntervalSince(cursor)
                 cursor = end
             }
@@ -79,7 +92,11 @@ final class NativeStore: ObservableObject {
         return days
     }
     func earned(_ s: NativeState) -> Double {
-        let days = dailySeconds(s.sessions)
+        var sessions = s.sessions.filter { $0.manual != true }
+        if let run=s.running, (run.kind ?? "study") == "study" {
+            sessions.append(StudySession(subject:run.subject,start:run.start,end:max(run.start,min(Date(),run.end ?? Date()))))
+        }
+        let days = dailySeconds(sessions)
         var result = days.values.reduce(0) { $0 + min($1, 8 * 3600) / 360 + ($1 >= 8 * 3600 ? 50 : 0) }
         var streak = 0; var previous: Date?
         for day in days.keys.sorted() where (days[day] ?? 0) >= 60 {
@@ -93,11 +110,12 @@ final class NativeStore: ObservableObject {
     func unlocked(_ world: String) -> Bool {
         if world == "kr" { return true }
         let domestic = Set(state.stamps.filter { place($0.place)?.world == "kr" }.map(\.place))
-        if world == "world" { return places.filter { $0.world == "kr" && $0.id != state.home }.allSatisfy { domestic.contains($0.id) } }
+        if world == "world" { return places.filter { $0.world == "kr" && $0.secret != true && $0.id != state.home }.allSatisfy { domestic.contains($0.id) } }
         let visited = Set(state.stamps.filter { place($0.place)?.world == "world" }.map(\.place))
-        return unlocked("world") && places.filter { $0.world == "world" && $0.id != "KR" }.allSatisfy { visited.contains($0.id) }
+        return unlocked("world") && places.filter { $0.world == "world" && $0.secret != true && $0.id != "KR" }.allSatisfy { visited.contains($0.id) }
     }
     func zoneOpen(_ p: Place) -> Bool {
+        if let gate=p.gate,!gate.isEmpty {return state.stamps.contains {gate.contains($0.place)}}
         guard p.world == "space", p.zone > 0 else { return true }
         let visited = Set(state.stamps.map(\.place))
         return places.filter { $0.world == "space" && $0.zone < p.zone }.allSatisfy { visited.contains($0.id) }
@@ -117,6 +135,7 @@ final class NativeStore: ObservableObject {
     private func validate(_ s: NativeState) throws {
         guard s.version == 1, s.used.isFinite, s.used >= 0,
               s.sessions.allSatisfy({ $0.end >= $0.start }),
+              s.running.map({ $0.end == nil || $0.end! >= $0.start }) ?? true,
               ["pending","ready","used"].contains(s.firstReward),
               ["kr","world","space"].allSatisfy({ world in
                   guard let id=s.positions[world] else { return false }
@@ -125,6 +144,12 @@ final class NativeStore: ObservableObject {
               place(s.home)?.world == "kr",
               s.journey.map({ $0.cost.isFinite && $0.cost >= 0 && place($0.to) != nil }) ?? true,
               s.stamps.allSatisfy({ place($0.place) != nil && ($0.from == "earth" || place($0.from) != nil) }) else { throw CocoaError(.fileReadCorruptFile) }
+        if let p=s.experience {
+            guard (0...8).contains(p.dayStart), (0...1440).contains(p.goalMinutes) else {throw CocoaError(.fileReadCorruptFile)}
+            if let plan=p.plan {
+                guard plan.study>0,plan.rest>=0,(1...12).contains(plan.sets),(1...plan.sets).contains(plan.set),["waiting","study","rest","paused"].contains(plan.phase) else {throw CocoaError(.fileReadCorruptFile)}
+            }
+        }
     }
     @discardableResult
     func commit(_ change: (inout NativeState) -> Void) -> Bool {
@@ -133,7 +158,7 @@ final class NativeStore: ObservableObject {
         do {
             try validate(next)
             let data = try JSONEncoder().encode(next)
-            try data.write(to: file, options: .atomic)
+            try writer(data,file)
             state = next
             return true
         } catch { self.error = "저장하지 못했어요. 변경 전 기록을 유지합니다. \(error.localizedDescription)"; return false }
@@ -146,8 +171,8 @@ final class NativeStore: ObservableObject {
         guard let running = state.running else { return }
         let end = max(Date(),running.start)
         if commit({ s in
-            s.sessions.append(StudySession(subject:running.subject,start:running.start,end:end)); s.running = nil
-            if s.firstReward == "pending" && s.sessions.reduce(0, { $0 + $1.end.timeIntervalSince($1.start) }) >= 1800 { s.firstReward = "ready" }
+            s.sessions.append(StudySession(subject:running.subject,start:running.start,end:min(end,running.end ?? end),kind:running.kind)); s.running = nil
+            if s.firstReward == "pending" && s.sessions.filter({($0.kind ?? "study") == "study" && $0.manual != true}).reduce(0, { $0 + $1.end.timeIntervalSince($1.start) }) >= 1800 { s.firstReward = "ready" }
         }) { settleJourney() }
     }
     func depart(_ p: Place, premium: Bool) {
@@ -158,16 +183,20 @@ final class NativeStore: ObservableObject {
     }
     func settleJourney() {
         guard let journey = state.journey, let p = place(journey.to), balance >= journey.cost else { return }
-        let stamp = Stamp(place:p.id,from:journey.from,date:Date(),premium:journey.premium,free:false)
-        if commit({ s in s.used += journey.cost; s.positions[p.world] = p.id; s.stamps.append(stamp); s.journey = nil }) { arrival = stamp }
+        let stamp = Stamp(place:p.id,from:journey.from,date:Date(),premium:journey.premium,free:false,cabin:journey.cabin,route:prefs.route?.id)
+        if commit({ s in
+            s.used += journey.cost; s.positions[p.world] = p.id; s.stamps.append(stamp); s.journey = nil
+            advanceRoute(&s, arrived: p)
+            recordAchievements(&s,stamp:stamp)
+        }) { arrival = stamp; playArrival() }
     }
     func gift(_ p: Place, origin: String) {
-        guard p.world == "kr", state.running == nil, state.firstReward == "ready",
+        guard p.world == "kr", p.secret != true, state.running == nil, state.firstReward == "ready",
               let from = place(origin), from.world == "kr", origin != p.id else { return }
         let started = state.stamps.contains { place($0.place)?.world == "kr" }
         guard !started || origin == state.positions["kr"] else { return }
-        let stamp = Stamp(place:p.id,from:origin,date:Date(),premium:true,free:true)
-        if commit({ s in s.firstReward = "used"; if !started { s.home = origin }; s.positions["kr"] = p.id; s.stamps.append(stamp); s.journey = nil }) { arrival = stamp }
+        let stamp = Stamp(place:p.id,from:origin,date:Date(),premium:true,free:true,cabin:1)
+        if commit({ s in s.firstReward = "used"; if !started { s.home = origin }; s.positions["kr"] = p.id; s.stamps.append(stamp); s.journey = nil;var preferences=s.experience ?? ExperienceState();preferences.route=nil;s.experience=preferences;recordAchievements(&s,stamp:stamp) }) { arrival = stamp;playArrival() }
     }
     func setting(_ key: WritableKeyPath<NativeState,Bool>) -> Binding<Bool> {
         Binding(get: { self.state[keyPath:key] }, set: { value in self.commit { $0[keyPath:key] = value } })
@@ -177,137 +206,48 @@ final class NativeStore: ObservableObject {
         try JSONEncoder().encode(state).write(to:url,options:.atomic)
         return url
     }
+    func restoreBackup(_ data: Data) {
+        do {
+            let candidate: NativeState
+            if let native=try? JSONDecoder().decode(NativeState.self,from:data) {candidate=native}
+            else {candidate=try decodeLegacy(data)}
+            try validate(candidate)
+            if let previous=try? Data(contentsOf:file) {try previous.write(to:file.deletingLastPathComponent().appendingPathComponent("before-import.json"),options:.atomic)}
+            try data.write(to:file.deletingLastPathComponent().appendingPathComponent("import-source.json"),options:.atomic)
+            try JSONEncoder().encode(candidate).write(to:file,options:.atomic)
+            state=candidate;blocked=false;refreshNotifications()
+        } catch {self.error="백업을 가져오지 못했어요. 현재 기록을 유지합니다. \(error.localizedDescription)"}
+    }
 }
 
 @main
 struct TourdyNativeApp: App {
     @StateObject private var store = NativeStore()
-    var body: some Scene { WindowGroup { NativeRoot().environmentObject(store).preferredColorScheme(store.state.darkMode ? .dark : nil) } }
+    var body: some Scene { WindowGroup { NativeRoot().environmentObject(store).tint(store.accent).preferredColorScheme(store.prefs.theme=="dark" ? .dark : store.prefs.theme=="light" ? .light : nil) } }
 }
 struct NativeRoot: View {
     @EnvironmentObject var store: NativeStore
     @Environment(\.scenePhase) var phase
     var body: some View {
         TabView {
-            NavigationStack { TimerScreen() }.tabItem { Label("홈",systemImage:"timer") }
-            NavigationStack { TasksScreen() }.tabItem { Label("할 일",systemImage:"checklist") }
-            NavigationStack { StatsScreen() }.tabItem { Label("대시보드",systemImage:"chart.bar.xaxis") }
-            NavigationStack { TravelScreen() }.tabItem { Label("여행",systemImage:"airplane") }
-            NavigationStack { SettingsScreen() }.tabItem { Label("설정",systemImage:"gearshape.fill") }
+            NavigationStack { HomeExperience() }.tabItem { Label("홈",systemImage:"timer") }
+            NavigationStack { TasksExperience() }.tabItem { Label("할 일",systemImage:"checklist") }
+            NavigationStack { StatsExperience() }.tabItem { Label("대시보드",systemImage:"chart.bar.xaxis") }
+            if store.prefs.travelEnabled {NavigationStack { TravelExperience() }.tabItem { Label("여행",systemImage:"airplane") }}
+            NavigationStack { SettingsExperience() }.tabItem { Label("설정",systemImage:"gearshape.fill") }
         }
         .tabViewStyle(.tabBarOnly)
         .onChange(of: phase) { _, value in
-            if value == ScenePhase.active { store.settleJourney() }
+            if value == ScenePhase.active { store.updateClock() }
         }
+        .onReceive(Timer.publish(every:1,on:.main,in:.common).autoconnect()) {_ in store.updateClock()}
         .alert("확인해 주세요",isPresented:Binding(get:{store.error != nil},set:{if !$0 {store.error=nil}})) { Button("확인") {store.error=nil} } message:{Text(store.error ?? "")}
-        .sheet(item:$store.arrival) { stamp in NavigationStack { TicketScreen(stamp:stamp) } }
+        .sheet(item:$store.arrival) { stamp in NavigationStack { ArrivalExperience(stamp:stamp) } }
+        .sheet(isPresented:Binding(get:{store.memoSession != nil && store.arrival==nil},set:{if !$0 {store.memoSession=nil}})) {if let id=store.memoSession {NavigationStack {SessionMemoEditor(id:id)}}}
     }
 }
 func duration(_ seconds: Double) -> String {
     let s = max(0,Int(seconds)); return String(format:"%02d:%02d:%02d",s/3600,(s%3600)/60,s%60)
-}
-struct TimerScreen: View {
-    @EnvironmentObject var store: NativeStore
-    @State private var name = ""
-    var body: some View {
-        List {
-            Section {
-                TimelineView(.periodic(from:.now,by:1)) { context in
-                    VStack(spacing:16) {
-                        Text(store.state.running.flatMap { run in store.state.subjects.first {$0.id == run.subject}?.name } ?? "공부를 시작해볼까요?")
-                        Text(duration(store.state.running.map {context.date.timeIntervalSince($0.start)} ?? 0)).font(.system(size:44,weight:.medium,design:.monospaced)).minimumScaleFactor(0.5)
-                        if store.state.running != nil { Button("공부 마치기",role:.destructive) {store.stop()}.buttonStyle(.glass) }
-                    }.frame(maxWidth:.infinity).padding(.vertical,20)
-                }
-            }
-            Section("과목") {
-                ForEach(store.state.subjects) { subject in Button {store.start(subject)} label:{Label(subject.name,systemImage:"play.circle")}.disabled(store.state.running != nil) }
-                HStack { TextField("새 과목",text:$name); Button("추가") {let trimmed=name.trimmingCharacters(in:.whitespacesAndNewlines); if !trimmed.isEmpty && store.commit({$0.subjects.append(Subject(name:trimmed))}) {name=""}} }
-            }
-            Section("첫 여행 선물") {
-                Text(store.state.firstReward == "used" ? "첫 여행 티켓을 사용했어요" : store.state.firstReward == "ready" ? "무료 최고급 티켓이 준비됐어요" : "누적 공부 30분 후, 세션을 마치면 받아요")
-                ProgressView(value:min(1800,store.completedSeconds),total:1800)
-                if store.state.firstReward == "ready" { NavigationLink("첫 여행 떠나기") { GiftScreen() }.disabled(store.state.running != nil) }
-            }
-        }.navigationTitle("TOURDY")
-    }
-}
-struct TasksScreen: View {
-    @EnvironmentObject var store: NativeStore
-    @State private var title = ""
-    var body: some View {
-        List {
-            HStack {TextField("할 일 추가",text:$title); Button("추가") {let text=title.trimmingCharacters(in:.whitespacesAndNewlines); if !text.isEmpty && store.commit({$0.tasks.append(Todo(title:text))}) {title=""}}}
-            ForEach(store.state.tasks) { task in
-                Toggle(task.title,isOn:Binding(get:{store.state.tasks.first {$0.id==task.id}?.done ?? false},set:{value in store.commit {s in if let i=s.tasks.firstIndex(where:{$0.id==task.id}) {s.tasks[i].done=value}}})).toggleStyle(.switch)
-            }
-        }.navigationTitle("할 일")
-    }
-}
-struct StatsScreen: View {
-    @EnvironmentObject var store: NativeStore
-    var body: some View {
-        List {
-            LabeledContent("누적 공부",value:duration(store.completedSeconds))
-            LabeledContent("보유 마일리지",value:String(format:"%.1f",store.balance))
-            Section("과목별 공부") {ForEach(store.state.subjects) {subject in LabeledContent(subject.name,value:duration(store.state.sessions.filter {$0.subject==subject.id}.reduce(0){$0+$1.end.timeIntervalSince($1.start)}))}}
-            Section("최근 공부") {ForEach(store.state.sessions.reversed()) {session in VStack(alignment:.leading) {Text(store.state.subjects.first {$0.id==session.subject}?.name ?? "과목"); Text("\(session.start.formatted()) · \(duration(session.end.timeIntervalSince(session.start)))").font(.caption).foregroundStyle(.secondary)}}}
-        }.navigationTitle("대시보드")
-    }
-}
-struct TravelScreen: View {
-    @EnvironmentObject var store: NativeStore
-    @State private var world = "kr"
-    @State private var search = ""
-    @State private var premium = false
-    var destinations: [Place] {store.places.filter {$0.world==world && $0.id != store.state.positions[world] && (search.isEmpty || ($0.name+$0.region).localizedCaseInsensitiveContains(search))}.sorted {store.cost($0,premium:premium)<store.cost($1,premium:premium)}}
-    var body: some View {
-        List {
-            Picker("여행",selection:$world) {Text("국내").tag("kr");Text("세계").tag("world");Text("우주").tag("space")}.pickerStyle(.segmented)
-            LabeledContent("현재 위치",value:store.place(store.state.positions[world] ?? "")?.name ?? "지구")
-            LabeledContent("보유 마일리지",value:String(format:"%.1f",store.balance))
-            NavigationLink("스탬프북 · \(store.state.stamps.count)장") {StampBook()}
-            if let journey=store.state.journey {
-                Section("이동 중") {
-                    Text("\(store.place(journey.from)?.name ?? "") → \(store.place(journey.to)?.name ?? "")")
-                    Text("도착까지 \(duration(max(0,journey.cost-store.balance)*360)) 공부")
-                    Button("여행 취소",role:.destructive) {store.commit {$0.journey=nil}}
-                }
-            }
-            if !store.unlocked(world) {Text(world == "world" ? "국내 여행을 완주하면 열려요" : "세계 여행을 완주하면 열려요")}
-            else {
-                if world != "space" {Toggle("최고급 좌석",isOn:$premium)}
-                Section("출발 안내") {
-                    ForEach(destinations) { place in
-                        NavigationLink {
-                            DestinationScreen(place: place, premium: premium)
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(place.name)
-                                Text("\(place.region) · \(Int(store.cost(place, premium: premium))) 마일")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                    }
-                }
-            }
-        }.searchable(text:$search,prompt:"목적지 검색").navigationTitle("여행")
-    }
-}
-struct DestinationScreen: View {
-    @EnvironmentObject var store: NativeStore
-    let place: Place
-    let premium: Bool
-    var body: some View {
-        Form {
-            LabeledContent("목적지",value:place.name)
-            LabeledContent("좌석",value:premium ? "최고급" : "일반")
-            LabeledContent("필요 마일리지",value:String(Int(store.cost(place,premium:premium))))
-            Text("마일리지가 부족하면 공부를 마친 뒤 자동으로 도착해요. 도착 시 마일리지가 차감됩니다.")
-            Button("여행 출발") {store.depart(place,premium:premium)}.disabled(store.state.journey != nil || !store.zoneOpen(place)).buttonStyle(.glassProminent)
-        }.navigationTitle(place.name)
-    }
 }
 struct GiftScreen: View {
     @EnvironmentObject var store: NativeStore
@@ -327,38 +267,5 @@ struct GiftScreen: View {
                 Button("첫 여행 떠나기") {if let p=store.place(destination) {store.gift(p,origin:origin);if store.state.firstReward=="used" {dismiss()}}}.buttonStyle(.glassProminent).disabled(origin==destination || store.state.running != nil || store.state.firstReward != "ready")
             }
         }.navigationTitle("첫 여행").onAppear {origin=store.state.positions["kr"] ?? "seoul";if destination==origin {destination=origin=="busan" ? "seoul" : "busan"}}
-    }
-}
-struct StampBook: View {
-    @EnvironmentObject var store: NativeStore
-    var body: some View {List(store.state.stamps.reversed()) {stamp in NavigationLink {TicketScreen(stamp:stamp)} label:{Label("\(store.place(stamp.place)?.name ?? stamp.place) · \(stamp.date.formatted(date:.abbreviated,time:.omitted))",systemImage:stamp.premium ? "seal.fill" : "seal")}}.navigationTitle("스탬프북")}
-}
-struct TicketScreen: View {
-    @EnvironmentObject var store: NativeStore
-    @Environment(\.dismiss) var dismiss
-    let stamp: Stamp
-    var recommendations: [Place] {
-        let visited = Set(store.state.stamps.map(\.place))
-        return Array(store.places.filter { $0.world == "kr" && $0.id != stamp.place && !visited.contains($0.id) }
-            .sorted {store.cost($0,premium:false)<store.cost($1,premium:false)}.prefix(3))
-    }
-    var body: some View {
-        List {
-            Section {Label(stamp.premium ? "GOLD TICKET" : "여행 티켓",systemImage:"ticket.fill").foregroundStyle(stamp.premium ? Color.orange : Color.blue);Text("\(store.place(stamp.from)?.name ?? stamp.from) → \(store.place(stamp.place)?.name ?? stamp.place)").font(.title2.bold());Text(stamp.date.formatted());if stamp.free {Text("공부 30분이 데려다준 첫 도시");Text("최고급 티켓 · 마일리지 차감 없음")}}
-            if stamp.free && store.state.positions["kr"]==stamp.place {
-                Section("다음에는 어디로 갈까요?") {ForEach(recommendations) {p in NavigationLink(p.name) {DestinationScreen(place:p,premium:false)}}}
-            }
-        }.navigationTitle("도착 기념").toolbar {Button("닫기") {dismiss()}}
-    }
-}
-struct SettingsScreen: View {
-    @EnvironmentObject var store: NativeStore
-    @State private var exportURL: URL?
-    var body: some View {
-        Form {
-            Section("화면") {Toggle("다크 모드",isOn:store.setting(\.darkMode))}
-            Section("기록 보관") {Button("백업 파일 준비") {do {exportURL=try store.export()} catch {store.error=error.localizedDescription}};if let url=exportURL {ShareLink("백업 파일 공유·저장",item:url)}}
-            Section("이 버전") {Text("SwiftUI 네이티브 · 오프라인 저장");Text("기존 웹앱 기록은 별도로 보관됩니다. 자동으로 가져오지 않습니다.");Text("예약·뽀모도로, 알림·효과음, 기존 백업 가져오기, 특별 루트와 고급 여행 연출은 아직 이식 중입니다.").foregroundStyle(.secondary)}
-        }.navigationTitle("설정")
     }
 }

@@ -1,11 +1,11 @@
 // Cache each release as a complete shell so HTML and extracted scripts agree.
-const VERSION = 'tourdy-v5';
+const VERSION = 'tourdy-v6';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './css/app.css',
   './js/storage.js', './js/rewards.js', './js/core.js', './js/timer.js',
   './js/planner.js', './js/stats.js', './js/settings.js',
   './js/travel-world.js', './js/travel-korea.js', './js/travel-space.js',
-  './js/travel-map.js', './js/travel-experience.js', './js/extras.js',
+  './js/travel-map.js', './js/route-icons.js', './js/travel-experience.js', './js/extras.js',
   './js/first-trip.js', './js/app.js', './js/pwa.js',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png',
   './apple-touch-icon.png', './favicon-64.png',

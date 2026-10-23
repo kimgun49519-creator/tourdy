@@ -83,11 +83,9 @@ struct AppWebView: UIViewRepresentable {
 struct TourdyScreen: View {
     @StateObject private var model = TourdyModel()
     var body: some View {
-        GeometryReader { _ in
+        GeometryReader { geometry in
             ZStack(alignment: .topLeading) {
                 AppWebView(model: model)
-                GlassEffectContainer(spacing: 8) {
-                    ZStack(alignment: .topLeading) {
                         ForEach(model.tabs) { item in
                             Button { model.selectTab(item) } label: {
                                 Text(item.title)
@@ -99,20 +97,20 @@ struct TourdyScreen: View {
                             .buttonStyle(.plain)
                             .foregroundStyle(item.on ? Color.white : Color.primary)
                             .glassEffect(.regular.tint(item.on ? Color.accentColor : Color.clear).interactive(), in: .capsule)
+                            .contentShape(Capsule())
                             .accessibilityAddTraits(item.on ? [.isSelected] : [])
-                            .position(x: item.x + item.width / 2, y: item.y + item.height / 2)
+                            .offset(x: item.x + 3, y: item.y)
                         }
-                    }
-                }
                 ForEach(model.switches) { item in
                     Toggle(item.title, isOn: Binding(get: { item.on }, set: { model.change(item, to: $0) }))
                         .toggleStyle(.switch)
                         .labelsHidden()
                         .accessibilityLabel(item.title)
                         .frame(width: item.width, height: item.height)
-                        .position(x: item.x + item.width / 2, y: item.y + item.height / 2)
+                        .offset(x: item.x, y: item.y)
                 }
             }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
             .clipped()
         }
         .alert("확인해 주세요", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) {

@@ -1415,6 +1415,28 @@ button.hsw{background:none;padding:0;cursor:pointer;font:inherit}
 .term{width:100%;max-width:440px;margin:auto;border-radius:20px;padding:22px;background:linear-gradient(135deg,#1e2a78,#4c3fb0);color:#fff;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.35)}
 .term-h{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.2em;color:#ffd27a}.term-h svg{width:18px;height:18px}
 .term b{font-size:24px;font-weight:900}.term small{opacity:.8}
+
+/* 정기권 */
+.tcard{--a:#cbd2d9;--b:#8a949f;position:relative;aspect-ratio:1.6;max-width:360px;width:100%;border-radius:18px;padding:16px 18px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 10px 24px rgba(0,0,0,.18);overflow:hidden}
+.tcard::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.25) 50%,transparent 58%);pointer-events:none}
+.tcard.off{filter:grayscale(1);opacity:.7}
+.tc-top{display:flex;justify-content:space-between;font-size:11px;font-weight:800;letter-spacing:.18em;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.tc-mid{display:flex;justify-content:space-between;align-items:center}.tc-mid b{font-size:26px;font-weight:900;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.tc-chip{width:42px;height:32px;border-radius:6px;background:linear-gradient(135deg,#f6e27a,#c9a227);box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.tc-bot{display:grid;grid-template-columns:auto auto 1fr;gap:16px;text-shadow:0 1px 2px rgba(0,0,0,.3)}.tc-bot small{display:block;font-size:10px;opacity:.85}.tc-bot b{font-size:14px;font-weight:800}.tc-bot>div:last-child{text-align:right}
+.pbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px;margin-top:6px}
+button.pbw{background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;font:inherit;color:var(--ink);text-align:center}
+button.pbw>b{font-size:12px;font-weight:800;line-height:1.25}
+.pb{--a:#9aa3ad;--b:#5f6872;width:76px;aspect-ratio:.72;border-radius:10px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(150deg,var(--a),var(--b));box-shadow:0 4px 10px rgba(0,0,0,.2),inset 0 0 0 2px rgba(255,255,255,.35);overflow:hidden}
+.pb::before{content:"";position:absolute;top:8px;left:50%;width:18px;height:5px;margin-left:-9px;border-radius:3px;background:rgba(0,0,0,.25)}
+.pb i{position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.35) 50%,transparent 58%);transform:translateX(-40%);transition:transform .7s}
+.pb-n{font-size:28px;font-weight:900;line-height:1;text-shadow:0 1px 3px rgba(0,0,0,.35)}.pb small{font-size:9px;font-weight:800;letter-spacing:.2em;opacity:.9}
+.pb.lock{background:var(--hover);color:var(--faint);box-shadow:inset 0 0 0 1.5px var(--line)}.pb.lock .pb-n{text-shadow:none}
+.pb.sm{width:52px}.pb.sm .pb-n{font-size:20px}
+@media (hover:hover){button.pbw:hover .pb:not(.lock){transform:translateY(-3px) rotate(-3deg)}button.pbw:hover .pb i{transform:translateX(40%)}}
+.pb{transition:transform .2s}
+.bd-big .pb{width:120px}.bd-big .pb-n{font-size:46px}
+.bn-pass{display:flex;flex-direction:column;gap:8px}.bn-pass .pbw{flex-direction:row;text-align:left;gap:12px;background:var(--hover);border-radius:14px;padding:10px}.bn-pass .pbw span{display:flex;flex-direction:column;gap:2px}.bn-pass .pbw small{font-size:12px;color:var(--muted);font-weight:500}
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
 .ks-head b{display:block;font-size:17px;font-weight:800}
@@ -1627,6 +1649,7 @@ button.hsw{background:none;padding:0;cursor:pointer;font:inherit}
       <div class="panel-head"><h2>여권</h2><span class="note" id="tvStyleLbl">입국 도장</span></div>
       <div class="stamps" id="tvStamps"></div>
     </section>
+    <section class="panel ach-only" id="achPassCard"></section>
     <section class="panel ach-only" id="achPass"></section>
     <section class="panel ach-only" id="achSouv"></section>
     <section class="panel ach-only" id="achCards"></section>
@@ -3435,11 +3458,12 @@ function renderAch(){const T=tr(),K=kr(T),R=RT(),H=T.hid||{},total=K.done.length
     ['세계',[...CONT.map((c,i)=>it(`${c} 첫 도착`,`${c}의 나라에 처음 입국`,gotC.has(i)?1:0,1,INK[i])),it('모든 대륙','일곱 대륙 모두 입국',gotC.size,7,'#c9a227'),
       it('장거리 비행','한 번에 5,000km 이상',T.long?1:0,1,'#2f55c4'),it('지구 한 바퀴','누적 40,075km 이동',Math.round(T.km),40075,'#14806f'),
       it('도장 10개','나라 10곳 입국',wd,10,'#7a3fb0'),it('도장 30개','나라 30곳 입국',wd,30,'#7a3fb0'),it('도장 100개','나라 100곳 입국',wd,100,'#7a3fb0'),it('세계 완주','모든 나라 입국',wd,wt,'#c9a227')]],
+    ['연속 공부',(()=>{const b=passInfo().best;return PASSES.map(q=>it(q[2],`${q[0]}일 연속 공부 · ${q[1]}`,b,q[0],q[5]))})()],
     ['비밀 목적지',[...SECK.map(x=>it(x[1],x[6],secVisited(K.sec,x[0])?1:0,1,'#6b4fd8')),...SECW.map(x=>it(x[2],x[7],secVisited(T.sec,x[0])?1:0,1,'#6b4fd8'))]],
     ['특별 루트',ROUTES.map(r=>it(r.name,(r.w==='kr'?'국내 · ':'세계 · ')+plName(r.w,r.stops[0])+' 출발',R.done[r.id]?1:0,1,'#c9a227'))]];
   $('achList').innerHTML=groups.map(([g,items])=>`<div class="ach-g"><div class="ach-gh"><b>${g}</b><span>${items.filter(x=>x.ok).length} / ${items.length}</span></div><div class="achs">${items.map(x=>`<div class="ach${x.ok?' ok':''}" style="--k:${x.col}"><span class="ach-i">${x.ok?'★':'☆'}</span><div><b>${x.name}</b><small>${x.desc}</small>${x.goal>1?`<div class="ach-bar"><i style="width:${x.cur/x.goal*100}%"></i></div><small class="ach-n">${x.cur.toLocaleString()} / ${x.goal.toLocaleString()}</small>`:''}</div></div>`).join('')}</div></div>`).join('')
     +`<div class="ach-g"><div class="ach-gh"><b>히든 도전 과제</b><span>${Object.keys(H).length} / ${HIDDEN.length}</span></div><p class="note">조건은 비밀이에요. 여행하다 보면 저절로 열려요.</p><div class="hss">${HIDDEN.map(x=>`<button class="hsw" data-hid="${x[0]}" aria-label="${H[x[0]]?x[1]:'숨겨진 과제'} 설명 보기">${hstamp(x[0],H[x[0]])}<b>${H[x[0]]?x[1]:'???'}</b></button>`).join('')}</div></div>`;
-  renderYear();renderSouv();renderAlbum();
+  renderYear();renderSouv();renderAlbum();renderPassCard();
 }
 function renderYear(){const T=tr(),K=kr(T),pd=perDay(true),ys=new Set([new Date().getFullYear()]);
   Object.keys(pd).forEach(k=>ys.add(+k.slice(0,4)));K.done.forEach(d=>ys.add(+d.d.slice(0,4)));T.stamps.forEach(s=>ys.add(+s.d.slice(0,4)));
@@ -3623,10 +3647,12 @@ function showBadge(id){const x=HIDX[id];if(!x)return;const T=tr(),d=(T.hid||{})[
 document.addEventListener('click',e=>{const b=e.target.closest('[data-hid]');if(b)showBadge(b.dataset.hid)});
 /* ---------- 보너스 마일리지 안내 ---------- */
 function bonusCheck(){if(S.running||!S.travel)return;const L=bonusList(),seen=new Set(S.bonusSeen||[]);const fresh=L.filter(b=>!seen.has(b.k));S.bonusSeen=L.map(b=>b.k);
-  if(!fresh.length){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}return}
+  const PK=passKeys(),ps=new Set(S.passSeen||[]),pf=[...new Map(PK.filter(x=>!ps.has(x.k)).map(x=>[x.p[0],x])).values()];S.passSeen=PK.map(x=>x.k);
+  if(!fresh.length&&!pf.length){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}return}
   try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
-  $('bonusBox').innerHTML=`<div class="ck-h"><span class="ck-k">${PLANE}보너스 마일리지</span><b>+${fresh.reduce((a,b)=>a+b.m,0).toLocaleString()} 마일리지 적립!</b></div>
-    <ul class="bn-l">${fresh.map(b=>`<li><span>${b.t}<small>${ymd(pk(b.d))}</small></span><b>+${b.m.toLocaleString()}</b></li>`).join('')}</ul>
+  $('bonusBox').innerHTML=`<div class="ck-h"><span class="ck-k">${PLANE}${fresh.length?'보너스 마일리지':'연속 공부 정기권'}</span><b>${fresh.length?`+${fresh.reduce((a,b)=>a+b.m,0).toLocaleString()} 마일리지 적립!`:`${pf[pf.length-1].p[1]} 발급!`}</b></div>
+    ${pf.length?`<div class="bn-pass">${pf.map(x=>{const i=PASSES.indexOf(x.p);return `<button class="pbw" data-pass="${i}">${pbadge(i,x.d,1)}<span><b>${esc(x.p[2])}</b><small>${esc(x.p[3])}</small></span></button>`}).join('')}</div>`:''}
+    ${fresh.length?`<ul class="bn-l">${fresh.map(b=>`<li><span>${b.t}<small>${ymd(pk(b.d))}</small></span><b>+${b.m.toLocaleString()}</b></li>`).join('')}</ul>`:''}
     <div class="ck-a"><button class="primary" id="bonusOk">확인</button></div>`;$('bonusPop').hidden=false;vibe();if(tab==='travel')renderTravel()}
 $('bonusPop').addEventListener('click',e=>{if(e.target===$('bonusPop')||e.target.closest('#bonusOk'))$('bonusPop').hidden=true});
 if(!S.bonusSeen){S.bonusSeen=bonusList().map(b=>b.k)}
@@ -3643,6 +3669,38 @@ function renderMilePage(){const L=bonusList(),pd=perDay(true),td=(pd[dk(today0()
       <div><b>+1,000</b><span>30일 연속 공부</span><small>${st%30}/30일째</small><i style="--p:${(st%30)/30*100}%"></i></div></div>
     <p class="note">연속 공부는 하루에 1분 이상 공부한 날이 이어진 날수예요. 공부를 마치거나 기록을 직접 추가했을 때 조건을 채우면 알려 드려요.</p>
     ${L.length?`<div class="plabel">받은 보너스</div><ul class="bn-l">${L.slice().reverse().slice(0,20).map(b=>`<li><span>${b.t}<small>${ymd(pk(b.d))}</small></span><b>+${b.m.toLocaleString()}</b></li>`).join('')}</ul>`:''}`}
+
+/* ---------- 연속 공부 정기권 ---------- */
+// [일수, 정기권 이름, 업적 이름, 설명, 색1, 색2]
+const PASSES=[
+  [3,'3일권','작심삼일 탈출','작심삼일의 저주를 가볍게 컷. 이 기세면 어디든 갑니다.','#9aa3ad','#5f6872'],
+  [7,'1주 정기권','월화수목금토일','주말도 쉬지 않고 7일 풀출석 완료.','#3b82f6','#1e40af'],
+  [14,'2주 정기권','이게 되네?','14일 연속 공부, 실화인가요?','#14b8a6','#0f766e'],
+  [30,'한 달 정기권','30일 공부한 썰 푼다','상상만 하던 한 달 연속 공부를 진짜로 해냈습니다.','#e5e7eb','#8a949f'],
+  [60,'60일 정기권','뇌: "공부 그냥 숨 쉬듯 함"','의지력 따윈 필요 없습니다. 이쯤 되면 뇌가 알아서 자동사냥 중입니다.','#a78bfa','#5b21b6'],
+  [100,'100일 정기권','마늘과 쑥을 이겨낸 자','곰이 사람 된 100일을 버텼습니다. 당신은 이제 금빛 찬란한 인간 승리의 표본입니다.','#f6dd8a','#a07c12'],
+  [365,'1년 정기권','핵임 암튼 핵임','1년 365일 하루도 빠짐없이. 이건 그냥 전설입니다.','#3a3a3a','#000000']];
+function studyRuns(pd){pd=pd||perDay(true);const days=Object.keys(pd).filter(k=>pd[k].study>=6e4).sort(),runs=[];let run=[];
+  days.forEach(k=>{if(run.length&&dk(addD(pk(run[run.length-1]),1))!==k){runs.push(run);run=[]}run.push(k)});if(run.length)runs.push(run);return runs}
+function passInfo(){const pd=perDay(true),runs=studyRuns(pd),first={};let best=0;
+  runs.forEach(r=>{best=Math.max(best,r.length);PASSES.forEach(p=>{if(r.length>=p[0]){const d=r[p[0]-1];if(!first[p[0]]||d<first[p[0]])first[p[0]]=d}})});
+  const last=runs[runs.length-1]||[],t=dk(today0()),y=dk(addD(today0(),-1)),alive=last.length&&(last[last.length-1]===t||last[last.length-1]===y);
+  return {runs,first,best,cur:alive?last.length:0,curStart:alive?last[0]:null,lastRun:last}}
+const passTier=n=>{let i=-1;PASSES.forEach((p,k)=>{if(n>=p[0])i=k});return i};
+function passKeys(){return studyRuns().flatMap(r=>PASSES.filter(p=>r.length>=p[0]).map(p=>({k:`p${p[0]}:${r[0]}`,p,d:r[p[0]-1]})))}
+if(!S.passSeen)S.passSeen=passKeys().map(x=>x.k);
+function pbadge(i,date,sm){const p=PASSES[i];return `<div class="pb${date?'':' lock'}${sm?' sm':''}" style="--a:${p[4]};--b:${p[5]}"><span class="pb-n">${p[0]}</span><small>${p[0]===365?'YEAR':'DAYS'}</small><i></i></div>`}
+function showPass(i){const p=PASSES[i],d=passInfo().first[p[0]];arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
+  $('arrTk').innerHTML=`<div class="bd-big">${pbadge(i,d)}</div>`;
+  $('arrMsg').innerHTML=`<b>${esc(p[2])}</b><span class="bd-desc">${esc(p[3])}</span><div class="bd-cond"><small>획득 조건</small><b>${p[0]}일 연속 공부 · ${p[1]}</b></div><span>${d?ymd(pk(d))+' 획득':'아직 받지 못했어요'}</span>`;$('arrOk').textContent='닫기';vibe()}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-pass]');if(b)showPass(+b.dataset.pass)});
+function renderPassCard(){const I=passInfo(),n=I.cur,ti=passTier(n),nx=PASSES[ti+1],p=ti>=0?PASSES[ti]:null,c1=p?p[4]:'#cbd2d9',c2=p?p[5]:'#8a949f';
+  $('achPassCard').innerHTML=`<div class="panel-head"><h2>연속 공부 정기권</h2><span class="note">최고 기록 ${I.best}일</span></div>
+    <div class="tcard${n?'':' off'}" style="--a:${c1};--b:${c2}"><div class="tc-top"><span>TOURY PASS</span><span>${n?'사용 중':'만료'}</span></div>
+      <div class="tc-mid"><b>${n?(p?p[1]:'연속 '+n+'일'):'정기권 없음'}</b><span class="tc-chip"></span></div>
+      <div class="tc-bot"><div><small>연속</small><b>${n}일</b></div><div><small>시작</small><b>${I.curStart?ymd(pk(I.curStart)):'-'}</b></div><div><small>다음</small><b>${nx?`${nx[1]}까지 ${nx[0]-n}일`:'최고 등급'}</b></div></div></div>
+    <p class="note">${n?'오늘도 1분 이상 공부하면 정기권이 하루 더 연장돼요.':`하루라도 쉬면 정기권이 만료돼요. ${I.lastRun.length?`지난 정기권은 ${I.lastRun.length}일 기록으로 끝났어요. `:''}오늘 공부하면 새 정기권이 시작돼요.`}</p>
+    <div class="pbs">${PASSES.map((q,i)=>`<button class="pbw" data-pass="${i}" aria-label="${esc(q[2])} 설명 보기">${pbadge(i,I.first[q[0]])}<b>${I.first[q[0]]?esc(q[2]):q[1]}</b></button>`).join('')}</div>`}
 
 function tvTest(e){const T=tr(),a=e.target.closest('[data-add]');
   if(a){T.used-=+a.dataset.add;save();if(checkArrival())ding();renderTravel();return true}

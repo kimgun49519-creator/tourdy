@@ -2860,6 +2860,7 @@ function renderWorldMap(){
 $('tvMap').addEventListener('click',e=>{if(e.target.closest('#tvMapTg')){MV.w=MV.w?null:WFULL.slice();if(!MV.w)MVK.w='';renderWorldMap()}});
 
 /* ---------- 도착 연출: 표 뜯기 + 효과음 ---------- */
+document.body.appendChild($('arrive')); // 화면 전체 기준으로 뜨도록 (변형된 부모 안에 있으면 위치가 어긋남)
 const ARQ=[];let arrOpen=false,arrTimers=[];
 function arrQ(x){x.d=dk(today0());ARQ.push(x);window.ARR_T=Date.now();setTimeout(showArrival,60)}
 const ymd=d=>`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;

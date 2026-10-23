@@ -1285,6 +1285,91 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
 .hs-in svg{width:42px;height:42px}.hs.sm{width:56px}.hs.sm .hs-in svg{width:26px;height:26px}
 .plabel small{font-weight:600;color:var(--faint);margin-left:4px}
 
+/* ===== 탑승 수속 ===== */
+.ck-box{width:100%;max-width:440px;margin:auto;background:var(--surface);color:var(--ink);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.ck-h{display:flex;flex-direction:column;gap:4px}.ck-h b{font-size:20px;font-weight:800;letter-spacing:-.02em}.ck-h small{font-size:12px;color:var(--muted)}
+.ck-k{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--accent)}.ck-k svg{width:16px;height:16px}
+.ck-g{align-self:flex-start;font-size:11px;font-weight:800;color:#3b2c00;background:linear-gradient(90deg,#d4af37,#f6e27a,#d4af37);border-radius:999px;padding:3px 10px}
+.ck-ops{display:flex;flex-direction:column;gap:8px}
+.ck-op{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;gap:2px 10px;text-align:left;padding:12px 14px;border-radius:14px;background:var(--hover);color:var(--ink);box-shadow:inset 0 0 0 1.5px transparent}
+.ck-op.on{box-shadow:inset 0 0 0 2px var(--accent)}
+.ck-op.t1{background:linear-gradient(115deg,#fbfcfd,#d7dce1 45%,#f5f7f9 55%,#c3cad1);color:#2c333b}
+.ck-op.t2{background:linear-gradient(115deg,#fff8dc,#f3d77a 45%,#fff3c4 55%,#e2bf4d);color:#3b2c00}
+.ck-n b{font-size:15px;font-weight:800}.ck-n small{margin-left:6px;font-size:11px;font-weight:700;opacity:.7}
+.ck-c{grid-row:1/3;grid-column:2;text-align:right;align-self:center}.ck-c b{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}.ck-c small{font-size:11px;margin-left:2px;opacity:.7}
+.ck-s{font-size:12px;opacity:.75}.ck-s.ok{color:#1f7a4d;opacity:1;font-weight:700}.ck-op.t1 .ck-s.ok,.ck-op.t2 .ck-s.ok{color:#155c38}
+.ck-a{display:flex;gap:8px;justify-content:flex-end}.ck-a .primary{flex:1}
+.ck-step{display:flex;flex-direction:column;align-items:center;gap:12px;padding:10px 0 4px}
+.ck-step>span{font-size:16px;font-weight:800}
+.ck-bar{width:100%;height:6px;border-radius:3px;background:var(--track);overflow:hidden}.ck-bar i{display:block;height:100%;width:0;background:var(--accent);animation:ckfill 1s ease-in-out forwards}
+@keyframes ckfill{to{width:100%}}
+.ck-gate{display:flex;width:120px;height:56px;border-radius:8px 8px 0 0;overflow:hidden;background:repeating-linear-gradient(90deg,var(--accent) 0 2px,transparent 2px 10px),color-mix(in srgb,var(--accent) 15%,var(--surface));gap:0;box-shadow:inset 0 0 0 2px var(--accent)}
+.ck-gate span{flex:1;background:var(--hover);border:2px solid var(--line);transition:transform .7s cubic-bezier(.6,0,.3,1)}
+.ck-step.open .ck-gate span:first-child{transform:translateX(-100%)}.ck-step.open .ck-gate span:last-child{transform:translateX(100%)}
+.ck-btn{width:100%;padding:14px;font-size:15px}
+/* 비밀 목적지 */
+.kr-row.secret,.fr.secret{background:linear-gradient(90deg,rgba(124,92,255,.28),transparent 70%)!important}
+.kr-row .md-sec{background:#7c5cff!important;color:#fff}
+/* 계절 루트 */
+.rt-ss{font-style:normal;font-size:10px;font-weight:800;margin-left:6px;padding:2px 7px;border-radius:999px;vertical-align:2px;color:#fff;background:#e64980}
+.rt.ss-여름 .rt-ss{background:#0c8599}.rt.ss-가을 .rt-ss{background:#d9480f}.rt.ss-겨울 .rt-ss{background:#4c6ef5}.rt.ss-연말 .rt-ss{background:#c92a2a}
+/* 도착 화면 추가 */
+.arr-anno{display:flex;gap:8px;align-items:flex-start;max-width:440px;text-align:left;font-size:13px;line-height:1.5;background:rgba(0,0,0,.35);border-radius:12px;padding:10px 12px;margin-top:4px}
+.arr-anno svg{width:18px;height:18px;flex:none;margin-top:1px;color:#7fd1ff}
+.arr-route.sec{background:linear-gradient(90deg,#5b3fd8,#a78bfa,#5b3fd8);color:#fff}
+.arr-cert{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px}
+/* 여권 꾸미기 */
+.pp-cover svg{width:46px;height:46px}
+.pp-ed{align-self:flex-start;margin-top:12px}
+.pp-edit{display:flex;flex-direction:column;gap:8px;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.pp-sw,.pp-em{display:flex;flex-wrap:wrap;gap:8px}
+.pp-sw button,.pp-em button{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--muted);background:none}
+.pp-sw span{width:36px;height:48px;border-radius:4px 8px 8px 4px;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:inset 3px 0 0 rgba(0,0,0,.2)}
+.pp-sw button[aria-pressed="true"] span,.pp-em button[aria-pressed="true"] svg{outline:2px solid var(--accent);outline-offset:2px}
+.pp-em svg{width:34px;height:34px;padding:6px;border-radius:10px;background:var(--hover);color:var(--ink)}
+.pp-sw button:disabled,.pp-em button:disabled{opacity:.35;cursor:not-allowed}
+.pp-edit .primary{align-self:flex-start}
+/* 기념품 보드 */
+.fr-h{display:flex;justify-content:space-between;align-items:baseline;margin:10px 2px 6px}.fr-h b{font-size:14px;font-weight:800}.fr-h span{font-size:12px;color:var(--faint)}
+.fridge{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:12px;padding:14px;border-radius:16px;background:linear-gradient(180deg,color-mix(in srgb,var(--hover) 70%,#cfd6dd),var(--hover));box-shadow:inset 0 2px 6px rgba(0,0,0,.08)}
+.mag{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px 8px;border-radius:14px;background:var(--k);color:#fff;transform:rotate(var(--r));box-shadow:0 4px 8px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .2s}
+.mag b{font-size:11px;font-weight:800;line-height:1.2;text-align:center}
+.mag-art{width:54px;height:46px;display:grid;place-items:center}.mag-art svg{width:100%;height:100%}
+.mag .lm{fill:none;stroke:currentColor;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}.mag .sil{fill:currentColor}
+.mag.lock{background:none;color:var(--faint);box-shadow:none;border:1.5px dashed var(--line);transform:none;opacity:.6;cursor:default}
+@media (hover:hover){.mag:not(.lock):hover{transform:rotate(0) scale(1.08)}}
+/* 인증서 */
+.cert{width:100%;max-width:460px;margin:auto;background:#fffdf5;color:#2b2414;border-radius:6px;padding:10px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.cert-in{border:3px double color-mix(in srgb,var(--k) 70%,#2b2414);padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--k) 8%,transparent),transparent 70%)}
+.cert-in>small{font-size:9px;letter-spacing:.24em;color:#8a7a55}
+.cert-in h3{margin:0;font-size:26px;font-weight:900;letter-spacing:.2em;color:color-mix(in srgb,var(--k) 70%,#2b2414)}
+.cert-art{width:96px;height:72px;color:var(--k)}.cert-art svg{width:100%;height:100%}.cert-art .lm{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linejoin:round}.cert-art .sil{fill:currentColor}
+.cert-t{margin:4px 0 0;font-size:18px;font-weight:800}.cert-d{margin:0;font-size:13px;color:#5a4e33;line-height:1.5}
+.cert-f{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;width:100%;margin-top:10px}
+.cert-f small{display:block;font-size:10px;color:#8a7a55}.cert-f b{font-size:13px}
+.cert-seal{width:64px;height:64px;border-radius:50%;border:2px solid #b8321f;color:#b8321f;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-14deg);box-shadow:inset 0 0 0 3px #fffdf5,inset 0 0 0 4px #b8321f}
+.cert-seal span{font-size:8px;letter-spacing:.2em}.cert-seal b{font-size:15px}
+/* 엽서 앨범 */
+.album{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
+.pcm{flex:none;width:220px;display:grid;grid-template-columns:70px 1fr;background:#fffdf6;color:#3b2f1e;border-radius:8px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.15);text-align:left}
+.pcm-art{background:#f1e6cc;color:#8a6a3a;display:grid;place-items:center;padding:6px}.pcm-art svg{width:100%;height:60px}.pcm-art .lm{fill:none;stroke:currentColor;stroke-width:2.5}.pcm-art .sil{fill:currentColor}.pcm-art .sil circle{fill:#fff}
+.pcm-r{padding:8px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}.pcm-r b{font-size:13px;font-weight:800}.pcm-r small{font-size:10px;color:#8a6a3a;font-family:"IBM Plex Mono",monospace}
+.pcm-r i{font-style:normal;font-size:12px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 계절 연출 */
+.map-card,.bp-wrap{position:relative}
+.ssn{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3;border-radius:inherit}
+.ssn i{position:absolute;top:-16px;width:var(--sz);height:var(--sz);animation:ssfall linear infinite;opacity:.85}
+.ssn-spring i{background:#ffc1d6;border-radius:70% 0 70% 0}
+.ssn-autumn i{background:#e8702a;border-radius:0 70% 0 70%}.ssn-autumn i:nth-child(3n){background:#c9a227}.ssn-autumn i:nth-child(4n){background:#b23a1e}
+.ssn-winter i{background:#fff;border-radius:50%;box-shadow:0 0 4px rgba(255,255,255,.8)}
+@keyframes ssfall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx),110vh) rotate(540deg)}}
+.map-card .ssn i{animation-name:ssfallS}@keyframes ssfallS{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx),520px) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){.ssn{display:none}}
+/* 다시 보기 */
+.map-h{flex-wrap:wrap;row-gap:4px}.map-h b{white-space:nowrap}.map-h>span{order:3;flex-basis:100%}.map-h .map-tg{padding:5px 9px;white-space:nowrap}
+.map-h .map-rp{margin-left:auto}.map-h .map-rp+.map-tg{margin-left:0}
+.mapsvg .route-on.rp{stroke:#ff6b00}.mapsvg .rp-t{fill:var(--ink);font-weight:800}
+
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
 .ks-head b{display:block;font-size:17px;font-weight:800}
@@ -1498,6 +1583,8 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
       <div class="stamps" id="tvStamps"></div>
     </section>
     <section class="panel ach-only" id="achPass"></section>
+    <section class="panel ach-only" id="achSouv"></section>
+    <section class="panel ach-only" id="achCards"></section>
     <section class="panel ach-only" id="achYear"></section>
     <section class="panel ach-only" id="achList"></section>
     <section class="splock earth-only" id="spLock" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c3 2.2 4.5 5.6 4.5 9.4V15l2 2.2V20l-3.2-1.6H8.7L5.5 20v-2.8l2-2.2v-3.6C7.5 7.6 9 4.2 12 2zm0 6.2a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM10.4 19.5h3.2L12 22.5z"/></svg>
@@ -1532,6 +1619,8 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
       <div class="swlist">
         <button class="switch" data-snd="arrive" role="switch"><span class="sw-t">도착 효과음<small>기차·버스·비행기·배마다 다른 소리</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-snd="rip" role="switch"><span class="sw-t">표 찢는 소리<small>도착할 때 표를 뜯는 소리</small></span><span class="sw-k"><i></i></span></button>
+        <button class="switch" data-snd="anno" role="switch"><span class="sw-t">도착 안내 방송<small>"이번 역은 부산, 부산역입니다" 같은 안내 문구</small></span><span class="sw-k"><i></i></span></button>
+        <button class="switch" data-snd="voice" role="switch"><span class="sw-t">안내 방송 음성<small>기기 음성으로 소리 내어 읽어 줘요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-snd="vibe" role="switch"><span class="sw-t">진동<small>도장을 누를 때 짧게 (지원하는 폰만)</small></span><span class="sw-k"><i></i></span></button>
       </div>
       <div class="plabel">들어 보기</div>
@@ -1552,6 +1641,7 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
         <button class="switch" data-topt="via" role="switch"><span class="sw-t">경유 노선<small>먼 곳은 중간 도시를 거쳐 가고, 경유지에서도 도장을 받아요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-topt="goal" role="switch"><span class="sw-t">목표 도착일<small>도착 날짜를 정하면 하루에 필요한 공부량을 알려 줘요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-topt="ddline" role="switch"><span class="sw-t">D-day 노선<small>D-day까지를 한 줄 노선도로 보여 줘요</small></span><span class="sw-k"><i></i></span></button>
+        <button class="switch" data-topt="season" role="switch"><span class="sw-t">계절 연출<small>봄엔 꽃잎, 가을엔 낙엽, 겨울엔 눈이 날려요</small></span><span class="sw-k"><i></i></span></button>
         <button class="switch" data-topt="neon" role="switch"><span class="sw-t">밤에는 형광 표<small>다크 모드에서 표가 형광 잉크처럼 빛나요</small></span><span class="sw-k"><i></i></span></button>
       </div>
       <div class="plabel">지도 테마</div>
@@ -1619,6 +1709,7 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
     </section>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <div class="arr ck" id="ckin" hidden role="dialog" aria-modal="true" aria-label="탑승 수속"><div class="ck-box" id="ckBox"></div></div>
   <div class="arr" id="arrive" hidden role="dialog" aria-modal="true" aria-label="도착"><div class="arr-c"><div class="arr-tk" id="arrTk"></div><div class="arr-msg" id="arrMsg"></div><button class="primary" id="arrOk">확인</button></div></div>
   <div class="sheet" id="memoSheet" hidden><div class="sheet-c">
     <b id="memoTitle">무엇을 공부했나요?</b>
@@ -2569,7 +2660,7 @@ const NATIONS=[
 ['MH','마셜 제도','마주로',7.09,171.38,6],['FM','미크로네시아','팔리키르',6.92,158.16,6],['PW','팔라우','응게룰무드',7.50,134.62,6],
 ];
 const NAT=Object.fromEntries(NATIONS.map(n=>[n[0],n]));
-const flag=c=>`<span class="emo">${String.fromCodePoint(...[...c].map(ch=>0x1F1E6+ch.charCodeAt(0)-65))}</span>`; // 윈도우도 국기가 보이도록 컬러 이모지 글꼴 사용
+const flag=c=>/^X/.test(c)?'<span class="emo">🧭</span>':`<span class="emo">${String.fromCodePoint(...[...c].map(ch=>0x1F1E6+ch.charCodeAt(0)-65))}</span>`; // 윈도우도 국기가 보이도록 컬러 이모지 글꼴 사용
 const kmBetween=(a,b)=>{const A=NAT[a],B=NAT[b],r=Math.PI/180,dl=(B[3]-A[3])*r,dg=(B[4]-A[4])*r;
   const h=Math.sin(dl/2)**2+Math.cos(A[3]*r)*Math.cos(B[3]*r)*Math.sin(dg/2)**2;return 2*6371*Math.asin(Math.sqrt(h))};
 const flightMin=(a,b)=>Math.max(30,Math.round(kmBetween(a,b)/800*60)); // 평균 800km/h, 최소 30분
@@ -2580,9 +2671,9 @@ function totalMiles(){const pd=perDay(true);let m=0;for(const k in pd)m+=Math.mi
 const studyFor=miles=>fmtH(Math.max(0,miles)*MILE_MS);
 function checkArrival(){return checkEarth()||checkSpace()||checkKorea()}
 function checkEarth(){
-  const T=tr();if(!T.on||!T.to)return false;const cost=wTC(T);
+  const T=tr();if(!T.on||!T.to||T.hold)return false;const cost=wTC(T);
   if(totalMiles()-T.used<cost)return false;
-  const ev={w:'w',f:T.at,t:T.to,gold:goldLeg('w',T.at,T.to),cls:T.cls||0};T.used+=cost;const km=kmBetween(T.at,T.to);T.km+=km;if(km>=5000)T.long=true;{const tv=T.cls||0,ex=T.stamps.find(s=>s.c===T.to);if(ex){if(tv>(ex.tier||0))ex.tier=tv}else T.stamps.push({c:T.to,d:dk(today0()),tier:tv})}
+  const ev={w:'w',f:T.at,t:T.to,gold:goldLeg('w',T.at,T.to),cls:T.cls||0};T.used+=cost;const km=kmBetween(T.at,T.to);T.km+=km;if(km>=5000)T.long=true;if(SECWM[T.to]){T.sec=T.sec||[];if(!secVisited(T.sec,T.to))T.sec.push({c:T.to,d:dk(today0())})}else{const tv=T.cls||0,ex=T.stamps.find(s=>s.c===T.to);if(ex){if(tv>(ex.tier||0))ex.tier=tv}else T.stamps.push({c:T.to,d:dk(today0()),tier:tv})}
   (T.log=T.log||[]).push({f:T.at,t:T.to,d:dk(today0()),m:cost,cls:T.cls||0});
   (T.news=T.news||[]).push(T.to);T.at=T.to;T.to=null;postArrive(ev);save();arrQ(ev);return true;
 }
@@ -2615,7 +2706,7 @@ function wMode(a,b){const A=NAT[a],B=NAT[b];if(!A||!B)return 'air';const km=kmBe
 const wIcon=m=>m==='ntrain'?TRAIN:m==='cruise'?SHIP:PLANE;
 const WTZ={"KR":"Asia/Seoul","JP":"Asia/Tokyo","CN":"Asia/Shanghai","TW":"Asia/Taipei","MN":"Asia/Ulaanbaatar","VN":"Asia/Ho_Chi_Minh","TH":"Asia/Bangkok","PH":"Asia/Manila","MY":"Asia/Kuala_Lumpur","SG":"Asia/Singapore","ID":"Asia/Jakarta","KH":"Asia/Phnom_Penh","LA":"Asia/Vientiane","IN":"Asia/Kolkata","NP":"Asia/Kathmandu","LK":"Asia/Colombo","UZ":"Asia/Tashkent","KZ":"Asia/Qostanay","AE":"Asia/Dubai","QA":"Asia/Qatar","SA":"Asia/Riyadh","JO":"Asia/Amman","TR":"Europe/Istanbul","GB":"Europe/London","FR":"Europe/Paris","DE":"Europe/Berlin","IT":"Europe/Rome","ES":"Europe/Madrid","PT":"Europe/Lisbon","NL":"Europe/Amsterdam","BE":"Europe/Brussels","CH":"Europe/Zurich","AT":"Europe/Vienna","CZ":"Europe/Prague","PL":"Europe/Warsaw","HU":"Europe/Budapest","HR":"Europe/Zagreb","GR":"Europe/Athens","IE":"Europe/Dublin","DK":"Europe/Copenhagen","NO":"Europe/Oslo","SE":"Europe/Stockholm","FI":"Europe/Helsinki","IS":"Atlantic/Reykjavik","RU":"Europe/Moscow","EG":"Africa/Cairo","MA":"Africa/Casablanca","KE":"Africa/Nairobi","TZ":"Africa/Dar_es_Salaam","ET":"Africa/Addis_Ababa","NG":"Africa/Lagos","GH":"Africa/Accra","SN":"Africa/Dakar","ZA":"Africa/Johannesburg","MG":"Indian/Antananarivo","US":"America/New_York","CA":"America/Toronto","MX":"America/Mexico_City","CU":"America/Havana","BR":"America/Sao_Paulo","AR":"America/Argentina/Buenos_Aires","CL":"America/Santiago","PE":"America/Lima","CO":"America/Bogota","AU":"Australia/Sydney","NZ":"Pacific/Auckland","FJ":"Pacific/Fiji","MM":"Asia/Yangon","BD":"Asia/Dhaka","BT":"Asia/Thimphu","MV":"Indian/Maldives","PK":"Asia/Karachi","AF":"Asia/Kabul","TJ":"Asia/Dushanbe","KG":"Asia/Bishkek","TM":"Asia/Ashgabat","BN":"Asia/Brunei","TL":"Asia/Dili","GE":"Asia/Tbilisi","AM":"Asia/Yerevan","AZ":"Asia/Baku","IL":"Asia/Jerusalem","PS":"Asia/Hebron","IQ":"Asia/Baghdad","IR":"Asia/Tehran","KW":"Asia/Kuwait","BH":"Asia/Bahrain","OM":"Asia/Muscat","YE":"Asia/Aden","SY":"Asia/Damascus","LB":"Asia/Beirut","LU":"Europe/Luxembourg","MC":"Europe/Monaco","LI":"Europe/Vaduz","AD":"Europe/Andorra","SM":"Europe/San_Marino","VA":"Europe/Vatican","MT":"Europe/Malta","CY":"Asia/Nicosia","SI":"Europe/Ljubljana","SK":"Europe/Bratislava","RO":"Europe/Bucharest","BG":"Europe/Sofia","RS":"Europe/Belgrade","BA":"Europe/Sarajevo","ME":"Europe/Podgorica","MK":"Europe/Skopje","AL":"Europe/Tirane","MD":"Europe/Chisinau","UA":"Europe/Kyiv","BY":"Europe/Minsk","LT":"Europe/Vilnius","LV":"Europe/Riga","EE":"Europe/Tallinn","DZ":"Africa/Algiers","TN":"Africa/Tunis","LY":"Africa/Tripoli","SD":"Africa/Khartoum","SS":"Africa/Juba","ER":"Africa/Asmara","DJ":"Africa/Djibouti","SO":"Africa/Mogadishu","UG":"Africa/Kampala","RW":"Africa/Kigali","BI":"Africa/Bujumbura","CD":"Africa/Kinshasa","CG":"Africa/Brazzaville","GA":"Africa/Libreville","GQ":"Africa/Malabo","CM":"Africa/Douala","CF":"Africa/Bangui","TD":"Africa/Ndjamena","NE":"Africa/Niamey","ML":"Africa/Bamako","BF":"Africa/Ouagadougou","MR":"Africa/Nouakchott","GM":"Africa/Banjul","GW":"Africa/Bissau","GN":"Africa/Conakry","SL":"Africa/Freetown","LR":"Africa/Monrovia","CI":"Africa/Abidjan","TG":"Africa/Lome","BJ":"Africa/Porto-Novo","CV":"Atlantic/Cape_Verde","ST":"Africa/Sao_Tome","AO":"Africa/Luanda","ZM":"Africa/Lusaka","ZW":"Africa/Harare","MW":"Africa/Blantyre","MZ":"Africa/Maputo","BW":"Africa/Gaborone","NA":"Africa/Windhoek","SZ":"Africa/Mbabane","LS":"Africa/Maseru","MU":"Indian/Mauritius","SC":"Indian/Mahe","KM":"Indian/Comoro","GT":"America/Guatemala","BZ":"America/Belize","HN":"America/Tegucigalpa","SV":"America/El_Salvador","NI":"America/Managua","CR":"America/Costa_Rica","PA":"America/Panama","JM":"America/Jamaica","HT":"America/Port-au-Prince","DO":"America/Santo_Domingo","BS":"America/Nassau","BB":"America/Barbados","TT":"America/Port_of_Spain","DM":"America/Dominica","LC":"America/St_Lucia","VC":"America/St_Vincent","GD":"America/Grenada","AG":"America/Antigua","KN":"America/St_Kitts","VE":"America/Caracas","EC":"America/Guayaquil","BO":"America/La_Paz","PY":"America/Asuncion","UY":"America/Montevideo","GY":"America/Guyana","SR":"America/Paramaribo","PG":"Pacific/Port_Moresby","SB":"Pacific/Guadalcanal","VU":"Pacific/Efate","WS":"Pacific/Apia","TO":"Pacific/Tongatapu","KI":"Pacific/Tarawa","TV":"Pacific/Funafuti","NR":"Pacific/Nauru","MH":"Pacific/Majuro","FM":"Pacific/Pohnpei","PW":"Pacific/Palau"};
 function localInfo(c,d){const n=NAT[c];if(!n)return '';const dt=d||new Date();let tm='';
-  if(!d)try{tm=new Intl.DateTimeFormat('ko-KR',{timeZone:WTZ[c],hour:'2-digit',minute:'2-digit',hour12:false}).format(dt)+' · '}catch(e){}
+  if(!d&&WTZ[c])try{tm=new Intl.DateTimeFormat('ko-KR',{timeZone:WTZ[c],hour:'2-digit',minute:'2-digit',hour12:false}).format(dt)+' · '}catch(e){}
   const mo=dt.getMonth(),la=n[3],nh=la>=0,ss=Math.abs(la)<23.5?'열대':['겨울','겨울','봄','봄','봄','여름','여름','여름','가을','가을','가을','겨울'][nh?mo:(mo+6)%12];
   return (tm?'현지 '+tm:'')+ss}
 const INK=['#c23b3b','#9a6400','#2f55c4','#b0561a','#14806f','#7a3fb0','#0d7fa8'],SHAPE=['10px','50%','4px','40% / 50%','18px','50% / 40%','2px'];
@@ -2649,19 +2740,22 @@ function renderTravelTop(){
     ${TRAVEL_TEST&&!T.to?`<div class="tv-test"><span>테스트</span><button data-add="100">+100 마일리지</button><button data-add="1000">+1000</button><button id="tvReset">여행 초기화</button></div>`:''}
     <div class="tv-stats"><div><b>${Math.floor(avail)}</b><span>보유 마일리지</span></div><div><b>${T.stamps.length}<small>/${NATIONS.length-1}</small></b><span>입국 도장</span></div><div><b>${Math.round(T.km).toLocaleString()}</b><span>누적 비행 km</span></div></div>`;
   if(T.to){const to=NAT[T.to],cost=wTC(T),p=Math.min(1,Math.max(0,avail/cost)),left=cost-avail,days=Math.ceil(Math.max(0,left)/80);
-    if(!busyIn('tvFlight'))$('tvFlight').innerHTML=`${bpTicket(T.at,T.to,p,left,cost,false,{cls:T.cls,final:T.final,gold:goldLeg('w',T.at,T.to)})}${clsPick('w',wMode(T.at,T.to),T.cls||0)}${goalBox('w',T,left)}
+    if(!busyIn('tvFlight'))$('tvFlight').innerHTML=`${bpTicket(T.at,T.to,T.hold?0:p,left,cost,false,{cls:T.cls,final:T.final,gold:goldLeg('w',T.at,T.to)})}${T.hold?`<button class="primary ck-btn" data-ckopen="w">${wMode(T.at,T.to)==='cruise'?'승선':'탑승'} 수속하고 출발하기</button>`:''}${goalBox('w',T,left)}
     ${TRAVEL_TEST?`<div class="tv-test"><span>테스트</span><button id="tvSkip">바로 도착</button><button data-add="10">+10</button><button data-add="100">+100</button></div>`:''}
     <div class="bp-acts"><button class="secondary" id="tvChange">${tvPick?'안내판 닫기':'목적지 바꾸기'}</button><button class="secondary${tvArm?' del arm':''}" id="tvCancel">${tvArm?'정말 취소':'비행 취소'}</button></div>`;
     $('tvFlight').hidden=false}else $('tvFlight').hidden=true;
   $('tvPicker').hidden=!!T.to&&!tvPick;$('fidsFrom').textContent=`출발 ${ap(T.at)} · 가까운 순`;
   if(T.world==='earth'&&worldOpen(T)){renderWorldMap();renderRoutes('w')}
+  if(typeof seasonFx==='function')seasonFx();
 }
 function renderTravelPicker(){
   const T=tr(),avail=totalMiles()-T.used,q=tvQuery.trim();
   $('tvConts').innerHTML=['전체',...CONT].map((c,i)=>`<button data-cont="${i-1}" aria-pressed="${tvCont===i-1}">${c}</button>`).join('');
   const rows=NATIONS.filter(n=>n[0]!==T.at&&(T.to===n[0]||!T.stamps.some(s=>s.c===n[0]))&&(tvCont<0||n[5]===tvCont)&&(!q||n[1].includes(q)||n[2].includes(q)||ap(n[0]).includes(q.toUpperCase())))
     .map(n=>[n,flightMin(T.at,n[0])]).sort((a,b)=>a[1]-b[1]);
-  $('tvList').innerHTML=rows.map(([n,c])=>{const st=T.stamps.some(s=>s.c===n[0]),cur=T.to===n[0],ok=avail>=c;
+  const secs=SECW.filter(x=>secOpenW(T,x)&&!secVisited(T.sec,x[0])&&x[0]!==T.at).map(x=>{const c=flightMin(T.at,x[0]),ok=avail>=c,cur=T.to===x[0];
+    return `<li><button class="fr secret${cur?' cur':''}" data-dest="${x[0]}"><span class="fd">${flag(x[0])}<span><b>✦ ${x[2]}</b><small>비밀 목적지 · ${x[1]}</small></span></span><span class="code">${ap(x[0])}</span><span class="mi">${c}</span>${cur?'<span class="st on">탑승 중</span>':ok?'<span class="st ok">탑승 가능</span>':`<span class="st wait">${studyFor(c-avail)}</span>`}</button></li>`}).join('');
+  $('tvList').innerHTML=secs+rows.map(([n,c])=>{const st=T.stamps.some(s=>s.c===n[0]),cur=T.to===n[0],ok=avail>=c;
     const status=cur?'<span class="st on">탑승 중</span>':st?'<span class="st done">입국 ✓</span>':ok?'<span class="st ok">탑승 가능</span>':`<span class="st wait">${studyFor(c-avail)}</span>`;
     return `<li><button class="fr${cur?' cur':''}" data-dest="${n[0]}"><span class="fd">${flag(n[0])}<span><b>${n[2]}</b><small>${n[1]}</small></span></span>
       <span class="code">${ap(n[0])}</span><span class="mi">${c}</span>${status}</button></li>`}).join('')||'<li class="empty">찾는 목적지가 없어요</li>';
@@ -2781,7 +2875,7 @@ const KCLS={train:['일반실','특실'],bus:['일반','우등'],ship:['일반�
 const WCLS={air:['이코노미','비즈니스','퍼스트'],ntrain:['2층 침대칸','1인 침대칸','스위트 침대칸'],cruise:['내측 객실','발코니 객실','스위트']},WMUL=[1,1.3,1.6];
 const krTC=K=>Math.round(krCost(K.at,K.to)*KMUL[K.cls||0]);
 const wTC=T=>Math.round(flightMin(T.at,T.to)*WMUL[T.cls||0]);
-const TOPT=()=>{const T=tr();return T.opt=Object.assign({via:false,goal:false,ddline:false,neon:true,map:'base'},T.opt||{})};
+const TOPT=()=>{const T=tr();return T.opt=Object.assign({via:false,goal:false,ddline:false,neon:true,map:'base',season:true},T.opt||{})};
 function krTicket(f,t,o={}){
   const A=KRM[f],B=KRM[t],m=krMode(f,t),tg=krTag(f,t),cls=krClass(f,t),seatc=KCLS[m][o.cls||0],c=Math.round(krCost(f,t)*KMUL[o.cls||0]),hs=[...(f+t)].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%99991,7),dt=o.d?pk(o.d):new Date(),km=Math.round(krKm(f,t)),p=o.p??1;
   const lbl=m==='bus'?'승차권 · 버스':m==='ship'?'승선권 · 여객선':'승차권 · 열차';
@@ -2803,9 +2897,9 @@ const krDone=(K,id)=>K.done.some(d=>d.c===id);
 const worldOpen=T=>kr(T).done.length>=KR.length-1||(TRAVEL_TEST&&!!T.worldTest);
 let krG=0,krQ='',krArm=false;
 function checkKorea(){
-  const T=tr(),K=kr(T);if(!T.on||!K.to||!KRM[K.to])return false;const c=krTC(K);
+  const T=tr(),K=kr(T);if(!T.on||!K.to||!KRM[K.to]||K.hold)return false;const c=krTC(K);
   if(totalMiles()-T.used<c)return false;
-  const ev={w:'kr',f:K.at,t:K.to,gold:goldLeg('kr',K.at,K.to),cls:K.cls||0};T.used+=c;K.km+=krKm(K.at,K.to);if(K.to!==K.home){const ex=K.done.find(d=>d.c===K.to);if(ex){if(K.cls)ex.tier=2}else K.done.push({c:K.to,d:dk(today0()),tier:K.cls?2:0})}(T.krNews=T.krNews||[]).push(K.to);K.path.push(K.to);K.at=K.to;K.to=null;postArrive(ev);save();arrQ(ev);return true;
+  const ev={w:'kr',f:K.at,t:K.to,gold:goldLeg('kr',K.at,K.to),cls:K.cls||0};T.used+=c;K.km+=krKm(K.at,K.to);if(SECKM[K.to]){K.sec=K.sec||[];if(!secVisited(K.sec,K.to))K.sec.push({c:K.to,d:dk(today0())})}else if(K.to!==K.home){const ex=K.done.find(d=>d.c===K.to);if(ex){if(K.cls)ex.tier=2}else K.done.push({c:K.to,d:dk(today0()),tier:K.cls?2:0})}(T.krNews=T.krNews||[]).push(K.to);K.path.push(K.to);K.at=K.to;K.to=null;postArrive(ev);save();arrQ(ev);return true;
 }
 function renderKorea(){
   const T=tr(),K=kr(T),avail=totalMiles()-T.used,at=KRM[K.at];let h='';
@@ -2816,7 +2910,7 @@ function renderKorea(){
   h+=`<div class="tv-stats"><div><b>${Math.floor(avail)}</b><span>보유 마일리지</span></div><div><b>${K.done.length}<small>/${KR.length-1}</small></b><span>방문한 시·군</span></div><div><b>${Math.round(K.km).toLocaleString()}</b><span>누적 이동 km</span></div></div>`;
   $('krNow').innerHTML=h;
   if(K.to&&KRM[K.to]){const to=KRM[K.to],c=krTC(K),p=Math.min(1,Math.max(0,avail/c)),left=c-avail;
-    if(!busyIn('krTrip'))$('krTrip').innerHTML=`${krTicket(K.at,K.to,{p,avail,left,cls:K.cls,final:K.final,gold:goldLeg('kr',K.at,K.to)})}${clsPick('kr',krMode(K.at,K.to),K.cls||0)}${goalBox('kr',K,left)}
+    if(!busyIn('krTrip'))$('krTrip').innerHTML=`${krTicket(K.at,K.to,{p:K.hold?0:p,avail,left,cls:K.cls,final:K.final,gold:goldLeg('kr',K.at,K.to)})}${K.hold?`<button class="primary ck-btn" data-ckopen="kr">승차 수속하고 출발하기</button>`:''}${goalBox('kr',K,left)}
       <div class="bp-acts"><button class="secondary${krArm?' del arm':''}" id="krCancel">${krArm?'정말 취소':'이동 취소'}</button></div>`;$('krTrip').hidden=false}
   else $('krTrip').hidden=true;
   // 출발 안내
@@ -2827,7 +2921,9 @@ function renderKorea(){
   else{
   const q=krQ.trim(),rows=KR.filter(x=>x[0]!==K.at&&(K.to===x[0]||!krDone(K,x[0]))&&(!krG||krGroup(x)===krG)&&(!q||x[1].includes(q)||x[2].includes(q)))
     .map(x=>[x,krCost(K.at,x[0])]).sort((a,b)=>a[1]-b[1]);
-  $('krList').innerHTML=rows.map(([x,c])=>{const cur=K.to===x[0],ok=avail>=c;
+  const secs=SECK.filter(x=>secOpenK(K,x)&&!secVisited(K.sec,x[0])&&x[0]!==K.at).map(x=>{const c=krCost(K.at,x[0]),cur=K.to===x[0],ok=avail>=c;
+    return `<li><button class="kr-row secret${cur?' cur':''}" data-kr="${x[0]}"><span class="kn"><b>✦ ${x[1]} <em class="md md-sec">비밀 목적지</em></b><small>${x[2]} · ${Math.round(krKm(K.at,x[0]))}km · ${krClass(K.at,x[0])}</small></span><span class="kc">${c}</span><span class="st ${cur?'on':ok?'ok':'wait'}">${cur?'이동 중':ok?'바로 출발':studyFor(c-avail)}</span></button></li>`}).join('');
+  $('krList').innerHTML=secs+rows.map(([x,c])=>{const cur=K.to===x[0],ok=avail>=c;
     return `<li><button class="kr-row${cur?' cur':''}" data-kr="${x[0]}"><span class="kn"><b>${x[1]}${x[0]===K.home?' <em class="md">출발지</em>':''}</b><small><em class="md md-${krTag(K.at,x[0])}">${krClass(K.at,x[0])}</em>${x[2]} · ${Math.round(krKm(K.at,x[0]))}km</small></span><span class="kc">${c}</span>
       <span class="st ${cur?'on':ok?'ok':'wait'}">${cur?'이동 중':ok?'바로 출발':studyFor(c-avail)}</span></button></li>`}).join('')||'<li class="empty">남은 목적지가 없어요</li>'}
   // 지역 도장: 도별 스탬프북 (다녀온 곳은 도장, 아직 안 간 곳은 빈 자리)
@@ -2869,7 +2965,7 @@ $('krSearch').addEventListener('input',e=>{krQ=e.target.value;renderKorea()});
 $('krNow').addEventListener('click',e=>{if(!e.target.closest('#krHome'))return;krPickHome=!krPickHome;krQ='';$('krSearch').value='';renderKorea();if(krPickHome)document.querySelector('.kr-board').scrollIntoView({behavior:'smooth',block:'start'})});
 $('krList').addEventListener('click',e=>{const h=e.target.closest('[data-krhome]');if(h){const K=kr(tr());if(!krCanHome(K))return;K.home=K.at=h.dataset.krhome;krPickHome=false;krQ='';$('krSearch').value='';krOpenReg=null;save();renderKorea();window.scrollTo({top:0,behavior:'smooth'});return}
   const b=e.target.closest('[data-kr]');if(!b)return;const T=tr(),K=kr(T);
-  stopRoute('kr');K.to=b.dataset.kr;K.final=null;K.cls=0;K.goal=null;if(TOPT().via){const v=pickViaKr(K.at,K.to);if(v){K.final=K.to;K.to=v}}T.to=null;sp(T).to=null;krArm=false;save();if(checkKorea())ding();renderKorea();window.scrollTo({top:0,behavior:'smooth'})});
+  stopRoute('kr');K.to=b.dataset.kr;K.final=null;K.cls=0;K.goal=null;if(TOPT().via){const v=pickViaKr(K.at,K.to);if(v){K.final=K.to;K.to=v}}T.to=null;sp(T).to=null;krArm=false;K.hold=true;save();renderKorea();openCheckin('kr')});
 
 /* ---------- 우주 탐사: 세계 194개국 입국 후 열림. 4개 구역, 구역 안에서는 자유롭게 고르고 구역을 다 돌면 다음 구역이 열림 ---------- */
 const ZONES=['태양계','가까운 별','성운·성단','은하'];
@@ -2974,7 +3070,7 @@ function renderWorld(){
   if(!wo)$('worldLock').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
     <b>세계 여행은 아직 잠겨 있어요</b><span>국내 161개 시·군을 모두 방문하면 해외로 떠날 수 있어요</span><span class="vn">${kr(T).done.length} / ${KR.length-1}</span>
     ${TRAVEL_TEST?'<button class="vt" id="wTestOpen">테스트: 잠금 해제</button>':''}`;
-  if(w==='space')renderSpace();if(w==='korea')renderKorea();if(w==='ach')renderAch();renderDline();applyNeon();
+  if(w==='space')renderSpace();if(w==='korea')renderKorea();if(w==='ach')renderAch();renderDline();applyNeon();seasonFx();
 }
 $('worldLock').addEventListener('click',e=>{if(e.target.closest('#wTestOpen')){tr().worldTest=true;save();renderTravel()}});
 $('spVeil').addEventListener('click',e=>{if(e.target.closest('#spTestOpen')){tr().spTest=true;save();renderTravel()}});
@@ -3042,8 +3138,8 @@ function pill(x,y,txt,icon,u,cls=''){const fs=12,h=21,tw=[...txt].reduce((a,ch)=
 const pxPer=(svg,vb)=>vb[2]/(svg.getBoundingClientRect().width||400);
 
 function renderKrMap(){
-  const T=tr(),K=kr(T),el=$('krMap');
-  if(!el.dataset.built){el.innerHTML=`<div class="map-h"><b>전국 지도</b><span id="krMapNote"></span><button class="map-tg" id="krMapTg"></button></div>
+  if(RP&&RP.key==='kr')return;const T=tr(),K=kr(T),el=$('krMap');
+  if(!el.dataset.built){el.innerHTML=`<div class="map-h"><b>전국 지도</b><span id="krMapNote"></span><button class="map-tg map-rp" data-rp="kr">▶ 다시 보기</button><button class="map-tg" id="krMapTg"></button></div>
     <svg class="mapsvg kmap" viewBox="${KFULL.join(' ')}" role="img" aria-label="전국 여행 지도"><defs>${KINK.map((c,gi)=>`<pattern id="kpat${gi}" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="3" height="3" style="fill:color-mix(in srgb,${c} 78%,var(--ink))"/><rect width="1" height="3" fill="#fff" fill-opacity=".35"/></pattern>`).join('')}</defs><g class="land">${KMAP.p.map(([n,g,d])=>`<path data-g="${g}" d="${d}"><title>${n}</title></path>`).join('')}</g><g class="dyn"></g></svg>`;
     el.dataset.built=1;mapNav(el.querySelector('svg'),'kr',KFULL,22,renderKrMap)}
   const tripKey=K.at+'>'+K.to;if(MVK.kr!==tripKey){MVK.kr=tripKey;MV.kr=null}
@@ -3058,7 +3154,7 @@ function renderKrMap(){
   const seq=[K.home,...K.path].filter(id=>KRM[id]);
   if(seq.length>1)h+=`<path class="trail" d="M${seq.map(id=>kxy(KRM[id][3],KRM[id][4]).map(f1).join(' ')).join('L')}"/>`;
   h+=`<circle cx="${f1(H[0])}" cy="${f1(H[1])}" r="${R(5.5)}" class="home"/>`;
-  if(moving){const to=KRM[K.to],c=krTC(K),p=Math.min(1,Math.max(0,(totalMiles()-T.used)/c)),m=krMode(K.at,K.to),P=[A[0]+(B[0]-A[0])*p,A[1]+(B[1]-A[1])*p];
+  if(moving){const to=KRM[K.to],c=krTC(K),p=K.hold?0:Math.min(1,Math.max(0,(totalMiles()-T.used)/c)),m=krMode(K.at,K.to),P=[A[0]+(B[0]-A[0])*p,A[1]+(B[1]-A[1])*p];
     h+=`<g style="--mc:${KRCOL[krTag(K.at,K.to)]}"><path class="route" d="M${A.map(f2).join(' ')}L${B.map(f2).join(' ')}"/><path class="route-on" d="M${A.map(f2).join(' ')}L${P.map(f2).join(' ')}"/>
       <circle cx="${f2(B[0])}" cy="${f2(B[1])}" r="${R(5)}" class="dest"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(4)}" class="cur"/>${mapIcon(krIcon(m),P[0],P[1],18*u)}${pill(B[0],B[1],to[1],krIcon(m),u,'pdest')}</g>`;
     $('krMapNote').textContent=`${at[1]} → ${to[1]} · ${Math.floor(p*100)}%`}
@@ -3070,8 +3166,8 @@ function renderKrMap(){
 $('krMap').addEventListener('click',e=>{if(e.target.closest('#krMapTg')){MV.kr=MV.kr?null:KFULL.slice();renderKrMap()}});
 
 function renderWorldMap(){
-  const T=tr(),el=$('tvMap');
-  if(!el.dataset.built){el.innerHTML=`<div class="map-h"><b>세계 지도</b><span id="tvMapNote"></span><button class="map-tg" id="tvMapTg"></button></div>
+  if(RP&&RP.key==='w')return;const T=tr(),el=$('tvMap');
+  if(!el.dataset.built){el.innerHTML=`<div class="map-h"><b>세계 지도</b><span id="tvMapNote"></span><button class="map-tg map-rp" data-rp="w">▶ 다시 보기</button><button class="map-tg" id="tvMapTg"></button></div>
     <svg class="mapsvg wmap" viewBox="${WFULL.join(' ')}" role="img" aria-label="세계 여행 지도"><defs><linearGradient id="wsilver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".45" stop-color="#a9b2bc"/><stop offset=".6" stop-color="#eef1f4"/><stop offset="1" stop-color="#8a949f"/></linearGradient><linearGradient id="wgold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b0"/><stop offset=".45" stop-color="#d4af37"/><stop offset=".6" stop-color="#fff3c4"/><stop offset="1" stop-color="#a07c12"/></linearGradient>${INK.map((c,ci)=>`<pattern id="wpat${ci}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" style="fill:color-mix(in srgb,${c} 72%,var(--ink))"/><rect width="1.6" height="5" fill="#fff" fill-opacity=".35"/></pattern>`).join('')}</defs><g class="land">${WMAP.p.map(([c,d])=>`<path data-c="${c}" d="${d}"/>`).join('')}</g><g class="dyn"></g></svg>`;
     el.dataset.built=1;mapNav(el.querySelector('svg'),'w',WFULL,40,renderWorldMap)}
   const tripKey=T.at+'>'+T.to;if(MVK.w!==tripKey){MVK.w=tripKey;MV.w=null}
@@ -3087,7 +3183,7 @@ function renderWorldMap(){
   let h=flightLog(T).filter(e=>NAT[e.f]&&NAT[e.t]).map(e=>`<path class="trail" d="${segD(arcSegs([NAT[e.f][3],NAT[e.f][4]],[NAT[e.t][3],NAT[e.t][4]],1,40))}"/>`).join('');
   if(WIDX[T.at]!=null)h+=`<use href="#wp-${WIDX[T.at]}" class="here-ol" style="stroke-width:${R(2.2)}"/>`; // 지금 있는 나라 테두리
   h+=T.stamps.filter(s=>NAT[s.c]).map(s=>{const [x,y]=wxy(NAT[s.c][3],NAT[s.c][4]);return `<circle cx="${f1(x)}" cy="${f1(y)}" class="wd v" r="${R(3)}" style="fill:${cink(NAT[s.c][5])}"><title>${NAT[s.c][2]}</title></circle>`}).join('');
-  if(trip){const {to,a,b,full}=trip,cost=wTC(T),p=Math.min(1,Math.max(0,(totalMiles()-T.used)/cost)),done=p>0?arcSegs(a,b,p):[];
+  if(trip){const {to,a,b,full}=trip,cost=wTC(T),p=T.hold?0:Math.min(1,Math.max(0,(totalMiles()-T.used)/cost)),done=p>0?arcSegs(a,b,p):[];
     const P=wxy(...gcAt(a,b,p)),Q=wxy(...gcAt(a,b,Math.min(1,p+.01))),P0=wxy(...gcAt(a,b,Math.max(0,p-.01))),ang=Math.atan2(Q[1]-P0[1],Q[0]-P0[0])*180/Math.PI,B=wxy(...b);
     h+=`<path class="route" d="${segD(full)}"/><path class="route-on" d="${segD(done)}"/>
       <circle cx="${f2(B[0])}" cy="${f2(B[1])}" r="${R(5)}" class="dest"/><circle cx="${f2(A[0])}" cy="${f2(A[1])}" r="${R(4)}" class="cur"/>${(()=>{const wm=wMode(T.at,T.to);return mapIcon(wIcon(wm),P[0],P[1],22*u,wm==='air'?ang:0)+pill(B[0],B[1],ap(T.to),wIcon(wm),u,'pdest')})()}`;
@@ -3100,7 +3196,7 @@ function renderWorldMap(){
 $('tvMap').addEventListener('click',e=>{if(e.target.closest('#tvMapTg')){MV.w=MV.w?null:WFULL.slice();if(!MV.w)MVK.w='';renderWorldMap()}});
 
 /* ---------- 도착 연출: 표 뜯기 + 효과음 ---------- */
-document.body.appendChild($('arrive')); // 화면 전체 기준으로 뜨도록 (변형된 부모 안에 있으면 위치가 어긋남)
+document.body.appendChild($('arrive'));document.body.appendChild($('ckin')); // 화면 전체 기준으로 뜨도록 (변형된 부모 안에 있으면 위치가 어긋남)
 const ARQ=[];let arrOpen=false,arrTimers=[];
 function arrQ(x){x.d=dk(today0());ARQ.push(x);window.ARR_T=Date.now();setTimeout(showArrival,60)}
 const ymd=d=>`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;
@@ -3110,14 +3206,14 @@ function showArrival(){if(arrOpen||!ARQ.length)return;const x=ARQ.shift();if(x.w
     $('arrMsg').innerHTML=`<span class="ks-stamp arr-stamp${x.cls?' gold':''}" style="--k:${KINK[gi]};--c:color-mix(in srgb,${KINK[gi]} 78%,var(--ink));--r:-8deg"><small>${B[2]}</small><b>${B[1].replace(/\(.+\)/,'')}</b><small>${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</small></span><b>${B[1]} 도착!</b><span>지역 도장을 받았어요</span>`}
   else{const B=NAT[x.t],wm=wMode(x.f,x.t);snd=wm==='air'?'plane':wm==='ntrain'?'train':'ship';$('arrTk').innerHTML=bpTicket(x.f,x.t,1,0,Math.round(flightMin(x.f,x.t)*WMUL[x.cls||0]),true,{gold:x.gold,cls:x.cls});
     $('arrMsg').innerHTML=`<span class="arr-flag">${flag(x.t)}</span><b>${B[2]} 도착!</b><span>${B[1]} 입국 도장이 찍혔어요</span>`}
-  const extra=(x.route?`<div class="arr-route">${x.route} 완주! 금색 표를 모두 모았어요</div>`:'')+(x.hid&&x.hid.length?`<div class="arr-hid">${x.hid.map(id=>hstamp(id,dk(today0()),1)).join('')}<span>히든 도전 과제 ${x.hid.map(id=>`'${HIDX[id][1]}'`).join(', ')} 달성!</span></div>`:'')
+  const extra=(TSND().anno?`<div class="arr-anno"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>${annoText(x)}</span></div>`:'')+(x.secret?`<div class="arr-route sec">비밀 목적지 발견! 특별한 도장을 받았어요</div>`:'')+(x.certs&&x.certs.length?`<div class="arr-cert">${x.certs.map(c=>`<button class="secondary" data-certv="${c.id}">${c.title} · 인증서 보기</button>`).join('')}</div>`:'')+(x.route?`<div class="arr-route">${x.route} 완주! 금색 표를 모두 모았어요</div>`:'')+(x.hid&&x.hid.length?`<div class="arr-hid">${x.hid.map(id=>hstamp(id,dk(today0()),1)).join('')}<span>히든 도전 과제 ${x.hid.map(id=>`'${HIDX[id][1]}'`).join(', ')} 달성!</span></div>`:'')
     +(x.w==='kr'?postcard('kr:'+x.t,krArt(x.t),KRM[x.t][1],ymd(pk(x.d))):postcard('w:'+x.t,worldArt(x.t),NAT[x.t][2],ymd(pk(x.d))));
   $('arrMsg').insertAdjacentHTML('beforeend',extra);
   $('arrOk').textContent='확인';arrSound(snd);
   const tk=$('arrTk').firstElementChild,st=tk.querySelector('.tx-stub'),mn=tk.querySelector('.tx-main'),vert=st.offsetTop>mn.offsetTop+5;if(vert)tk.classList.add('vert');
   arrTimers=[setTimeout(()=>{tk.classList.add('ripping','edge');ripSound()},800),
     setTimeout(()=>{tk.classList.add('gone','edge');tk.style.transform=vert?`translateY(${st.offsetHeight/2}px)`:`translateX(${st.offsetWidth/2}px)`},2000),
-    setTimeout(()=>{el.classList.add('show-msg');if(x.hid&&x.hid.length)vibe()},2500)];
+    setTimeout(()=>{el.classList.add('show-msg');if(x.hid&&x.hid.length)vibe();if(TSND().anno)speak(annoText(x))},2500)];
 }
 function showTicket(id){const K=kr(tr()),i=K.path.indexOf(id),f=i>0?K.path[i-1]:K.home,d=(K.done.find(x=>x.c===id)||{}).d;if(!KRM[f]||f===id)return;
   arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
@@ -3155,7 +3251,7 @@ function arrSound(k){if(!TSND().arrive)return;const a=audio();if(!a)return;try{
 }catch(e){}}
 
 /* ==================== 여행 확장: 특별 루트·경유·등급·업적·엽서·설정 ==================== */
-const TSND=()=>Object.assign({arrive:true,rip:true,vibe:true},S.snd||{});
+const TSND=()=>Object.assign({arrive:true,rip:true,vibe:true,anno:false,voice:false},S.snd||{});
 const vibe=()=>{try{if(TSND().vibe&&navigator.vibrate)navigator.vibrate(12)}catch(e){}};
 function busyIn(id){const a=document.activeElement;return !!(a&&$(id)&&$(id).contains(a)&&a.matches('input,textarea'))}
 /* ---------- 특별 루트 (출발지 한정, 금색 표) ---------- */
@@ -3177,18 +3273,18 @@ const RT=()=>{const T=tr();return T.routes=Object.assign({act:null,done:{},legs:
 const plName=(w,id)=>w==='kr'?(KRM[id]||[])[1]:(NAT[id]||[])[2];
 function goldLeg(w,f,t){const R=RT(),a=R.act;if(a&&ROUTE[a.id]&&ROUTE[a.id].w===w&&ROUTE[a.id].stops[a.i]===f&&ROUTE[a.id].stops[a.i+1]===t)return true;return false}
 const goldHist=(w,f,t)=>RT().legs.includes(w+':'+f+'>'+t);
-function startRoute(id){const r=ROUTE[id],T=tr(),K=kr(T),R=RT();if(!r)return;const at=r.w==='kr'?K.at:T.at;if(at!==r.stops[0]||R.act)return;
+function startRoute(id){const r=ROUTE[id],T=tr(),K=kr(T),R=RT();if(!r||!inSeason(r))return;const at=r.w==='kr'?K.at:T.at;if(at!==r.stops[0]||R.act)return;
   R.act={id,i:0};if(r.w==='kr'){K.to=r.stops[1];K.final=null;K.cls=0;K.goal=null;T.to=null}else{T.to=r.stops[1];T.final=null;T.cls=0;T.goal=null;kr(T).to=null}
-  sp(T).to=null;save();if(checkArrival())ding();renderTravel();window.scrollTo({top:0,behavior:'smooth'})}
+  if(r.w==='kr')K.hold=true;else T.hold=true;sp(T).to=null;save();renderTravel();openCheckin(r.w)}
 function stopRoute(w){const R=RT();if(R.act&&ROUTE[R.act.id]&&ROUTE[R.act.id].w===w)R.act=null}
 let rtArm=null;
 function renderRoutes(w){const el=$(w==='kr'?'krRoutes':'tvRoutes');if(!el)return;const T=tr(),K=kr(T),R=RT(),at=w==='kr'?K.at:T.at,busy=w==='kr'?!!K.to:!!T.to;
   el.innerHTML=`<div class="panel-head"><h2>특별 루트</h2><span class="note">정해진 출발지에서만 떠날 수 있어요 · 금색 표</span></div><div class="rts">${ROUTES.filter(r=>r.w===w).map(r=>{
-    const act=R.act&&R.act.id===r.id,done=R.done[r.id],here=at===r.stops[0],i=act?R.act.i:-1;
+    const act=R.act&&R.act.id===r.id,done=R.done[r.id],open=inSeason(r),here=at===r.stops[0]&&open,i=act?R.act.i:-1;
     const chain=r.stops.map((s,k)=>`<span class="${act&&k<=i?'on':done?'dn':''}${act&&k===i+1?' nx':''}">${plName(w,s)}</span>`).join('<i>›</i>');
-    const st=act?`<span class="rt-st on">진행 중 · ${i}/${r.stops.length-1}</span>`:done?`<span class="rt-st dn">완주 · ${ymd(pk(done))}</span>`:here?`<span class="rt-st ok">지금 출발 가능</span>`:`<span class="rt-st">${plName(w,r.stops[0])}에서만 출발</span>`;
+    const st=act?`<span class="rt-st on">진행 중 · ${i}/${r.stops.length-1}</span>`:done?`<span class="rt-st dn">완주 · ${ymd(pk(done))}</span>`:!open?`<span class="rt-st">${seasonLbl(r)}에만 열려요</span>`:here?`<span class="rt-st ok">지금 출발 가능</span>`:`<span class="rt-st">${plName(w,r.stops[0])}에서만 출발</span>`;
     const btn=act?`<button class="secondary${rtArm===r.id?' del arm':''}" data-rtstop="${r.id}">${rtArm===r.id?'정말 그만두기':'루트 그만두기'}</button>`:here&&!R.act&&!busy?`<button class="primary gold-btn" data-rtgo="${r.id}">금색 표로 출발</button>`:'';
-    return `<div class="rt${act?' act':''}${done?' done':''}${here&&!act?' here':''}"><div class="rt-h"><b>${r.name}</b>${st}</div><p>${r.desc}</p><div class="rt-chain">${chain}</div>${btn?`<div class="rt-f">${btn}</div>`:''}</div>`}).join('')}</div>`}
+    return `<div class="rt${act?' act':''}${done?' done':''}${here&&!act?' here':''}${r.season?' ss-'+seasonLbl(r):''}"><div class="rt-h"><b>${r.name}${r.season?`<em class="rt-ss">${seasonLbl(r)} 한정</em>`:''}</b>${st}</div><p>${r.desc}</p><div class="rt-chain">${chain}</div>${btn?`<div class="rt-f">${btn}</div>`:''}</div>`}).join('')}</div>`}
 document.addEventListener('click',e=>{const g=e.target.closest('[data-rtgo]');if(g){startRoute(g.dataset.rtgo);return}
   const s=e.target.closest('[data-rtstop]');if(s){const id=s.dataset.rtstop;if(rtArm===id){RT().act=null;rtArm=null;save()}else rtArm=id;renderTravel()}});
 /* ---------- 경유 (선택) ---------- */
@@ -3212,11 +3308,11 @@ function postArrive(ev){const T=tr(),K=kr(T),R=RT();ev.ts=Date.now();
   const a=R.act,r=a&&ROUTE[a.id];
   if(r&&r.w===ev.w){if(r.stops[a.i]===ev.f&&r.stops[a.i+1]===ev.t){R.legs.push(ev.w+':'+ev.f+'>'+ev.t);a.i++;
       if(a.i>=r.stops.length-1){R.done[r.id]=dk(today0());R.act=null;ev.route=r.name}
-      else if(ev.w==='kr')K.to=r.stops[a.i+1];else T.to=r.stops[a.i+1]}
+      else if(ev.w==='kr'){K.to=r.stops[a.i+1];K.hold=true}else{T.to=r.stops[a.i+1];T.hold=true}}
     else R.act=null}
-  if(ev.w==='kr'&&!K.to&&K.final){K.to=K.final;K.final=null}
-  if(ev.w==='w'&&!T.to&&T.final){T.to=T.final;T.final=null}
-  ev.hid=evalHidden(ev)}
+  if(ev.w==='kr'&&!K.to&&K.final){K.to=K.final;K.final=null;K.hold=true}
+  if(ev.w==='w'&&!T.to&&T.final){T.to=T.final;T.final=null;T.hold=true}
+  ev.hid=evalHidden(ev);ev.secret=!!(SECKM[ev.t]||SECWM[ev.t]);ev.certs=newCerts()}
 /* ---------- 히든 도전 과제 ---------- */
 const HI={ // 24x24 선 아이콘
   moon:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',sunrise:'<path d="M4 18h16M7 18a5 5 0 0 1 10 0M12 4v4M5 9l2 2M19 9l-2 2M2 14h2M20 14h2"/>',
@@ -3262,10 +3358,11 @@ const LV=[['일반',0],['브론즈',20],['실버',60],['골드',150],['블랙',3
 const PPGLOBE='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="14"/><path d="M10 24h28M24 10c5 4 5 24 0 28M24 10c-5 4-5 24 0 28M13 17h22M13 31h22"/></svg>';
 let achYear=null;
 function renderAch(){const T=tr(),K=kr(T),R=RT(),H=T.hid||{},total=K.done.length+T.stamps.length;let li=0;LV.forEach((l,i)=>{if(total>=l[1])li=i});const nx=LV[li+1];
-  $('achPass').innerHTML=`<div class="pp lv${li}"><div class="pp-cover">${PPGLOBE}<b>PASSPORT</b><small>투어디 여권</small></div>
+  const PP=T.pp||{},pc=PPCOL[PP.col]&&PPCOL[PP.col][3]<=li?PPCOL[PP.col]:null,pe=PPEM[PP.em]&&PPEM[PP.em][2]<=li?PPEM[PP.em]:PPEM[0];
+  $('achPass').innerHTML=`<div class="pp lv${li}"><div class="pp-cover" ${pc?`style="--c1:${pc[1]};--c2:${pc[2]}"`:''}>${pe[1]()}<b>PASSPORT</b><small>${esc(PP.name||'투어디 여권')}</small></div>
     <div class="pp-info"><span class="note">여권 등급</span><b>${LV[li][0]} 여권</b><span>모은 도장 ${total}개</span>
       <div class="pp-bar"><i style="width:${nx?Math.min(100,(total-LV[li][1])/(nx[1]-LV[li][1])*100):100}%"></i></div><small>${nx?`${nx[0]}까지 도장 ${nx[1]-total}개`:'가장 높은 등급이에요'}</small>
-      <div class="pp-lv">${LV.map((l,i)=>`<span class="lv${i}${i<=li?' on':''}">${l[0]}</span>`).join('')}</div></div></div>`;
+      <div class="pp-lv">${LV.map((l,i)=>`<span class="lv${i}${i<=li?' on':''}">${l[0]}</span>`).join('')}</div></div></div>${ppEditor(li)}`;
   const kt=KR.length-1,kd=K.done.length,dm=new Set(K.done.map(d=>d.c)),wd=T.stamps.length,wt=NATIONS.length-1,gotC=new Set(T.stamps.map(s=>NAT[s.c]?.[5]));
   const it=(name,desc,cur,goal,col)=>({name,desc,cur:Math.min(cur,goal),goal,col,ok:cur>=goal});
   const groups=[
@@ -3274,10 +3371,11 @@ function renderAch(){const T=tr(),K=kr(T),R=RT(),H=T.hid||{},total=K.done.length
     ['세계',[...CONT.map((c,i)=>it(`${c} 첫 도착`,`${c}의 나라에 처음 입국`,gotC.has(i)?1:0,1,INK[i])),it('모든 대륙','일곱 대륙 모두 입국',gotC.size,7,'#c9a227'),
       it('장거리 비행','한 번에 5,000km 이상',T.long?1:0,1,'#2f55c4'),it('지구 한 바퀴','누적 40,075km 이동',Math.round(T.km),40075,'#14806f'),
       it('도장 10개','나라 10곳 입국',wd,10,'#7a3fb0'),it('도장 30개','나라 30곳 입국',wd,30,'#7a3fb0'),it('도장 100개','나라 100곳 입국',wd,100,'#7a3fb0'),it('세계 완주','모든 나라 입국',wd,wt,'#c9a227')]],
+    ['비밀 목적지',[...SECK.map(x=>it(x[1],x[6],secVisited(K.sec,x[0])?1:0,1,'#6b4fd8')),...SECW.map(x=>it(x[2],x[7],secVisited(T.sec,x[0])?1:0,1,'#6b4fd8'))]],
     ['특별 루트',ROUTES.map(r=>it(r.name,(r.w==='kr'?'국내 · ':'세계 · ')+plName(r.w,r.stops[0])+' 출발',R.done[r.id]?1:0,1,'#c9a227'))]];
   $('achList').innerHTML=groups.map(([g,items])=>`<div class="ach-g"><div class="ach-gh"><b>${g}</b><span>${items.filter(x=>x.ok).length} / ${items.length}</span></div><div class="achs">${items.map(x=>`<div class="ach${x.ok?' ok':''}" style="--k:${x.col}"><span class="ach-i">${x.ok?'★':'☆'}</span><div><b>${x.name}</b><small>${x.desc}</small>${x.goal>1?`<div class="ach-bar"><i style="width:${x.cur/x.goal*100}%"></i></div><small class="ach-n">${x.cur.toLocaleString()} / ${x.goal.toLocaleString()}</small>`:''}</div></div>`).join('')}</div></div>`).join('')
     +`<div class="ach-g"><div class="ach-gh"><b>히든 도전 과제</b><span>${Object.keys(H).length} / ${HIDDEN.length}</span></div><p class="note">조건은 비밀이에요. 여행하다 보면 저절로 열려요.</p><div class="hss">${HIDDEN.map(x=>`<div class="hsw">${hstamp(x[0],H[x[0]])}<b>${H[x[0]]?x[1]:'???'}</b></div>`).join('')}</div></div>`;
-  renderYear();
+  renderYear();renderSouv();renderAlbum();
 }
 function renderYear(){const T=tr(),K=kr(T),pd=perDay(true),ys=new Set([new Date().getFullYear()]);
   Object.keys(pd).forEach(k=>ys.add(+k.slice(0,4)));K.done.forEach(d=>ys.add(+d.d.slice(0,4)));T.stamps.forEach(s=>ys.add(+s.d.slice(0,4)));
@@ -3309,6 +3407,122 @@ document.addEventListener('input',e=>{const t=e.target.closest('[data-pc]');if(!
 function applyNeon(){document.documentElement.classList.toggle('neon',!!TOPT().neon)}
 applyNeon();
 
+/* ==================== 탑승 수속 · 비밀 목적지 · 기념품 · 인증서 · 여권 꾸미기 · 안내 방송 · 계절 연출 · 다시 보기 ==================== */
+/* ---------- 탑승 수속: 목적지를 고르면 등급을 먼저 묻고, 게이트가 열린 뒤 출발 ---------- */
+const CKVERB={air:['탑승 수속 중','게이트 오픈 · 탑승 시작'],ntrain:['승차권 확인 중','개찰 시작 · 침대칸 탑승'],cruise:['승선 수속 중','승선 게이트 오픈'],train:['승차권 확인 중','개찰 시작 · 열차 탑승'],bus:['승차권 확인 중','승차 시작'],ship:['승선 수속 중','승선 시작']};
+var ckW=null,ckSel=0,ckBusy=false;
+function openCheckin(w){const T=tr(),K=kr(T),o=w==='kr'?K:T;if(!o.to||!o.hold)return;ckW=w;ckSel=o.cls||0;ckBusy=false;renderCheckin();$('ckin').hidden=false}
+function renderCheckin(){const w=ckW,T=tr(),K=kr(T),o=w==='kr'?K:T,avail=totalMiles()-T.used;if(!o.to)return closeCheckin();
+  const m=w==='kr'?krMode(o.at,o.to):wMode(o.at,o.to),L=w==='kr'?KCLS[m]:WCLS[m],MU=w==='kr'?KMUL:WMUL,base=w==='kr'?krCost(o.at,o.to):flightMin(o.at,o.to);
+  const from=w==='kr'?KRM[o.at][1]:`${ap(o.at)} ${NAT[o.at][2]}`,to=w==='kr'?KRM[o.to][1]:`${ap(o.to)} ${NAT[o.to][2]}`,ic=w==='kr'?krIcon(m):wIcon(m),gold=goldLeg(w,o.at,o.to);
+  const tierName=i=>w==='kr'?(i?'금색 표':''):(['','은색 표','금색 표'][i]);
+  $('ckBox').innerHTML=`<div class="ck-h"><span class="ck-k">${ic}${CKVERB[m][0].replace(' 중','')}</span><b>${from} → ${to}</b>${gold?'<span class="ck-g">특별 루트 · 금색 표</span>':''}${o.final&&(w==='kr'?KRM[o.final]:NAT[o.final])?`<small>경유 · 최종 목적지 ${w==='kr'?KRM[o.final][1]:NAT[o.final][2]}</small>`:''}</div>
+    <div class="ck-ops" role="radiogroup" aria-label="좌석 등급">${L.map((l,i)=>{const c=Math.round(base*MU[i]),ok=avail>=c;
+      return `<button class="ck-op${i===ckSel?' on':''}${i&&w==='w'?' t'+i:i&&w==='kr'?' t2':''}" role="radio" aria-checked="${i===ckSel}" data-ck="${i}"><span class="ck-n"><b>${l}</b>${tierName(i)?`<small>${tierName(i)}</small>`:''}</span><span class="ck-c"><b>${c}</b><small>마일</small></span><span class="ck-s ${ok?'ok':''}">${ok?'바로 도착':'공부 '+studyFor(c-avail)}</span></button>`}).join('')}</div>
+    <div class="ck-step" id="ckStep" hidden><div class="ck-bar"><i></i></div><span id="ckStepT"></span><div class="ck-gate"><span></span><span></span></div></div>
+    <div class="ck-a"><button class="secondary" id="ckLater">나중에</button><button class="primary" id="ckGo">${{air:'탑승하기',ntrain:'탑승하기',cruise:'승선하기',ship:'승선하기'}[m]||'승차하기'}</button></div>`}
+function closeCheckin(){$('ckin').hidden=true;ckBusy=false}
+function goCheckin(){if(ckBusy)return;ckBusy=true;const w=ckW,T=tr(),K=kr(T),o=w==='kr'?K:T,m=w==='kr'?krMode(o.at,o.to):wMode(o.at,o.to);o.cls=ckSel;save();
+  $('ckBox').querySelector('.ck-ops').hidden=true;$('ckBox').querySelector('.ck-a').hidden=true;const st=$('ckStep');st.hidden=false;$('ckStepT').textContent=CKVERB[m][0]+'…';
+  setTimeout(()=>{st.classList.add('open');$('ckStepT').textContent=CKVERB[m][1];vibe()},1000);
+  setTimeout(()=>{o.hold=false;save();closeCheckin();st.classList.remove('open');if(checkArrival())ding();renderTravel();window.scrollTo({top:0,behavior:'smooth'})},1900)}
+$('ckin').addEventListener('click',e=>{if(e.target===$('ckin')&&!ckBusy)return closeCheckin();const b=e.target.closest('[data-ck]');if(b&&!ckBusy){ckSel=+b.dataset.ck;renderCheckin();return}
+  if(e.target.closest('#ckLater'))closeCheckin();if(e.target.closest('#ckGo'))goCheckin()});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ckopen]');if(b)openCheckin(b.dataset.ckopen)});
+/* ---------- 비밀 목적지 ---------- */
+const SECK=[['dokdo','독도','경북',37.241,131.865,'ulleung','울릉도에 다녀오면 나타나요'],['marado','마라도','제주',33.117,126.267,'seogwipo','서귀포에 다녀오면 나타나요'],['baengnyeong','백령도','인천',37.966,124.660,'ganghwa','강화에 다녀오면 나타나요']];
+const SECW=[['AQ','남극','세종기지',-62.22,-58.79,5,'CL AR','칠레나 아르헨티나에 가면 나타나요','KSG'],['XG','에콰도르','갈라파고스',-0.74,-90.31,5,'EC','에콰도르에 가면 나타나요','GPS'],['XE','칠레','이스터섬',-27.11,-109.35,5,'CL','칠레에 가면 나타나요','IPC'],
+  ['SJ','노르웨이','스발바르',78.22,15.65,2,'NO','노르웨이에 가면 나타나요','LYR'],['XM','페루','마추픽추',-13.16,-72.55,5,'PE','페루에 가면 나타나요','CUZ'],['XS','모로코','사하라 사막',31.1,-4.0,3,'MA','모로코에 가면 나타나요','ERH']];
+const SECKM=Object.fromEntries(SECK.map(x=>[x[0],x])),SECWM=Object.fromEntries(SECW.map(x=>[x[0],x]));
+SECK.forEach(x=>{KRM[x[0]]=x});SECW.forEach(x=>{NAT[x[0]]=x.slice(0,6);IATA[x[0]]=x[8];CRUISEOK.add(x[0]);ISL.add(x[0])});
+const secOpenK=(K,x)=>krDone(K,x[5])||K.at===x[5],secOpenW=(T,x)=>x[6].split(' ').some(c=>T.stamps.some(s=>s.c===c)||T.at===c);
+const secVisited=(arr,c)=>(arr||[]).some(d=>d.c===c);
+/* ---------- 기념품 · 인증서 ---------- */
+const CONTLM=['CN','AE','FR','EG','US','BR','AU'];
+function completions(){const T=tr(),K=kr(T),R=RT(),dm=Object.fromEntries(K.done.map(d=>[d.c,d.d])),sm=Object.fromEntries(T.stamps.map(s=>[s.c,s.d])),out=[];
+  KRG.slice(1).forEach((g,gi)=>{const all=KR.filter(x=>krGroup(x)===gi+1&&x[0]!==K.home);const ok=all.length&&all.every(x=>dm[x[0]]);out.push({id:'kr'+gi,kind:'kr',gi,name:g[0],title:`${g[0]} 완주`,desc:`${g[0]}의 시·군 ${all.length}곳을 모두 방문했음을 인증합니다.`,ok,d:ok?all.map(x=>dm[x[0]]).sort().pop():null,col:KINK[gi]})});
+  CONT.forEach((c,ci)=>{const all=NATIONS.filter(n=>n[5]===ci&&n[0]!=='KR');const ok=all.length&&all.every(n=>sm[n[0]]);out.push({id:'w'+ci,kind:'w',ci,name:c,title:`${c} 완주`,desc:`${c}의 ${all.length}개국에 모두 입국했음을 인증합니다.`,ok,d:ok?all.map(n=>sm[n[0]]).sort().pop():null,col:INK[ci]})});
+  ROUTES.forEach(r=>out.push({id:'r'+r.id,kind:'r',r,name:r.name,title:`${r.name} 완주`,desc:`특별 루트 '${r.name}'의 ${r.stops.length}곳을 차례로 여행했음을 인증합니다.`,ok:!!R.done[r.id],d:R.done[r.id]||null,col:'#c9a227'}));
+  return out}
+function magnetArt(c){if(c.kind==='w')return `<svg class="lm" viewBox="0 0 100 100">${LM[CONTLM[c.ci]]||''}</svg>`;
+  if(c.kind==='r'){const last=c.r.stops[c.r.stops.length-1];return c.r.w==='w'&&LM[last]?`<svg class="lm" viewBox="0 0 100 100">${LM[last]}</svg>`:`<svg class="lm" viewBox="0 0 24 24" style="stroke-width:1.6">${HI.crown}</svg>`}
+  const idx=KMAP.p.map((q,i)=>[q,i]).filter(([q])=>q[1]===c.gi+1).map(([,i])=>i);if(!idx.length)return '';
+  const bs=idx.map(i=>KMAP.b[i]),x0=Math.min(...bs.map(b=>b[0])),y0=Math.min(...bs.map(b=>b[1])),x1=Math.max(...bs.map(b=>b[0]+b[2])),y1=Math.max(...bs.map(b=>b[1]+b[3]));
+  return `<svg class="sil" viewBox="${f1(x0)} ${f1(y0)} ${f1(x1-x0)} ${f1(y1-y0)}" preserveAspectRatio="xMidYMid meet">${idx.map(i=>`<use href="#kp-${i}"/>`).join('')}</svg>`}
+function certHTML(c){const T=tr(),nm=(T.pp&&T.pp.name)||'투어디 여행자';
+  return `<div class="cert" style="--k:${c.col}"><div class="cert-in"><small>CERTIFICATE OF COMPLETION</small><h3>완주 인증서</h3><div class="cert-art">${magnetArt(c)}</div><p class="cert-t">${c.title}</p><p class="cert-d">${c.desc}</p>
+    <div class="cert-f"><div><small>여행자</small><b>${esc(nm)}</b></div><div class="cert-seal"><span>TOURY</span><b>완주</b></div><div><small>완주일</small><b>${c.d?ymd(pk(c.d)):'-'}</b></div></div></div></div>`}
+function showCert(id){const c=completions().find(x=>x.id===id);if(!c||!c.ok)return;arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
+  $('arrTk').innerHTML=certHTML(c);$('arrMsg').innerHTML='';$('arrOk').textContent='닫기';vibe()}
+function newCerts(){const T=tr(),seen=new Set(T.certSeen||[]),now=completions().filter(c=>c.ok);const fresh=now.filter(c=>!seen.has(c.id));T.certSeen=now.map(c=>c.id);return fresh}
+/* ---------- 여권 꾸미기 ---------- */
+const PPCOL=[['남색','#2b3a55','#16213a',0],['버건디','#7a1f2b','#3f0d14',0],['숲','#2f5d3a','#16301d',1],['하늘','#3a78b8','#1d3f66',2],['라벤더','#6b5aa8','#352a63',2],['골드','#e9c45a','#9a7410',3],['블랙','#2a2a2a','#000000',4]];
+const PPEM=[['지구',()=>PPGLOBE,0],['비행기',()=>PLANE,1],['나침반',()=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>',2],['별',()=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">${HI.star}</svg>`,3],['왕관',()=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">${HI.crown}</svg>`,4]];
+var ppEdit=false;
+/* ---------- 도착 안내 방송 (선택) ---------- */
+function annoText(x){const hs=hsh(x.f+x.t);if(x.w==='kr'){const B=KRM[x.t][1],m=krMode(x.f,x.t);
+    return m==='bus'?`이번 정류장은 ${B} 종합버스터미널입니다. 내리실 분은 미리 벨을 눌러 주세요.`:m==='ship'?`잠시 후 ${B}항에 도착합니다. 하선하실 때 발밑을 조심하세요.`:`이번 역은 ${B}, ${B}역입니다. 내리실 문은 ${hs%2?'왼쪽':'오른쪽'}입니다. 잊으신 물건 없이 안녕히 가십시오.`}
+  const B=NAT[x.t],m=wMode(x.f,x.t),tm=localInfo(x.t).split(' · ')[0].replace('현지 ','');
+  return m==='ntrain'?`${B[2]}역에 도착했습니다. 침대칸 승객께서는 두고 내리는 짐이 없는지 확인해 주세요.`:m==='cruise'?`${B[2]}항에 입항했습니다. 즐거운 기항지 여행 되십시오.`
+    :`승객 여러분, 우리 비행기는 ${B[2]} ${ap(x.t)} 공항에 도착했습니다.${/\d/.test(tm)?` 현지 시각은 ${tm}입니다.`:''} 좌석벨트 표시등이 꺼질 때까지 자리에 앉아 계십시오.`}
+function speak(t){try{if(!TSND().voice||!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=1;speechSynthesis.speak(u)}catch(e){}}
+/* ---------- 계절 연출 (끌 수 있음) ---------- */
+function seasonNow(){const m=new Date().getMonth()+1;return m>=3&&m<=5?'spring':m>=9&&m<=11?'autumn':m===12||m<=2?'winter':'summer'}
+function seasonFx(){const on=TOPT().season!==false,ss=seasonNow();['krMap','tvMap','krTrip','tvFlight'].forEach(id=>{const el=$(id);if(!el)return;let L=el.querySelector(':scope>.ssn');
+  if(!on||ss==='summer'){if(L)L.remove();return}if(L&&L.dataset.s===ss)return;if(L)L.remove();
+  L=document.createElement('div');L.className='ssn ssn-'+ss;L.dataset.s=ss;L.setAttribute('aria-hidden','true');
+  L.innerHTML=[...Array(12)].map((_,i)=>`<i style="left:${(i*37+11)%100}%;animation-delay:${-(i*1.37)%9}s;animation-duration:${7+(i*1.9)%6}s;--sz:${ss==='winter'?4+(i%3)*2:8+(i%3)*3}px;--dx:${(i%2?1:-1)*(20+i*3)}px"></i>`).join('');el.appendChild(L)})}
+/* ---------- 내 여행 다시 보기 ---------- */
+var RP=null;
+function replay(key){if(RP)return;const T=tr(),K=kr(T),el=$(key==='kr'?'krMap':'tvMap'),svg=el.querySelector('svg');let segs=[],legs=[];
+  if(key==='kr'){const seq=[K.home,...K.path].filter(id=>KRM[id]);if(seq.length<2)return toast('아직 다시 볼 여행이 없어요');segs=[seq.map(id=>kxy(KRM[id][3],KRM[id][4]))];legs=seq}
+  else{const L=flightLog(T).filter(e=>NAT[e.f]&&NAT[e.t]);if(!L.length)return toast('아직 다시 볼 여행이 없어요');L.forEach(e=>{arcSegs([NAT[e.f][3],NAT[e.f][4]],[NAT[e.t][3],NAT[e.t][4]],1,30).forEach(s=>segs.push(s))});legs=[L[0].f,...L.map(e=>e.t)]}
+  const pts=segs.flat(),full=key==='kr'?KFULL:WFULL,vb=segs.length>1&&key==='w'?full.slice():fitBox(pts,full,key==='kr'?60:200,1.2);svg.setAttribute('viewBox',vb.map(f2).join(' '));
+  const u=pxPer(svg,vb),tot=pts.length,dur=Math.min(9000,2500+tot*25),t0=performance.now(),dyn=el.querySelector('.dyn'),btn=el.querySelector('.map-rp');if(btn)btn.textContent='■ 멈추기';
+  const draw=now=>{if(!RP)return;const p=Math.min(1,(now-t0)/dur),n=Math.max(1,Math.floor(p*(tot-1)));let k=0,d='';
+    segs.forEach(s=>{const take=Math.max(0,Math.min(s.length,n+1-k));if(take>1)d+='M'+s.slice(0,take).map(q=>f2(q[0])+' '+f2(q[1])).join('L');k+=s.length});
+    const cur=pts[Math.min(n,tot-1)],ic=key==='kr'?TRAIN:PLANE;
+    dyn.innerHTML=`<path class="trail" d="${segD(segs)}" style="stroke-opacity:.12"/><path class="route-on rp" d="${d}"/>${mapIcon(ic,cur[0],cur[1],20*u)}<text x="${f2(vb[0]+10*u)}" y="${f2(vb[1]+22*u)}" font-size="${f2(13*u)}" class="rp-t">${Math.round(p*100)}%</text>`;
+    if(p<1)RP.raf=requestAnimationFrame(draw);else setTimeout(()=>stopReplay(),900)};
+  RP={key,raf:requestAnimationFrame(draw)}}
+function stopReplay(){if(!RP)return;cancelAnimationFrame(RP.raf);const k=RP.key;RP=null;const el=$(k==='kr'?'krMap':'tvMap'),b=el&&el.querySelector('.map-rp');if(b)b.textContent='▶ 다시 보기';if(k==='kr')renderKrMap();else renderWorldMap()}
+document.addEventListener('click',e=>{const b=e.target.closest('.map-rp');if(!b)return;if(RP)stopReplay();else replay(b.dataset.rp)});
+/* ---------- 계절 한정 루트 ---------- */
+ROUTES.push(
+  {id:'sakura',w:'kr',season:[3,4,5],name:'봄 벚꽃 길',desc:'창원에서 서울까지 남쪽부터 차례로 피는 벚꽃을 따라',stops:['changwon','hadong','gurye','gyeongju','chungju','seoul']},
+  {id:'summersea',w:'kr',season:[6,7,8],name:'여름 바다 일주',desc:'부산에서 태안까지 남해와 서해 해수욕장을 잇는 길',stops:['busan','geoje','namhae','yeosu','boryeong','taean']},
+  {id:'maple',w:'kr',season:[9,10,11],name:'가을 단풍 길',desc:'속초에서 정읍까지 설악산부터 내장산까지 단풍을 따라',stops:['sokcho','inje','pyeongchang','danyang','mungyeong','jeongeup']},
+  {id:'snowfl',w:'kr',season:[12,1,2],name:'겨울 눈꽃 길',desc:'평창에서 무주까지 눈 덮인 산골 마을을 잇는 길',stops:['pyeongchang','jeongseon','taebaek','yeongju','muju']},
+  {id:'blossom',w:'w',season:[3,4],name:'봄 아시아 꽃길',desc:'서울에서 베이징까지 봄꽃이 피는 도시를 따라',stops:['KR','JP','TW','CN']},
+  {id:'medi',w:'w',season:[6,7,8],name:'여름 지중해 크루즈',desc:'마드리드에서 니코시아까지 지중해를 건너',stops:['ES','FR','MC','IT','MT','GR','CY']},
+  {id:'xmasmkt',w:'w',season:[11,12],name:'크리스마스 마켓',desc:'베를린에서 바르샤바까지 연말 장터를 돌며',stops:['DE','CZ','AT','HU','SK','PL']});
+ROUTES.forEach(r=>{ROUTE[r.id]=r});
+const inSeason=r=>!r.season||r.season.includes(new Date().getMonth()+1);
+const seasonLbl=r=>{const s=r.season||[];return s.includes(3)&&s.includes(4)?'봄':s.includes(7)?'여름':s.includes(10)?'가을':s.includes(11)&&s.includes(12)&&s.length===2?'연말':'겨울'};
+/* ---------- 업적 탭 추가 화면 ---------- */
+function ppEditor(li){const T=tr(),P=T.pp||{};if(!ppEdit)return `<button class="secondary pp-ed" data-pped>표지 꾸미기</button>`;
+  return `<div class="pp-edit"><div class="plabel">표지 색</div><div class="pp-sw">${PPCOL.map((c,i)=>`<button data-ppc="${i}" ${c[3]>li?'disabled':''} aria-pressed="${(P.col??-1)===i}" style="--c1:${c[1]};--c2:${c[2]}" title="${c[0]}${c[3]>li?' · '+LV[c[3]][0]+' 등급에서 열려요':''}"><span></span><small>${c[3]>li?LV[c[3]][0]:c[0]}</small></button>`).join('')}</div>
+    <div class="plabel">문양</div><div class="pp-em">${PPEM.map((m,i)=>`<button data-ppe="${i}" ${m[2]>li?'disabled':''} aria-pressed="${(P.em||0)===i}">${m[1]()}<small>${m[2]>li?LV[m[2]][0]:m[0]}</small></button>`).join('')}</div>
+    <div class="plabel">이름 새기기</div><input class="field" data-ppn maxlength="12" placeholder="표지에 새길 이름" value="${esc(P.name||'')}">
+    <button class="primary" data-pped>완료</button></div>`}
+document.addEventListener('click',e=>{const T=tr();const a=e.target.closest('[data-pped]');if(a){ppEdit=!ppEdit;renderAch();return}
+  const c=e.target.closest('[data-ppc]');if(c&&!c.disabled){T.pp=Object.assign(T.pp||{},{col:+c.dataset.ppc});save();renderAch();return}
+  const m=e.target.closest('[data-ppe]');if(m&&!m.disabled){T.pp=Object.assign(T.pp||{},{em:+m.dataset.ppe});save();renderAch();return}
+  const g=e.target.closest('[data-cert]');if(g&&!g.disabled){showCert(g.dataset.cert);return}
+  const v=e.target.closest('[data-certv]');if(v){showCert(v.dataset.certv);return}
+  const p=e.target.closest('[data-pcv]');if(p)showCard(p.dataset.pcv)});
+document.addEventListener('input',e=>{const n=e.target.closest('[data-ppn]');if(!n)return;const T=tr();T.pp=Object.assign(T.pp||{},{name:n.value.slice(0,12)});save();const cv=document.querySelector('#achPass .pp-cover small');if(cv)cv.textContent=n.value||'투어디 여권'});
+function renderSouv(){const cs=completions(),grp=[['국내 지역','kr'],['세계 대륙','w'],['특별 루트','r']];
+  $('achSouv').innerHTML=`<div class="panel-head"><h2>기념품 보드</h2><span class="note">완주하면 자석과 인증서를 받아요 · 누르면 인증서</span></div>`+grp.map(([t,k])=>{const L=cs.filter(c=>c.kind===k);
+    return `<div class="fr-h"><b>${t}</b><span>${L.filter(c=>c.ok).length} / ${L.length}</span></div><div class="fridge">${L.map((c,i)=>`<button class="mag${c.ok?'':' lock'}" data-cert="${c.id}" ${c.ok?'':'disabled'} style="--k:${c.col};--r:${((i*7)%9)-4}deg" aria-label="${c.title}${c.ok?' 인증서 보기':' (미완주)'}"><span class="mag-art">${magnetArt(c)}</span><b>${c.name}</b></button>`).join('')}</div>`}).join('')}
+function cardInfo(key){const T=tr(),K=kr(T),[w,id]=key.split(':');if(w==='kr'){const x=KRM[id];if(!x)return null;const d=(K.done.find(e=>e.c===id)||(K.sec||[]).find(e=>e.c===id)||{}).d;return {key,art:krArt(id),city:x[1],d}}
+  const n=NAT[id];if(!n)return null;const d=(T.stamps.find(e=>e.c===id)||(T.sec||[]).find(e=>e.c===id)||{}).d;return {key,art:worldArt(id),city:n[2],d}}
+function renderAlbum(){const T=tr(),ks=Object.keys(T.memo||{}).filter(k=>(T.memo[k]||'').trim()).map(cardInfo).filter(Boolean).sort((a,b)=>(a.d||'')<(b.d||'')?1:-1);
+  $('achCards').innerHTML=`<div class="panel-head"><h2>엽서 앨범</h2><span class="note">${ks.length}장</span></div>`+(ks.length?`<div class="album">${ks.map(c=>`<button class="pcm" data-pcv="${c.key}"><span class="pcm-art">${c.art}</span><span class="pcm-r"><b>${c.city}</b><small>${c.d?ymd(pk(c.d)):''}</small><i>${esc(T.memo[c.key])}</i></span></button>`).join('')}</div>`:'<p class="note">도착 화면이나 도장을 눌러 엽서에 한마디를 남기면 여기에 모여요.</p>')}
+function showCard(key){const c=cardInfo(key);if(!c)return;arrTimers.forEach(clearTimeout);arrOpen=true;const el=$('arrive');el.hidden=false;el.classList.add('show-msg');
+  $('arrTk').innerHTML='';$('arrMsg').innerHTML=postcard(key,c.art,c.city,c.d?ymd(pk(c.d)):'');$('arrOk').textContent='닫기'}
+(function(){const T=tr();if(!T.certSeen)T.certSeen=completions().filter(c=>c.ok).map(c=>c.id)})();
+
 function tvTest(e){const T=tr(),a=e.target.closest('[data-add]');
   if(a){T.used-=+a.dataset.add;save();if(checkArrival())ding();renderTravel();return true}
   if(e.target.closest('#tvSkip')&&T.to){T.used-=Math.max(0,wTC(T)-(totalMiles()-T.used));save();if(checkArrival())ding();renderTravel();return true}
@@ -3322,7 +3536,7 @@ $('tvConts').addEventListener('click',e=>{const b=e.target.closest('[data-cont]'
 $('tvSearch').addEventListener('input',e=>{tvQuery=e.target.value;renderTravelPicker()});
 $('tvList').addEventListener('click',e=>{const b=e.target.closest('[data-dest]');if(!b)return;const T=tr();
   stopRoute('w');T.to=b.dataset.dest;T.final=null;T.cls=0;T.goal=null;if(TOPT().via){const v=pickViaW(T.at,T.to);if(v){T.final=T.to;T.to=v}}sp(T).to=null;kr(T).to=null;tvPick=false;tvArm=false;save();
-  if(checkArrival())ding();renderTravel();window.scrollTo({top:0,behavior:'smooth'})});
+  T.hold=true;save();renderTravel();openCheckin('w')});
 function syncTravelTab(){const on=tr().on;$('tabTravel').hidden=!on;if(!on&&tab==='travel')setTab('home')}
 
 /* ---------- 선택 기능 (설정 → 추가 기능에서 켬) ---------- */

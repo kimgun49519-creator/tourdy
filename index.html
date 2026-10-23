@@ -1123,18 +1123,19 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
 .bx-loc{color:#1d6fd8!important;font-weight:700!important}
 .bx-via,.tk-via{display:inline-block;margin-top:-4px;font-size:11px;font-weight:800;color:#b45309;background:#fff4e0;border-radius:6px;padding:3px 8px;align-self:flex-start}
 /* 좌석 등급 */
-.tk.prem .tk-main{box-shadow:inset 0 0 0 2px #c9a227}.tk.prem .tk-hd::after{content:"PREMIUM";font-size:9px;letter-spacing:.14em;color:#a07c12;margin-left:8px}
-.bx-c1 .bx-hd{background:linear-gradient(90deg,#14213d,#26355e)}.bx-c1 .bx-hd .bx-bp,.bx-c1 .bx-date{color:#f0cf6b}.bx-c1 .bx-main{box-shadow:inset 0 0 0 2px #d9b14a}
-.bx-c2 .bx-hd{background:linear-gradient(90deg,#000,#2a2a2a 60%,#000)}.bx-c2 .bx-hd .bx-bp,.bx-c2 .bx-date{background:linear-gradient(90deg,#f6e27a,#c9a227,#fff1b0,#c9a227);-webkit-background-clip:text;background-clip:text;color:transparent}
-.bx-c2 .bx-main,.bx-c2 .bx-stub{box-shadow:inset 0 0 0 2px #c9a227}
+.tk.prem .tk-hd::after{content:"PREMIUM";font-size:9px;letter-spacing:.14em;color:#a07c12;margin-left:8px}
+.bx-c1 .bx-hd{background:linear-gradient(90deg,#5f6872,#aeb6bf 50%,#5f6872)}.bx-c1 .bx-main,.bx-c1 .bx-stub{background:linear-gradient(115deg,#f7f8fa,#d3d9df 40%,#f4f6f8 55%,#b9c1ca)}
+.bx-c1 .bx-info{background:rgba(255,255,255,.5)}.bx-c1 .bx-line i{background:#6b7480}.bx-c1 .bx-big b{color:#55606c}
+.bx-c2 .bx-hd{background:linear-gradient(90deg,#8a6a10,#d4af37 50%,#8a6a10)}.bx-c2 .bx-main,.bx-c2 .bx-stub{background:linear-gradient(115deg,#fff3c4,#f6dd8a 40%,#fff6d6 55%,#e9c86a)}
+.bx-c2 .bx-info{background:rgba(255,255,255,.45)}.bx-c2 .bx-line i{background:#a07c12}.bx-c2 .bx-big b{color:#8a6a10}
 .cls-pick{display:flex;gap:6px;flex-wrap:wrap}
 .cls-pick button{padding:7px 12px;border-radius:999px;background:var(--hover);font-size:13px;font-weight:700;color:var(--ink);display:flex;gap:4px;align-items:baseline}
 .cls-pick button small{font-size:11px;color:var(--faint)}
 .cls-pick button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}.cls-pick button[aria-pressed="true"] small{color:inherit;opacity:.7}
 /* 금색 표 (특별 루트) */
-.tk.gold{--tc:#9a7410;--tp:#fff7dc;--th:#7a5a00}
-.tk.gold .tk-main{background:linear-gradient(115deg,#fff3c4,#f6dd8a 40%,#fff6d6 55%,#e9c86a)!important}
-.tk.gold .tk-stub{background:linear-gradient(135deg,#c9a227,#8a6a10)!important;color:#fffbe8}
+.tk.gold,.tk.prem{--tc:#9a7410;--tp:#fff7dc;--th:#7a5a00}
+.tk.gold .tk-main,.tk.prem .tk-main{background:linear-gradient(115deg,#fff3c4,#f6dd8a 40%,#fff6d6 55%,#e9c86a)!important}
+.tk.gold .tk-stub,.tk.prem .tk-stub{background:linear-gradient(135deg,#c9a227,#8a6a10)!important;color:#fffbe8}
 .bx.gold .bx-hd{background:linear-gradient(90deg,#8a6a10,#d4af37 50%,#8a6a10)}.bx.gold .bx-main,.bx.gold .bx-stub{background:linear-gradient(115deg,#fff3c4,#f6dd8a 40%,#fff6d6 55%,#e9c86a)}
 .bx.gold .bx-info{background:rgba(255,255,255,.45)}.bx.gold .bx-line i{background:#a07c12}.bx.gold .bx-big b{color:#8a6a10}
 .gold-btn{background:linear-gradient(90deg,#b8901c,#e2bf4d,#b8901c)!important;color:#2b1f00!important}
@@ -1226,49 +1227,64 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
 .sndtest{display:flex;gap:6px;flex-wrap:wrap}
 /* 밤에는 형광 표 (다크 모드 + 설정 켬) */
 @media (prefers-color-scheme:dark){
-:root.neon:not([data-theme="light"]) .tk:not(.gold){filter:drop-shadow(0 0 10px color-mix(in srgb,var(--tc) 45%,transparent))}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-main{background:#0b1020!important;color:#e9eefc}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-hd,:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-route small{color:var(--tc);text-shadow:0 0 6px var(--tc)}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-route b{color:#fff;text-shadow:0 0 8px var(--tc)}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-route em,:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-info small,:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-mid{color:#93a0c4}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-info{border-top-color:color-mix(in srgb,var(--tc) 50%,transparent)}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-stub{background:#0b1020!important;color:var(--tc);border-left:2px dashed var(--tc);text-shadow:0 0 6px var(--tc)}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-vh,:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-bars{background:#0b1020}
-:root.neon:not([data-theme="light"]) .tk:not(.gold) .tk-bars i{background:var(--tc)}
-:root.neon:not([data-theme="light"]) .bx:not(.gold){filter:drop-shadow(0 0 10px rgba(80,140,255,.35))}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-main,:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-stub{background:#0b1020;color:#e9eefc}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-hd{background:#000;color:#7fb2ff;text-shadow:0 0 6px #3b82f6}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-route b{color:#fff;text-shadow:0 0 10px #3b82f6}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-info{background:rgba(255,255,255,.06)}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-info small,:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-route small,:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-route span,:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-kv small,:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-big small{color:#8b97b8}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-line{background:repeating-linear-gradient(90deg,#7fb2ff 0 5px,transparent 5px 9px)}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-line::before,:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-line::after{background:#0b1020;border-color:#7fb2ff}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-pl{color:#7fb2ff;filter:drop-shadow(0 0 6px #3b82f6)}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-code{filter:invert(1) brightness(.85)}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .bx-sh{background:#7fb2ff;color:#0b1020}
-:root.neon:not([data-theme="light"]) .bx:not(.gold) .tx-bg{color:#7fb2ff}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem){filter:drop-shadow(0 0 10px color-mix(in srgb,var(--tc) 45%,transparent))}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-main{background:#0b1020!important;color:#e9eefc}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-hd,:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-route small{color:var(--tc);text-shadow:0 0 6px var(--tc)}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-route b{color:#fff;text-shadow:0 0 8px var(--tc)}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-route em,:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-info small,:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-mid{color:#93a0c4}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-info{border-top-color:color-mix(in srgb,var(--tc) 50%,transparent)}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-stub{background:#0b1020!important;color:var(--tc);border-left:2px dashed var(--tc);text-shadow:0 0 6px var(--tc)}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-vh,:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-bars{background:#0b1020}
+:root.neon:not([data-theme="light"]) .tk:not(.gold):not(.prem) .tk-bars i{background:var(--tc)}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2){filter:drop-shadow(0 0 10px rgba(80,140,255,.35))}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-main,:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-stub{background:#0b1020;color:#e9eefc}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-hd{background:#000;color:#7fb2ff;text-shadow:0 0 6px #3b82f6}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-route b{color:#fff;text-shadow:0 0 10px #3b82f6}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-info{background:rgba(255,255,255,.06)}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-info small,:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-route small,:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-route span,:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-kv small,:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-big small{color:#8b97b8}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-line{background:repeating-linear-gradient(90deg,#7fb2ff 0 5px,transparent 5px 9px)}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-line::before,:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-line::after{background:#0b1020;border-color:#7fb2ff}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-pl{color:#7fb2ff;filter:drop-shadow(0 0 6px #3b82f6)}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-code{filter:invert(1) brightness(.85)}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-sh{background:#7fb2ff;color:#0b1020}
+:root.neon:not([data-theme="light"]) .bx:not(.gold):not(.bx-c1):not(.bx-c2) .tx-bg{color:#7fb2ff}
 }
-:root.neon[data-theme="dark"] .tk:not(.gold){filter:drop-shadow(0 0 10px color-mix(in srgb,var(--tc) 45%,transparent))}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-main{background:#0b1020!important;color:#e9eefc}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-hd,:root.neon[data-theme="dark"] .tk:not(.gold) .tk-route small{color:var(--tc);text-shadow:0 0 6px var(--tc)}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-route b{color:#fff;text-shadow:0 0 8px var(--tc)}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-route em,:root.neon[data-theme="dark"] .tk:not(.gold) .tk-info small,:root.neon[data-theme="dark"] .tk:not(.gold) .tk-mid{color:#93a0c4}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-info{border-top-color:color-mix(in srgb,var(--tc) 50%,transparent)}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-stub{background:#0b1020!important;color:var(--tc);border-left:2px dashed var(--tc);text-shadow:0 0 6px var(--tc)}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-vh,:root.neon[data-theme="dark"] .tk:not(.gold) .tk-bars{background:#0b1020}
-:root.neon[data-theme="dark"] .tk:not(.gold) .tk-bars i{background:var(--tc)}
-:root.neon[data-theme="dark"] .bx:not(.gold){filter:drop-shadow(0 0 10px rgba(80,140,255,.35))}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-main,:root.neon[data-theme="dark"] .bx:not(.gold) .bx-stub{background:#0b1020;color:#e9eefc}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-hd{background:#000;color:#7fb2ff;text-shadow:0 0 6px #3b82f6}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-route b{color:#fff;text-shadow:0 0 10px #3b82f6}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-info{background:rgba(255,255,255,.06)}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-info small,:root.neon[data-theme="dark"] .bx:not(.gold) .bx-route small,:root.neon[data-theme="dark"] .bx:not(.gold) .bx-route span,:root.neon[data-theme="dark"] .bx:not(.gold) .bx-kv small,:root.neon[data-theme="dark"] .bx:not(.gold) .bx-big small{color:#8b97b8}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-line{background:repeating-linear-gradient(90deg,#7fb2ff 0 5px,transparent 5px 9px)}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-line::before,:root.neon[data-theme="dark"] .bx:not(.gold) .bx-line::after{background:#0b1020;border-color:#7fb2ff}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-pl{color:#7fb2ff;filter:drop-shadow(0 0 6px #3b82f6)}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-code{filter:invert(1) brightness(.85)}
-:root.neon[data-theme="dark"] .bx:not(.gold) .bx-sh{background:#7fb2ff;color:#0b1020}
-:root.neon[data-theme="dark"] .bx:not(.gold) .tx-bg{color:#7fb2ff}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem){filter:drop-shadow(0 0 10px color-mix(in srgb,var(--tc) 45%,transparent))}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-main{background:#0b1020!important;color:#e9eefc}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-hd,:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-route small{color:var(--tc);text-shadow:0 0 6px var(--tc)}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-route b{color:#fff;text-shadow:0 0 8px var(--tc)}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-route em,:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-info small,:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-mid{color:#93a0c4}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-info{border-top-color:color-mix(in srgb,var(--tc) 50%,transparent)}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-stub{background:#0b1020!important;color:var(--tc);border-left:2px dashed var(--tc);text-shadow:0 0 6px var(--tc)}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-vh,:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-bars{background:#0b1020}
+:root.neon[data-theme="dark"] .tk:not(.gold):not(.prem) .tk-bars i{background:var(--tc)}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2){filter:drop-shadow(0 0 10px rgba(80,140,255,.35))}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-main,:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-stub{background:#0b1020;color:#e9eefc}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-hd{background:#000;color:#7fb2ff;text-shadow:0 0 6px #3b82f6}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-route b{color:#fff;text-shadow:0 0 10px #3b82f6}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-info{background:rgba(255,255,255,.06)}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-info small,:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-route small,:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-route span,:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-kv small,:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-big small{color:#8b97b8}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-line{background:repeating-linear-gradient(90deg,#7fb2ff 0 5px,transparent 5px 9px)}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-line::before,:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-line::after{background:#0b1020;border-color:#7fb2ff}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-pl{color:#7fb2ff;filter:drop-shadow(0 0 6px #3b82f6)}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-code{filter:invert(1) brightness(.85)}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .bx-sh{background:#7fb2ff;color:#0b1020}
+:root.neon[data-theme="dark"] .bx:not(.gold):not(.bx-c1):not(.bx-c2) .tx-bg{color:#7fb2ff}
+/* 은·금 도장/카드/표 */
+.stamp.silver,.ks-stamp.silver{--k:#7d8792!important;--c:#69737e!important;background:linear-gradient(135deg,#fbfcfd,#d7dce1 45%,#f5f7f9 55%,#c3cad1)!important}
+.stamp.gold,.ks-stamp.gold{--k:#b8901c!important;--c:#94700e!important;background:linear-gradient(135deg,#fff8dc,#f3d77a 45%,#fff3c4 55%,#e2bf4d)!important}
+.ccard.silver{background:linear-gradient(135deg,#fbfcfd,#d7dce1 45%,#f5f7f9 55%,#c3cad1);color:#2c333b}.ccard.silver small,.ccard.silver .cd2{color:#55606c}
+.ccard.gold{background:linear-gradient(135deg,#fff8dc,#f3d77a 45%,#fff3c4 55%,#e2bf4d);color:#3b2c00}.ccard.gold small,.ccard.gold .cd2{color:#6b5205}
+.tpass.silver{background:linear-gradient(115deg,#fbfcfd,#d7dce1 45%,#f5f7f9 55%,#c3cad1)!important;color:#2c333b}.tpass.gold{background:linear-gradient(115deg,#fff8dc,#f3d77a 45%,#fff3c4 55%,#e2bf4d)!important;color:#3b2c00}
+.tpass.silver small,.tpass.silver .tp-k,.tpass.gold small,.tpass.gold .tp-k{color:inherit;opacity:.7}.tpass.gold .tp-s b{color:#8a6a10}.tpass.silver .tp-s b{color:#55606c}
+.kcf{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:18px!important;font-weight:800;background:var(--surface);color:var(--accent)}
+.tpass.kpass .tp-r svg{width:16px;height:16px;vertical-align:-3px}
+.tpass[data-tix]{cursor:pointer}
+/* 히든 배지: 그림만, 이름은 아래 */
+.hsw{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}.hsw .hs{width:84px}.hsw>b{font-size:12px;font-weight:800;color:var(--ink)}
+.hs-in svg{width:42px;height:42px}.hs.sm{width:56px}.hs.sm .hs-in svg{width:26px;height:26px}
+.plabel small{font-weight:600;color:var(--faint);margin-left:4px}
+
 /* 지역 도장: 스탬프북 */
 .ks-head{display:flex;align-items:center;gap:14px}
 .ks-head b{display:block;font-size:17px;font-weight:800}
@@ -1460,16 +1476,15 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
     <section class="panel korea-only" id="krNow"></section>
     <section class="map-card korea-only" id="krMap"></section>
     <section class="bp-wrap korea-only" id="krTrip" hidden></section>
-    <section class="panel korea-only" id="krRoutes"></section>
     <section class="kr-board korea-only" aria-label="국내 출발 안내"><div class="kr-bh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-4 0-7 .5-7 4v9.5A2.5 2.5 0 0 0 7.5 18L6 19.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 18a2.5 2.5 0 0 0 2.5-2.5V6c0-3.5-3-4-7-4zM7.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H7V6h4v4zm5.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm.5-6h-4V6h4v4z"/></svg><span id="krBoardT">출발 안내</span><small id="krBoardS">가까운 순</small></div>
       <input class="fids-q" id="krSearch" type="search" placeholder="시·군이나 도 이름으로 찾기" autocomplete="off">
       <div class="kr-groups" id="krGroups"></div><ul class="kr-list" id="krList"></ul></section>
-    <section class="panel korea-only"><div class="panel-head"><h2>지역 도장</h2></div><div class="ks-head" id="krStampHead"></div><div class="ks-regs" id="krStamps"></div></section>
+    <section class="panel korea-only" id="krRoutes"></section>
+    <section class="panel korea-only"><div class="panel-head"><h2>지역 도장</h2><span class="note" id="krStyleLbl"></span></div><div class="ks-head" id="krStampHead"></div><div class="ks-regs" id="krStamps"></div></section>
     <section class="wlock" id="worldLock"></section>
     <section class="panel earth-only" id="tvNow"></section>
     <section class="map-card earth-only" id="tvMap"></section>
     <section class="bp-wrap earth-only" id="tvFlight" hidden></section>
-    <section class="panel earth-only" id="tvRoutes"></section>
     <section class="fids earth-only" id="tvPicker" aria-label="출발 안내판">
       <div class="fids-h"><span class="fids-t"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V8.5l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z" transform="rotate(45 12 12)"/></svg>DEPARTURES</span><span class="fids-s" id="fidsFrom"></span></div>
       <input class="fids-q" id="tvSearch" type="search" placeholder="도시, 나라, 공항 코드로 찾기" autocomplete="off">
@@ -1477,6 +1492,7 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
       <div class="fids-cols"><span>목적지</span><span>공항</span><span>마일</span><span>상태</span></div>
       <ul class="fids-list" id="tvList"></ul>
     </section>
+    <section class="panel earth-only" id="tvRoutes"></section>
     <section class="panel earth-only">
       <div class="panel-head"><h2>여권</h2><span class="note" id="tvStyleLbl">입국 도장</span></div>
       <div class="stamps" id="tvStamps"></div>
@@ -1540,7 +1556,7 @@ button.stamp,button.ccard{font:inherit;cursor:pointer}button.ccard{text-align:le
       </div>
       <div class="plabel">지도 테마</div>
       <div class="seg mtseg" id="mapTheme"><button data-mt="base">기본</button><button data-mt="old">고지도</button><button data-mt="night">야경</button><button data-mt="sat">위성</button></div>
-      <div class="plabel">여권 스타일</div>
+      <div class="plabel">여권 스타일 <small>국내·세계 공통</small></div>
       <div class="seg tvstyle" id="tvStyle"><button data-sty="stamp">입국 도장</button><button data-sty="card">수집 카드</button><button data-sty="pass">탑승권</button></div>
       <button class="secondary mile-reset" id="tvMileReset">보유 마일리지 0으로 만들기</button>
       <ul class="tv-rules">
@@ -2566,8 +2582,8 @@ function checkArrival(){return checkEarth()||checkSpace()||checkKorea()}
 function checkEarth(){
   const T=tr();if(!T.on||!T.to)return false;const cost=wTC(T);
   if(totalMiles()-T.used<cost)return false;
-  const ev={w:'w',f:T.at,t:T.to,gold:goldLeg('w',T.at,T.to),cls:T.cls||0};T.used+=cost;const km=kmBetween(T.at,T.to);T.km+=km;if(km>=5000)T.long=true;if(!T.stamps.some(s=>s.c===T.to))T.stamps.push({c:T.to,d:dk(today0())});
-  (T.log=T.log||[]).push({f:T.at,t:T.to,d:dk(today0()),m:cost});
+  const ev={w:'w',f:T.at,t:T.to,gold:goldLeg('w',T.at,T.to),cls:T.cls||0};T.used+=cost;const km=kmBetween(T.at,T.to);T.km+=km;if(km>=5000)T.long=true;{const tv=T.cls||0,ex=T.stamps.find(s=>s.c===T.to);if(ex){if(tv>(ex.tier||0))ex.tier=tv}else T.stamps.push({c:T.to,d:dk(today0()),tier:tv})}
+  (T.log=T.log||[]).push({f:T.at,t:T.to,d:dk(today0()),m:cost,cls:T.cls||0});
   (T.news=T.news||[]).push(T.to);T.at=T.to;T.to=null;postArrive(ev);save();arrQ(ev);return true;
 }
 let tvCont=-1,tvQuery='',tvPick=false,tvArm=false;
@@ -2659,13 +2675,17 @@ function renderPassport(){
   $('tvStyleLbl').textContent={stamp:'입국 도장',card:'수집 카드',pass:'탑승 기록'}[sty];
   const box=$('tvStamps');box.className='stamps sty-'+sty;
   if(!T.stamps.length){box.innerHTML='<p class="empty">아직 다녀온 나라가 없어요. 출발 안내판에서 첫 목적지를 골라 보세요.</p>';return}
-  if(sty!=='pass'){box.className='stamps grouped';const dm=Object.fromEntries(T.stamps.map(s=>[s.c,s.d]));
+  {box.className='stamps grouped';const SM=Object.fromEntries(T.stamps.map(s=>[s.c,s])),LL=flightLog(T),tc=t=>t===2?' gold':t===1?' silver':'';
     if(wOpenCont==null){const last=T.stamps[T.stamps.length-1];wOpenCont=last&&NAT[last.c]?NAT[last.c][5]:0}
-    box.innerHTML=CONT.map((cn,i)=>{const all=NATIONS.filter(n=>n[5]===i&&n[0]!=='KR'),got=all.filter(n=>dm[n[0]]),done=got.length===all.length,open=wOpenCont===i;
-      const items=open?all.map(n=>{const d=dm[n[0]];
-        if(!d)return sty==='stamp'?`<span class="wslot" style="--sh:${SHAPE[i]}"><i>${n[1]}</i></span>`:`<span class="ccard wslot2"><b>${n[1]}</b><small>${n[2]}</small></span>`;
-        return sty==='stamp'?`<button class="stamp" data-wtix="${n[0]}" aria-label="${n[1]} 탑승권 보기" style="--r:${(h(n[0])%15)-7}deg;--k:${INK[i]};--sh:${SHAPE[i]}"><span class="sa">ARRIVED</span><span class="sc">${ap(n[0])}</span><span class="sn">${flag(n[0])} ${n[1]}</span><span class="sd">${dd(d)}</span></button>`
-          :`<button class="ccard" data-wtix="${n[0]}" aria-label="${n[1]} 탑승권 보기"><span class="cf">${flag(n[0])}</span><b>${n[1]}</b><small>${n[2]} · ${ap(n[0])}</small><span class="cd2">${dd(d)}</span></button>`}).join(''):'';
+    const up=sty==='pass'&&T.to?`<div class="tpass up"><div class="tp-m"><span class="tp-k">다음 이동 · 예정</span><div class="tp-r">${ap(T.at)} ${wIcon(wMode(T.at,T.to))} ${ap(T.to)}</div><small>${NAT[T.at][2]} → ${NAT[T.to][2]}</small></div><div class="tp-s"><small>마일리지</small><b>${wTC(T)}</b></div></div>`:'';
+    box.innerHTML=up+CONT.map((cn,i)=>{const all=NATIONS.filter(n=>n[5]===i&&n[0]!=='KR'),got=all.filter(n=>SM[n[0]]),done=got.length===all.length,open=wOpenCont===i;
+      let items='';
+      if(open&&sty==='pass'){items=LL.map((e,k)=>[e,k]).filter(([e])=>NAT[e.t]&&NAT[e.t][5]===i&&NAT[e.f]).reverse().map(([e,k])=>{const A=NAT[e.f],B=NAT[e.t],wm=wMode(e.f,e.t);
+          return `<div class="tpass${tc(e.cls||0)}" role="button" tabindex="0" data-wlog="${k}"><div class="tp-m"><span class="tp-k">${wm==='air'?'BOARDING PASS':wm==='ntrain'?'SLEEPER TRAIN':'CRUISE'} · ${flightNo(e.f,e.t)}</span><div class="tp-r">${ap(e.f)} ${wIcon(wm)} ${ap(e.t)}</div><small>${flag(e.f)} ${A[2]} → ${flag(e.t)} ${B[2]} · ${dd(e.d)}</small></div><div class="tp-s"><small>마일리지</small><b>${e.m}</b></div></div>`}).join('')||'<p class="empty">이 대륙으로 간 기록이 없어요</p>'}
+      else if(open)items=all.map(n=>{const s=SM[n[0]];
+        if(!s)return sty==='stamp'?`<span class="wslot" style="--sh:${SHAPE[i]}"><i>${n[1]}</i></span>`:`<span class="ccard wslot2"><b>${n[1]}</b><small>${n[2]}</small></span>`;
+        return sty==='stamp'?`<button class="stamp${tc(s.tier)}" data-wtix="${n[0]}" aria-label="${n[1]} 탑승권 보기" style="--r:${(h(n[0])%15)-7}deg;--k:${INK[i]};--sh:${SHAPE[i]}"><span class="sa">ARRIVED</span><span class="sc">${ap(n[0])}</span><span class="sn">${flag(n[0])} ${n[1]}</span><span class="sd">${dd(s.d)}</span></button>`
+          :`<button class="ccard${tc(s.tier)}" data-wtix="${n[0]}" aria-label="${n[1]} 탑승권 보기"><span class="cf">${flag(n[0])}</span><b>${n[1]}</b><small>${n[2]} · ${ap(n[0])}</small><span class="cd2">${dd(s.d)}</span></button>`}).join('');
       return `<div class="ks-reg${open?' open':''}${done?' done':''}" style="--k:${INK[i]}">
         <button class="ks-h" data-wcont="${i}" aria-expanded="${open}"><span class="ks-badge">${done?'완주':cn.slice(0,2)}</span><span class="ks-n"><b>${cn}</b><small>${got.length} / ${all.length}개국</small></span>
           <span class="ks-bar"><i style="width:${got.length/Math.max(1,all.length)*100}%"></i></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 4 4 4-4"/></svg></button>
@@ -2785,7 +2805,7 @@ let krG=0,krQ='',krArm=false;
 function checkKorea(){
   const T=tr(),K=kr(T);if(!T.on||!K.to||!KRM[K.to])return false;const c=krTC(K);
   if(totalMiles()-T.used<c)return false;
-  const ev={w:'kr',f:K.at,t:K.to,gold:goldLeg('kr',K.at,K.to),cls:K.cls||0};T.used+=c;K.km+=krKm(K.at,K.to);if(K.to!==K.home&&!krDone(K,K.to))K.done.push({c:K.to,d:dk(today0())});(T.krNews=T.krNews||[]).push(K.to);K.path.push(K.to);K.at=K.to;K.to=null;postArrive(ev);save();arrQ(ev);return true;
+  const ev={w:'kr',f:K.at,t:K.to,gold:goldLeg('kr',K.at,K.to),cls:K.cls||0};T.used+=c;K.km+=krKm(K.at,K.to);if(K.to!==K.home){const ex=K.done.find(d=>d.c===K.to);if(ex){if(K.cls)ex.tier=2}else K.done.push({c:K.to,d:dk(today0()),tier:K.cls?2:0})}(T.krNews=T.krNews||[]).push(K.to);K.path.push(K.to);K.at=K.to;K.to=null;postArrive(ev);save();arrQ(ev);return true;
 }
 function renderKorea(){
   const T=tr(),K=kr(T),avail=totalMiles()-T.used,at=KRM[K.at];let h='';
@@ -2813,16 +2833,25 @@ function renderKorea(){
   // 지역 도장: 도별 스탬프북 (다녀온 곳은 도장, 아직 안 간 곳은 빈 자리)
   const total=KR.length-1,gotAll=K.done.length,dmap=Object.fromEntries(K.done.map(d=>[d.c,d.d])),hh=t=>[...t].reduce((a,c)=>a+c.charCodeAt(0)*13,0);
   if(krOpenReg==null){const last=K.done[K.done.length-1];krOpenReg=last?krGroup(KRM[last.c]):1}
+  $('krStyleLbl').textContent={stamp:'도장',card:'수집 카드',pass:'승차권'}[T.style||'stamp'];
   $('krStampHead').innerHTML=`<div class="ks-ring" style="--p:${gotAll/total*100}"><b>${Math.floor(gotAll/total*100)}%</b></div><div><b>전국 스탬프 투어</b><span>${gotAll} / ${total}곳 · 완주한 지역 ${KRG.slice(1).filter((g,gi)=>{const all=KR.filter(x=>krGroup(x)===gi+1&&x[0]!==K.home);return all.length&&all.every(x=>dmap[x[0]])}).length} / ${KRG.length-1}</span></div>`;
   $('krStamps').innerHTML=KRG.slice(1).map((g,gi)=>{const i=gi+1,all=KR.filter(x=>krGroup(x)===i&&x[0]!==K.home),got=all.filter(x=>dmap[x[0]]),done=got.length===all.length,open=krOpenReg===i;
     return `<div class="ks-reg${open?' open':''}${done?' done':''}" style="--k:${KINK[gi]}">
       <button class="ks-h" data-kreg="${i}" aria-expanded="${open}"><span class="ks-badge">${done?'완주':g[0].slice(0,2)}</span><span class="ks-n"><b>${g[0]}</b><small>${got.length} / ${all.length}곳</small></span>
         <span class="ks-bar"><i style="width:${got.length/all.length*100}%"></i></span><svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 4 4 4-4"/></svg></button>
-      ${open?`<div class="ks-grid">${all.map(x=>{const d=dmap[x[0]];if(!d)return `<span class="ks-slot"><i>${x[1].replace(/\(.+\)/,'')}</i></span>`;const dt=pk(d);
-        return `<button class="ks-stamp" data-tix="${x[0]}" aria-label="${x[1]} 승차권 보기" style="--r:${(hh(x[0])%17)-8}deg"><small>${x[2]}</small><b>${x[1].replace(/\(.+\)/,'')}</b><small>${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</small></button>`}).join('')}</div>`:''}
+      ${open?krItems(all):''}
     </div>`}).join('');
   renderKrMap();renderRoutes('kr');
 }
+function krItems(all){const T=tr(),K=kr(T),sty=T.style||'stamp',DD=Object.fromEntries(K.done.map(d=>[d.c,d])),hh=t=>[...t].reduce((a,c)=>a+c.charCodeAt(0)*13,0),tc=t=>t===2?' gold':t===1?' silver':'';
+  if(sty==='pass'){const rows=all.filter(x=>DD[x[0]]).map(x=>{const i=K.path.indexOf(x[0]),f=i>0?K.path[i-1]:K.home,e=DD[x[0]];if(!KRM[f])return '';
+      return `<div class="tpass kpass${tc(e.tier)}" role="button" tabindex="0" data-tix="${x[0]}"><div class="tp-m"><span class="tp-k">${krClass(f,x[0])} · ${ymd(pk(e.d))}</span><div class="tp-r">${KRM[f][1]} ${krIcon(krMode(f,x[0]))} ${x[1]}</div><small>${KRM[f][2]} → ${x[2]}</small></div><div class="tp-s"><small>운임</small><b>${krCost(f,x[0])}</b></div></div>`}).join('');
+    return `<div class="stamps sty-pass wgrid">${rows||'<p class="empty">이 지역에 다녀온 기록이 없어요</p>'}</div>`}
+  if(sty==='card')return `<div class="stamps sty-card wgrid">${all.map(x=>{const e=DD[x[0]],nm=x[1].replace(/\(.+\)/,'');if(!e)return `<span class="ccard wslot2"><b>${nm}</b><small>${x[2]}</small></span>`;
+      return `<button class="ccard${tc(e.tier)}" data-tix="${x[0]}" aria-label="${x[1]} 승차권 보기"><span class="cf kcf">${nm.slice(0,1)}</span><b>${nm}</b><small>${x[2]}</small><span class="cd2">${ymd(pk(e.d))}</span></button>`}).join('')}</div>`;
+  return `<div class="ks-grid">${all.map(x=>{const e=DD[x[0]];if(!e)return `<span class="ks-slot"><i>${x[1].replace(/\(.+\)/,'')}</i></span>`;const dt=pk(e.d);
+    return `<button class="ks-stamp${tc(e.tier)}" data-tix="${x[0]}" aria-label="${x[1]} 승차권 보기" style="--r:${(hh(x[0])%17)-8}deg"><small>${x[2]}</small><b>${x[1].replace(/\(.+\)/,'')}</b><small>${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</small></button>`}).join('')}</div>`}
+$('krStamps').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-tix]')){e.preventDefault();e.target.click()}});
 const KINK=['#1d6fd8','#0e9f6e','#0b8aa8','#7c4dff','#d9480f','#b7791f','#d6336c','#2f9e44','#0c8599','#f76707'];
 let krOpenReg=null;
 $('krStamps').addEventListener('click',e=>{const b=e.target.closest('[data-kreg]');if(!b)return;const i=+b.dataset.kreg;krOpenReg=krOpenReg===i?0:i;renderKorea()});
@@ -3025,7 +3054,7 @@ function renderKrMap(){
   const at=KRM[K.at],A=kxy(at[3],at[4]),hm=KRM[K.home],H=kxy(hm[3],hm[4]),moving=!!(K.to&&KRM[K.to]),B=moving?kxy(KRM[K.to][3],KRM[K.to][4]):null;
   const svg=el.querySelector('svg'),vb=MV.kr||(moving?fitRoute([A,B],KFULL,28):fitBox([A],KFULL,110,1));svg.setAttribute('viewBox',vb.map(f2).join(' '));
   const u=pxPer(svg,vb),R=v=>f2(v*u);
-  let h=KR.map(x=>{const [px,py]=kxy(x[3],x[4]);return dmap.has(x[0])?`<circle cx="${f1(px)}" cy="${f1(py)}" r="${R(3)}" class="kd v" style="fill:${ink(krGroup(x)-1)}"><title>${x[1]}</title></circle>`:`<circle cx="${f1(px)}" cy="${f1(py)}" r="${R(1.8)}" class="kd"><title>${x[1]}</title></circle>`}).join('');
+  let h=KR.map(x=>{const [px,py]=kxy(x[3],x[4]);return dmap.has(x[0])?`<circle cx="${f1(px)}" cy="${f1(py)}" r="${R(3)}" class="kd v" style="fill:${(K.done.find(d=>d.c===x[0])||{}).tier===2?'#d4af37':ink(krGroup(x)-1)}"><title>${x[1]}</title></circle>`:`<circle cx="${f1(px)}" cy="${f1(py)}" r="${R(1.8)}" class="kd"><title>${x[1]}</title></circle>`}).join('');
   const seq=[K.home,...K.path].filter(id=>KRM[id]);
   if(seq.length>1)h+=`<path class="trail" d="M${seq.map(id=>kxy(KRM[id][3],KRM[id][4]).map(f1).join(' ')).join('L')}"/>`;
   h+=`<circle cx="${f1(H[0])}" cy="${f1(H[1])}" r="${R(5.5)}" class="home"/>`;
@@ -3043,13 +3072,13 @@ $('krMap').addEventListener('click',e=>{if(e.target.closest('#krMapTg')){MV.kr=M
 function renderWorldMap(){
   const T=tr(),el=$('tvMap');
   if(!el.dataset.built){el.innerHTML=`<div class="map-h"><b>세계 지도</b><span id="tvMapNote"></span><button class="map-tg" id="tvMapTg"></button></div>
-    <svg class="mapsvg wmap" viewBox="${WFULL.join(' ')}" role="img" aria-label="세계 여행 지도"><defs>${INK.map((c,ci)=>`<pattern id="wpat${ci}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" style="fill:color-mix(in srgb,${c} 72%,var(--ink))"/><rect width="1.6" height="5" fill="#fff" fill-opacity=".35"/></pattern>`).join('')}</defs><g class="land">${WMAP.p.map(([c,d])=>`<path data-c="${c}" d="${d}"/>`).join('')}</g><g class="dyn"></g></svg>`;
+    <svg class="mapsvg wmap" viewBox="${WFULL.join(' ')}" role="img" aria-label="세계 여행 지도"><defs><linearGradient id="wsilver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".45" stop-color="#a9b2bc"/><stop offset=".6" stop-color="#eef1f4"/><stop offset="1" stop-color="#8a949f"/></linearGradient><linearGradient id="wgold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b0"/><stop offset=".45" stop-color="#d4af37"/><stop offset=".6" stop-color="#fff3c4"/><stop offset="1" stop-color="#a07c12"/></linearGradient>${INK.map((c,ci)=>`<pattern id="wpat${ci}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" style="fill:color-mix(in srgb,${c} 72%,var(--ink))"/><rect width="1.6" height="5" fill="#fff" fill-opacity=".35"/></pattern>`).join('')}</defs><g class="land">${WMAP.p.map(([c,d])=>`<path data-c="${c}" d="${d}"/>`).join('')}</g><g class="dyn"></g></svg>`;
     el.dataset.built=1;mapNav(el.querySelector('svg'),'w',WFULL,40,renderWorldMap)}
   const tripKey=T.at+'>'+T.to;if(MVK.w!==tripKey){MVK.w=tripKey;MV.w=null}
   const got=new Set(T.stamps.map(s=>s.c));got.add('KR'); // 국내 완주 = 대한민국
   // 대륙별 잉크색(여권 도장과 같은 색) + 안 간 나라는 그 대륙 진척도만큼 옅게
   const cink=ci=>`color-mix(in srgb,${INK[ci]} 72%,var(--ink))`,cprog=CONT.map((_,ci)=>{const all=NATIONS.filter(n=>n[5]===ci);return all.filter(n=>got.has(n[0])).length/Math.max(1,all.length)});
-  el.querySelectorAll('.land path').forEach(p=>{const n=NAT[p.dataset.c];p.style.fill=!n?'':got.has(n[0])?(cprog[n[5]]>=1?`url(#wpat${n[5]})`:cink(n[5])):`color-mix(in srgb,${cink(n[5])} ${Math.round(cprog[n[5]]*40)}%,var(--mland))`});
+  const tierOf=Object.fromEntries(T.stamps.map(x=>[x.c,x.tier||0]));el.querySelectorAll('.land path').forEach(p=>{const n=NAT[p.dataset.c];p.style.fill=!n?'':tierOf[n[0]]===2?'url(#wgold)':tierOf[n[0]]===1?'url(#wsilver)':got.has(n[0])?(cprog[n[5]]>=1?`url(#wpat${n[5]})`:cink(n[5])):`color-mix(in srgb,${cink(n[5])} ${Math.round(cprog[n[5]]*40)}%,var(--mland))`});
   {const sv=el.querySelector('svg');['base','old','night','sat'].forEach(t=>sv.classList.toggle('mt-'+t,t===TOPT().map))}
   const at=NAT[T.at],A=wxy(at[3],at[4]),moving=!!(T.to&&NAT[T.to]);let segN=1,trip=null;
   if(moving){const to=NAT[T.to],a=[at[3],at[4]],b=[to[3],to[4]],full=arcSegs(a,b);segN=full.length;trip={to,a,b,full}}
@@ -3078,7 +3107,7 @@ const ymd=d=>`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;
 function showArrival(){if(arrOpen||!ARQ.length)return;const x=ARQ.shift();if(x.w==='kr'?!(KRM[x.f]&&KRM[x.t]):!(NAT[x.f]&&NAT[x.t]))return showArrival();
   arrOpen=true;const el=$('arrive');el.classList.remove('show-msg');el.hidden=false;let snd;
   if(x.w==='kr'){const B=KRM[x.t],gi=krGroup(B)-1,dt=pk(x.d);snd=krMode(x.f,x.t);$('arrTk').innerHTML=krTicket(x.f,x.t,{done:1,d:x.d,gold:x.gold,cls:x.cls});
-    $('arrMsg').innerHTML=`<span class="ks-stamp arr-stamp" style="--k:${KINK[gi]};--c:color-mix(in srgb,${KINK[gi]} 78%,var(--ink));--r:-8deg"><small>${B[2]}</small><b>${B[1].replace(/\(.+\)/,'')}</b><small>${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</small></span><b>${B[1]} 도착!</b><span>지역 도장을 받았어요</span>`}
+    $('arrMsg').innerHTML=`<span class="ks-stamp arr-stamp${x.cls?' gold':''}" style="--k:${KINK[gi]};--c:color-mix(in srgb,${KINK[gi]} 78%,var(--ink));--r:-8deg"><small>${B[2]}</small><b>${B[1].replace(/\(.+\)/,'')}</b><small>${pad(dt.getMonth()+1)}.${pad(dt.getDate())}</small></span><b>${B[1]} 도착!</b><span>지역 도장을 받았어요</span>`}
   else{const B=NAT[x.t],wm=wMode(x.f,x.t);snd=wm==='air'?'plane':wm==='ntrain'?'train':'ship';$('arrTk').innerHTML=bpTicket(x.f,x.t,1,0,Math.round(flightMin(x.f,x.t)*WMUL[x.cls||0]),true,{gold:x.gold,cls:x.cls});
     $('arrMsg').innerHTML=`<span class="arr-flag">${flag(x.t)}</span><b>${B[2]} 도착!</b><span>${B[1]} 입국 도장이 찍혔어요</span>`}
   const extra=(x.route?`<div class="arr-route">${x.route} 완주! 금색 표를 모두 모았어요</div>`:'')+(x.hid&&x.hid.length?`<div class="arr-hid">${x.hid.map(id=>hstamp(id,dk(today0()),1)).join('')}<span>히든 도전 과제 ${x.hid.map(id=>`'${HIDX[id][1]}'`).join(', ')} 달성!</span></div>`:'')
@@ -3227,7 +3256,7 @@ function evalHidden(ev){const T=tr(),K=kr(T),H=T.hid=T.hid||{},now=new Date(),h=
   HIDDEN.forEach(([id])=>{if(ok[id]&&!H[id]){H[id]=day;out.push(id)}});return out}
 const HIDX=Object.fromEntries(HIDDEN.map(x=>[x[0],x]));
 function hstamp(id,date,small){const x=HIDX[id];if(!x)return '';const got=!!date;
-  return `<div class="hs${got?'':' lock'}${small?' sm':''}" style="--a:${x[4]};--b:${x[5]}"><div class="hs-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${got?HI[x[3]]:'<path d="M9 9a3 3 0 1 1 4 2.8c-.7.3-1 .8-1 1.5V14M12 17.5v.5"/>'}</svg><b>${got?x[1]:'???'}</b>${got?`<small>${ymd(pk(date))}</small>`:''}</div></div>`}
+  return `<div class="hs${got?'':' lock'}${small?' sm':''}" style="--a:${x[4]};--b:${x[5]}"><div class="hs-in" title="${got?x[1]:'???'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${got?HI[x[3]]:'<path d="M9 9a3 3 0 1 1 4 2.8c-.7.3-1 .8-1 1.5V14M12 17.5v.5"/>'}</svg></div></div>`}
 /* ---------- 업적 탭 ---------- */
 const LV=[['일반',0],['브론즈',20],['실버',60],['골드',150],['블랙',300]];
 const PPGLOBE='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="14"/><path d="M10 24h28M24 10c5 4 5 24 0 28M24 10c-5 4-5 24 0 28M13 17h22M13 31h22"/></svg>';
@@ -3247,7 +3276,7 @@ function renderAch(){const T=tr(),K=kr(T),R=RT(),H=T.hid||{},total=K.done.length
       it('도장 10개','나라 10곳 입국',wd,10,'#7a3fb0'),it('도장 30개','나라 30곳 입국',wd,30,'#7a3fb0'),it('도장 100개','나라 100곳 입국',wd,100,'#7a3fb0'),it('세계 완주','모든 나라 입국',wd,wt,'#c9a227')]],
     ['특별 루트',ROUTES.map(r=>it(r.name,(r.w==='kr'?'국내 · ':'세계 · ')+plName(r.w,r.stops[0])+' 출발',R.done[r.id]?1:0,1,'#c9a227'))]];
   $('achList').innerHTML=groups.map(([g,items])=>`<div class="ach-g"><div class="ach-gh"><b>${g}</b><span>${items.filter(x=>x.ok).length} / ${items.length}</span></div><div class="achs">${items.map(x=>`<div class="ach${x.ok?' ok':''}" style="--k:${x.col}"><span class="ach-i">${x.ok?'★':'☆'}</span><div><b>${x.name}</b><small>${x.desc}</small>${x.goal>1?`<div class="ach-bar"><i style="width:${x.cur/x.goal*100}%"></i></div><small class="ach-n">${x.cur.toLocaleString()} / ${x.goal.toLocaleString()}</small>`:''}</div></div>`).join('')}</div></div>`).join('')
-    +`<div class="ach-g"><div class="ach-gh"><b>히든 도전 과제</b><span>${Object.keys(H).length} / ${HIDDEN.length}</span></div><p class="note">조건은 비밀이에요. 여행하다 보면 저절로 열려요.</p><div class="hss">${HIDDEN.map(x=>hstamp(x[0],H[x[0]])).join('')}</div></div>`;
+    +`<div class="ach-g"><div class="ach-gh"><b>히든 도전 과제</b><span>${Object.keys(H).length} / ${HIDDEN.length}</span></div><p class="note">조건은 비밀이에요. 여행하다 보면 저절로 열려요.</p><div class="hss">${HIDDEN.map(x=>`<div class="hsw">${hstamp(x[0],H[x[0]])}<b>${H[x[0]]?x[1]:'???'}</b></div>`).join('')}</div></div>`;
   renderYear();
 }
 function renderYear(){const T=tr(),K=kr(T),pd=perDay(true),ys=new Set([new Date().getFullYear()]);

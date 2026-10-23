@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>공부 플래너</title>
-<meta name="description" content="과목별 공부 타이머, 할 일, 대시보드, 공부 시간으로 떠나는 여행">
+<title>투어디 Toury</title>
+<meta name="description" content="공부한 시간만큼 떠나는 여행 — 과목별 타이머, 할 일, 대시보드">
 <meta name="theme-color" content="#f2f4f6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101014" media="(prefers-color-scheme: dark)">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="공부 플래너">
+<meta name="apple-mobile-web-app-title" content="투어디">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="favicon-64.png">
@@ -2092,7 +2092,7 @@ $('wipeAll').onclick=()=>{if(!wipeArm){wipeArm=true;$('wipeAll').textContent='�
 $('bkRestore').onclick=()=>{
   const err=m=>{$('bkErr').textContent=m;$('bkErr').hidden=false};$('bkErr').hidden=true;
   let d;try{d=JSON.parse($('bkText').value)}catch(e){return err('백업 내용을 읽지 못했어요. 복사한 내용을 그대로 붙여 넣어 주세요.')}
-  if(!d||!Array.isArray(d.subjects))return err('공부 플래너 백업 형식이 아니에요.');
+  if(!d||!Array.isArray(d.subjects))return err('투어디 백업 형식이 아니에요.');
   if(!bkArm){bkArm=true;$('bkRestore').textContent='지금 기록을 덮어쓰고 복원';$('bkRestore').classList.add('del','arm');return}
   S=norm(d);save();bkArm=false;$('bkRestore').textContent='복원하기';$('bkRestore').classList.remove('del','arm');$('bkText').value='';$('bkMsg').textContent='복원했어요.';renderAll();
 };

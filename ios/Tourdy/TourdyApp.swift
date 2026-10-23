@@ -16,6 +16,11 @@ struct NativeSwitch: Identifiable, Decodable {
     let height: Double
 }
 
+struct NativeTabsMessage: Decodable {
+    let revision: Int
+    let tabs: [NativeSwitch]
+}
+
 @MainActor
 final class TourdyModel: NSObject, ObservableObject, WKScriptMessageHandler, WKNavigationDelegate {
     @Published var switches: [NativeSwitch] = []
@@ -23,6 +28,7 @@ final class TourdyModel: NSObject, ObservableObject, WKScriptMessageHandler, WKN
     @Published var selectedTab = "home"
     @Published var error: String?
     let web: WKWebView
+    private var tabRevision = 0
 
     override init() {
         let config = WKWebViewConfiguration()
@@ -44,19 +50,19 @@ final class TourdyModel: NSObject, ObservableObject, WKScriptMessageHandler, WKN
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard message.frameInfo.isMainFrame,
-              let data = try? JSONSerialization.data(withJSONObject: message.body),
-              let rows = try? JSONDecoder().decode([NativeSwitch].self, from: data) else { return }
-        if message.name == "tourdySwitches" { switches = rows }
-        if message.name == "tourdyTabs" {
-            tabs = rows
-            if let selected = rows.first(where: { $0.on }) { selectedTab = selected.id }
+              let data = try? JSONSerialization.data(withJSONObject: message.body) else { return }
+        if message.name == "tourdySwitches", let rows = try? JSONDecoder().decode([NativeSwitch].self, from: data) { switches = rows }
+        if message.name == "tourdyTabs", let state = try? JSONDecoder().decode(NativeTabsMessage.self, from: data), state.revision >= tabRevision {
+            tabs = state.tabs
+            if let selected = state.tabs.first(where: { $0.on }) { selectedTab = selected.id }
         }
     }
 
     func selectTab(_ id: String) {
         guard tabs.contains(where: { $0.id == id }) else { return }
         selectedTab = id
-        guard let data = try? JSONSerialization.data(withJSONObject: [id]),
+        tabRevision += 1
+        guard let data = try? JSONSerialization.data(withJSONObject: [id, tabRevision]),
               let argument = String(data: data, encoding: .utf8) else { return }
         web.evaluateJavaScript("window.tourdyNativeSelectTab(...\(argument))") { [weak self] _, failure in
             if failure != nil { self?.error = "화면을 전환하지 못했어요. 다시 시도해 주세요." }
@@ -88,23 +94,28 @@ struct AppWebView: UIViewRepresentable {
 
 struct TourdyScreen: View {
     @StateObject private var model = TourdyModel()
+    @State private var contentFrame: CGRect = .zero
     var body: some View {
         TabView(selection: Binding(get: { model.selectedTab }, set: { model.selectTab($0) })) {
             ForEach(model.tabs) { item in
-                Group {
-                    if item.id == model.selectedTab {
-                        TourdyWebContent(model: model)
-                    } else {
-                        Color.clear
-                    }
+                GeometryReader { geometry in
+                    Color.clear.preference(key: TabContentFrame.self, value: geometry.frame(in: .named("tourdyScreen")))
                 }
                 .tabItem { Label(item.title, systemImage: tabIcon(item.id)) }
                 .tag(item.id)
             }
         }
         .tabViewStyle(.tabBarOnly)
-        .overlay {
-            if model.tabs.isEmpty { TourdyWebContent(model: model) }
+        .coordinateSpace(name: "tourdyScreen")
+        .onPreferenceChange(TabContentFrame.self) { frame in
+            if frame.width > 0 && frame.height > 0 { contentFrame = frame }
+        }
+        .overlay(alignment: .topLeading) {
+            // One stable host for one WKWebView. Never mount it in multiple tab pages.
+            TourdyWebContent(model: model)
+                .frame(width: contentFrame.width > 0 ? contentFrame.width : nil,
+                       height: contentFrame.height > 0 ? contentFrame.height : nil)
+                .offset(x: contentFrame.minX, y: contentFrame.minY)
         }
         .alert("확인해 주세요", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) {
             Button("확인") { model.error = nil }
@@ -120,6 +131,14 @@ struct TourdyScreen: View {
         case "set": return "gearshape.fill"
         default: return "circle"
         }
+    }
+}
+
+struct TabContentFrame: PreferenceKey {
+    static let defaultValue: CGRect = .zero
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        let next = nextValue()
+        if next.width > 0 && next.height > 0 { value = next }
     }
 }
 

@@ -1,6 +1,6 @@
 // Native switches share the original app handlers and its single saved state.
 (() => {
-  let nextID = 0, scheduled = false, previous = '', previousTabs = '';
+  let nextID = 0, scheduled = false, previous = '', previousTabs = '', tabRevision = 0;
   const style = document.createElement('style');
   style.textContent = '[role="switch"] .sw-k{visibility:hidden}.tabs{display:none!important}';
   document.head.appendChild(style);
@@ -29,8 +29,9 @@
       el.tabIndex = -1;
       return [{id:el.dataset.tab, title:el.textContent.trim(), on:el.getAttribute('aria-selected') === 'true', x:0, y:0, width:0, height:0}];
     });
-    const tabJSON = JSON.stringify(tabs);
-    if (tabJSON !== previousTabs) { previousTabs = tabJSON; window.webkit.messageHandlers.tourdyTabs.postMessage(tabs); }
+    const state = {revision:tabRevision, tabs};
+    const tabJSON = JSON.stringify(state);
+    if (tabJSON !== previousTabs) { previousTabs = tabJSON; window.webkit.messageHandlers.tourdyTabs.postMessage(state); }
   }
   function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(publish); } }
   window.tourdyNativeToggle = (id, value) => {
@@ -39,7 +40,9 @@
     if ((el.getAttribute('aria-checked') === 'true') !== value) el.click();
     schedule();
   };
-  window.tourdyNativeSelectTab = id => {
+  window.tourdyNativeSelectTab = (id, revision) => {
+    if (!Number.isSafeInteger(revision) || revision < tabRevision) return;
+    tabRevision = revision;
     const el = [...document.querySelectorAll('.tabs [data-tab]')].find(el => el.dataset.tab === id);
     if (el && !el.hidden) el.click();
     schedule();

@@ -20,6 +20,7 @@ struct NativeSwitch: Identifiable, Decodable {
 final class TourdyModel: NSObject, ObservableObject, WKScriptMessageHandler, WKNavigationDelegate {
     @Published var switches: [NativeSwitch] = []
     @Published var tabs: [NativeSwitch] = []
+    @Published var selectedTab = "home"
     @Published var error: String?
     let web: WKWebView
 
@@ -46,11 +47,16 @@ final class TourdyModel: NSObject, ObservableObject, WKScriptMessageHandler, WKN
               let data = try? JSONSerialization.data(withJSONObject: message.body),
               let rows = try? JSONDecoder().decode([NativeSwitch].self, from: data) else { return }
         if message.name == "tourdySwitches" { switches = rows }
-        if message.name == "tourdyTabs" { tabs = rows }
+        if message.name == "tourdyTabs" {
+            tabs = rows
+            if let selected = rows.first(where: { $0.on }) { selectedTab = selected.id }
+        }
     }
 
-    func selectTab(_ item: NativeSwitch) {
-        guard let data = try? JSONSerialization.data(withJSONObject: [item.id]),
+    func selectTab(_ id: String) {
+        guard tabs.contains(where: { $0.id == id }) else { return }
+        selectedTab = id
+        guard let data = try? JSONSerialization.data(withJSONObject: [id]),
               let argument = String(data: data, encoding: .utf8) else { return }
         web.evaluateJavaScript("window.tourdyNativeSelectTab(...\(argument))") { [weak self] _, failure in
             if failure != nil { self?.error = "화면을 전환하지 못했어요. 다시 시도해 주세요." }
@@ -83,49 +89,22 @@ struct AppWebView: UIViewRepresentable {
 struct TourdyScreen: View {
     @StateObject private var model = TourdyModel()
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .topLeading) {
-                AppWebView(model: model)
-                ForEach(model.switches) { item in
-                    Toggle(item.title, isOn: Binding(get: { item.on }, set: { model.change(item, to: $0) }))
-                        .toggleStyle(.switch)
-                        .labelsHidden()
-                        .accessibilityLabel(item.title)
-                        .frame(width: item.width, height: item.height)
-                        .offset(x: item.x, y: item.y)
-                }
-            }
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
-            .clipped()
-        }
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            if !model.tabs.isEmpty {
-                HStack(spacing: 2) {
-                    ForEach(model.tabs) { item in
-                        Button { model.selectTab(item) } label: {
-                            VStack(spacing: 4) {
-                                Image(systemName: tabIcon(item.id))
-                                    .font(.system(size: 23, weight: .semibold))
-                                Text(item.title)
-                                    .font(.system(size: 11, weight: .semibold))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.8)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 58)
-                            .background(item.on ? Color.primary.opacity(0.12) : Color.clear, in: Capsule())
-                            .contentShape(Capsule())
-                        }
-                        .buttonStyle(.plain)
-                        .foregroundStyle(item.on ? Color.accentColor : Color.primary)
-                        .accessibilityAddTraits(item.on ? [.isSelected] : [])
+        TabView(selection: Binding(get: { model.selectedTab }, set: { model.selectTab($0) })) {
+            ForEach(model.tabs) { item in
+                Group {
+                    if item.id == model.selectedTab {
+                        TourdyWebContent(model: model)
+                    } else {
+                        Color.clear
                     }
                 }
-                .padding(6)
-                .glassEffect(.regular, in: .capsule)
-                .padding(.horizontal, 12)
-                .padding(.bottom, 8)
+                .tabItem { Label(item.title, systemImage: tabIcon(item.id)) }
+                .tag(item.id)
             }
+        }
+        .tabViewStyle(.tabBarOnly)
+        .overlay {
+            if model.tabs.isEmpty { TourdyWebContent(model: model) }
         }
         .alert("확인해 주세요", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) {
             Button("확인") { model.error = nil }
@@ -140,6 +119,27 @@ struct TourdyScreen: View {
         case "travel": return "airplane"
         case "set": return "gearshape.fill"
         default: return "circle"
+        }
+    }
+}
+
+struct TourdyWebContent: View {
+    @ObservedObject var model: TourdyModel
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .topLeading) {
+                AppWebView(model: model)
+                ForEach(model.switches) { item in
+                    Toggle(item.title, isOn: Binding(get: { item.on }, set: { model.change(item, to: $0) }))
+                        .toggleStyle(.switch)
+                        .labelsHidden()
+                        .accessibilityLabel(item.title)
+                        .frame(width: item.width, height: item.height)
+                        .offset(x: item.x, y: item.y)
+                }
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+            .clipped()
         }
     }
 }

@@ -103,7 +103,6 @@ private final class PaneController: UIViewController {
     }
 }
 
-@objc(TourdyTabsViewController)
 final class TourdyTabsViewController: UIHostingController<TourdyNativeTabs> {
     init() { super.init(rootView: TourdyNativeTabs(model: TourdyNavigationModel())) }
     @available(*, unavailable) required dynamic init?(coder aDecoder: NSCoder) { fatalError("Use the programmatic TabView root") }

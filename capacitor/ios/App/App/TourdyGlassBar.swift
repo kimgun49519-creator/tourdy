@@ -40,11 +40,21 @@ final class TourdyNavigationModel: ObservableObject {
 
 struct TourdyNativeTabs: View {
     @ObservedObject var model: TourdyNavigationModel
+    @State private var introVisible = true
     private let tabs = [("home", "홈", "house"), ("todo", "할 일", "checkmark.square"),
                         ("stats", "대시보드", ""), ("travel", "여행", "airplane"), ("set", "설정", "gearshape")]
     var body: some View {
+        ZStack {
+            systemTabs.allowsHitTesting(!introVisible).accessibilityHidden(introVisible)
+            if introVisible {
+                TourdyIntro { withAnimation(.easeOut(duration: 0.22)) { introVisible = false } }
+                    .transition(.opacity).zIndex(1)
+            }
+        }
+    }
+    @ViewBuilder private var systemTabs: some View {
         if #available(iOS 16.0, *) {
-            tabView.toolbar(model.modal ? .hidden : .visible, for: .tabBar)
+            tabView.toolbar(model.modal || introVisible ? .hidden : .visible, for: .tabBar)
         } else { tabView }
     }
     private var tabView: some View {
@@ -60,7 +70,7 @@ struct TourdyNativeTabs: View {
                     .tag(tab.0)
             }
         }
-        .disabled(model.locked)
+        .disabled(model.locked || introVisible)
         .preferredColorScheme(model.systemTheme ? nil : (model.dark ? .dark : .light))
     }
     private var dashboardImage: UIImage {

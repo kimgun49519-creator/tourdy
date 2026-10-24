@@ -19,6 +19,7 @@
 		8F59CD73E3B94924846D0E85 /* TourdyRecordsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE29456ED4B4A799476B628 /* TourdyRecordsPlugin.swift */; };
 		5D1474336DBB42D1802CCC8F /* TourdyBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56AE434EB445DBAD1B7ACC /* TourdyBridgeViewController.swift */; };
 		2A883CD44E344E80B5764C4E /* TourdyGlassBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D90708174954AC8B9D7DEF7 /* TourdyGlassBar.swift */; };
+		AD2E7A0A10F84ACD9F648646 /* TourdyIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BBB5719BEB4F95AC849780 /* TourdyIntro.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AFE29456ED4B4A799476B628 /* TourdyRecordsPlugin.swift */ = {isa = PBXFileReference; name = "TourdyRecordsPlugin.swift"; path = "TourdyRecordsPlugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 		3E56AE434EB445DBAD1B7ACC /* TourdyBridgeViewController.swift */ = {isa = PBXFileReference; name = "TourdyBridgeViewController.swift"; path = "TourdyBridgeViewController.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 		1D90708174954AC8B9D7DEF7 /* TourdyGlassBar.swift */ = {isa = PBXFileReference; name = "TourdyGlassBar.swift"; path = "TourdyGlassBar.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		94BBB5719BEB4F95AC849780 /* TourdyIntro.swift */ = {isa = PBXFileReference; name = "TourdyIntro.swift"; path = "TourdyIntro.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				AFE29456ED4B4A799476B628 /* TourdyRecordsPlugin.swift */,
 				3E56AE434EB445DBAD1B7ACC /* TourdyBridgeViewController.swift */,
 				1D90708174954AC8B9D7DEF7 /* TourdyGlassBar.swift */,
+				94BBB5719BEB4F95AC849780 /* TourdyIntro.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				8F59CD73E3B94924846D0E85 /* TourdyRecordsPlugin.swift in Sources */,
 				5D1474336DBB42D1802CCC8F /* TourdyBridgeViewController.swift in Sources */,
 				2A883CD44E344E80B5764C4E /* TourdyGlassBar.swift in Sources */,
+				AD2E7A0A10F84ACD9F648646 /* TourdyIntro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

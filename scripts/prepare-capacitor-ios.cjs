@@ -6,7 +6,7 @@ const xcode=require(require.resolve('xcode',{paths:[path.dirname(require.resolve
 const project=xcode.project(path.join(app,'App.xcodeproj/project.pbxproj'));
 project.parseSync();
 const group=project.findPBXGroupKey({path:'App'});
-for(const name of ['TourdyRecordsPlugin.swift','TourdyBridgeViewController.swift','TourdyGlassBar.swift']){
+for(const name of ['TourdyRecordsPlugin.swift','TourdyBridgeViewController.swift','TourdyGlassBar.swift','TourdyIntro.swift']){
   fs.copyFileSync(path.join(root,'native/ios',name),path.join(app,'App',name));
   if(!project.hasFile(name))project.addSourceFile(name,{target:'504EC3031FED79650016851F'},group);
 }

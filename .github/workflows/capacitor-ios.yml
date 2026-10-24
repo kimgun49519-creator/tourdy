@@ -38,8 +38,13 @@ jobs:
           xcrun simctl boot "$DEVICE"
           xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl install "$DEVICE" capacitor-build/Build/Products/Debug-iphonesimulator/App.app
+          xcrun simctl io "$DEVICE" recordVideo --codec=h264 tourdy-intro.mp4 > intro-recording.log 2>&1 &
+          RECORD_PID=$!
           xcrun simctl launch "$DEVICE" com.example.tourdy
-          sleep 10
+          sleep 4
+          kill -INT "$RECORD_PID"
+          wait "$RECORD_PID" || true
+          sleep 6
           xcrun simctl io "$DEVICE" screenshot capacitor-iphone.png
           xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme TourdyNavigationTests -destination "platform=iOS Simulator,id=$DEVICE" -parallel-testing-enabled NO -derivedDataPath capacitor-build -resultBundlePath navigation-tests.xcresult CODE_SIGNING_ALLOWED=NO test > navigation-tests.log 2>&1 || { tail -n 160 navigation-tests.log; exit 1; }
       - uses: actions/upload-artifact@v4
@@ -51,3 +56,4 @@ jobs:
             capacitor-iphone.png
             navigation-tests.log
             navigation-tests.xcresult
+            tourdy-intro.mp4

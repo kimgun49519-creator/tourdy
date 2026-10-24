@@ -6,6 +6,8 @@ final class NavigationUITests: XCTestCase {
         app.launch()
         let bar = app.tabBars.firstMatch
         XCTAssertTrue(bar.buttons["홈"].waitForExistence(timeout: 30))
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isHittable == true AND enabled == true"), object: bar.buttons["홈"])
+        XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 10), .completed)
         for _ in 0..<6 {
             for name in ["할 일", "대시보드", "여행", "설정", "홈"] { bar.buttons[name].tap() }
         }

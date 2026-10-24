@@ -54,6 +54,11 @@ Special routes now depart by tapping the entire available gold-bordered card.
 Unavailable cards are not focusable departure controls, and departure rechecks
 season, starting city, active route and current journey before changing state.
 
+Cold launch shows a roughly two-second native SwiftUI introduction: a closed
+book opens and an airplane flies out along a curved dotted trail. The original
+app loads underneath; tapping skips the introduction. Reduce Motion uses a short
+static presentation instead. The intro does not run when switching tabs.
+
 Automated JavaScript checks and the Original TOURDY iOS workflow validate this
 target separately from the archived SwiftUI prototype. Physical-device offline
 and notification tests remain necessary before release.

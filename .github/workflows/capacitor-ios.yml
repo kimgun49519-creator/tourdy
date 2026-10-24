@@ -1,0 +1,64 @@
+name: Original TOURDY iOS
+on:
+  push:
+    branches: [codex/storage-and-first-trip]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: capacitor-ios-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  simulator:
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+      - run: pnpm install --frozen-lockfile
+      - run: node --test tests/*.test.cjs
+      - name: Bundle original app and register native file storage
+        run: |
+          node scripts/build-capacitor.cjs
+          node node_modules/@capacitor/cli/bin/capacitor sync ios
+          node scripts/prepare-capacitor-ios.cjs
+          node scripts/prepare-navigation-tests.cjs
+      - name: Build original TOURDY for iPhone simulator
+        run: |
+          xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme App -destination 'generic/platform=iOS Simulator' -derivedDataPath capacitor-build CODE_SIGNING_ALLOWED=NO build > capacitor-build.log 2>&1 || { tail -n 180 capacitor-build.log; exit 1; }
+      - name: Launch on iPhone simulator
+        timeout-minutes: 8
+        run: |
+          xcrun simctl list devices available --json > /tmp/devices.json
+          DEVICE=$(python3 -c "import json; print(next(d['udid'] for runtime, rows in json.load(open('/tmp/devices.json'))['devices'].items() if 'iOS-' in runtime for d in rows if d['name'].startswith('iPhone')))")
+          echo "TOURDY_SIMULATOR=$DEVICE" >> "$GITHUB_ENV"
+          xcrun simctl boot "$DEVICE"
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" capacitor-build/Build/Products/Debug-iphonesimulator/App.app
+          python3 scripts/record-ios-intro.py "$DEVICE"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tourdy-intro-preview
+          path: |
+            intro-frames/*.png
+            capacitor-iphone.png
+            native-runtime.log
+      - name: Test repeated system TabView selections
+        timeout-minutes: 7
+        run: |
+          xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme TourdyNavigationTests -destination "platform=iOS Simulator,id=$TOURDY_SIMULATOR" -parallel-testing-enabled NO -derivedDataPath capacitor-build -resultBundlePath navigation-tests.xcresult CODE_SIGNING_ALLOWED=NO test > navigation-tests.log 2>&1 || { tail -n 160 navigation-tests.log; exit 1; }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-tourdy-ios-verification
+          path: |
+            capacitor-build.log
+            capacitor-iphone.png
+            navigation-tests.log
+            navigation-tests.xcresult
+            tourdy-intro.mp4

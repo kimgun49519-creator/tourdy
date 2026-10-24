@@ -1,0 +1,40 @@
+// !$*UTF8*$!
+{ archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+000000000000000000000001 = {isa = PBXProject; attributes = {LastUpgradeCheck = 2600;}; buildConfigurationList = 000000000000000000000010; compatibilityVersion = "Xcode 14.0"; developmentRegion = ko; knownRegions = (ko, en, Base); mainGroup = 000000000000000000000002; productRefGroup = 000000000000000000000003; projectDirPath = ""; projectRoot = ""; targets = (000000000000000000000004,000000000000000000000040);};
+000000000000000000000002 = {isa = PBXGroup; children = (000000000000000000000005,000000000000000000000006,000000000000000000000015,000000000000000000000017,000000000000000000000019,000000000000000000000021,000000000000000000000023,000000000000000000000043,000000000000000000000003); sourceTree = "<group>";};
+000000000000000000000003 = {isa = PBXGroup; children = (000000000000000000000007,000000000000000000000041); name = Products; sourceTree = "<group>";};
+000000000000000000000004 = {isa = PBXNativeTarget; buildConfigurationList = 000000000000000000000011; buildPhases = (000000000000000000000008,000000000000000000000009); buildRules = (); dependencies = (); name = Tourdy; productName = Tourdy; productReference = 000000000000000000000007; productType = "com.apple.product-type.application";};
+000000000000000000000005 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/NativeApp.swift; sourceTree = "<group>";};
+000000000000000000000006 = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tourdy/Resources/places.json; sourceTree = "<group>";};
+000000000000000000000007 = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Tourdy.app; sourceTree = BUILT_PRODUCTS_DIR;};
+000000000000000000000008 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000012,000000000000000000000016,000000000000000000000018,000000000000000000000020); runOnlyForDeploymentPostprocessing = 0;};
+000000000000000000000009 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000013,000000000000000000000022,000000000000000000000024); runOnlyForDeploymentPostprocessing = 0;};
+000000000000000000000015 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/ExperienceModel.swift; sourceTree = "<group>";};
+000000000000000000000016 = {isa = PBXBuildFile; fileRef = 000000000000000000000015;};
+000000000000000000000017 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/ExperienceUI.swift; sourceTree = "<group>";};
+000000000000000000000018 = {isa = PBXBuildFile; fileRef = 000000000000000000000017;};
+000000000000000000000019 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tourdy/ExperienceTravel.swift; sourceTree = "<group>";};
+000000000000000000000020 = {isa = PBXBuildFile; fileRef = 000000000000000000000019;};
+000000000000000000000021 = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tourdy/Resources/routes.json; sourceTree = "<group>";};
+000000000000000000000022 = {isa = PBXBuildFile; fileRef = 000000000000000000000021;};
+000000000000000000000023 = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tourdy/Resources/atlas.json; sourceTree = "<group>";};
+000000000000000000000024 = {isa = PBXBuildFile; fileRef = 000000000000000000000023;};
+000000000000000000000040 = {isa = PBXNativeTarget; buildConfigurationList = 000000000000000000000047; buildPhases = (000000000000000000000045); buildRules = (); dependencies = (000000000000000000000048); name = TourdyNativeTests; productName = TourdyNativeTests; productReference = 000000000000000000000041; productType = "com.apple.product-type.bundle.unit-test";};
+000000000000000000000041 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TourdyNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR;};
+000000000000000000000043 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/TourdyNativeTests.swift; sourceTree = SOURCE_ROOT;};
+000000000000000000000044 = {isa = PBXBuildFile; fileRef = 000000000000000000000043;};
+000000000000000000000045 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000044); runOnlyForDeploymentPostprocessing = 0;};
+000000000000000000000047 = {isa = XCConfigurationList; buildConfigurations = (000000000000000000000320,000000000000000000000321); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug;};
+000000000000000000000048 = {isa = PBXTargetDependency; target = 000000000000000000000004; targetProxy = 000000000000000000000049;};
+000000000000000000000049 = {isa = PBXContainerItemProxy; containerPortal = 000000000000000000000001; proxyType = 1; remoteGlobalIDString = 000000000000000000000004; remoteInfo = Tourdy;};
+000000000000000000000012 = {isa = PBXBuildFile; fileRef = 000000000000000000000005;};
+000000000000000000000013 = {isa = PBXBuildFile; fileRef = 000000000000000000000006;};
+000000000000000000000010 = {isa = XCConfigurationList; buildConfigurations = (000000000000000000000120,000000000000000000000121); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+000000000000000000000011 = {isa = XCConfigurationList; buildConfigurations = (000000000000000000000220,000000000000000000000221); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+000000000000000000000120 = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 26.0; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; ENABLE_TESTABILITY = YES;}; name = Debug;};
+000000000000000000000121 = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 26.0; SWIFT_VERSION = 5.0; CLANG_ENABLE_MODULES = YES; ENABLE_TESTABILITY = YES;}; name = Release;};
+000000000000000000000220 = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = com.example.tourdy; PRODUCT_NAME = "$(TARGET_NAME)"; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = TOURDY; INFOPLIST_KEY_UILaunchScreen_Generation = YES; INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES; TARGETED_DEVICE_FAMILY = "1,2"; CODE_SIGN_STYLE = Automatic; MARKETING_VERSION = 0.1.0; CURRENT_PROJECT_VERSION = 1; SWIFT_VERSION = 5.0;}; name = Debug;};
+000000000000000000000221 = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = com.example.tourdy; PRODUCT_NAME = "$(TARGET_NAME)"; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = TOURDY; INFOPLIST_KEY_UILaunchScreen_Generation = YES; INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES; TARGETED_DEVICE_FAMILY = "1,2"; CODE_SIGN_STYLE = Automatic; MARKETING_VERSION = 0.1.0; CURRENT_PROJECT_VERSION = 1; SWIFT_VERSION = 5.0;}; name = Release;};
+000000000000000000000320 = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = com.example.tourdy.tests; PRODUCT_NAME = "$(TARGET_NAME)"; GENERATE_INFOPLIST_FILE = YES; TARGETED_DEVICE_FAMILY = "1,2"; CODE_SIGN_STYLE = Automatic; SWIFT_VERSION = 5.0; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tourdy.app/Tourdy"; BUNDLE_LOADER = "$(TEST_HOST)";}; name = Debug;};
+000000000000000000000321 = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_BUNDLE_IDENTIFIER = com.example.tourdy.tests; PRODUCT_NAME = "$(TARGET_NAME)"; GENERATE_INFOPLIST_FILE = YES; TARGETED_DEVICE_FAMILY = "1,2"; CODE_SIGN_STYLE = Automatic; SWIFT_VERSION = 5.0; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tourdy.app/Tourdy"; BUNDLE_LOADER = "$(TEST_HOST)";}; name = Release;};
+}; rootObject = 000000000000000000000001; }

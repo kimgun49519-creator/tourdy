@@ -1,0 +1,10 @@
+.preview/
+ios/Tourdy/Web/
+ios/**/xcuserdata/
+ios/build/
+node_modules/
+native-dist/
+capacitor/ios/App/App/public/
+capacitor/ios/DerivedData/
+capacitor/ios/**/xcuserdata/
+capacitor/vendor/

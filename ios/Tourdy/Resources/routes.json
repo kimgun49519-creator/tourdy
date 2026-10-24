@@ -1,0 +1,306 @@
+[
+  {
+    "id": "east",
+    "w": "kr",
+    "name": "동해안 7번 국도",
+    "desc": "부산에서 고성까지 동해를 따라 북쪽으로",
+    "stops": [
+      "busan",
+      "ulsan",
+      "gyeongju",
+      "pohang",
+      "yeongdeok",
+      "uljin",
+      "samcheok",
+      "donghae",
+      "gangneung",
+      "yangyang",
+      "sokcho",
+      "goseonggw"
+    ]
+  },
+  {
+    "id": "south",
+    "w": "kr",
+    "name": "남해안 다도해",
+    "desc": "목포에서 부산까지 섬과 바다를 잇는 길",
+    "stops": [
+      "mokpo",
+      "haenam",
+      "wando",
+      "goheung",
+      "yeosu",
+      "namhae",
+      "tongyeong",
+      "geoje",
+      "busan"
+    ]
+  },
+  {
+    "id": "west",
+    "w": "kr",
+    "name": "서해안 노을길",
+    "desc": "강화에서 목포까지 서해 노을을 따라",
+    "stops": [
+      "ganghwa",
+      "incheon",
+      "hwaseong",
+      "dangjin",
+      "seosan",
+      "taean",
+      "boryeong",
+      "seocheon",
+      "gunsan",
+      "buan",
+      "gochang",
+      "yeonggwang",
+      "mokpo"
+    ]
+  },
+  {
+    "id": "ancient",
+    "w": "kr",
+    "name": "천년 고도 순례",
+    "desc": "옛 도읍지를 차례로 걷는 역사 여행",
+    "stops": [
+      "seoul",
+      "suwon",
+      "gongju",
+      "buyeo",
+      "iksan",
+      "gyeongju",
+      "andong"
+    ]
+  },
+  {
+    "id": "silk",
+    "w": "w",
+    "name": "실크로드",
+    "desc": "베이징에서 앙카라까지 비단길을 따라",
+    "stops": [
+      "CN",
+      "KG",
+      "UZ",
+      "TM",
+      "IR",
+      "TR"
+    ]
+  },
+  {
+    "id": "indochina",
+    "w": "w",
+    "name": "인도차이나 일주",
+    "desc": "방콕에서 자카르타까지 동남아 한 바퀴",
+    "stops": [
+      "TH",
+      "LA",
+      "VN",
+      "KH",
+      "MY",
+      "SG",
+      "ID"
+    ]
+  },
+  {
+    "id": "euro",
+    "w": "w",
+    "name": "유럽 수도 기행",
+    "desc": "파리에서 로마까지 유럽의 수도를 잇는 길",
+    "stops": [
+      "FR",
+      "BE",
+      "NL",
+      "DE",
+      "CZ",
+      "AT",
+      "HU",
+      "HR",
+      "IT"
+    ]
+  },
+  {
+    "id": "nordic",
+    "w": "w",
+    "name": "오로라 북유럽",
+    "desc": "코펜하겐에서 레이캬비크까지 북쪽 끝으로",
+    "stops": [
+      "DK",
+      "NO",
+      "SE",
+      "FI",
+      "IS"
+    ]
+  },
+  {
+    "id": "andes",
+    "w": "w",
+    "name": "안데스 종단",
+    "desc": "부에노스아이레스에서 보고타까지 산맥을 따라",
+    "stops": [
+      "AR",
+      "CL",
+      "BO",
+      "PE",
+      "EC",
+      "CO"
+    ]
+  },
+  {
+    "id": "safari",
+    "w": "w",
+    "name": "아프리카 사파리",
+    "desc": "나이로비에서 프리토리아까지 초원을 가로질러",
+    "stops": [
+      "KE",
+      "TZ",
+      "ZM",
+      "ZW",
+      "BW",
+      "NA",
+      "ZA"
+    ]
+  },
+  {
+    "id": "pacific",
+    "w": "w",
+    "name": "남태평양 섬 잇기",
+    "desc": "수바에서 마주로까지 크루즈로 섬을 건너",
+    "stops": [
+      "FJ",
+      "TO",
+      "WS",
+      "TV",
+      "KI",
+      "MH"
+    ]
+  },
+  {
+    "id": "sakura",
+    "w": "kr",
+    "season": [
+      3,
+      4,
+      5
+    ],
+    "name": "봄 벚꽃 길",
+    "desc": "창원에서 서울까지 남쪽부터 차례로 피는 벚꽃을 따라",
+    "stops": [
+      "changwon",
+      "hadong",
+      "gurye",
+      "gyeongju",
+      "chungju",
+      "seoul"
+    ]
+  },
+  {
+    "id": "summersea",
+    "w": "kr",
+    "season": [
+      6,
+      7,
+      8
+    ],
+    "name": "여름 바다 일주",
+    "desc": "부산에서 태안까지 남해와 서해 해수욕장을 잇는 길",
+    "stops": [
+      "busan",
+      "geoje",
+      "namhae",
+      "yeosu",
+      "boryeong",
+      "taean"
+    ]
+  },
+  {
+    "id": "maple",
+    "w": "kr",
+    "season": [
+      9,
+      10,
+      11
+    ],
+    "name": "가을 단풍 길",
+    "desc": "속초에서 정읍까지 설악산부터 내장산까지 단풍을 따라",
+    "stops": [
+      "sokcho",
+      "inje",
+      "pyeongchang",
+      "danyang",
+      "mungyeong",
+      "jeongeup"
+    ]
+  },
+  {
+    "id": "snowfl",
+    "w": "kr",
+    "season": [
+      12,
+      1,
+      2
+    ],
+    "name": "겨울 눈꽃 길",
+    "desc": "평창에서 무주까지 눈 덮인 산골 마을을 잇는 길",
+    "stops": [
+      "pyeongchang",
+      "jeongseon",
+      "taebaek",
+      "yeongju",
+      "muju"
+    ]
+  },
+  {
+    "id": "blossom",
+    "w": "w",
+    "season": [
+      3,
+      4
+    ],
+    "name": "봄 아시아 꽃길",
+    "desc": "서울에서 베이징까지 봄꽃이 피는 도시를 따라",
+    "stops": [
+      "KR",
+      "JP",
+      "TW",
+      "CN"
+    ]
+  },
+  {
+    "id": "medi",
+    "w": "w",
+    "season": [
+      6,
+      7,
+      8
+    ],
+    "name": "여름 지중해 크루즈",
+    "desc": "마드리드에서 니코시아까지 지중해를 건너",
+    "stops": [
+      "ES",
+      "FR",
+      "MC",
+      "IT",
+      "MT",
+      "GR",
+      "CY"
+    ]
+  },
+  {
+    "id": "xmasmkt",
+    "w": "w",
+    "season": [
+      11,
+      12
+    ],
+    "name": "크리스마스 마켓",
+    "desc": "베를린에서 바르샤바까지 연말 장터를 돌며",
+    "stops": [
+      "DE",
+      "CZ",
+      "AT",
+      "HU",
+      "SK",
+      "PL"
+    ]
+  }
+]

@@ -9,10 +9,12 @@ final class TourdyNavigationModel: ObservableObject {
     @Published var modal = false
     @Published var dark = false
     @Published var systemTheme = true
+    @Published var ready = false
     let bridgeController = TourdyBridgeViewController()
     private var revision = -1
     private var request = 0
     private var confirmedTab = "home"
+    private var session = ""
 
     init() { bridgeController.navigationModel = self }
     func select(_ tab: String) {
@@ -26,9 +28,11 @@ final class TourdyNavigationModel: ObservableObject {
             self.selected = self.confirmedTab
         }
     }
-    func receive(tab: String, travelEnabled: Bool, locked: Bool, modal: Bool, dark: Bool, systemTheme: Bool, revision: Int, request: Int) {
+    func receive(tab: String, travelEnabled: Bool, locked: Bool, modal: Bool, dark: Bool, systemTheme: Bool, revision: Int, request: Int, session: String) {
+        if session != self.session { self.session = session; self.revision = -1; self.request = 0 }
         guard revision > self.revision else { return }
         self.revision = revision
+        ready = true
         self.travelEnabled = travelEnabled
         self.locked = locked
         self.modal = modal
@@ -46,16 +50,24 @@ struct TourdyNativeTabs: View {
                         ("stats", "대시보드", ""), ("travel", "여행", "airplane"), ("set", "설정", "gearshape")]
     var body: some View {
         ZStack {
-            systemTabs.allowsHitTesting(!introVisible).accessibilityHidden(introVisible)
+            systemTabs.allowsHitTesting(!introVisible && model.ready).accessibilityHidden(introVisible || !model.ready)
             if introVisible {
                 TourdyIntro { withAnimation(.easeOut(duration: 0.22)) { introVisible = false } }
                     .transition(.opacity).zIndex(1)
+            } else if !model.ready {
+                ZStack {
+                    Color(uiColor: .systemBackground).ignoresSafeArea()
+                    VStack(spacing: 18) {
+                        Text("TOURDY").font(.system(size: 30, weight: .bold, design: .rounded)).tracking(5)
+                        ProgressView("여행을 준비하고 있어요").font(.caption)
+                    }
+                }.zIndex(1)
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     @ViewBuilder private var systemTabs: some View {
         if #available(iOS 16.0, *) {
-            tabView.toolbar(model.modal || introVisible ? .hidden : .visible, for: .tabBar)
+            tabView.toolbar(model.modal || introVisible || !model.ready ? .hidden : .visible, for: .tabBar)
         } else { tabView }
     }
     private var tabView: some View {
@@ -72,7 +84,7 @@ struct TourdyNativeTabs: View {
                     .tag(tab.0)
             }
         }
-        .disabled(model.locked || introVisible)
+        .disabled(model.locked || introVisible || !model.ready)
         .preferredColorScheme(model.systemTheme ? nil : (model.dark ? .dark : .light))
     }
     private var dashboardImage: UIImage {

@@ -5,7 +5,7 @@ final class NavigationUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         let bar = app.tabBars.firstMatch
-        XCTAssertTrue(bar.buttons["홈"].waitForExistence(timeout: 30))
+        XCTAssertTrue(bar.buttons["홈"].waitForExistence(timeout: 60))
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isHittable == true AND enabled == true"), object: bar.buttons["홈"])
         XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 10), .completed)
         for _ in 0..<6 {

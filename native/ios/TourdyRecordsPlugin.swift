@@ -18,7 +18,7 @@ public class TourdyRecordsPlugin: CAPPlugin, CAPBridgedPlugin {
             }
             controller.updateNavigation(tab:call.getString("tab") ?? "home", travelEnabled:call.getBool("travelEnabled") ?? false,
                 locked:call.getBool("locked") ?? false, modal:call.getBool("modal") ?? false,
-                dark:call.getBool("dark") ?? false, systemTheme:call.getBool("systemTheme") ?? true, revision:call.getInt("revision") ?? 0, request:call.getInt("request") ?? 0)
+                dark:call.getBool("dark") ?? false, systemTheme:call.getBool("systemTheme") ?? true, revision:call.getInt("revision") ?? 0, request:call.getInt("request") ?? 0, session:call.getString("session") ?? "")
             call.resolve()
         }
     }

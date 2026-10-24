@@ -8,6 +8,7 @@ import {createFileRecords} from './file-records.cjs';
 import {timerNotifications} from './notifications.cjs';
 
 const Records=registerPlugin('TourdyRecords');
+const navigationSession=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
 let alarms=Promise.resolve();
 let lastAlarms='';
 let durableState=null;
@@ -19,7 +20,7 @@ function navigationChanged(){
     navigationQueued=false;
     if(!window.TourdyNavigationState)return;
     const root=document.documentElement;
-    const state={...window.TourdyNavigationState(),systemTheme:!root.dataset.theme,request:window.TourdyNative.navigationRequest||0,locked:!!window.TourdyNative.transactionBusy,
+    const state={...window.TourdyNavigationState(),session:navigationSession,systemTheme:!root.dataset.theme,request:window.TourdyNative.navigationRequest||0,locked:!!window.TourdyNative.transactionBusy,
       modal:!!document.querySelector('dialog[open],.arr:not([hidden]),.sheet:not([hidden]),.modal:not([hidden])'),
       dark:root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches)};
     const signature=JSON.stringify(state);if(signature===navigationSignature)return;
@@ -103,5 +104,6 @@ boot().catch(error=>{
   const text=document.createElement('p');text.textContent='기존 파일은 그대로 보관했습니다. 앱을 다시 열어 주세요. 문제가 계속되면 앱을 삭제하지 말고 문의해 주세요.';
   const retry=document.createElement('button');retry.textContent='다시 시도';retry.onclick=()=>location.reload();
   box.append(title,text,retry);document.body.appendChild(box);
+  Records.navigationState({tab:'home',session:navigationSession,travelEnabled:false,locked:false,modal:true,systemTheme:true,dark:false,revision:++navigationRevision,request:0}).catch(()=>{});
   console.error('TOURDY startup failed',error?.message);
 });

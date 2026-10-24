@@ -7,6 +7,7 @@ final class TourdyNavigationModel: ObservableObject {
     @Published var locked = false
     @Published var modal = false
     @Published var dark = false
+    @Published var systemTheme = true
     let bridgeController = TourdyBridgeViewController()
     private var revision = -1
     private var request = 0
@@ -24,13 +25,14 @@ final class TourdyNavigationModel: ObservableObject {
             self.selected = self.confirmedTab
         }
     }
-    func receive(tab: String, travelEnabled: Bool, locked: Bool, modal: Bool, dark: Bool, revision: Int, request: Int) {
+    func receive(tab: String, travelEnabled: Bool, locked: Bool, modal: Bool, dark: Bool, systemTheme: Bool, revision: Int, request: Int) {
         guard revision > self.revision else { return }
         self.revision = revision
         self.travelEnabled = travelEnabled
         self.locked = locked
         self.modal = modal
         self.dark = dark
+        self.systemTheme = systemTheme
         // A response from an earlier tap cannot undo a later native selection.
         if request >= self.request { confirmedTab = tab; selected = tab }
     }
@@ -59,7 +61,7 @@ struct TourdyNativeTabs: View {
             }
         }
         .disabled(model.locked)
-        .preferredColorScheme(model.dark ? .dark : .light)
+        .preferredColorScheme(model.systemTheme ? nil : (model.dark ? .dark : .light))
     }
     private var dashboardImage: UIImage {
         UIGraphicsImageRenderer(size: CGSize(width: 25, height: 25)).image { _ in

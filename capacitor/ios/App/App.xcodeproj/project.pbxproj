@@ -18,6 +18,7 @@
 		9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582B6822FE993A50072D4E8 /* SceneDelegate.swift */; };
 		8F59CD73E3B94924846D0E85 /* TourdyRecordsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE29456ED4B4A799476B628 /* TourdyRecordsPlugin.swift */; };
 		5D1474336DBB42D1802CCC8F /* TourdyBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56AE434EB445DBAD1B7ACC /* TourdyBridgeViewController.swift */; };
+		2A883CD44E344E80B5764C4E /* TourdyGlassBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D90708174954AC8B9D7DEF7 /* TourdyGlassBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		958DCC722DB07C7200EA8C5F /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = debug.xcconfig; path = ../debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		AFE29456ED4B4A799476B628 /* TourdyRecordsPlugin.swift */ = {isa = PBXFileReference; name = "TourdyRecordsPlugin.swift"; path = "TourdyRecordsPlugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 		3E56AE434EB445DBAD1B7ACC /* TourdyBridgeViewController.swift */ = {isa = PBXFileReference; name = "TourdyBridgeViewController.swift"; path = "TourdyBridgeViewController.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		1D90708174954AC8B9D7DEF7 /* TourdyGlassBar.swift */ = {isa = PBXFileReference; name = "TourdyGlassBar.swift"; path = "TourdyGlassBar.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				50B271D01FEDC1A000F3C39B /* public */,
 				AFE29456ED4B4A799476B628 /* TourdyRecordsPlugin.swift */,
 				3E56AE434EB445DBAD1B7ACC /* TourdyBridgeViewController.swift */,
+				1D90708174954AC8B9D7DEF7 /* TourdyGlassBar.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,
 				8F59CD73E3B94924846D0E85 /* TourdyRecordsPlugin.swift in Sources */,
 				5D1474336DBB42D1802CCC8F /* TourdyBridgeViewController.swift in Sources */,
+				2A883CD44E344E80B5764C4E /* TourdyGlassBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,21 @@ public class TourdyRecordsPlugin: CAPPlugin, CAPBridgedPlugin {
     public let jsName = "TourdyRecords"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name:"readRecords",returnType:CAPPluginReturnPromise),
-        CAPPluginMethod(name:"commit",returnType:CAPPluginReturnPromise)
+        CAPPluginMethod(name:"commit",returnType:CAPPluginReturnPromise),
+        CAPPluginMethod(name:"navigationState",returnType:CAPPluginReturnPromise)
     ]
     private static let queue = DispatchQueue(label:"app.tourdy.atomic-records")
+    @objc func navigationState(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            guard let controller = self.bridge?.viewController as? TourdyBridgeViewController else {
+                call.reject("Navigation is unavailable"); return
+            }
+            controller.updateNavigation(tab:call.getString("tab") ?? "home", travelEnabled:call.getBool("travelEnabled") ?? false,
+                locked:call.getBool("locked") ?? false, modal:call.getBool("modal") ?? false,
+                dark:call.getBool("dark") ?? false, revision:call.getInt("revision") ?? 0)
+            call.resolve()
+        }
+    }
     private func fileURL() throws -> URL {
         let directory=FileManager.default.urls(for:.applicationSupportDirectory,in:.userDomainMask)[0].appendingPathComponent("TourdyShared",isDirectory:true)
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)

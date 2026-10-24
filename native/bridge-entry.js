@@ -11,6 +11,23 @@ const Records=registerPlugin('TourdyRecords');
 let alarms=Promise.resolve();
 let lastAlarms='';
 let durableState=null;
+let navigationRevision=0,navigationSignature='',navigationQueued=false;
+function navigationChanged(){
+  if(navigationQueued)return;
+  navigationQueued=true;
+  queueMicrotask(async()=>{
+    navigationQueued=false;
+    if(!window.TourdyNavigationState)return;
+    const root=document.documentElement;
+    const state={...window.TourdyNavigationState(),locked:!!window.TourdyNative.transactionBusy,
+      modal:!!document.querySelector('dialog[open],.arr:not([hidden]),.sheet:not([hidden]),.modal:not([hidden])'),
+      dark:root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches)};
+    const signature=JSON.stringify(state);if(signature===navigationSignature)return;
+    navigationSignature=signature;
+    try{await Records.navigationState({...state,revision:++navigationRevision});root.classList.add('native-navigation');}
+    catch(error){navigationSignature='';root.classList.remove('native-navigation');console.error('Native navigation unavailable',error);}
+  });
+}
 const reserved=Array.from({length:61},(_,i)=>({id:41000+i}));
 // A pointer overlay alone does not stop a focused field's keyboard shortcuts.
 for(const type of ['click','pointerdown','keydown','beforeinput','input','change','submit'])document.addEventListener(type,event=>{
@@ -41,6 +58,7 @@ function setBusy(value){
   }
   overlay.hidden=!value;
   overlay.style.display=value?'grid':'none';
+  navigationChanged();
 }
 async function shareJSON(raw,name){
   const file=await Filesystem.writeFile({path:'tourdy-exports/'+name,directory:Directory.Cache,data:raw,encoding:Encoding.UTF8,recursive:true});
@@ -56,7 +74,7 @@ async function boot(){
     }
   }
   const records=createFileRecords(Records,loaded.data,legacy);
-  window.TourdyNative={records,transactionBusy:false,transactionComputing:false,setBusy,saved,shareJSON,
+  window.TourdyNative={records,transactionBusy:false,transactionComputing:false,setBusy,saved,shareJSON,navigationChanged,
     requestNotifications:async()=>{const permission=await LocalNotifications.requestPermissions();lastAlarms='';return permission.display==='granted';},
     vibrate:()=>Haptics.impact({style:'LIGHT'}).catch(()=>{}),
     notifyArrival:async event=>{
@@ -70,6 +88,9 @@ async function boot(){
   // Functions declared by classic scripts remain authoritative; no second tab state.
   const state=window.TourdyReadState();
   await saved(state);
+  new MutationObserver(navigationChanged).observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['hidden','open','data-theme']});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',navigationChanged);
+  navigationChanged();
   App.addListener('appStateChange',async({isActive})=>{
     if(isActive&&!window.TourdyNative.transactionBusy)window.TourdyResume();
     else if(!isActive)await window.TourdyFlush();

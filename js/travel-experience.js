@@ -76,18 +76,20 @@ const RT=()=>{const T=tr();return T.routes=Object.assign({act:null,done:{},legs:
 const plName=(w,id)=>w==='kr'?(KRM[id]||[])[1]:(NAT[id]||[])[2];
 function goldLeg(w,f,t){const R=RT(),a=R.act;if(a&&ROUTE[a.id]&&ROUTE[a.id].w===w&&ROUTE[a.id].stops[a.i]===f&&ROUTE[a.id].stops[a.i+1]===t)return true;return false}
 const goldHist=(w,f,t)=>RT().legs.includes(w+':'+f+'>'+t);
-function startRoute(id){const r=ROUTE[id],T=tr(),K=kr(T),R=RT();if(!r||!inSeason(r))return;const at=r.w==='kr'?K.at:T.at;if(at!==r.stops[0]||R.act)return;
+function startRoute(id){if(window.TourdyNative?.transactionBusy)return;const r=ROUTE[id],T=tr(),K=kr(T),R=RT();if(!r||!inSeason(r))return;const at=r.w==='kr'?K.at:T.at;if(at!==r.stops[0]||R.act||(r.w==='kr'?K.to:T.to))return;
   R.act={id,i:0};if(r.w==='kr'){K.to=r.stops[1];K.final=null;K.cls=1;K.goal=null;K.hold=false;T.to=null}else{T.to=r.stops[1];T.final=null;T.cls=2;T.goal=null;T.hold=false;kr(T).to=null}
   sp(T).to=null;save();vibe();if(checkArrival())ding();renderTravel();window.scrollTo({top:0,behavior:'smooth'})}
 function stopRoute(w){const R=RT();if(R.act&&ROUTE[R.act.id]&&ROUTE[R.act.id].w===w)R.act=null}
 let rtArm=null;
 function renderRoutes(w){const el=$(w==='kr'?'krRoutes':'tvRoutes');if(!el)return;const T=tr(),K=kr(T),R=RT(),at=w==='kr'?K.at:T.at,busy=w==='kr'?!!K.to:!!T.to;
   el.innerHTML=`<div class="panel-head"><h2>특별 루트</h2><span class="note">정해진 출발지에서만 · 모든 구간 최상급 금색 표</span></div><div class="rts">${ROUTES.filter(r=>r.w===w).map(r=>{
-    const act=R.act&&R.act.id===r.id,done=R.done[r.id],open=inSeason(r),here=at===r.stops[0]&&open,i=act?R.act.i:-1;
+    const act=R.act&&R.act.id===r.id,done=R.done[r.id],open=inSeason(r),here=at===r.stops[0]&&open,canStart=here&&!R.act&&!busy,i=act?R.act.i:-1;
     const chain=r.stops.map((s,k)=>`<span class="${act&&k<=i?'on':done?'dn':''}${act&&k===i+1?' nx':''}">${plName(w,s)}</span>`).join('<i>›</i>');
-    const st=act?`<span class="rt-st on">진행 중 · ${i}/${r.stops.length-1}</span>`:done?`<span class="rt-st dn">완주 · ${ymd(pk(done))}</span>`:!open?`<span class="rt-st">${seasonLbl(r)}에만 열려요</span>`:here?`<span class="rt-st ok">지금 출발 가능</span>`:`<span class="rt-st">${plName(w,r.stops[0])}에서만 출발</span>`;
-    const btn=act?`<button class="secondary${rtArm===r.id?' del arm':''}" data-rtstop="${r.id}">${rtArm===r.id?'정말 그만두기':'루트 그만두기'}</button>`:here&&!R.act&&!busy?`<button class="primary gold-btn" data-rtgo="${r.id}">출발</button>`:'';
-    return `<div class="rt${act?' act':''}${done?' done':''}${here&&!act?' here':''}${r.season?' ss-'+seasonLbl(r):''}"><div class="rt-h"><span class="rt-title"><span class="rt-icon">${routeIcon(r.id)}</span><b>${r.name}${r.season?`<em class="rt-ss">${seasonLbl(r)} 한정</em>`:''}</b></span><div class="rt-side">${st}${btn}</div></div><p>${r.desc}</p><div class="rt-chain">${chain}</div></div>`}).join('')}</div>`}
+    const st=act?`<span class="rt-st on">진행 중 · ${i}/${r.stops.length-1}</span>`:canStart?`<span class="rt-st ok">지금 출발 가능</span>`:done?`<span class="rt-st dn">완주 · ${ymd(pk(done))}</span>`:!open?`<span class="rt-st">${seasonLbl(r)}에만 열려요</span>`:here?`<span class="rt-st">이동을 마친 뒤 출발</span>`:`<span class="rt-st">${plName(w,r.stops[0])}에서만 출발</span>`;
+    const btn=act?`<button class="secondary${rtArm===r.id?' del arm':''}" data-rtstop="${r.id}">${rtArm===r.id?'정말 그만두기':'루트 그만두기'}</button>`:'';
+    return `<div class="rt${act?' act':''}${done?' done':''}${canStart?' here':''}${r.season?' ss-'+seasonLbl(r):''}"${canStart?` role="button" tabindex="0" data-rtgo="${r.id}" aria-label="${esc(r.name)} 출발"`:''}><div class="rt-h"><span class="rt-title"><span class="rt-icon">${routeIcon(r.id)}</span><b>${r.name}${r.season?`<em class="rt-ss">${seasonLbl(r)} 한정</em>`:''}</b></span><div class="rt-side">${st}${btn}</div></div><p>${r.desc}</p><div class="rt-chain">${chain}</div></div>`}).join('')}</div>`}
+
+document.addEventListener('keydown',e=>{const card=e.target.closest('[data-rtgo]');if(card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();card.click()}});
 document.addEventListener('click',e=>{const g=e.target.closest('[data-rtgo]');if(g){startRoute(g.dataset.rtgo);return}
   const s=e.target.closest('[data-rtstop]');if(s){const id=s.dataset.rtstop;if(rtArm===id){RT().act=null;rtArm=null;save()}else rtArm=id;renderTravel()}});
 /* ---------- 경유 (선택) ---------- */
@@ -433,4 +435,4 @@ $('tvSearch').addEventListener('input',e=>{tvQuery=e.target.value;renderTravelPi
 $('tvList').addEventListener('click',e=>{const b=e.target.closest('[data-dest]');if(!b)return;const T=tr();
   stopRoute('w');T.to=b.dataset.dest;T.final=null;T.cls=0;T.goal=null;if(TOPT().via){const v=pickViaW(T.at,T.to);if(v){T.final=T.to;T.to=v}}sp(T).to=null;kr(T).to=null;tvPick=false;tvArm=false;save();
   T.hold=true;save();renderTravel();openCheckin('w')});
-function syncTravelTab(){const on=tr().on;$('tabTravel').hidden=!on;if(!on&&tab==='travel')setTab('home')}
+function syncTravelTab(){const on=tr().on;$('tabTravel').hidden=!on;if(!on&&tab==='travel')setTab('home');window.TourdyNative?.navigationChanged?.()}

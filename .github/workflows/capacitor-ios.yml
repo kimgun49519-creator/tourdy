@@ -32,21 +32,26 @@ jobs:
         run: |
           xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme App -destination 'generic/platform=iOS Simulator' -derivedDataPath capacitor-build CODE_SIGNING_ALLOWED=NO build > capacitor-build.log 2>&1 || { tail -n 180 capacitor-build.log; exit 1; }
       - name: Launch on iPhone simulator
+        timeout-minutes: 8
         run: |
           xcrun simctl list devices available --json > /tmp/devices.json
           DEVICE=$(python3 -c "import json; print(next(d['udid'] for runtime, rows in json.load(open('/tmp/devices.json'))['devices'].items() if 'iOS-' in runtime for d in rows if d['name'].startswith('iPhone')))")
+          echo "TOURDY_SIMULATOR=$DEVICE" >> "$GITHUB_ENV"
           xcrun simctl boot "$DEVICE"
           xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl install "$DEVICE" capacitor-build/Build/Products/Debug-iphonesimulator/App.app
-          xcrun simctl io "$DEVICE" recordVideo --codec=h264 tourdy-intro.mp4 > intro-recording.log 2>&1 &
-          RECORD_PID=$!
-          xcrun simctl launch "$DEVICE" com.example.tourdy
-          sleep 4
-          kill -INT "$RECORD_PID"
-          wait "$RECORD_PID" || true
-          sleep 6
-          xcrun simctl io "$DEVICE" screenshot capacitor-iphone.png
-          xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme TourdyNavigationTests -destination "platform=iOS Simulator,id=$DEVICE" -parallel-testing-enabled NO -derivedDataPath capacitor-build -resultBundlePath navigation-tests.xcresult CODE_SIGNING_ALLOWED=NO test > navigation-tests.log 2>&1 || { tail -n 160 navigation-tests.log; exit 1; }
+          python3 scripts/record-ios-intro.py "$DEVICE"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tourdy-intro-preview
+          path: |
+            tourdy-intro.mp4
+            capacitor-iphone.png
+            intro-recording.log
+      - name: Test repeated system TabView selections
+        timeout-minutes: 7
+        run: |
+          xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme TourdyNavigationTests -destination "platform=iOS Simulator,id=$TOURDY_SIMULATOR" -parallel-testing-enabled NO -derivedDataPath capacitor-build -resultBundlePath navigation-tests.xcresult CODE_SIGNING_ALLOWED=NO test > navigation-tests.log 2>&1 || { tail -n 160 navigation-tests.log; exit 1; }
       - uses: actions/upload-artifact@v4
         if: always()
         with:

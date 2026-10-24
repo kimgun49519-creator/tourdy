@@ -86,7 +86,7 @@ function writeCandidate(state,options){
   const native=window.TourdyNative;
   if(native.transactionBusy)return Promise.resolve(false);
   native.setBusy(true);
-  return stateStore.writeAsync(state,options).finally(()=>native.setBusy(false));
+  return stateStore.writeAsync(state,options).then(ok=>{if(ok)native.saved(state);return ok;}).finally(()=>native.setBusy(false));
 }
 function durableArrival(check){
   const native=window.TourdyNative;

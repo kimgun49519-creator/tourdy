@@ -12,6 +12,10 @@ let alarms=Promise.resolve();
 let lastAlarms='';
 let durableState=null;
 const reserved=Array.from({length:61},(_,i)=>({id:41000+i}));
+// A pointer overlay alone does not stop a focused field's keyboard shortcuts.
+for(const type of ['click','pointerdown','keydown','beforeinput','input','change','submit'])document.addEventListener(type,event=>{
+  if(window.TourdyNative?.transactionBusy){event.preventDefault();event.stopImmediatePropagation();}
+},true);
 async function saved(state){
   durableState=JSON.parse(JSON.stringify(state));
   const notices=timerNotifications(durableState);

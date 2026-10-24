@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import os
 
 final class TourdyNavigationModel: ObservableObject {
     @Published var selected = "home"
@@ -50,7 +51,7 @@ struct TourdyNativeTabs: View {
                 TourdyIntro { withAnimation(.easeOut(duration: 0.22)) { introVisible = false } }
                     .transition(.opacity).zIndex(1)
             }
-        }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     @ViewBuilder private var systemTabs: some View {
         if #available(iOS 16.0, *) {
@@ -62,6 +63,7 @@ struct TourdyNativeTabs: View {
         TabView(selection: Binding(get: { model.selected }, set: { model.select($0) })) {
             ForEach(tabs.filter { $0.0 != "travel" || model.travelEnabled }, id: \.0) { tab in
                 TourdyTabPane(bridge: model.bridgeController, active: model.selected == tab.0)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea(edges: .bottom)
                     .tabItem {
                         if tab.0 == "stats" { Image(uiImage: dashboardImage); Text(tab.1) }
@@ -90,23 +92,43 @@ private struct TourdyTabPane: UIViewControllerRepresentable {
     let active: Bool
     func makeUIViewController(context: Context) -> PaneController { PaneController() }
     func updateUIViewController(_ pane: PaneController, context: Context) {
-        if active { pane.attach(bridge) } else { pane.detach() }
+        pane.configure(bridge: bridge, active: active)
     }
     static func dismantleUIViewController(_ pane: PaneController, coordinator: ()) { pane.detach() }
 }
 
 private final class PaneController: UIViewController {
     private weak var hosted: TourdyBridgeViewController?
-    func attach(_ bridge: TourdyBridgeViewController) {
+    private var active = false
+    func configure(bridge: TourdyBridgeViewController, active: Bool) {
+        hosted = bridge
+        self.active = active
+        if active { attachIfVisible() } else { detach() }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        attachIfVisible()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        attachIfVisible()
+    }
+    private func attachIfVisible() {
+        guard active, isViewLoaded, view.window != nil, let bridge = hosted else { return }
         guard bridge.parent !== self else { return }
         bridge.willMove(toParent: nil)
         bridge.view.removeFromSuperview(); bridge.removeFromParent()
-        hosted = bridge
         addChild(bridge)
-        bridge.view.frame = view.bounds
-        bridge.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        bridge.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bridge.view)
+        NSLayoutConstraint.activate([
+            bridge.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bridge.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bridge.view.topAnchor.constraint(equalTo: view.topAnchor),
+            bridge.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         bridge.didMove(toParent: self)
+        Logger(subsystem: "app.tourdy.navigation", category: "content").info("Attached retained web content to visible tab")
     }
     func detach() {
         // Old-pane teardown must not remove a bridge already moved to a new pane.

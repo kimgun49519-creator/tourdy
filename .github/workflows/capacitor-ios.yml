@@ -45,9 +45,9 @@ jobs:
         with:
           name: tourdy-intro-preview
           path: |
-            tourdy-intro.mp4
+            intro-frames/*.png
             capacitor-iphone.png
-            intro-recording.log
+            native-runtime.log
       - name: Test repeated system TabView selections
         timeout-minutes: 7
         run: |

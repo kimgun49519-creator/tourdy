@@ -9,7 +9,10 @@ syncTravelTab();
 if(S.plan||(S.running&&S.running.plan))homeMode='plan';setMode(homeMode);
 resetRecForm();if(stateStore.status().type==='recovered')saveStoredSnapshot();renderAll();renderExtras();renderWelcome();maybeReport();
 let lastDay=dk(today0()),n=0;
-setInterval(()=>{tick();if(++n%30===0&&tab==='stats')renderStats();
+setInterval(()=>{if(window.TourdyNative?.transactionBusy)return;tick();if(++n%30===0&&tab==='stats')renderStats();
   if(n%10===0&&tr().on){if(checkArrival())ding();if(tab==='travel'){renderTravelTop();if(tr().world!=='earth')renderWorld()}}
   if(dk(today0())!==lastDay){lastDay=dk(today0());view=today0();renderAll();maybeReport()}},1000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!window.TourdyNative?.transactionBusy)tick()});
+window.TourdyReadState=()=>S;
+window.TourdyFlush=()=>stateStore.flush ? stateStore.flush() : Promise.resolve();
+window.TourdyResume=()=>{if(window.TourdyNative?.transactionBusy)return;checkPlan();checkArrival();renderAll();if(tab==='travel')renderTravel()};

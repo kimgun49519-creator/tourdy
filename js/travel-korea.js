@@ -92,6 +92,7 @@ const krDone=(K,id)=>K.done.some(d=>d.c===id);
 const worldOpen=T=>kr(T).done.length>=KR.length-1||(TRAVEL_TEST&&!!T.worldTest);
 let krG=0,krQ='',krArm=false;
 function checkKorea(){
+  if(globalThis.TourdyNative&&!globalThis.TourdyNative.transactionComputing)return durableArrival(checkKorea);
   const T=tr(),K=kr(T);if(!T.on||!K.to||!KRM[K.to]||K.hold)return false;const c=krTC(K);
   if(totalMiles()-T.used<c)return false;
   const ev={w:'kr',f:K.at,t:K.to,gold:goldLeg('kr',K.at,K.to),cls:K.cls||0};T.used+=c;K.km+=krKm(K.at,K.to);if(SECKM[K.to]){K.sec=K.sec||[];if(!secVisited(K.sec,K.to))K.sec.push({c:K.to,d:dk(today0())})}else if(K.to!==K.home){const ex=K.done.find(d=>d.c===K.to);if(ex){if(K.cls)ex.tier=2}else K.done.push({c:K.to,d:dk(today0()),tier:K.cls?2:0})}(T.krNews=T.krNews||[]).push(K.to);K.path.push(K.to);K.at=K.to;K.to=null;postArrive(ev);save();arrQ(ev);return true;

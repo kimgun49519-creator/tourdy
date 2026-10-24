@@ -39,7 +39,7 @@
     return state;
   }
 
-  function create({ getStorage, key, legacyKey, normalize, seed, onStatus = () => {} }) {
+  function create({ getStorage, key, legacyKey, normalize, seed, onStatus = () => {}, commitBatch }) {
     const previousKey = key + '.lastGood';
     const damagedKey = key + '.damaged';
     let expected;
@@ -120,7 +120,34 @@
       }
     }
 
-    return { read, write, validate, previousKey, damagedKey, status: () => lastStatus };
+    let pending = Promise.resolve();
+    function writeAsync(state, {replace = false} = {}) {
+      let raw;
+      try {validate(state);raw=JSON.stringify(state);decode(raw);}
+      catch(error){report('failed',error.name);return Promise.resolve(false);}
+      const perform = async () => {
+        try {
+          if (!loaded) {report('unavailable');return false;}
+          const current=getStorage().getItem(key);
+          if(current!==expected&&!replace){report('conflict');return false;}
+          if(unreadable&&!replace&&!canRecover){report('damaged');return false;}
+          const changes={};
+          if(current!==null&&current!==raw){
+            let valid=false;try{decode(current);valid=true;}catch(_){}
+            changes[valid?previousKey:damagedKey]=current;
+          }
+          changes[key]=raw;
+          report('saving');
+          await commitBatch(changes);
+          expected=raw;unreadable=false;report('ok');
+          return true;
+        } catch(error){report(error.code==='CONFLICT'?'conflict':'failed',error.name);return false;}
+      };
+      const result=pending.then(perform);
+      pending=result.then(()=>{},()=>{});
+      return result;
+    }
+    return { read, write, ...(commitBatch ? {writeAsync,flush:()=>pending} : {}), validate, previousKey, damagedKey, status: () => lastStatus };
   }
   return { create, validate };
 });

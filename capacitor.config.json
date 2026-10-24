@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.tourdy",
+  "appName": "TOURDY",
+  "webDir": "native-dist",
+  "ios": { "path": "capacitor/ios", "scheme": "App", "contentInset": "never" },
+  "plugins": { "LocalNotifications": { "presentationOptions": [] } }
+}

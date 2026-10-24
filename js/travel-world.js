@@ -74,6 +74,7 @@ function curStreak(){const pd=perDay(true);let d=today0(),n=0;if(!(pd[dk(d)]&&pd
 const studyFor=miles=>fmtH(Math.max(0,miles)*MILE_MS);
 function checkArrival(){return checkEarth()||checkSpace()||checkKorea()}
 function checkEarth(){
+  if(globalThis.TourdyNative&&!globalThis.TourdyNative.transactionComputing)return durableArrival(checkEarth);
   const T=tr();if(!T.on||!T.to||T.hold)return false;const cost=wTC(T);
   if(totalMiles()-T.used<cost)return false;
   const ev={w:'w',f:T.at,t:T.to,gold:goldLeg('w',T.at,T.to),cls:T.cls||0};T.used+=cost;const km=kmBetween(T.at,T.to);T.km+=km;if(km>=5000)T.long=true;if(SECWM[T.to]){T.sec=T.sec||[];if(!secVisited(T.sec,T.to))T.sec.push({c:T.to,d:dk(today0())})}else{const tv=T.cls||0,ex=T.stamps.find(s=>s.c===T.to);if(ex){if(tv>(ex.tier||0))ex.tier=tv}else T.stamps.push({c:T.to,d:dk(today0()),tier:tv})}

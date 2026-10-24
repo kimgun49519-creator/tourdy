@@ -34,7 +34,7 @@ const pad=n=>String(n).padStart(2,'0');
 const dk=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const pk=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
 const addD=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
-const dayH=()=>{try{const v=JSON.parse(localStorage.getItem('studyplanner.v2')||'{}').dayStart;return Number.isInteger(v)?v:0}catch(e){return 0}};
+const dayH=()=>{try{const v=JSON.parse((window.TourdyNative?.records.storage||localStorage).getItem('studyplanner.v2')||'{}').dayStart;return Number.isInteger(v)?v:0}catch(e){return 0}};
 let DS=dayH(); // 하루의 시작 시각(시). 이 시각 전은 전날로 친다
 const today0=()=>{const d=new Date(Date.now()-DS*36e5);d.setHours(0,0,0,0);return d};
 const logicalDay=t=>{const d=new Date(t-DS*36e5);d.setHours(0,0,0,0);return d};
@@ -61,9 +61,14 @@ function norm(s){
   s.repeats=s.repeats||[];s.dday=s.dday||null;return s;
 }
 let storageRecoveryNotice=false;
-const stateStore=TourdyStorage.create({getStorage:()=>localStorage,key:KEY,legacyKey:OLD,normalize:norm,seed,onStatus:showStorageStatus});
+const stateStore=TourdyStorage.create({getStorage:()=>window.TourdyNative?.records.storage||localStorage,key:KEY,legacyKey:OLD,normalize:norm,seed,onStatus:showStorageStatus,commitBatch:window.TourdyNative?.records.commit});
 function showStorageStatus(status){
   const el=$('storageNotice'),msg=$('storageMessage');if(!el)return;
+  if(status.type==='saving'){
+    el.hidden=false;msg.textContent='이 기기에 기록을 저장하는 중이에요…';
+    ['storageRetry','storageReload','storageOriginal','storageDismiss'].forEach(id=>$(id).hidden=true);
+    return;
+  }
   if(status.type==='recovered')storageRecoveryNotice=true;
   if(status.type==='ok'&&storageRecoveryNotice)status={type:'recovered'};
   const messages={unavailable:'저장 공간에 접근하지 못했어요. 이 화면의 기록은 아직 저장되지 않았어요. 기록을 내려받은 뒤 다시 열어 주세요.',failed:'기록을 저장하지 못했어요. 저장 공간을 확인하고 다시 시도해 주세요. 앱을 닫기 전에 현재 기록을 내려받을 수 있어요.',damaged:'저장된 기록을 읽지 못했어요. 원본을 보호하려고 자동 저장을 멈췄어요. 설정의 복원 기능을 이용하거나 원본 기록을 내려받아 보관해 주세요.',recovered:'최근 정상 저장본으로 기록을 복구했어요. 읽지 못한 원본은 따로 보관합니다.',conflict:'다른 창에서 기록이 바뀌었어요. 덮어쓰기를 막았습니다. 현재 기록을 내려받은 뒤 이 창을 새로고침해 주세요.'};
@@ -73,15 +78,40 @@ function showStorageStatus(status){
   $('storageOriginal').hidden=!['damaged','recovered'].includes(status.type);
   $('storageDismiss').hidden=status.type!=='recovered';
 }
-function downloadState(raw,name){const url=URL.createObjectURL(new Blob([raw],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function downloadState(raw,name){if(window.TourdyNative){window.TourdyNative.shareJSON(raw,name).catch(()=>toast('백업 파일을 내보내지 못했어요. 다시 시도해 주세요.'));return}const url=URL.createObjectURL(new Blob([raw],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function load(){return stateStore.read()}
-function saveStoredSnapshot(){return stateStore.write(S)}
+function saveStoredSnapshot(){return stateStore.writeAsync ? stateStore.writeAsync(S) : stateStore.write(S)}
+function writeCandidate(state,options){
+  if(!stateStore.writeAsync)return stateStore.write(state,options);
+  const native=window.TourdyNative;
+  if(native.transactionBusy)return Promise.resolve(false);
+  native.setBusy(true);
+  return stateStore.writeAsync(state,options).finally(()=>native.setBusy(false));
+}
+function durableArrival(check){
+  const native=window.TourdyNative;
+  if(native.transactionBusy||['failed','conflict','damaged','unavailable'].includes(stateStore.status().type))return false;
+  const previous=S,candidate=JSON.parse(JSON.stringify(S)),originalSave=save,originalQueue=arrQ,events=[];
+  let arrived=false;
+  try {
+    native.transactionComputing=true;S=candidate;save=()=>true;arrQ=event=>events.push(event);
+    arrived=check();
+  } finally {S=previous;save=originalSave;arrQ=originalQueue;native.transactionComputing=false;}
+  if(!arrived)return false;
+  writeCandidate(candidate).then(ok=>{
+    if(!ok)return;
+    S=candidate;events.forEach(event=>arrQ(event));
+    if(typeof ding==='function')ding();
+    if(tab==='travel')renderTravel();renderFirstTripNotice();native.saved(S);
+  });
+  return false;
+}
 $('storageRetry').onclick=()=>save();
 $('storageReload').onclick=()=>location.reload();
 $('storageDownload').onclick=()=>downloadState(JSON.stringify(S),'tourdy-current-records.json');
 $('storageDismiss').onclick=()=>{storageRecoveryNotice=false;$('storageNotice').hidden=true};
-$('storageOriginal').onclick=()=>{try{const raw=localStorage.getItem(stateStore.damagedKey)||localStorage.getItem(KEY);if(raw)downloadState(raw,'tourdy-original-records.json')}catch(e){showStorageStatus({type:'unavailable'})}};
-function save(){const stored=saveStoredSnapshot();if(typeof bonusCheck==='function'){clearTimeout(save.bt);save.bt=setTimeout(()=>{travelWatch();bonusCheck();if(!S.running)showArrival();renderFirstTripNotice()},400)}return stored}
+$('storageOriginal').onclick=()=>{try{const storage=window.TourdyNative?.records.storage||localStorage;const raw=storage.getItem(stateStore.damagedKey)||storage.getItem(KEY);if(raw)downloadState(raw,'tourdy-original-records.json')}catch(e){showStorageStatus({type:'unavailable'})}};
+function save(){const stored=saveStoredSnapshot();if(typeof bonusCheck==='function'){clearTimeout(save.bt);save.bt=setTimeout(()=>{if(window.TourdyNative?.transactionBusy)return;travelWatch();bonusCheck();if(!S.running)showArrival();renderFirstTripNotice()},400)}if(stored?.then)stored.then(ok=>{if(ok&&window.TourdyNative){const raw=window.TourdyNative.records.storage.getItem(KEY);if(raw)window.TourdyNative.saved(JSON.parse(raw));}});return stored}
 let S=load();
 TourdyRewards.initialize(S);
 // A valid source is written only after an actual change; damaged input is never seeded over.

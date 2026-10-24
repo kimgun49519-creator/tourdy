@@ -1,27 +1,56 @@
-# TOURDY native iOS — first migration build
+# TOURDY — 기존 앱을 기준으로 한 네이티브 이식
 
-The compiled target is `Tourdy/NativeApp.swift`: SwiftUI screens, a system TabView and native Toggles. No web view, HTML, JavaScript runtime, remote fonts or website server is part of this target. Resources/places.json contains existing public domestic, world and space destinations.
+이 프로젝트는 SwiftUI 화면, 기본 TabView, 기본 Toggle, Codable 파일 저장을 사용합니다. 앱 실행에 WebKit·HTML·JavaScript·웹 서버를 사용하지 않습니다. 기존 웹 소스는 브라우저용으로 저장소에 그대로 유지되며 iOS 타깃에는 들어가지 않습니다.
 
-## Run on a Mac
+## Mac에서 실행
 
-Open Tourdy.xcodeproj using Xcode 26+ and an iOS 26+ simulator or device. Choose your signing team. Keep the SAME bundle identifier as your previous install to retain its app container. Do not uninstall the old app. Source resource preparation, when working from Git, is `node scripts/build-ios.cjs` from the repository root; the downloadable ZIP already includes resources.
+1. ZIP을 새 폴더에 풀고 Tourdy.xcodeproj를 엽니다. Git에서 받았다면 먼저 저장소 루트에서 `node scripts/build-ios.cjs`로 리소스와 프로젝트를 준비합니다.
+2. Tourdy 타깃의 Signing & Capabilities에서 본인 Team을 선택합니다.
+3. 이전 설치와 같은 Bundle Identifier를 유지합니다. 기존 앱은 삭제하지 않습니다.
+4. 연결된 아이폰 또는 iOS 26 이상 시뮬레이터를 선택하고 실행합니다. Xcode 26 이상이 필요합니다.
+5. 시뮬레이터에서 Command-U로 네이티브 모델 테스트를 실행할 수 있습니다.
 
-## Implemented in native Swift
+## 이번에 연결한 기능
 
-- Create subjects, start/finish study, retain running timestamps across app reopening.
-- Tasks with system switches, cumulative/per-subject statistics and session history.
-- Completed study earns miles (6 minutes per mile, daily eight-hour cap, daily/streak bonuses).
-- Domestic/world/space destinations, completion gates and space zone gates, paid journey reservation, balance deduction and arrival stamps.
-- Cumulative 30-minute first reward only after session completion; domestic premium gift with origin selection, permanent dated ticket and three next destinations.
-- Atomic Codable JSON writes in Application Support. Failed writes do not publish candidate state or consume rewards. Corrupt records block writes instead of resetting them.
-- Native backup export through ShareLink; dark mode setting.
+- 홈의 공부 시작/프리셋 전환, 둥근 패널, 과목별 색·아이콘·목표와 타임라인
+- 자유 공부, 예약 공부, 뽀모도로, 휴식·딴짓, 일시정지·재개, 시간 연장, 세션 메모
+- 날짜별 할 일, 미완료 이월, 반복 할 일, 교재 진도, 계획/실제 비교
+- 주간·월간 시간, 잔디, 과목별 합계, 타임라인
+- 기존 국내 시군 161개 지도 경계와 세계 지도 데이터의 SwiftUI Canvas 렌더링
+- 기존 목적지와 비밀 목적지, 세계/우주 잠금, 우주 구역 잠금
+- 국내 기차·버스·배, 세계 항공·야간열차·크루즈 분류, 좌석 등급과 마일리지
+- 파란 출발 안내판, 금색 티켓, 18개 특별 루트(계절 한정 7개 포함), 도장·카드·승차권 모아보기
+- 실제 공부 누적 30분 후 세션 종료 시 지급하는 일회성 국내 무료 최고급 티켓
+- 첫 여행 출발지 선택, 날짜와 기념 문구 보관, 다음 목적지 3곳
+- 도착 화면, 엽서 메모, 기본 도착 효과음·기기 진동·음성 안내
+- 목표·알림·테마·하루 시작 시각·주 시작 요일·D-day·여행·소리·마일리지 설정
+- 네이티브 백업 내보내기/복원, 이전 웹앱 JSON 백업 가져오기
+- 저장 성공 후에만 후보 상태를 반영하는 원자적 파일 저장과 손상 기록 덮어쓰기 방지
 
-## Migration limits — not full feature parity
+## 기록 이전
 
-This is a new native implementation, not the complete web app feature set. Reservations/Pomodoro/rest timers, memo prompts, notifications/sounds/haptics, special/secret routes, world cabin classes beyond the prototype premium choice, maps, advanced planner/statistics, backup restore, and automatic migration/synchronization are not yet ported. Miles in this first native build are credited after completed sessions. Settings do not expose switches for unimplemented effects.
+이전 웹 화면 버전의 localStorage는 건드리지 않습니다. 새 기록은 Application Support/TourdyNative/state-v1.json에 저장됩니다. 자동으로 기존 웹 저장소를 읽지 않습니다.
 
-Web-wrapper localStorage is left untouched in the old WebKit data store. Native data uses a separate TourdyNative/state-v1.json. Old web records do NOT appear automatically; do not interpret the empty native screen as deletion. Export the old version before replacing it if you need a user-accessible backup. Native backup JSON is a different format.
+이전 버전에서 백업 JSON을 내보낸 뒤 새 버전의 설정 → 백업 파일 가져오기 또는 복사한 백업 붙여넣기를 사용합니다. 가져오기 전에 현재 기록은 before-import.json, 가져온 원본은 import-source.json으로 별도 보관합니다. 복원 실패 시 현재 상태를 바꾸지 않습니다.
 
-## Validation
+기본 과목·공부 기록·진행 중 타이머·할 일·방문 도장·마일리지·첫 보상은 변환합니다. 일부 확장 설정, 과거의 개별 이동 로그와 사용자 정의 여권 정보는 원본 보관만 하며 아직 모두 변환하지 않습니다. 가져온 도장의 출발지는 원본에 이동 기록이 없으면 이전 방문 순서로 추정될 수 있습니다.
 
-On Windows, destination generation and target/resource checks pass. **Swift compilation and native behavior have not been verified in Xcode.** Before release, compile on Mac; test rapid tab switching, rotation, VoiceOver, keyboard, dark mode, interrupted writes, running timer force-close/relaunch, midnight sessions, exactly 30 minutes at session end, one-time gift, paid arrival without duplicate charge, world/space locks and stamp persistence. Install and launch with airplane mode already enabled to verify first-launch offline behavior. No native platform runtime result is claimed by the Node tests.
+## 완료로 간주하지 않은 부분
+
+- 기존 화면과의 아이폰/iPad 시각 대조 및 접근성·회전·키보드 검사
+- PIP, 경유 수속 흐름, 지도 이동 경로 재생·터치 확대
+- 여권 표지 꾸미기/등급 전체 화면, 히든 업적 전체 화면, 완주 인증서, 연도별 여행 회고 화면
+- 기존 합성 도착음과 표 찢기 연출의 정확한 재현
+- 반복 할 일의 {n} 증가 규칙, 교재의 임의 강·회독별 체크 편집, 일부 고급 통계
+- 기존 백업의 모든 확장 항목 자동 변환
+- 기기 간 동기화
+
+기능 이름이 같아도 모든 동작과 모양이 기존 버전과 동일하게 검증된 상태는 아닙니다. 이 파일을 전체 이식 완료 또는 출시 준비 완료로 표시하지 않습니다.
+
+## 검사
+
+Node 검사는 리소스/지도 변환과 웹 버전 회귀를 검사합니다. Swift 소스는 별도 문법 파서로 검사합니다. 이 둘은 Swift 컴파일과 실제 실행 검사를 대신하지 않습니다.
+
+GitHub Actions의 Native iOS 워크플로는 macOS에서 서명 없이 시뮬레이터용 앱과 테스트를 빌드하고, XCTest를 실행하도록 구성돼 있습니다. 현재 실행 결과는 저장소 Actions에서 확인합니다. XCTest는 보상 시점, 휴식/수동 기록 제외, 저장 실패, 재실행 후 도장/마일리지, 중단 후 뽀모도로 복원을 검사합니다.
+
+실기기에서는 비행기 모드로 첫 실행 → 공부 → 첫 보상 → 일반 여행 → 도장 → 앱 강제 종료/재실행을 확인해야 합니다. OS가 앱을 중지하는 동안 화면을 계속 갱신하지 않으며 저장된 시각을 기준으로 복귀 후 계산합니다.

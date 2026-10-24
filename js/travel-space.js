@@ -47,6 +47,7 @@ const spDone=(P,id)=>P.done.some(d=>d.c===id);
 const zoneOpen=(P,z)=>z===0||SPACE.filter(s=>s[3]===z-1).every(s=>spDone(P,s[0]));
 let spArm=false,spZone=null;
 function checkSpace(){
+  if(globalThis.TourdyNative&&!globalThis.TourdyNative.transactionComputing)return durableArrival(checkSpace);
   const T=tr(),P=sp(T);if(!T.on||!P.to||!SPX[P.to])return false;const s=SPX[P.to];
   if(totalMiles()-T.used<s[4])return false;
   T.used+=s[4];if(!spDone(P,s[0]))P.done.push({c:s[0],d:dk(today0())});P.at=s[0];P.to=null;(T.spNews=T.spNews||[]).push(s[0]);save();return true;

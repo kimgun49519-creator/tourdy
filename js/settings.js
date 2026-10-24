@@ -30,7 +30,10 @@ function renderSet(){
   if(setPage==='goal')renderGoal();
   if(setPage==='theme')renderTheme();
   if(setPage==='notify'||setPage==='extra')document.querySelectorAll('[data-sw]').forEach(b=>{const [g,k]=b.dataset.sw.split('.');b.setAttribute('aria-checked',!!(g==='notify'?NF():EX())[k])});
-  if(setPage==='notify')$('pushNote').textContent=!('Notification' in window)?'이 기기·화면에서는 쓸 수 없어요':Notification.permission==='denied'?'브라우저에서 알림이 막혀 있어요':'다른 창을 보고 있을 때도 알려 줘요';
+  if(setPage==='notify'){
+    $('pushNote').textContent=window.TourdyNative?'앱을 닫아도 예약한 시작·종료 시각에 알려줘요':!('Notification' in window)?'이 기기·화면에서는 쓸 수 없어요':Notification.permission==='denied'?'브라우저에서 알림이 막혀 있어요':'다른 창을 보고 있을 때도 알려 줘요';
+    if(window.TourdyNative)document.querySelector('[data-sw="notify.push"] .sw-t').firstChild.textContent='기기 알림';
+  }
   if(setPage==='mile')renderMilePage();
   if(setPage==='sound')document.querySelectorAll('[data-snd]').forEach(b=>b.setAttribute('aria-checked',!!TSND()[b.dataset.snd]));
   if(setPage==='travel'){const o=TOPT();document.querySelectorAll('[data-topt]').forEach(b=>b.setAttribute('aria-checked',!!o[b.dataset.topt]));$('mapTheme').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mt===o.map));$('tvSwitch').setAttribute('aria-checked',tr().on);$('tvStyle').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.sty===(tr().style||'stamp')))}
@@ -46,7 +49,10 @@ $('setItems').addEventListener('click',e=>{const b=e.target.closest('[data-go]')
 $('setBack').onclick=()=>openSet(null);
 document.querySelectorAll('[data-sw]').forEach(b=>b.addEventListener('click',async()=>{
   const [g,k]=b.dataset.sw.split('.'),cur=(g==='notify'?NF():EX()),v=!cur[k];
-  if(g==='notify'&&k==='push'&&v){try{if(!('Notification' in window))throw 0;const r=Notification.permission==='granted'?'granted':await Notification.requestPermission();if(r!=='granted'){toast('알림 권한을 받지 못했어요');renderSet();return}}catch(e){toast('이 기기·화면에서는 브라우저 알림을 쓸 수 없어요');renderSet();return}}
+  if(g==='notify'&&k==='push'&&v){try{
+    if(window.TourdyNative){if(!await window.TourdyNative.requestNotifications()){toast('알림 권한을 받지 못했어요');renderSet();return}}
+    else {if(!('Notification' in window))throw 0;const r=Notification.permission==='granted'?'granted':await Notification.requestPermission();if(r!=='granted'){toast('알림 권한을 받지 못했어요');renderSet();return}}
+  }catch(e){toast('알림을 켜지 못했어요. 기기 설정을 확인해 주세요.');renderSet();return}}
   if(g==='notify')S.notify=Object.assign(NF(),{[k]:v});else S.extra=Object.assign(EX(),{[k]:v});save();renderSet();renderExtras();renderTasks()}));
 $('testSound').onclick=()=>{audio();tone(SND.end);toast('알림음이 이렇게 울려요')};
 $('tvStyle').addEventListener('click',e=>{const b=e.target.closest('[data-sty]');if(!b)return;tr().style=b.dataset.sty;save();renderSet()});
@@ -136,14 +142,14 @@ $('bkCopy').onclick=()=>{const txt=JSON.stringify(S);
   navigator.clipboard.writeText(txt).then(()=>{$('bkMsg').textContent='클립보드에 복사했어요. 메모 앱 등에 붙여 넣어 보관하세요.'})
   .catch(()=>{$('bkText').value=txt;$('bkText').select();$('bkMsg').textContent='아래 칸의 내용을 직접 복사해 주세요.'})};
 let bkArm=false,wipeArm=false;
-$('wipeAll').onclick=()=>{if(!wipeArm){wipeArm=true;$('wipeAll').textContent='정말 모두 지우기';$('wipeAll').classList.add('arm');return}
-  const next=seed();TourdyRewards.initialize(next);if(!stateStore.write(next,{replace:true}))return;S=next;wipeArm=false;$('wipeAll').textContent='모든 기록 지우기';$('wipeAll').classList.remove('arm');setPage=null;setTab('home');renderAll();renderExtras();toast('모든 기록을 지웠어요')};
-$('bkRestore').onclick=()=>{
+$('wipeAll').onclick=async()=>{if(!wipeArm){wipeArm=true;$('wipeAll').textContent='정말 모두 지우기';$('wipeAll').classList.add('arm');return}
+  const next=seed();TourdyRewards.initialize(next);if(!await writeCandidate(next,{replace:true}))return;S=next;wipeArm=false;$('wipeAll').textContent='모든 기록 지우기';$('wipeAll').classList.remove('arm');setPage=null;setTab('home');renderAll();renderExtras();toast('모든 기록을 지웠어요')};
+$('bkRestore').onclick=async()=>{
   const err=m=>{$('bkErr').textContent=m;$('bkErr').hidden=false};$('bkErr').hidden=true;
   let d;try{d=JSON.parse($('bkText').value)}catch(e){return err('백업 내용을 읽지 못했어요. 복사한 내용을 그대로 붙여 넣어 주세요.')}
   try{TourdyStorage.validate(d);d=norm(d)}catch(e){return err('투어디 기록 형식이 아니거나 일부 기록이 손상됐어요. 기존 기록은 바꾸지 않았어요.')}
   if(!bkArm){bkArm=true;$('bkRestore').textContent='지금 기록을 덮어쓰고 복원';$('bkRestore').classList.add('del','arm');return}
-  TourdyRewards.initialize(d);if(!stateStore.write(d,{replace:true}))return err('복원 내용을 저장하지 못했어요. 기존 기록은 유지됩니다.');S=d;bkArm=false;$('bkRestore').textContent='복원하기';$('bkRestore').classList.remove('del','arm');$('bkText').value='';$('bkMsg').textContent='복원했어요.';renderAll();renderExtras();renderFirstTripNotice();
+  TourdyRewards.initialize(d);if(!await writeCandidate(d,{replace:true}))return err('복원 내용을 저장하지 못했어요. 기존 기록은 유지됩니다.');S=d;bkArm=false;$('bkRestore').textContent='복원하기';$('bkRestore').classList.remove('del','arm');$('bkText').value='';$('bkMsg').textContent='복원했어요.';renderAll();renderExtras();renderFirstTripNotice();
 };
 function hasEx(){return S.sessions.some(x=>x.ex)||S.repeats.some(x=>x.ex)||Object.values(S.tasks).some(l=>l.some(t=>t.ex))}
 document.addEventListener('click',e=>{if(!e.target.closest('[data-clear-ex]'))return;if(setPage==='ex')setPage=null;

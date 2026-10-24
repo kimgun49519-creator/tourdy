@@ -66,6 +66,7 @@ function openFirstTrip() {
 }
 
 function claimFirstTrip(world, id, origin) {
+  if(globalThis.TourdyNative?.transactionBusy)return false;
   if (!S.firstTrip || S.firstTrip.status !== 'ready' || S.running) return false;
   if (world !== 'kr' || !KRM[id] || !KR.some(x => x[0] === id)) return false;
   const next = JSON.parse(JSON.stringify(S));
@@ -93,12 +94,16 @@ function claimFirstTrip(world, id, origin) {
   const previous = S;
   try { S = next; postArrive(event); }
   finally { S = previous; }
-  if (!stateStore.write(next)) return false;
-  S = next;
-  $('firstTripDialog').close();
-  renderFirstTripNotice(); syncTravelTab(); setTab('travel');
-  arrQ(event);
-  return true;
+  const finish = ok => {
+    if(!ok)return false;
+    S = next;
+    $('firstTripDialog').close();
+    renderFirstTripNotice(); syncTravelTab(); setTab('travel');
+    arrQ(event);
+    return true;
+  };
+  const written=typeof writeCandidate==='function' ? writeCandidate(next) : stateStore.write(next);
+  return written?.then ? written.then(finish) : finish(written);
 }
 
 $('firstTripOpen').onclick = openFirstTrip;
@@ -106,9 +111,9 @@ $('firstTripLater').onclick = () => $('firstTripDialog').close();
 $('firstTripOrigin').onchange = firstTripOptions;
 $('firstTripSearch').oninput = firstTripOptions;
 $('firstTripDestination').onchange = firstTripPreview;
-$('firstTripForm').onsubmit = event => {
+$('firstTripForm').onsubmit = async event => {
   event.preventDefault();
-  if (!claimFirstTrip('kr', $('firstTripDestination').value, $('firstTripOrigin').value)) {
+  if (!await claimFirstTrip('kr', $('firstTripDestination').value, $('firstTripOrigin').value)) {
     $('firstTripError').textContent = '저장 상태를 확인해 주세요. 티켓은 사용하지 않았어요. 공부 중이라면 먼저 마쳐 주세요.';
     $('firstTripError').hidden = false;
   }

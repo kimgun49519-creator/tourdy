@@ -39,8 +39,17 @@ cycle settings. Permission is requested from Settings. Pausing or changing a
 timer updates pending alarms. iOS may suspend JavaScript in the background;
 elapsed time, travel arrivals and stamps are reconciled on reopening. Exact
 background travel-arrival alarms, widgets, Live Activities, and device sync are
-not implemented by this wrapper. The existing web navigation stays authoritative
-to avoid a second native tab-selection state.
+not implemented by this wrapper. A floating native SwiftUI navigation bar uses
+Apple Liquid Glass on iOS 26+, with a material fallback on older iOS versions.
+The existing web navigation stays authoritative: native taps request the original
+tab switch and selection is updated only from the resulting web state. Revisions
+prevent stale updates from replacing a newer selection. The native bar hides
+while a modal or the keyboard is open. Home uses a house, tasks a check box,
+dashboard a custom three-panel mark, travel an airplane and settings a gear.
+
+Special routes now depart by tapping the entire available gold-bordered card.
+Unavailable cards are not focusable departure controls, and departure rechecks
+season, starting city, active route and current journey before changing state.
 
 Automated JavaScript checks and the Original TOURDY iOS workflow validate this
 target separately from the archived SwiftUI prototype. Physical-device offline

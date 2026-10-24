@@ -17,5 +17,8 @@ test('installed app bundles the original markup, styling, data and script order'
   const config=JSON.parse(fs.readFileSync(path.join(root,'capacitor.config.json'),'utf8'));
   assert.equal(config.server,undefined);
   const native=fs.readFileSync(path.join(root,'capacitor/ios/App/App/SceneDelegate.swift'),'utf8');
-  assert.match(native,/TourdyBridgeViewController\(\)/);
+  assert.match(native,/TourdyTabsViewController\(\)/);
+  const tabs=fs.readFileSync(path.join(root,'native/ios/TourdyGlassBar.swift'),'utf8');
+  assert.match(tabs,/TabView\(selection:/);
+  assert.doesNotMatch(tabs,/\.glassEffect\(|\.ultraThinMaterial|Capsule\(\)/);
 });

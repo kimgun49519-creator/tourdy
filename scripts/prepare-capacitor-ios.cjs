@@ -12,7 +12,13 @@ for(const name of ['TourdyRecordsPlugin.swift','TourdyBridgeViewController.swift
 }
 fs.writeFileSync(path.join(app,'App.xcodeproj/project.pbxproj'),project.writeSync());
 const scene=path.join(app,'App/SceneDelegate.swift');
-fs.writeFileSync(scene,fs.readFileSync(scene,'utf8').replace('= CAPBridgeViewController()','= TourdyBridgeViewController()'));
+fs.writeFileSync(scene,fs.readFileSync(scene,'utf8').replace(/= (?:CAPBridgeViewController|TourdyBridgeViewController)\(\)/,'= TourdyTabsViewController()'));
+const plist=require(require.resolve('plist',{paths:[path.dirname(require.resolve('@capacitor/cli/package.json'))]}));
+const infoPath=path.join(app,'App/Info.plist');
+const info=plist.parse(fs.readFileSync(infoPath,'utf8'));
+delete info.UIMainStoryboardFile;
+for(const configs of Object.values(info.UIApplicationSceneManifest.UISceneConfigurations))for(const config of configs)delete config.UISceneStoryboardFile;
+fs.writeFileSync(infoPath,plist.build(info));
 const storyboard=path.join(app,'App/Base.lproj/Main.storyboard');
 fs.writeFileSync(storyboard,fs.readFileSync(storyboard,'utf8').replace('customClass="CAPBridgeViewController" customModule="Capacitor"','customClass="TourdyBridgeViewController" customModule="App"'));
 const packageFile=path.join(app,'CapApp-SPM/Package.swift');

@@ -27,6 +27,7 @@ jobs:
           node scripts/build-capacitor.cjs
           node node_modules/@capacitor/cli/bin/capacitor sync ios
           node scripts/prepare-capacitor-ios.cjs
+          node scripts/prepare-navigation-tests.cjs
       - name: Build original TOURDY for iPhone simulator
         run: |
           xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme App -destination 'generic/platform=iOS Simulator' -derivedDataPath capacitor-build CODE_SIGNING_ALLOWED=NO build > capacitor-build.log 2>&1 || { tail -n 180 capacitor-build.log; exit 1; }
@@ -40,6 +41,7 @@ jobs:
           xcrun simctl launch "$DEVICE" com.example.tourdy
           sleep 10
           xcrun simctl io "$DEVICE" screenshot capacitor-iphone.png
+          xcodebuild -project capacitor/ios/App/App.xcodeproj -scheme TourdyNavigationTests -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath capacitor-build -resultBundlePath navigation-tests.xcresult CODE_SIGNING_ALLOWED=NO test > navigation-tests.log 2>&1 || { tail -n 160 navigation-tests.log; exit 1; }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,3 +49,5 @@ jobs:
           path: |
             capacitor-build.log
             capacitor-iphone.png
+            navigation-tests.log
+            navigation-tests.xcresult

@@ -19,7 +19,7 @@ function navigationChanged(){
     navigationQueued=false;
     if(!window.TourdyNavigationState)return;
     const root=document.documentElement;
-    const state={...window.TourdyNavigationState(),locked:!!window.TourdyNative.transactionBusy,
+    const state={...window.TourdyNavigationState(),request:window.TourdyNative.navigationRequest||0,locked:!!window.TourdyNative.transactionBusy,
       modal:!!document.querySelector('dialog[open],.arr:not([hidden]),.sheet:not([hidden]),.modal:not([hidden])'),
       dark:root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches)};
     const signature=JSON.stringify(state);if(signature===navigationSignature)return;

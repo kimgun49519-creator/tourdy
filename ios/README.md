@@ -1,4 +1,8 @@
-# TOURDY — 기존 앱을 기준으로 한 네이티브 이식
+# TOURDY — 별도 SwiftUI 실험판 (주 앱 아님)
+
+현재 배포 준비 대상은 기존 TOURDY 화면과 기능을 유지하는 `capacitor/` 프로젝트입니다.
+이 폴더는 과거 SwiftUI 실험판을 보관한 것으로, 원본과 동일한 완성본으로 설치하면 안 됩니다.
+현재 iOS 작업 안내는 [Capacitor 안내](../capacitor/README.md)를 확인하세요.
 
 이 프로젝트는 SwiftUI 화면, 기본 TabView, 기본 Toggle, Codable 파일 저장을 사용합니다. 앱 실행에 WebKit·HTML·JavaScript·웹 서버를 사용하지 않습니다. 기존 웹 소스는 브라우저용으로 저장소에 그대로 유지되며 iOS 타깃에는 들어가지 않습니다.
 

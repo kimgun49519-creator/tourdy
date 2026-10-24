@@ -46,3 +46,22 @@ test('local alarms follow saved timer end and omit paused, disabled, and past al
   state.running=null;assert.deepEqual(timerNotifications(state,now),[]);
   state.notify.push=false;assert.deepEqual(timerNotifications(state,now),[]);
 });
+
+test('travel arrival publishes stamps and mileage only after acknowledged file commit',async()=>{
+  const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path');
+  const source=fs.readFileSync(path.join(__dirname,'../js/core.js'),'utf8');
+  const start=source.indexOf('function durableArrival(');
+  const definition=source.slice(start,source.indexOf("$('storageRetry')",start));
+  let acknowledge,queued=0;
+  const native={transactionBusy:false,transactionComputing:false,saved(){}};
+  const context={S:{used:0,stamps:[]},window:{TourdyNative:native},stateStore:{status:()=>({type:'ok'})},save(){},arrQ(){queued++;},tab:'home',renderFirstTripNotice(){},
+    writeCandidate(){native.transactionBusy=true;return new Promise(resolve=>{acknowledge=value=>{native.transactionBusy=false;resolve(value);};});}};
+  vm.createContext(context);vm.runInContext(definition,context);
+  const arrive=()=>{context.S.used+=10;context.S.stamps.push('busan');context.save();context.arrQ({t:'busan'});return true;};
+  context.durableArrival(arrive);
+  assert.equal(context.S.used,0);assert.equal(context.S.stamps.length,0);assert.equal(queued,0);
+  context.durableArrival(arrive);acknowledge(false);await Promise.resolve();
+  assert.equal(context.S.used,0);assert.equal(queued,0);
+  context.durableArrival(arrive);acknowledge(true);await Promise.resolve();
+  assert.equal(context.S.used,10);assert.equal(context.S.stamps.length,1);assert.equal(queued,1);
+});

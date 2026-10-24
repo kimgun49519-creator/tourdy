@@ -11,7 +11,7 @@ const SND={end:[[784,0,.6],[988,.18,.6],[1175,.36,1]],warn:[[880,0,.3],[880,.28,
 function toast(msg){const el=$('toast');el.textContent=msg;el.hidden=false;el.classList.remove('show');void el.offsetWidth;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>{el.hidden=true},5000)}
 function notify(title,body,snd){
   if(snd)tone(SND[snd]);toast(body?`${title} · ${body}`:title);
-  try{if(navigator.vibrate)navigator.vibrate(snd==='end'?[200,100,200]:120)}catch(e){}
+  try{if(window.TourdyNative)window.TourdyNative.vibrate();else if(navigator.vibrate)navigator.vibrate(snd==='end'?[200,100,200]:120)}catch(e){}
   try{if(NF().push&&'Notification' in window&&Notification.permission==='granted'&&document.hidden)new Notification(title,{body:body||'',tag:'study-planner'})}catch(e){}
 }
 /* 공부 메모 */

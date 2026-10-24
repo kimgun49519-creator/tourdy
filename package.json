@@ -5,7 +5,8 @@
   "description": "TOURDY study timer and travel rewards",
   "scripts": {
     "test": "node --test tests/*.test.cjs",
-    "preview": "node scripts/build-preview.cjs"
+    "preview": "node scripts/build-preview.cjs",
+    "ios:prepare": "node scripts/build-capacitor.cjs && cap sync ios && node scripts/prepare-capacitor-ios.cjs"
   },
   "engines": {
     "node": ">=20"

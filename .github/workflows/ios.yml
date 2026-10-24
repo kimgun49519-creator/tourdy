@@ -1,8 +1,5 @@
-name: Native iOS
+name: Archived SwiftUI prototype
 on:
-  push:
-    branches: [codex/storage-and-first-trip]
-    paths: ['ios/**', 'scripts/build-ios.cjs', '.github/workflows/ios.yml']
   workflow_dispatch:
 permissions:
   contents: read

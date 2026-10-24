@@ -77,3 +77,18 @@ test('running study and invalid destinations cannot consume a ticket', () => {
   const f=fixture();assert.equal(f.claim('space','moon'),false);assert.equal(f.claim('w','missing'),false);assert.equal(f.claim('kr','seoul'),false);
   f.sandbox.S.running={kind:'study',start:Date.now()};assert.equal(f.claim('w','FR'),false);assert.equal(f.sandbox.S.firstTrip.status,'ready');
 });
+
+test('native reward waits for file acknowledgement and retains ticket on rejection',async()=>{
+  const f=fixture();let acknowledge;
+  f.sandbox.writeCandidate=()=>new Promise(resolve=>{acknowledge=resolve;});
+  const pending=f.claim('kr','busan');
+  assert.equal(f.sandbox.S.firstTrip.status,'ready');
+  assert.equal(f.sandbox.S.travel.kr.at,'seoul');
+  assert.equal(f.sandbox.arrival,undefined);
+  acknowledge(false);assert.equal(await pending,false);
+  assert.equal(f.sandbox.S.firstTrip.status,'ready');
+  const retry=f.claim('kr','busan');acknowledge(true);assert.equal(await retry,true);
+  assert.equal(f.sandbox.S.firstTrip.status,'used');
+  assert.equal(f.sandbox.S.travel.kr.at,'busan');
+  assert.equal(f.$('firstTripDialog').closeCount,1);
+});

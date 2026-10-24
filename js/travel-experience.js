@@ -55,7 +55,7 @@ function arrSound(k){if(!TSND().arrive)return;const a=audio();if(!a)return;try{
 
 /* ==================== 여행 확장: 특별 루트·경유·등급·업적·엽서·설정 ==================== */
 const TSND=()=>Object.assign({arrive:true,rip:true,vibe:true,anno:false,voice:false},S.snd||{});
-const vibe=()=>{try{if(TSND().vibe&&navigator.vibrate)navigator.vibrate(12)}catch(e){}};
+const vibe=()=>{try{if(TSND().vibe){if(window.TourdyNative)window.TourdyNative.vibrate();else if(navigator.vibrate)navigator.vibrate(12)}}catch(e){}};
 function busyIn(id){const a=document.activeElement;return !!(a&&$(id)&&$(id).contains(a)&&a.matches('input,textarea'))}
 /* ---------- 특별 루트 (출발지 한정, 금색 표) ---------- */
 const ROUTES=[

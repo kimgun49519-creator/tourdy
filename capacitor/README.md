@@ -39,12 +39,15 @@ cycle settings. Permission is requested from Settings. Pausing or changing a
 timer updates pending alarms. iOS may suspend JavaScript in the background;
 elapsed time, travel arrivals and stamps are reconciled on reopening. Exact
 background travel-arrival alarms, widgets, Live Activities, and device sync are
-not implemented by this wrapper. A floating native SwiftUI navigation bar uses
-Apple Liquid Glass on iOS 26+, with a material fallback on older iOS versions.
-The existing web navigation stays authoritative: native taps request the original
-tab switch and selection is updated only from the resulting web state. Revisions
-prevent stale updates from replacing a newer selection. The native bar hides
-while a modal or the keyboard is open. Home uses a house, tasks a check box,
+not implemented by this wrapper. The root is a standard SwiftUI `TabView`.
+iOS controls the tab bar's material, selection lens, motion and layout; there is
+no custom capsule or `.glassEffect` overlay. iOS 26+ supplies the system Liquid
+Glass appearance; older iOS versions supply their standard tab bar appearance.
+Every tab retains the same Capacitor controller and WKWebView. Synchronous
+containment changes move that existing view without loading a second document.
+Native taps request the original web tab switch. Revision and request numbers
+prevent older acknowledgements from replacing the latest selected tab. An old
+pane's teardown cannot remove the view from its new pane. Home uses a house, tasks a check box,
 dashboard a custom three-panel mark, travel an airplane and settings a gear.
 
 Special routes now depart by tapping the entire available gold-bordered card.
